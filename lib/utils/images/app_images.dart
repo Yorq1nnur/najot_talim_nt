@@ -31,6 +31,13 @@ class AppImages {
   static const String fiveSpeaker = "assets/images/five_speaker.png";
   static const String sixSpeaker = "assets/images/six_speaker.png";
 
+  static const String airpods = "assets/images/airpods.png";
+  static const String iphone = "assets/images/iphone.png";
+  static const String mac = "assets/images/mac.png";
+  static const String pc = "assets/images/pc.png";
+  static const String speaker = "assets/images/speaker.png";
+  static const String keyboardMouse = "assets/images/keyboard_mouse.png";
+
   //.svg
   static const String arrowBack = "assets/icons/arrow_back.svg";
   static const String arrowTop = "assets/icons/arrow_top.svg";
