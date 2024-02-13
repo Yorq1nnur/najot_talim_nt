@@ -18,6 +18,12 @@ class AppImages {
   static const String iphone15 = "assets/images/iphone15.png";
   static const String iphone15Pro = "assets/images/iphone15_pro.png";
   static const String iphone15ProMax = "assets/images/iphone15_pro_max.png";
+  static const String adobe = "assets/images/adobe.png";
+  static const String capCut = "assets/images/capcut.png";
+  static const String flutter = "assets/images/flutter.png";
+  static const String illustrator = "assets/images/illustrator.png";
+  static const String photoShop = "assets/images/photoshop.png";
+  static const String pyton = "assets/images/pyton.png";
 
   //.svg
   static const String arrowBack = "assets/icons/arrow_back.svg";

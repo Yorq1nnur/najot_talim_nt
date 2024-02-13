@@ -34,6 +34,13 @@ class _AllScreenState extends State<AllScreen> {
     ModelCategories(image: AppImages.iphone15Pro, title: "Iphone 15 Pro", price: 1150,),
     ModelCategories(image: AppImages.iphone15ProMax, title: "Iphone 15 Pro Max", price: 1300,),
 
+    ModelCategories(image: AppImages.adobe, title: "Adobe Premiere Pro", price: 25,),
+    ModelCategories(image: AppImages.capCut, title: "CapCut Pro", price: 11,),
+    ModelCategories(image: AppImages.flutter, title: "Flutter Pro", price: 55,),
+    ModelCategories(image: AppImages.illustrator, title: "Illustrator Pro", price: 44,),
+    ModelCategories(image: AppImages.photoShop, title: "PhotoShop Pro", price: 22,),
+    ModelCategories(image: AppImages.pyton, title: "Pyton Pro", price: 33,),
+
 
   ];
 
