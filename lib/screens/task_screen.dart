@@ -1,18 +1,16 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot_talim_nt/accessories_screen.dart';
-import 'package:najot_talim_nt/all_screen.dart';
-import 'package:najot_talim_nt/bottom_row.dart';
-import 'package:najot_talim_nt/buttons.dart';
-import 'package:najot_talim_nt/computers_screen.dart';
-import 'package:najot_talim_nt/get_categories_text.dart';
-import 'package:najot_talim_nt/smart_objects_screen.dart';
-import 'package:najot_talim_nt/smartphones_screen.dart';
-import 'package:najot_talim_nt/speakers_screen.dart';
+import 'package:najot_talim_nt/screens/accessories_screen.dart';
+import 'package:najot_talim_nt/items/bottom_row.dart';
+import 'package:najot_talim_nt/screens/smart_objects_screen.dart';
+import 'package:najot_talim_nt/screens/smartphones_screen.dart';
+import 'package:najot_talim_nt/screens/speakers_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
+import '../categories/get_categories_text.dart';
+import '../items/buttons.dart';
+import 'all_screen.dart';
+import 'computers_screen.dart';
 
 class TaskScreen extends StatefulWidget {
   const TaskScreen({super.key});
@@ -25,7 +23,7 @@ class _TaskScreenState extends State<TaskScreen> {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(
-      value: SystemUiOverlayStyle(
+      value: const SystemUiOverlayStyle(
         statusBarColor: AppColors.transparent,
       ),
       child: Scaffold(
@@ -36,11 +34,14 @@ class _TaskScreenState extends State<TaskScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GetCategoriesText(title: 'Categories', onTap: () {},),
+              GetCategoriesText(
+                title: 'Categories',
+                onTap: () {},
+              ),
               Expanded(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: 18.w,
@@ -58,7 +59,7 @@ class _TaskScreenState extends State<TaskScreen> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) {
-                                      return AllScreen();
+                                      return const AllScreen();
                                     },
                                   ),
                                 );
@@ -74,7 +75,7 @@ class _TaskScreenState extends State<TaskScreen> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) {
-                                      return ComputerScreen();
+                                      return const ComputerScreen();
                                     },
                                   ),
                                 );
@@ -90,7 +91,7 @@ class _TaskScreenState extends State<TaskScreen> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) {
-                                      return AccessoriesScreen();
+                                      return const AccessoriesScreen();
                                     },
                                   ),
                                 );
@@ -106,7 +107,7 @@ class _TaskScreenState extends State<TaskScreen> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) {
-                                      return SmartPhonesScreen();
+                                      return const SmartPhonesScreen();
                                     },
                                   ),
                                 );
@@ -122,7 +123,7 @@ class _TaskScreenState extends State<TaskScreen> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) {
-                                      return SmartObjectsScreen();
+                                      return const SmartObjectsScreen();
                                     },
                                   ),
                                 );
@@ -138,7 +139,7 @@ class _TaskScreenState extends State<TaskScreen> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) {
-                                      return SpeakersScreen();
+                                      return const SpeakersScreen();
                                     },
                                   ),
                                 );
@@ -154,7 +155,7 @@ class _TaskScreenState extends State<TaskScreen> {
               SizedBox(
                 height: 16.h,
               ),
-              BottomRow(),
+              const BottomRow(),
             ],
           ),
         ),

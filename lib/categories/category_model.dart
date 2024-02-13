@@ -4,12 +4,15 @@ import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
 class CategoryModel extends StatefulWidget {
-  const CategoryModel({super.key, required this.image, required this.title, required this.price});
+  const CategoryModel(
+      {super.key,
+      required this.image,
+      required this.title,
+      required this.price});
 
   final String image;
   final String title;
   final int price;
-
 
   @override
   State<CategoryModel> createState() => _CategoryModelState();
@@ -41,7 +44,7 @@ class _CategoryModelState extends State<CategoryModel> {
               widget.image,
               height: 69.h,
               width: 169.w,
-              fit: BoxFit.fill,
+              fit: BoxFit.contain,
             ),
           ),
           SizedBox(
