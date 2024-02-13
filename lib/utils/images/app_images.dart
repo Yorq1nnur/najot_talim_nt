@@ -24,6 +24,12 @@ class AppImages {
   static const String illustrator = "assets/images/illustrator.png";
   static const String photoShop = "assets/images/photoshop.png";
   static const String pyton = "assets/images/pyton.png";
+  static const String firstSpeaker = "assets/images/first_speaker.png";
+  static const String secondSpeaker = "assets/images/second_speaker.png";
+  static const String thirdSpeaker = "assets/images/third_speaker.png";
+  static const String fourSpeaker = "assets/images/four_speaker.png";
+  static const String fiveSpeaker = "assets/images/five_speaker.png";
+  static const String sixSpeaker = "assets/images/six_speaker.png";
 
   //.svg
   static const String arrowBack = "assets/icons/arrow_back.svg";

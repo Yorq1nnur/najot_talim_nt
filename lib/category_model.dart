@@ -41,25 +41,34 @@ class _CategoryModelState extends State<CategoryModel> {
               widget.image,
               height: 69.h,
               width: 169.w,
+              fit: BoxFit.fill,
             ),
           ),
           SizedBox(
-            height: 42.h,
+            height: 15.h,
           ),
-          Text(
-            widget.title,
-            style: AppTextStyle.interBold.copyWith(
-              color: AppColors.c_0A1034,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w500,
+          Padding(
+            padding: EdgeInsets.only(left: 12.w),
+            child: Text(
+              widget.title,
+              style: AppTextStyle.interBold.copyWith(
+                color: AppColors.c_0A1034,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w500,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
-          Text(
-            "USD ${widget.price}",
-            style: AppTextStyle.interBold.copyWith(
-              color: AppColors.c_0A1034,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w500,
+          Padding(
+            padding: EdgeInsets.only(left: 12.w),
+            child: Text(
+              "USD ${widget.price}",
+              style: AppTextStyle.interBold.copyWith(
+                color: AppColors.c_0A1034,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
         ],

@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot_talim_nt/accessories_screen.dart';
 import 'package:najot_talim_nt/all_screen.dart';
+import 'package:najot_talim_nt/bottom_row.dart';
 import 'package:najot_talim_nt/buttons.dart';
 import 'package:najot_talim_nt/computers_screen.dart';
 import 'package:najot_talim_nt/get_categories_text.dart';
@@ -13,8 +13,6 @@ import 'package:najot_talim_nt/smart_objects_screen.dart';
 import 'package:najot_talim_nt/smartphones_screen.dart';
 import 'package:najot_talim_nt/speakers_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
-import 'package:najot_talim_nt/utils/images/app_images.dart';
-import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
 class TaskScreen extends StatefulWidget {
   const TaskScreen({super.key});
@@ -38,7 +36,7 @@ class _TaskScreenState extends State<TaskScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GetCategoriesText(),
+              GetCategoriesText(title: 'Categories', onTap: () {},),
               Expanded(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
@@ -156,68 +154,7 @@ class _TaskScreenState extends State<TaskScreen> {
               SizedBox(
                 height: 16.h,
               ),
-              Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 50.w,
-                  vertical: 20.h,
-                ),
-                decoration: BoxDecoration(
-                  color: AppColors.c_EFF5FB,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Material(
-                      color: AppColors.transparent,
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset(
-                          AppImages.bottomHome,
-                          width: 18.w,
-                          height: 18.h,
-                        ),
-                        style: IconButton.styleFrom(padding: EdgeInsets.zero),
-                      ),
-                    ),
-                    Material(
-                      color: AppColors.transparent,
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset(
-                          AppImages.bottomSearch,
-                          width: 18.w,
-                          height: 18.h,
-                        ),
-                        style: IconButton.styleFrom(padding: EdgeInsets.zero),
-                      ),
-                    ),
-                    Material(
-                      color: AppColors.transparent,
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset(
-                          AppImages.bottomShop,
-                          width: 18.w,
-                          height: 18.h,
-                        ),
-                        style: IconButton.styleFrom(padding: EdgeInsets.zero),
-                      ),
-                    ),
-                    Material(
-                      color: AppColors.transparent,
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset(
-                          AppImages.arrowProfile,
-                          width: 14.w,
-                          height: 18.h,
-                        ),
-                        style: IconButton.styleFrom(padding: EdgeInsets.zero),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              BottomRow(),
             ],
           ),
         ),

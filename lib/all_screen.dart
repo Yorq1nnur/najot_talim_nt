@@ -1,7 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:najot_talim_nt/utils/images/app_images.dart';
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'categories.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot_talim_nt/all_categories.dart';
+import 'package:najot_talim_nt/bottom_row.dart';
+import 'package:najot_talim_nt/category_model.dart';
+import 'package:najot_talim_nt/get_categories_text.dart';
+import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 
 class AllScreen extends StatefulWidget {
   const AllScreen({super.key});
@@ -11,41 +17,45 @@ class AllScreen extends StatefulWidget {
 }
 
 class _AllScreenState extends State<AllScreen> {
-
-  final List<ModelCategories> allModels = [
-    ModelCategories(image: AppImages.firstLaptop, title: "Surface laptop 3", price: 999,),
-    ModelCategories(image: AppImages.secondLaptop, title: "XPS laptop 13", price: 899,),
-    ModelCategories(image: AppImages.thirdLaptop, title: "LG Gram 17", price: 1399,),
-    ModelCategories(image: AppImages.fourthLaptop, title: "Macbook pro 13", price: 1299,),
-    ModelCategories(image: AppImages.fiveLaptop, title: "Samsung Galaxy Book", price: 799,),
-    ModelCategories(image: AppImages.sixLaptop, title: "HP Ryzen 7", price: 699,),
-
-    ModelCategories(image: AppImages.airTag, title: "AirTag", price: 49,),
-    ModelCategories(image: AppImages.casePhone, title: "Case for phone", price: 11,),
-    ModelCategories(image: AppImages.flashCard, title: "Flash card 32 gb", price: 22,),
-    ModelCategories(image: AppImages.headPhone, title: "HeadPhone", price: 55,),
-    ModelCategories(image: AppImages.magSafe, title: "Magsafe", price: 33,),
-    ModelCategories(image: AppImages.powerBank, title: "Power bank 20000 mah", price: 44,),
-
-    ModelCategories(image: AppImages.s24, title: "Samsung Galaxy S24", price: 1000,),
-    ModelCategories(image: AppImages.s24Plus, title: "Samsung Galaxy S24 Plus", price: 1200,),
-    ModelCategories(image: AppImages.s24Ultra, title: "Samsung Galaxy S24 Ultra", price: 1300,),
-    ModelCategories(image: AppImages.iphone15, title: "Iphone 15", price: 1050,),
-    ModelCategories(image: AppImages.iphone15Pro, title: "Iphone 15 Pro", price: 1150,),
-    ModelCategories(image: AppImages.iphone15ProMax, title: "Iphone 15 Pro Max", price: 1300,),
-
-    ModelCategories(image: AppImages.adobe, title: "Adobe Premiere Pro", price: 25,),
-    ModelCategories(image: AppImages.capCut, title: "CapCut Pro", price: 11,),
-    ModelCategories(image: AppImages.flutter, title: "Flutter Pro", price: 55,),
-    ModelCategories(image: AppImages.illustrator, title: "Illustrator Pro", price: 44,),
-    ModelCategories(image: AppImages.photoShop, title: "PhotoShop Pro", price: 22,),
-    ModelCategories(image: AppImages.pyton, title: "Pyton Pro", price: 33,),
-
-
-  ];
-
+  
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    final ScrollController scrollController = ScrollController();
+
+    return AnnotatedRegion(value: SystemUiOverlayStyle(
+    statusBarColor: AppColors.transparent,
+    ), child: Scaffold(
+      body: Padding(
+        padding: EdgeInsets.only(top: 30.h,),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            GetCategoriesText(title: "All", onTap: (){
+              Navigator.pop(context);
+            }),
+            Expanded(
+              child: GridView.count(
+                physics: AlwaysScrollableScrollPhysics(),
+                controller: scrollController,
+                scrollDirection: Axis.vertical,
+                padding: EdgeInsets.all(25),
+                mainAxisSpacing: 24,
+                //vertically
+                crossAxisSpacing: 15,
+                //horizontally
+                crossAxisCount: 2,
+                childAspectRatio: 0.85,
+                //Axis.vertical=> childAspectRatio = width/height.
+                //Axis.horizontal=> childAspectRatio = height/width.
+                children: [
+                  ...List.generate(allModels.length, (index) => CategoryModel(image: allModels[index].image, title: allModels[index].title, price: allModels[index].price,),),
+                ],
+              ),
+            ),
+          BottomRow(),
+          ],
+        ),
+      ),
+    ));
   }
 }
