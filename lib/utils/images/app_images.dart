@@ -6,6 +6,12 @@ class AppImages {
   static const String fourthLaptop = "assets/images/fourth_laptop.png";
   static const String fiveLaptop = "assets/images/five_laptop.png";
   static const String sixLaptop = "assets/images/six_laptop.png";
+  static const String casePhone = "assets/images/case.png";
+  static const String airTag = "assets/images/airtag.png";
+  static const String flashCard = "assets/images/flash_card.png";
+  static const String headPhone = "assets/images/headphone.png";
+  static const String magSafe = "assets/images/magsafe.png";
+  static const String powerBank = "assets/images/power_bank.png";
 
   //.svg
   static const String arrowBack = "assets/icons/arrow_back.svg";

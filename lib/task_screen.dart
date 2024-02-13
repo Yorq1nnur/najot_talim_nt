@@ -8,6 +8,7 @@ import 'package:najot_talim_nt/accessories_screen.dart';
 import 'package:najot_talim_nt/all_screen.dart';
 import 'package:najot_talim_nt/buttons.dart';
 import 'package:najot_talim_nt/computers_screen.dart';
+import 'package:najot_talim_nt/get_categories_text.dart';
 import 'package:najot_talim_nt/smart_objects_screen.dart';
 import 'package:najot_talim_nt/smartphones_screen.dart';
 import 'package:najot_talim_nt/speakers_screen.dart';
@@ -37,41 +38,7 @@ class _TaskScreenState extends State<TaskScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 18.w,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: SvgPicture.asset(
-                        AppImages.arrowBack,
-                        height: 24.h,
-                        width: 28.w,
-                      ),
-                      style: IconButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 24.h,
-                    ),
-                    Text(
-                      "Categories",
-                      style: AppTextStyle.interBold.copyWith(
-                        color: AppColors.c_0A1034,
-                        fontSize: 24.sp,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 24.h,
-                    ),
-                  ],
-                ),
-              ),
+              GetCategoriesText(),
               Expanded(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
