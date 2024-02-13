@@ -12,6 +12,12 @@ class AppImages {
   static const String headPhone = "assets/images/headphone.png";
   static const String magSafe = "assets/images/magsafe.png";
   static const String powerBank = "assets/images/power_bank.png";
+  static const String s24 = "assets/images/s24.png";
+  static const String s24Plus = "assets/images/s24_plus.png";
+  static const String s24Ultra = "assets/images/s24_ultra.png";
+  static const String iphone15 = "assets/images/iphone15.png";
+  static const String iphone15Pro = "assets/images/iphone15_pro.png";
+  static const String iphone15ProMax = "assets/images/iphone15_pro_max.png";
 
   //.svg
   static const String arrowBack = "assets/icons/arrow_back.svg";
