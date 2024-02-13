@@ -130,7 +130,7 @@ class _SmartObjectsScreenState extends State<SmartObjectsScreen> {
                 ),
                 Expanded(
                   child: GridView.count(
-                    physics: const AlwaysScrollableScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     controller: scrollController,
                     scrollDirection: Axis.vertical,
                     padding: EdgeInsets.symmetric(

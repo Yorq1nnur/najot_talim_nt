@@ -129,7 +129,7 @@ class _AllScreenState extends State<AllScreen> {
                 ),
                 Expanded(
                   child: GridView.count(
-                    physics: const AlwaysScrollableScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     controller: scrollController,
                     scrollDirection: Axis.vertical,
                     padding: EdgeInsets.symmetric(
