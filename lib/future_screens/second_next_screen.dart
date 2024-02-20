@@ -12,8 +12,8 @@ import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import '../models/company_models.dart';
 import 'package:http/http.dart' as http;
 
-class FirstNextScreen extends StatefulWidget {
-  const FirstNextScreen(
+class SecondNextScreen extends StatefulWidget {
+  const SecondNextScreen(
       {super.key,
       required this.dataModels,
       required this.logos,
@@ -24,10 +24,10 @@ class FirstNextScreen extends StatefulWidget {
   final int index;
 
   @override
-  State<FirstNextScreen> createState() => _FirstNextScreenState();
+  State<SecondNextScreen> createState() => _SecondNextScreenState();
 }
 
-class _FirstNextScreenState extends State<FirstNextScreen> {
+class _SecondNextScreenState extends State<SecondNextScreen> {
   final List<String> cars = [
     AppImages.firstCarusel,
     AppImages.secondCarusel,
@@ -80,6 +80,7 @@ class _FirstNextScreenState extends State<FirstNextScreen> {
         statusBarColor: AppColors.transparent,
       ),
       child: Scaffold(
+        backgroundColor: AppColors.cF2954D,
         body: isTrue
             ? Center(
                 child: SizedBox(
@@ -91,7 +92,7 @@ class _FirstNextScreenState extends State<FirstNextScreen> {
             : Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 10.w,
-                  vertical: 10.h,
+                  vertical: 0.h,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,10 +100,70 @@ class _FirstNextScreenState extends State<FirstNextScreen> {
                     SizedBox(
                       height: 20.h,
                     ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 15.h),
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              logos[widget.index - 1],
+                              height: 50.h,
+                              width: 50.w,
+                              fit: BoxFit.cover,
+                            ),
+                            SizedBox(
+                              width: 20.w,
+                            ),
+                            Text(
+                              singleCarModels!.carModel,
+                              style: AppTextStyle.interThin
+                                  .copyWith(color: AppColors.white, fontSize: 20.sp,
+                              fontWeight: FontWeight.w900),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10.h),
+                        child: Text(
+                          "Description",
+                          style: AppTextStyle.interThin.copyWith(
+                              color: AppColors.black,
+                              fontSize: 24.sp,
+                              fontWeight: FontWeight.w900),
+                        ),
+                      ),
+                    ),
+                    Center(child: Text("Estabilished year: ${singleCarModels?.establishedYear}", style: AppTextStyle.interBold.copyWith(
+                      color: Colors.grey,
+                      fontSize: 20.sp,
+                    ),),),
+                    SizedBox(height: 10.h,),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        scrollDirection: Axis.vertical,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.w),
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            singleCarModels!.description,
+                            style: AppTextStyle.interBold.copyWith(
+                              color: AppColors.c_1A72DD,
+                              fontSize: 20.sp,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10.h,),
                     CarouselSlider(
                       items: List.generate(
                         singleCarModels!.carPics.length,
-                        (index) {
+                            (index) {
                           return Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(24.r),
@@ -155,64 +216,6 @@ class _FirstNextScreenState extends State<FirstNextScreen> {
                         scrollDirection: Axis.horizontal,
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 15.h),
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              logos[widget.index - 1],
-                              height: 50.h,
-                              width: 50.w,
-                              fit: BoxFit.cover,
-                            ),
-                            SizedBox(
-                              width: 20.w,
-                            ),
-                            Text(
-                              singleCarModels!.carModel,
-                              style: AppTextStyle.interThin
-                                  .copyWith(color: AppColors.cF4261A, fontWeight: FontWeight.w900, fontSize: 20.sp),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Center(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10.h),
-                        child: Text(
-                          "Description",
-                          style: AppTextStyle.interThin.copyWith(
-                              color: AppColors.black,
-                              fontSize: 24.sp,
-                              fontWeight: FontWeight.w900),
-                        ),
-                      ),
-                    ),
-                    Center(child: Text("Estabilished year: ${singleCarModels?.establishedYear}", style: AppTextStyle.interBold.copyWith(
-                      color: Colors.grey,
-                      fontSize: 20.sp,
-                    ),),),
-                    SizedBox(height: 10.h,),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        physics: const BouncingScrollPhysics(),
-                        scrollDirection: Axis.vertical,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10.w),
-                          child: Text(
-                            textAlign: TextAlign.center,
-                            singleCarModels!.description,
-                            style: AppTextStyle.interBold.copyWith(
-                              color: AppColors.c_1A72DD,
-                              fontSize: 20.sp,
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ),

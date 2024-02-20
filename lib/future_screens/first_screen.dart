@@ -4,10 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import '../models/company_models.dart';
-import 'package:http/http.dart' as http;
-
 import '../utils/colors/app_colors.dart';
 import 'first_next_screen.dart';
+import 'package:http/http.dart' as http;
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
