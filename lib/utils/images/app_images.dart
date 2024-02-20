@@ -30,6 +30,13 @@ class AppImages {
   static const String fourSpeaker = "assets/images/four_speaker.png";
   static const String fiveSpeaker = "assets/images/five_speaker.png";
   static const String sixSpeaker = "assets/images/six_speaker.png";
+  static const String car = "assets/images/car.png";
+
+  //////////////////
+  static const String honda = "assets/images/honda.png";
+  static const String toyota = "assets/images/toyota.png";
+  static const String rollsRoyce = "assets/images/rolls_royce.png";
+  static const String tesla = "assets/images/tesla.png";
 
   static const String airpods = "assets/images/airpods.png";
   static const String iphone = "assets/images/iphone.png";
