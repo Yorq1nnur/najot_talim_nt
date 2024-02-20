@@ -1,4 +1,3 @@
-import 'package:najot_talim_nt/utils/images/app_images.dart';
 
 class CarModels {
 
@@ -18,11 +17,11 @@ class CarModels {
 
   factory CarModels.fromJson(Map<String, dynamic> json){
     return CarModels(
-      id:json['id'] as int ?? 0,
-      carModel:json['car_model'] as String ?? "",
-      averagePrice: json['average_price'] as int ?? 0,
-      logo:json['logo'] as String ?? "",
-      establishedYear: json['established_year'] as int ?? 0,
+      id:json['id'] as int? ?? 0,
+      carModel:json['car_model'] as String? ?? "",
+      averagePrice: json['average_price'] as int? ?? 0,
+      logo:json['logo'] as String? ?? "",
+      establishedYear: json['established_year'] as int? ?? 0,
     );
   }
 

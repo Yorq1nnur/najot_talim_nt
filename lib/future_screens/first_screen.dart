@@ -1,10 +1,14 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
+import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import '../models/company_models.dart';
 import 'package:http/http.dart' as http;
 
+import '../utils/colors/app_colors.dart';
 import 'first_next_screen.dart';
 
 class FirstScreen extends StatefulWidget {
@@ -51,37 +55,74 @@ class _FirstScreenState extends State<FirstScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: isTrue ? Center(child: SizedBox(
-          height: 100.w,
-          width: 100.w,
-          child: const CircularProgressIndicator()),) :Column(
-        children: [
-          SizedBox(
-            height: 20.h,
-          ),
-          ...List.generate(
-            8,
-            (index) => ListTile(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => FirstNextScreen(dataModels: dataModels!, logos: logos,)));
-              },
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
-              title: Text(dataModels!.data[index].carModel),
-              trailing: ClipRRect(
-                borderRadius: BorderRadius.circular(16.r),
-                child: Image.asset(
-                  logos[index],
-                  height: 40.h,
-                  width: 40.w,
-                  fit: BoxFit.cover,
-                ),
+      body: isTrue
+          ? Center(
+              child: SizedBox(
+                height: 100.h,
+                width: 100.h,
+                child: const CircularProgressIndicator(),
               ),
+            )
+          : Column(
+              children: [
+                Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 40.h,
+                    ),
+                    child: Text(
+                      "Select cars model",
+                      style: AppTextStyle.interBold.copyWith(
+                          color: AppColors.cF2954D,
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w900),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: [
+                        ...List.generate(
+                          8,
+                          (index) => Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20.w),
+                            child: ListTile(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => FirstNextScreen(
+                                      dataModels: dataModels!,
+                                      logos: logos,
+                                      index: dataModels!.data[index].id,
+                                    ),
+                                  ),
+                                );
+                              },
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 10.w, vertical: 20.h),
+                              title: Text(dataModels!.data[index].carModel),
+                              trailing: ClipRRect(
+                                borderRadius: BorderRadius.circular(16.r),
+                                child: Image.asset(
+                                  logos[index],
+                                  height: 40.h,
+                                  width: 40.w,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
             ),
-          ),
-        ],
-      ),
     );
   }
 }
