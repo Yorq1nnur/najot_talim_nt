@@ -64,7 +64,7 @@ class _FirstScreenState extends State<FirstScreen> {
             (index) => ListTile(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => FirstNextScreen()));
+                    MaterialPageRoute(builder: (context) => FirstNextScreen(dataModels: dataModels!, logos: logos,)));
               },
               contentPadding:
                   EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),

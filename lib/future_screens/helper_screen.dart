@@ -17,8 +17,8 @@ class HelperScreen extends StatefulWidget {
 class _HelperScreenState extends State<HelperScreen> {
   @override
   Widget build(BuildContext context) {
+
     double height = MediaQuery.of(context).size.height;
-    // double width = MediaQuery.of(context).size.width;
 
     return AnnotatedRegion(
         value: const SystemUiOverlayStyle(

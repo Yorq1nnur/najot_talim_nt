@@ -38,6 +38,12 @@ class AppImages {
   static const String rollsRoyce = "assets/images/rolls_royce.png";
   static const String tesla = "assets/images/tesla.png";
 
+  /////////////////////////
+  static const String firstCarusel = "assets/images/first_carusel.png";
+  static const String secondCarusel = "assets/images/second_carusel.png";
+  static const String thirdCarusel = "assets/images/third_carusel.png";
+  static const String forthCarusel = "assets/images/forth_carusel.png";
+
   static const String airpods = "assets/images/airpods.png";
   static const String iphone = "assets/images/iphone.png";
   static const String mac = "assets/images/mac.png";
