@@ -15,7 +15,7 @@ class BottomRow extends StatelessWidget {
         vertical: 20.h,
       ),
       decoration: const BoxDecoration(
-        color: AppColors.c_EFF5FB,
+        color: AppColors.cEFF5FB,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

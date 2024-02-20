@@ -1,15 +1,15 @@
 import 'dart:convert';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:http/http.dart' as http;
 import 'package:najot_talim_nt/models/single_car_models.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import '../models/company_models.dart';
+import 'package:http/http.dart' as http;
+
 
 class FirstNextScreen extends StatefulWidget {
   const FirstNextScreen(
@@ -106,7 +106,7 @@ class _FirstNextScreenState extends State<FirstNextScreen> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(24.r),
                                 border: Border.all(
-                                  color: AppColors.c_C4C4C4,
+                                  color: AppColors.cC4C4C4,
                                   width: 1.r,
                                 )),
                             child: ClipRRect(
@@ -157,7 +157,7 @@ class _FirstNextScreenState extends State<FirstNextScreen> {
                             Text(
                               singleCarModels!.carModel,
                               style: AppTextStyle.interThin
-                                  .copyWith(color: AppColors.c_F4261A),
+                                  .copyWith(color: AppColors.cF4261A),
                             )
                           ],
                         ),

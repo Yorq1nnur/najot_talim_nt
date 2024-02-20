@@ -28,7 +28,7 @@ class _AccessoriesScreenState extends State<AccessoriesScreen> {
           statusBarColor: AppColors.transparent,
         ),
         child: Scaffold(
-          backgroundColor: AppColors.c_FDFEFF,
+          backgroundColor: AppColors.cFDFEFF,
           body: Padding(
             padding: EdgeInsets.only(
               top: 30.h,
@@ -59,11 +59,11 @@ class _AccessoriesScreenState extends State<AccessoriesScreen> {
                             horizontal: 9.w,
                           ),
                           decoration: BoxDecoration(
-                            color: AppColors.c_FDFEFF,
+                            color: AppColors.cFDFEFF,
                             borderRadius: BorderRadius.circular(4),
                             boxShadow: const [
                               BoxShadow(
-                                color: AppColors.c_A7A9BE,
+                                color: AppColors.cA7A9BE,
                                 blurRadius: 1.5,
                               ),
                             ],
@@ -74,7 +74,7 @@ class _AccessoriesScreenState extends State<AccessoriesScreen> {
                               Text(
                                 "Ascending price",
                                 style: AppTextStyle.interBold.copyWith(
-                                  color: AppColors.c_A7A9BE,
+                                  color: AppColors.cA7A9BE,
                                   fontWeight: FontWeight.w400,
                                   fontSize: 14.sp,
                                 ),
@@ -105,7 +105,7 @@ class _AccessoriesScreenState extends State<AccessoriesScreen> {
                           Text(
                             "Filter",
                             style: AppTextStyle.interBold.copyWith(
-                              color: AppColors.c_A7A9BE,
+                              color: AppColors.cA7A9BE,
                               fontWeight: FontWeight.w500,
                               fontSize: 14.sp,
                             ),
