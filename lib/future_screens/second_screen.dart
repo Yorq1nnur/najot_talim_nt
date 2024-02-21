@@ -79,6 +79,7 @@ class _SecondScreenState extends State<SecondScreen> {
                 ),
                 Expanded(
                   child: GridView.count(
+                    physics: const BouncingScrollPhysics(),
                     padding: EdgeInsets.symmetric(
                       horizontal: 10.w,
                       vertical: 10.h,
