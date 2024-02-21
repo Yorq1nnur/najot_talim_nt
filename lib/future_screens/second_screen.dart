@@ -55,72 +55,90 @@ class _SecondScreenState extends State<SecondScreen> {
       backgroundColor: AppColors.cF2954D,
       body: isTrue
           ? Center(
-        child: SizedBox(
-          height: 100.h,
-          width: 100.h,
-          child: const CircularProgressIndicator(),
-        ),
-      )
+              child: SizedBox(
+                height: 100.h,
+                width: 100.h,
+                child: const CircularProgressIndicator(),
+              ),
+            )
           : Column(
-        children: [
-          Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: 40.h,
-              ),
-              child: Text(
-                "Select cars model",
-                style: AppTextStyle.interBold.copyWith(
-                    color: AppColors.white,
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w900),
-              ),
-            ),
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              scrollDirection: Axis.vertical,
-              child: Column(
-                children: [
-                  ...List.generate(
-                    8,
-                        (index) => Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                      child: ListTile(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SecondNextScreen(
-                                dataModels: dataModels!,
-                                logos: logos,
-                                index: dataModels!.data[index].id,
+              children: [
+                Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 40.h,
+                    ),
+                    child: Text(
+                      "Select cars model",
+                      style: AppTextStyle.interBold.copyWith(
+                          color: AppColors.white,
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w900),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: GridView.count(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10.w,
+                      vertical: 10.h,
+                    ),
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 5,
+                    mainAxisSpacing: 5,
+                    children: [
+                      ...List.generate(
+                        8,
+                        (index) => TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SecondNextScreen(
+                                  dataModels: dataModels!,
+                                  logos: logos,
+                                  index: dataModels!.data[index].id,
+                                ),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: AppColors.cC4C4C4,
+                              borderRadius: BorderRadius.circular(
+                                16.r,
                               ),
                             ),
-                          );
-                        },
-                        contentPadding: EdgeInsets.symmetric(
-                            horizontal: 10.w, vertical: 20.h),
-                        title: Text(dataModels!.data[index].carModel),
-                        trailing: ClipRRect(
-                          borderRadius: BorderRadius.circular(16.r),
-                          child: Image.asset(
-                            logos[index],
-                            height: 40.h,
-                            width: 40.w,
-                            fit: BoxFit.cover,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                ClipRRect(
+                                    borderRadius: BorderRadius.circular(16.r),
+                                    child: Image.asset(
+                                      logos[index],
+                                      height: 130.h,
+                                      width: 200.w,
+                                      fit: BoxFit.cover,
+                                    )),
+                                SizedBox(
+                                  height: 10.h,
+                                ),
+                                Text(
+                                  dataModels!.data[index].carModel,
+                                  style: AppTextStyle.interBold.copyWith(
+                                    color: AppColors.black,
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
+                )
+              ],
             ),
-          )
-        ],
-      ),
     );
   }
 }
