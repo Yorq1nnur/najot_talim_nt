@@ -59,155 +59,162 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 NetworkResponse data = snapshot.data as NetworkResponse;
                 List<CategoryModel> categories =
                     data.data as List<CategoryModel>;
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: ListView(
-                        children: List.generate(
-                          categories.length,
-                          (index) {
-                            CategoryModel categoryModel = categories[index];
-                            return Container(
-                              margin: EdgeInsets.symmetric(
-                                vertical: 10.h,
-                              ),
-                              padding: EdgeInsets.symmetric(
-                                vertical: 10.h,
-                                horizontal: 10.w,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.orange,
-                                borderRadius: BorderRadius.circular(
-                                  24.r,
+                return Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10.w,
+                    vertical: 10.h,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: ListView(
+                          physics: const BouncingScrollPhysics(),
+                          children: List.generate(
+                            categories.length,
+                            (index) {
+                              CategoryModel categoryModel = categories[index];
+                              return Container(
+                                margin: EdgeInsets.symmetric(
+                                  vertical: 10.h,
                                 ),
-                              ),
-                              child: InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return ProductDataScreen(
-                                          id: categoryModel.id,
-                                          name: categoryModel.name,
-                                        );
-                                      },
-                                    ),
-                                  );
-                                },
-                                child: Container(
-                                  margin: EdgeInsets.symmetric(
-                                    vertical: 20.h,
-                                    horizontal: 20.w,
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 10.h,
+                                  horizontal: 10.w,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.orange,
+                                  borderRadius: BorderRadius.circular(
+                                    24.r,
                                   ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        categoryModel.name,
-                                        style:
-                                            AppTextStyle.interSemiBold.copyWith(
-                                          color: AppColors.c_5B1CAE,
-                                          fontSize: 24.sp,
-                                          fontWeight: FontWeight.w600,
-                                        ),
+                                ),
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return ProductDataScreen(
+                                            id: categoryModel.id,
+                                            name: categoryModel.name,
+                                          );
+                                        },
                                       ),
-                                      if (index == 1)
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.circular(
-                                            16.r,
+                                    );
+                                  },
+                                  child: Container(
+                                    margin: EdgeInsets.symmetric(
+                                      vertical: 20.h,
+                                      horizontal: 20.w,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          categoryModel.name,
+                                          style: AppTextStyle.interSemiBold
+                                              .copyWith(
+                                            color: AppColors.c_5B1CAE,
+                                            fontSize: 24.sp,
+                                            fontWeight: FontWeight.w600,
                                           ),
-                                          child: Image.asset(
-                                            AppImages.mobile,
-                                            height: 50.h,
-                                            width: 50.w,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        )
-                                      else if (index == 2)
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.circular(
-                                            16.r,
-                                          ),
-                                          child: Image.asset(
-                                            AppImages.smartphones,
-                                            height: 50.h,
-                                            width: 50.w,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        )
-                                      else
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.circular(
-                                            16.r,
-                                          ),
-                                          child: Image.network(
-                                            categoryModel.imageUrl,
-                                            height: 50.h,
-                                            width: 50.w,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        )
-                                    ],
+                                        ),
+                                        if (index == 1)
+                                          ClipRRect(
+                                            borderRadius: BorderRadius.circular(
+                                              16.r,
+                                            ),
+                                            child: Image.asset(
+                                              AppImages.mobile,
+                                              height: 50.h,
+                                              width: 50.w,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          )
+                                        else if (index == 2)
+                                          ClipRRect(
+                                            borderRadius: BorderRadius.circular(
+                                              16.r,
+                                            ),
+                                            child: Image.asset(
+                                              AppImages.smartphones,
+                                              height: 50.h,
+                                              width: 50.w,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          )
+                                        else
+                                          ClipRRect(
+                                            borderRadius: BorderRadius.circular(
+                                              16.r,
+                                            ),
+                                            child: Image.network(
+                                              categoryModel.imageUrl,
+                                              height: 50.h,
+                                              width: 50.w,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          )
+                                      ],
+                                    ),
                                   ),
                                 ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                      Ink(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 20.w, vertical: 4.h),
+                        decoration: BoxDecoration(
+                          color: AppColors.transparent,
+                          borderRadius: BorderRadius.circular(
+                            14.r,
+                          ),
+                        ),
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(
+                            14.r,
+                          ),
+                          onTap: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const ProductsScreen();
+                                },
                               ),
                             );
                           },
-                        ),
-                      ),
-                    ),
-                    Ink(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20.w, vertical: 4.h),
-                      decoration: BoxDecoration(
-                        color: AppColors.transparent,
-                        borderRadius: BorderRadius.circular(
-                          14.r,
-                        ),
-                      ),
-                      child: InkWell(
-                        borderRadius: BorderRadius.circular(
-                          14.r,
-                        ),
-                        onTap: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return const ProductsScreen();
-                              },
+                          child: Container(
+                            width: double.infinity,
+                            padding: EdgeInsets.symmetric(vertical: 10.h),
+                            decoration: BoxDecoration(
+                              color: AppColors.c_1A72DD,
+                              border: Border.all(
+                                color: AppColors.c_2A3256,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                14.r,
+                              ),
                             ),
-                          );
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          padding: EdgeInsets.symmetric(vertical: 10.h),
-                          decoration: BoxDecoration(
-                            color: AppColors.c_1A72DD,
-                            border: Border.all(
-                              color: AppColors.c_2A3256,
-                            ),
-                            borderRadius: BorderRadius.circular(
-                              14.r,
-                            ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "ALL PRODUCTS ",
-                              style: AppTextStyle.interSemiBold.copyWith(
-                                color: AppColors.white,
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.w500,
+                            child: Center(
+                              child: Text(
+                                "ALL PRODUCTS ",
+                                style: AppTextStyle.interSemiBold.copyWith(
+                                  color: AppColors.white,
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 );
               }
               return const Center(
