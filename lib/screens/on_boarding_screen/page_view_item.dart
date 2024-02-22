@@ -4,7 +4,12 @@ import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
 class PageViewItem extends StatefulWidget {
-  const PageViewItem({super.key, required this.imagePath, required this.place, required this.secondPlace, required this.title});
+  const PageViewItem(
+      {super.key,
+      required this.imagePath,
+      required this.place,
+      required this.secondPlace,
+      required this.title});
 
   final String imagePath;
   final String title;
@@ -31,12 +36,18 @@ class _PageViewItemState extends State<PageViewItem> {
             ),
           ),
         ),
-        SizedBox(height: widget.secondPlace.h,),
-        Center(child: Text(widget.title, style: AppTextStyle.interThin.copyWith(
-          color: AppColors.white,
-          fontSize: 24.sp,
-          fontWeight: FontWeight.w700
-        ),),)
+        SizedBox(
+          height: widget.secondPlace.h,
+        ),
+        Center(
+          child: Text(
+            widget.title,
+            style: AppTextStyle.interThin.copyWith(
+                color: AppColors.white,
+                fontSize: 24.sp,
+                fontWeight: FontWeight.w700),
+          ),
+        )
       ],
     );
   }

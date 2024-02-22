@@ -41,6 +41,7 @@ dependencies:
   http: ^1.2.1
   cached_network_image: ^3.3.1
   shared_preferences: ^2.2.2
+  lottie: ^3.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -69,6 +70,7 @@ flutter:
     - assets/fonts/bodoni/
     - assets/images/
     - assets/icons/
+    - assets/lottie/
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a

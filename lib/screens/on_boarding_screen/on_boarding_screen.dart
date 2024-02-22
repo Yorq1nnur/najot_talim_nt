@@ -82,9 +82,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             Center(
               child: TextButton(
                 onPressed: () {
-                  setState(() {
-                    activeIndex++;
-                  },);
+                  setState(
+                    () {
+                      activeIndex++;
+                    },
+                  );
                   if (activeIndex > 2) {
                     Navigator.pushReplacement(
                       context,

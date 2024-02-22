@@ -11,9 +11,7 @@ class SkipForNow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      style: TextButton.styleFrom(
-          padding: EdgeInsets.zero
-      ),
+      style: TextButton.styleFrom(padding: EdgeInsets.zero),
       onPressed: onTap,
       child: Text(
         "Skip for now",

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(
-      value: SystemUiOverlayStyle(
+      value: const SystemUiOverlayStyle(
         statusBarColor: AppColors.transparent,
       ),
       child: Scaffold(
@@ -209,29 +207,31 @@ class _LoginScreenState extends State<LoginScreen> {
                             () {
                               CheckStatus.isFirstly = false;
                               StorageRepository.setBool(
-                                  key: "isFirstly", value: CheckStatus.isFirstly);
+                                  key: "isFirstly",
+                                  value: CheckStatus.isFirstly);
                               CheckStatus.isLogged = true;
                               CheckStatus.isRegistered = true;
                               StorageRepository.setBool(
                                   key: "isLogged", value: CheckStatus.isLogged);
                               StorageRepository.setBool(
-                                  key: "isRegistered", value: CheckStatus.isLogged);
+                                  key: "isRegistered",
+                                  value: CheckStatus.isLogged);
                             },
                           );
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
+                            const SnackBar(
                               content: Text("SUCCESS"),
                             ),
                           );
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FreeScreen(),
+                              builder: (context) => const FreeScreen(),
                             ),
                           );
-                        }else{
+                        } else {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
+                            const SnackBar(
                               content: Text("Email or password wrong!!!"),
                             ),
                           );
@@ -247,7 +247,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => LoginScreen(),
+                          builder: (context) => const LoginScreen(),
                         ),
                       );
                     },
@@ -281,12 +281,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 20.h,
                 ),
-                SkipForNow(onTap: () {
-                  setState(() {
-                    print(
-                        "Is firstly: ${StorageRepository.getBool(key: "isFirstly")}\nIs registered: ${StorageRepository.getBool(key: "isRegistered")}\nIs logged: ${StorageRepository.getBool(key: "isLogged")}");
-                  });
-                })
+                SkipForNow(onTap: () {})
               ],
             ),
           ),

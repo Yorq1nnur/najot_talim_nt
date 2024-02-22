@@ -12,4 +12,9 @@ class AppImages {
   //.jpg
 
   //.gif
+
+  //lottie
+
+  static const String lottie = "assets/lottie/lottie.json";
+
 }
