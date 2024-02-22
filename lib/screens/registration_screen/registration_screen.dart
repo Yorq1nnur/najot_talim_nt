@@ -1,9 +1,6 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot_talim_nt/data/check.dart';
 import 'package:najot_talim_nt/data/local/storage_repository.dart';
 import 'package:najot_talim_nt/global_items/global_text_button.dart';
 import 'package:najot_talim_nt/global_items/login_or_register.dart';
@@ -29,7 +26,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(
-      value: SystemUiOverlayStyle(
+      value: const SystemUiOverlayStyle(
         statusBarColor: AppColors.transparent,
       ),
       child: Scaffold(
@@ -283,16 +280,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           },
                         );
                         if (formKey.currentState!.validate()) {
-                          setState(
-                            () {
-                              CheckStatus.isRegistered = true;
-                              StorageRepository.setBool(
-                                  key: "isRegistered",
-                                  value: CheckStatus.isRegistered);
-                            },
-                          );
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
+                            const SnackBar(
                               content: Text("SUCCESS"),
                             ),
                           );
@@ -300,7 +289,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LoginScreen(),
+                            builder: (context) => const LoginScreen(),
                           ),
                         );
                       },
@@ -314,7 +303,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => LoginScreen(),
+                          builder: (context) => const LoginScreen(),
                         ),
                       );
                     },
