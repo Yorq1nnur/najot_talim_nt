@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/data/models/network_response.dart';
 import 'package:najot_talim_nt/data/models/product_model.dart';
@@ -23,184 +24,191 @@ class _ProductDataScreenState extends State<ProductDataScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      appBar: AppBar(
-        title: Center(
-          child: Text(
-            widget.name,
-            style: AppTextStyle.interSemiBold.copyWith(
-              fontWeight: FontWeight.w600,
-              fontSize: 25.sp,
+    return AnnotatedRegion(
+        value: const SystemUiOverlayStyle(statusBarColor: AppColors.white),
+        child: Scaffold(
+          backgroundColor: AppColors.white,
+          appBar: AppBar(
+            toolbarHeight: 60.h,
+            backgroundColor: AppColors.transparent,
+            title: Center(
+              child: Text(
+                widget.name,
+                style: AppTextStyle.interSemiBold.copyWith(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 30.sp,
+                ),
+              ),
             ),
           ),
-        ),
-      ),
-      body: FutureBuilder(
-        future: productRepository.getProductDataById(widget.id),
-        builder: (
-          BuildContext context,
-          AsyncSnapshot<NetworkResponse> snapshot,
-        ) {
-          if (snapshot.hasError) {
-            return Center(
-              child: Text(snapshot.error.toString()),
-            );
-          }
-          if (snapshot.hasData) {
-            NetworkResponse data = snapshot.data as NetworkResponse;
-            List<ProductModel> products = data.data as List<ProductModel>;
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: ListView(
-                    children: List.generate(
-                      products.length,
-                      (index) {
-                        ProductModel productModel = products[index];
-                        return Container(
-                          margin: EdgeInsets.symmetric(
-                            vertical: 24.h,
-                            horizontal: 24.w,
-                          ),
-                          padding: EdgeInsets.symmetric(
-                            vertical: 8.h,
-                            horizontal: 8.w,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                              15.r,
-                            ),
-                            border: Border.all(
-                              color: AppColors.white,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: AppColors.c_2A3256,
-                                spreadRadius: 5.r,
-                                blurRadius: 2.r,
-                                offset: Offset(3.r, 2.r),
+          body: FutureBuilder(
+            future: productRepository.getProductDataById(widget.id),
+            builder: (
+              BuildContext context,
+              AsyncSnapshot<NetworkResponse> snapshot,
+            ) {
+              if (snapshot.hasError) {
+                return Center(
+                  child: Text(snapshot.error.toString()),
+                );
+              }
+              if (snapshot.hasData) {
+                NetworkResponse data = snapshot.data as NetworkResponse;
+                List<ProductModel> products = data.data as List<ProductModel>;
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: ListView(
+                        children: List.generate(
+                          products.length,
+                          (index) {
+                            ProductModel productModel = products[index];
+                            return Container(
+                              margin: EdgeInsets.symmetric(
+                                vertical: 24.h,
+                                horizontal: 24.w,
                               ),
-                            ],
-                          ),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Image.network(
-                                  productModel.imageUrl,
-                                  fit: BoxFit.cover,
+                              padding: EdgeInsets.symmetric(
+                                vertical: 8.h,
+                                horizontal: 8.w,
+                              ),
+                              decoration: BoxDecoration(
+                                color: AppColors.black,
+                                borderRadius: BorderRadius.circular(
+                                  24.r,
                                 ),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 8.w,
+                                boxShadow: const [
+                                  BoxShadow(
+                                    color: AppColors.c_2A3256,
+                                    spreadRadius: 5,
+                                    blurRadius: 5,
+                                    offset: Offset(3, 3),
                                   ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Text(
-                                        "Id : ${productModel.id}",
-                                        style:
-                                            AppTextStyle.interSemiBold.copyWith(
-                                          color: AppColors.white,
-                                          fontSize: 16.sp,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      Text(
-                                        "Name : ${productModel.name}",
-                                        style:
-                                            AppTextStyle.interSemiBold.copyWith(
-                                          color: AppColors.white,
-                                          fontSize: 16.sp,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      Text(
-                                        "Prise : ${productModel.price}",
-                                        style:
-                                            AppTextStyle.interSemiBold.copyWith(
-                                          color: AppColors.white,
-                                          fontSize: 16.sp,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                                ],
                               ),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ),
-                Ink(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 24.w, vertical: 6.h),
-                  decoration: BoxDecoration(
-                    color: AppColors.transparent,
-                    borderRadius: BorderRadius.circular(
-                      14.r,
-                    ),
-                  ),
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(
-                      14.r,
-                    ),
-                    onTap: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return const ProductsScreen();
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    flex: 1,
+                                    child: Padding(
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 8.w,
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            "Name : ${productModel.name}",
+                                            style: AppTextStyle.interSemiBold
+                                                .copyWith(
+                                              color: AppColors.white,
+                                              fontSize: 16.sp,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                          Text(
+                                            "Price : ${productModel.price}",
+                                            style: AppTextStyle.interSemiBold
+                                                .copyWith(
+                                              color: AppColors.white,
+                                              fontSize: 16.sp,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                          Text(
+                                            "Id : ${productModel.id}",
+                                            style: AppTextStyle.interSemiBold
+                                                .copyWith(
+                                              color: AppColors.white,
+                                              fontSize: 16.sp,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(
+                                        24.r,
+                                      ),
+                                      child: Image.network(
+                                        productModel.imageUrl,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
                           },
                         ),
-                      );
-                    },
-                    child: Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.symmetric(
-                        vertical: 8.h,
                       ),
+                    ),
+                    Ink(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 24.w, vertical: 6.h),
                       decoration: BoxDecoration(
-                        color: AppColors.white,
-                        border: Border.all(
-                          color: AppColors.c_5B1CAE,
-                        ),
+                        color: AppColors.transparent,
                         borderRadius: BorderRadius.circular(
                           14.r,
                         ),
                       ),
-                      child: Center(
-                        child: Text(
-                          "See All Product ",
-                          style: AppTextStyle.interSemiBold.copyWith(
-                            color: AppColors.c_5B1CAE,
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.w500,
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(
+                          14.r,
+                        ),
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return const ProductsScreen();
+                              },
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          padding: EdgeInsets.symmetric(
+                            vertical: 8.h,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.blueGrey,
+                            border: Border.all(
+                              color: AppColors.cC4C4C4,
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              14.r,
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "ALL PRODUCT ",
+                              style: AppTextStyle.interSemiBold.copyWith(
+                                color: AppColors.black,
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ),
-              ],
-            );
-          }
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
-      ),
-    );
+                  ],
+                );
+              }
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            },
+          ),
+        ));
   }
 }

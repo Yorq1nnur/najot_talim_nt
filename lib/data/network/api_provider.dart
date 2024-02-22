@@ -6,7 +6,7 @@ import 'package:najot_talim_nt/data/models/network_response.dart';
 import 'package:najot_talim_nt/data/models/product_model.dart';
 
 class ApiProvider{
-  static Future<NetworkResponse> fetchSingleProductData(int id) async{
+  static Future<NetworkResponse> singleProductFetchData(int id) async{
     NetworkResponse networkResponse=NetworkResponse();
     try{
       http.Response response = await http.get(Uri.parse("https://imtixon.free.mockoapp.net/categories/$id"));
@@ -25,7 +25,7 @@ class ApiProvider{
     return networkResponse;
   }
   
-  static Future<NetworkResponse> fetchProducts() async {
+  static Future<NetworkResponse> productsFetch() async {
     NetworkResponse networkResponse1=NetworkResponse();
     try{
       http.Response response = await http.

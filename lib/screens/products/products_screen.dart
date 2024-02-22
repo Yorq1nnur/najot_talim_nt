@@ -22,6 +22,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
+        backgroundColor: AppColors.white,
+        toolbarHeight: 60.h,
         title: Center(
           child: Text(
             "All Product",
@@ -58,34 +60,24 @@ class _ProductsScreenState extends State<ProductsScreen> {
                         ProductModel productModel = products[index];
                         return Container(
                           margin: EdgeInsets.symmetric(
-                              vertical: 24.h, horizontal: 24.w),
+                            vertical: 24.h,
+                            horizontal: 24.w,
+                          ),
                           padding: EdgeInsets.symmetric(
-                              vertical: 8.h, horizontal: 8.w),
+                            vertical: 8.h,
+                            horizontal: 8.w,
+                          ),
                           decoration: BoxDecoration(
+                            color: Colors.blueGrey,
                             borderRadius: BorderRadius.circular(
                               15.r,
                             ),
                             border: Border.all(
-                              color: AppColors.white,
+                              color: Colors.grey,
                             ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: AppColors.c_5B1CAE,
-                                spreadRadius: 5.r,
-                                blurRadius: 2.r,
-                                offset: Offset(3.r, 2.r),
-                              ),
-                            ],
                           ),
                           child: Row(
                             children: [
-                              Expanded(
-                                flex: 1,
-                                child: Image.network(
-                                  productModel.imageUrl,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
                               Expanded(
                                 flex: 1,
                                 child: Padding(
@@ -126,6 +118,16 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                         ),
                                       ),
                                     ],
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(24.r,),
+                                  child: Image.network(
+                                    productModel.imageUrl,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
