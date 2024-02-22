@@ -229,6 +229,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               builder: (context) => FreeScreen(),
                             ),
                           );
+                        }else{
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("Email or password wrong!!!"),
+                            ),
+                          );
                         }
                       },
                       title: "Validate"),

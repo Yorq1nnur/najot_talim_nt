@@ -140,7 +140,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           child: TextFormField(
                             keyboardType: TextInputType.emailAddress,
                             validator: (String? value) {
-                              if (value == null || value.isEmpty) {
+                              RegExp emailRegExp =
+                              RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+                              if (value == null || value.isEmpty || !emailRegExp.hasMatch(value)) {
                                 return "Email Xato";
                               } else {
                                 return null;
@@ -205,7 +207,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           child: TextFormField(
                             keyboardType: TextInputType.visiblePassword,
                             validator: (String? value) {
-                              if (value == null || value.isEmpty) {
+                              final passwordRegExp = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
+                              if (value == null || value.isEmpty || passwordRegExp.hasMatch(value)) {
                                 return "Password Xato";
                               } else {
                                 return null;
