@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:najot_talim_nt/global_items/global_text_button.dart';
+import 'package:najot_talim_nt/global_items/login_or_register.dart';
 import 'package:najot_talim_nt/global_items/skip_for_now.dart';
 import 'package:najot_talim_nt/screens/login_screen/login_screen.dart';
 import 'package:najot_talim_nt/screens/registration_screen/registration_screen.dart';
@@ -174,38 +175,17 @@ class _RegistrationMethodScreenState extends State<RegistrationMethodScreen> {
               padding: EdgeInsets.symmetric(
                 horizontal: 40.w,
               ),
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LoginScreen(),
-                    ),
-                  );
-                },
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.zero,
-                ),
-                child: RichText(
-                  text: TextSpan(
-                      text: "Already have an account ? ",
-                      style: AppTextStyle.interBold.copyWith(
-                        color: AppColors.cFBDF00,
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w400,
+              child: LoginOrRegister(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginScreen(),
                       ),
-                      children: [
-                        TextSpan(
-                          text: "Login",
-                          style: AppTextStyle.interBold.copyWith(
-                            color: AppColors.cFBDF00,
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        )
-                      ]),
-                ),
-              ),
+                    );
+                  },
+                  title: "Already have an account ? ",
+                  subTitle: "Login"),
             ),
             SizedBox(
               height: 50.h,
