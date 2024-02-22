@@ -68,75 +68,90 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           categories.length,
                           (index) {
                             CategoryModel categoryModel = categories[index];
-                            return InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return ProductDataScreen(
-                                        id: categoryModel.id,
-                                        name: categoryModel.name,
-                                      );
-                                    },
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                margin: EdgeInsets.symmetric(
-                                  vertical: 20.h,
-                                  horizontal: 20.w,
+                            return Container(
+                              margin: EdgeInsets.symmetric(
+                                vertical: 10.h,
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                vertical: 10.h,
+                                horizontal: 10.w,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.orange,
+                                borderRadius: BorderRadius.circular(
+                                  24.r,
                                 ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      categoryModel.name,
-                                      style:
-                                          AppTextStyle.interSemiBold.copyWith(
-                                        color: AppColors.c_5B1CAE,
-                                        fontSize: 24.sp,
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                              ),
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return ProductDataScreen(
+                                          id: categoryModel.id,
+                                          name: categoryModel.name,
+                                        );
+                                      },
                                     ),
-                                    if (index == 1)
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(
-                                          16.r,
+                                  );
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(
+                                    vertical: 20.h,
+                                    horizontal: 20.w,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        categoryModel.name,
+                                        style:
+                                            AppTextStyle.interSemiBold.copyWith(
+                                          color: AppColors.c_5B1CAE,
+                                          fontSize: 24.sp,
+                                          fontWeight: FontWeight.w600,
                                         ),
-                                        child: Image.asset(
-                                          AppImages.mobile,
-                                          height: 50.h,
-                                          width: 50.w,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      )
-                                    else if(index == 2)
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(
-                                          16.r,
-                                        ),
-                                        child: Image.asset(
-                                          AppImages.smartphones,
-                                          height: 50.h,
-                                          width: 50.w,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      )
-                                    else
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(
-                                          16.r,
-                                        ),
-                                        child: Image.network(
-                                          categoryModel.imageUrl,
-                                          height: 50.h,
-                                          width: 50.w,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      )
-                                  ],
+                                      ),
+                                      if (index == 1)
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(
+                                            16.r,
+                                          ),
+                                          child: Image.asset(
+                                            AppImages.mobile,
+                                            height: 50.h,
+                                            width: 50.w,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        )
+                                      else if (index == 2)
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(
+                                            16.r,
+                                          ),
+                                          child: Image.asset(
+                                            AppImages.smartphones,
+                                            height: 50.h,
+                                            width: 50.w,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        )
+                                      else
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(
+                                            16.r,
+                                          ),
+                                          child: Image.network(
+                                            categoryModel.imageUrl,
+                                            height: 50.h,
+                                            width: 50.w,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        )
+                                    ],
+                                  ),
                                 ),
                               ),
                             );
