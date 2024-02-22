@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/data/local/storage_repository.dart';
-import 'package:najot_talim_nt/screens/global_screen.dart';
+import 'package:najot_talim_nt/screens/global_screen/global_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 
 Future<void> main() async {
