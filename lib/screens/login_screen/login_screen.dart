@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot_talim_nt/data/check.dart';
 import 'package:najot_talim_nt/data/local/storage_repository.dart';
 import 'package:najot_talim_nt/global_items/global_text_button.dart';
 import 'package:najot_talim_nt/global_items/login_or_register.dart';
@@ -19,7 +20,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   final registeredEmail = StorageRepository.getString(key: "email");
   final registeredPassword = StorageRepository.getString(key: "password");
 
@@ -201,7 +201,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   child: GlobalTextBotton(
                       onTap: () {
-                        if (formKey.currentState!.validate() && (emailController.text == registeredEmail && passwordController.text == registeredPassword)) {
+                        if (formKey.currentState!.validate() &&
+                            (emailController.text == registeredEmail &&
+                                passwordController.text ==
+                                    registeredPassword)) {
+                          setState(
+                            () {
+                              CheckStatus.isFirstly = false;
+                              StorageRepository.setBool(
+                                  key: "isFirstly", value: CheckStatus.isFirstly);
+                              CheckStatus.isLogged = true;
+                              CheckStatus.isRegistered = true;
+                              StorageRepository.setBool(
+                                  key: "isLogged", value: CheckStatus.isLogged);
+                              StorageRepository.setBool(
+                                  key: "isRegistered", value: CheckStatus.isLogged);
+                            },
+                          );
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text("SUCCESS"),
@@ -214,7 +230,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           );
                         }
-
                       },
                       title: "Validate"),
                 ),
@@ -260,7 +275,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 20.h,
                 ),
-                SkipForNow(onTap: () {})
+                SkipForNow(onTap: () {
+                  setState(() {
+                    print(
+                        "Is firstly: ${StorageRepository.getBool(key: "isFirstly")}\nIs registered: ${StorageRepository.getBool(key: "isRegistered")}\nIs logged: ${StorageRepository.getBool(key: "isLogged")}");
+                  });
+                })
               ],
             ),
           ),

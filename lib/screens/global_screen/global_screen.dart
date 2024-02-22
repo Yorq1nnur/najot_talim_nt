@@ -3,13 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot_talim_nt/data/check.dart';
+import 'package:najot_talim_nt/data/local/storage_repository.dart';
 import 'package:najot_talim_nt/global_items/global_text_button.dart';
 import 'package:najot_talim_nt/global_items/skip_for_now.dart';
+import 'package:najot_talim_nt/screens/free_screen/free_screen.dart';
 import 'package:najot_talim_nt/screens/on_boarding_screen/on_boarding_screen.dart';
 import 'package:najot_talim_nt/screens/registration_method_screen/registration_method_screen.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
-
 import '../../utils/colors/app_colors.dart';
 
 class GlobalScreen extends StatefulWidget {
@@ -73,11 +75,23 @@ class _GlobalScreenState extends State<GlobalScreen> {
                 color: AppColors.transparent,
                 child: GlobalTextBotton(
                     onTap: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => OnBoardingScreen(),
-                        ),
+                      setState(
+                        () {
+                          CheckStatus.isFirstly = false;
+                          StorageRepository.setBool(
+                              key: "isFirstly", value: CheckStatus.isFirstly);
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => (StorageRepository.getBool(
+                                      key: "isRegistered"))
+                                  ? FreeScreen()
+                                  : StorageRepository.getBool(key: "isFirstly")
+                                      ? RegistrationMethodScreen()
+                                      : OnBoardingScreen(),
+                            ),
+                          );
+                        },
                       );
                     },
                     title: "Let's start"),
@@ -86,14 +100,25 @@ class _GlobalScreenState extends State<GlobalScreen> {
                 height: 70.h,
               ),
               Center(
-                child: SkipForNow(onTap: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => RegistrationMethodScreen(),
-                    ),
-                  );
-                }),
+                child: SkipForNow(
+                  onTap: () {
+                    setState(
+                      () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => (StorageRepository.getBool(
+                                    key: "isRegistered"))
+                                ? FreeScreen()
+                                : StorageRepository.getBool(key: "isFirstly")
+                                    ? RegistrationMethodScreen()
+                                    : OnBoardingScreen(),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
             ],
           ),

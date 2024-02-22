@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot_talim_nt/data/check.dart';
 import 'package:najot_talim_nt/data/local/storage_repository.dart';
 import 'package:najot_talim_nt/global_items/global_text_button.dart';
 import 'package:najot_talim_nt/global_items/login_or_register.dart';
@@ -23,6 +24,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final bool isRegistered = false;
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +82,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               }
                             },
                             controller: nameController,
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
                             decoration: InputDecoration(
                               hintText: "Full name",
                               hintStyle: AppTextStyle.interBold.copyWith(
@@ -144,7 +147,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               }
                             },
                             controller: emailController,
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
                             decoration: InputDecoration(
                               hintText: "Email",
                               hintStyle: AppTextStyle.interBold.copyWith(
@@ -208,7 +212,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               }
                             },
                             controller: passwordController,
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
                             decoration: InputDecoration(
                               hintText: "Password",
                               hintStyle: AppTextStyle.interBold.copyWith(
@@ -260,13 +265,24 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ),
                   child: GlobalTextBotton(
                       onTap: () {
-                        setState(() {
-                          StorageRepository.setString(
-                              key: "email", value: emailController.text);
-                          StorageRepository.setString(
-                              key: "password", value: passwordController.text);
-                        });
+                        setState(
+                          () {
+                            StorageRepository.setString(
+                                key: "email", value: emailController.text);
+                            StorageRepository.setString(
+                                key: "password",
+                                value: passwordController.text);
+                          },
+                        );
                         if (formKey.currentState!.validate()) {
+                          setState(
+                            () {
+                              CheckStatus.isRegistered = true;
+                              StorageRepository.setBool(
+                                  key: "isRegistered",
+                                  value: CheckStatus.isRegistered);
+                            },
+                          );
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text("SUCCESS"),
@@ -296,7 +312,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     },
                     title: "Already have an account ? ",
                     subTitle: "Login"),
-                SizedBox(height: 20.h,),
+                SizedBox(
+                  height: 20.h,
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 160.w),
                   child: Row(
@@ -304,23 +322,25 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     children: [
                       ...List.generate(
                         4,
-                            (index) => Container(
+                        (index) => Container(
                           height: index == 3 ? 7.h : 5.h,
                           width: index == 3 ? 7.w : 5.w,
                           decoration: BoxDecoration(
                               color: index == 3
                                   ? AppColors.white
                                   : AppColors.white.withOpacity(
-                                0.32,
-                              ),
+                                      0.32,
+                                    ),
                               shape: BoxShape.circle),
                         ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 20.h,),
-                SkipForNow(onTap: (){})
+                SizedBox(
+                  height: 20.h,
+                ),
+                SkipForNow(onTap: () {})
               ],
             ),
           ),
@@ -328,6 +348,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       ),
     );
   }
+
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
