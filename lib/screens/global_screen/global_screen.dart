@@ -73,7 +73,7 @@ class _GlobalScreenState extends State<GlobalScreen> {
                 color: AppColors.transparent,
                 child: GlobalTextBotton(
                     onTap: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => OnBoardingScreen(),

@@ -81,27 +81,28 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             ),
             Center(
               child: TextButton(
-                  onPressed: () {
-                    setState(() {
-                      activeIndex++;
-                    });
-                    if (activeIndex > 2) {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => RegistrationMethodScreen(),
-                        ),
-                      );
-                    }
-                    pageController.jumpToPage(activeIndex);
-                  },
-                  child: Text(
-                    "Next",
-                    style: AppTextStyle.interBold.copyWith(
-                        color: AppColors.white,
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w600),
-                  )),
+                onPressed: () {
+                  setState(() {
+                    activeIndex++;
+                  },);
+                  if (activeIndex > 2) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RegistrationMethodScreen(),
+                      ),
+                    );
+                  }
+                  pageController.jumpToPage(activeIndex);
+                },
+                child: Text(
+                  "Next",
+                  style: AppTextStyle.interBold.copyWith(
+                      color: AppColors.white,
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
             ),
             SizedBox(
               height: 20.h,
