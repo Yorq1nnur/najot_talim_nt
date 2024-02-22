@@ -3,7 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot_talim_nt/global_items/global_text_button.dart';
+import 'package:najot_talim_nt/global_items/skip_for_now.dart';
 import 'package:najot_talim_nt/screens/on_boarding_screen/on_boarding_screen.dart';
+import 'package:najot_talim_nt/screens/registration_method_screen/registration_method_screen.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
@@ -59,70 +62,38 @@ class _GlobalScreenState extends State<GlobalScreen> {
                 child: Image.asset(
                   AppImages.first,
                   height: 216.h,
-                  width: 216.w,
+                  width: 216.h,
                   fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(height: 70.h,),
+              SizedBox(
+                height: 70.h,
+              ),
               Material(
                 color: AppColors.transparent,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => OnBoardingScreen(),
-                      ),
-                    );
-                  },
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                  ),
-                  child: Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.symmetric(
-                      vertical: 16.h,
-                    ),
-                    decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(
-                        4.r,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppColors.c0001FC.withOpacity(
-                            0.08,
-                          ),
-                          blurRadius: 40.r,
-                          offset: Offset(
-                            0,
-                            16.r,
-                          ),
+                child: GlobalTextBotton(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => OnBoardingScreen(),
                         ),
-                      ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Let’s start",
-                        style: AppTextStyle.interBold.copyWith(
-                            color: AppColors.c0001FC,
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
-                ),
+                      );
+                    },
+                    title: "Let's start"),
               ),
-              SizedBox(height: 70.h,),
+              SizedBox(
+                height: 70.h,
+              ),
               Center(
-                child: Text(
-                  "Skip for now",
-                  style: AppTextStyle.interBold.copyWith(
-                    color: AppColors.white,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18.sp,
-                  ),
-                ),
+                child: SkipForNow(onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RegistrationMethodScreen(),
+                    ),
+                  );
+                }),
               ),
             ],
           ),
