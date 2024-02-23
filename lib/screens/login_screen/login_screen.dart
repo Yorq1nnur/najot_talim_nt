@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Center(
                   child: Text(
-                    "Create an account",
+                    "Login",
                     style: AppTextStyle.interThin.copyWith(
                         color: AppColors.white,
                         fontSize: 24.sp,
@@ -69,54 +69,56 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(
                           height: 8.h,
                         ),
-                        SizedBox(
-                          height: 35.h,
-                          child: TextFormField(
-                            keyboardType: TextInputType.emailAddress,
-                            validator: (String? value) {
-                              if (value == null || value.isEmpty) {
-                                return "Email Xato";
-                              } else {
-                                return null;
-                              }
-                            },
-                            controller: emailController,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            decoration: InputDecoration(
-                              hintText: "Email",
-                              hintStyle: AppTextStyle.interBold.copyWith(
-                                color: AppColors.white,
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w400,
+                        TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          validator: (String? value) {
+                            if (value == null || value.isEmpty) {
+                              return "Email Xato";
+                            } else {
+                              return null;
+                            }
+                          },
+                          style: AppTextStyle.interThin.copyWith(
+                            color: AppColors.white,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          controller: emailController,
+                          autovalidateMode:
+                              AutovalidateMode.onUserInteraction,
+                          decoration: InputDecoration(
+                            hintText: "Email",
+                            hintStyle: AppTextStyle.interBold.copyWith(
+                              color: AppColors.white,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4.r),
+                              borderSide: const BorderSide(
+                                color: Colors.white,
+                                width: 1,
                               ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(4.r),
-                                borderSide: const BorderSide(
-                                  color: Colors.white,
-                                  width: 1,
-                                ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4.r),
+                              borderSide: const BorderSide(
+                                color: Colors.white10,
+                                width: 1,
                               ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(4.r),
-                                borderSide: const BorderSide(
-                                  color: Colors.white10,
-                                  width: 1,
-                                ),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4.r),
+                              borderSide: const BorderSide(
+                                color: Colors.red,
+                                width: 1,
                               ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(4.r),
-                                borderSide: const BorderSide(
-                                  color: Colors.red,
-                                  width: 1,
-                                ),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
-                                borderSide: const BorderSide(
-                                  color: Colors.red,
-                                  width: 2,
-                                ),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: const BorderSide(
+                                color: Colors.red,
+                                width: 2,
                               ),
                             ),
                           ),
@@ -134,54 +136,56 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(
                           height: 8.h,
                         ),
-                        SizedBox(
-                          height: 35.h,
-                          child: TextFormField(
-                            keyboardType: TextInputType.visiblePassword,
-                            validator: (String? value) {
-                              if (value == null || value.isEmpty) {
-                                return "Password Xato";
-                              } else {
-                                return null;
-                              }
-                            },
-                            controller: passwordController,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            decoration: InputDecoration(
-                              hintText: "Password",
-                              hintStyle: AppTextStyle.interBold.copyWith(
-                                color: AppColors.white,
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w400,
+                        TextFormField(
+                          keyboardType: TextInputType.visiblePassword,
+                          validator: (String? value) {
+                            if (value == null || value.isEmpty) {
+                              return "Password Xato";
+                            } else {
+                              return null;
+                            }
+                          },
+                          style: AppTextStyle.interThin.copyWith(
+                            color: AppColors.white,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          controller: passwordController,
+                          autovalidateMode:
+                              AutovalidateMode.onUserInteraction,
+                          decoration: InputDecoration(
+                            hintText: "Password",
+                            hintStyle: AppTextStyle.interBold.copyWith(
+                              color: AppColors.white,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4.r),
+                              borderSide: const BorderSide(
+                                color: Colors.white,
+                                width: 1,
                               ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(4.r),
-                                borderSide: const BorderSide(
-                                  color: Colors.white,
-                                  width: 1,
-                                ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4.r),
+                              borderSide: const BorderSide(
+                                color: Colors.white10,
+                                width: 1,
                               ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(4.r),
-                                borderSide: const BorderSide(
-                                  color: Colors.white10,
-                                  width: 1,
-                                ),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4.r),
+                              borderSide: const BorderSide(
+                                color: Colors.red,
+                                width: 1,
                               ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(4.r),
-                                borderSide: const BorderSide(
-                                  color: Colors.red,
-                                  width: 1,
-                                ),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
-                                borderSide: const BorderSide(
-                                  color: Colors.red,
-                                  width: 2,
-                                ),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: const BorderSide(
+                                color: Colors.red,
+                                width: 2,
                               ),
                             ),
                           ),
