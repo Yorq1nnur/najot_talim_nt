@@ -2,7 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot_talim_nt/global_widgets/global_text.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
+import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
 class TransActionsScreen extends StatefulWidget {
   const TransActionsScreen({
@@ -21,7 +24,24 @@ class _TransActionsScreenState extends State<TransActionsScreen> {
   Widget build(BuildContext context) {
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(statusBarColor: AppColors.transparent),
-      child: Scaffold(),
+      child: Scaffold(
+        body: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 25.w,
+            vertical: 46.h,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GlobalText(title: "Transactions"),
+              SizedBox(
+                height: 45.h,
+              ),
+
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

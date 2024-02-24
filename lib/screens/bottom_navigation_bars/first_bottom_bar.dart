@@ -5,11 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot_talim_nt/screens/home_screen/home_screen.dart';
 import 'package:najot_talim_nt/screens/my_cards_screen/my_cards_screen.dart';
-import 'package:najot_talim_nt/screens/transfer_actions_screen/trans_actions_screen.dart';
+import 'package:najot_talim_nt/screens/trans_actions_screen/trans_actions_screen.dart';
 import 'package:najot_talim_nt/screens/transfer_screen/transfer_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
-import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
 class FirstBottomBar extends StatefulWidget {
   const FirstBottomBar({super.key});

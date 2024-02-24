@@ -1,11 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:najot_talim_nt/global_widgets/global_text.dart';
 import 'package:najot_talim_nt/screens/my_cards_screen/models/color_model.dart';
 import 'package:najot_talim_nt/screens/my_cards_screen/widgets/cards_container.dart';
 import 'package:najot_talim_nt/screens/my_cards_screen/widgets/center_small_containers.dart';
@@ -38,16 +36,7 @@ class _MyCardsScreenState extends State<MyCardsScreen> {
           ),
           child: Column(
             children: [
-              Center(
-                child: Text(
-                  "My Cards",
-                  style: AppTextStyle.interThin.copyWith(
-                    color: AppColors.cF9F9F9,
-                    fontSize: 24.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
+              GlobalText(title: "My Cards"),
               Expanded(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
