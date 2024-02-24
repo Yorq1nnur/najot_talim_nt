@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/global_widgets/global_text.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
-import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
 class TransActionsScreen extends StatefulWidget {
   const TransActionsScreen({
