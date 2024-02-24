@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
-import 'package:najot_talim_nt/utils/size/size_utils.dart';
 
 class AppTextStyle {
   //Inter

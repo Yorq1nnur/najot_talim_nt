@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot_talim_nt/screens/bottom_navigation_buttons/first_bottom_bar.dart';
+import 'package:najot_talim_nt/screens/home_screen/home_screen.dart';
+import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,11 +20,13 @@ class MyApp extends StatelessWidget {
         ScreenUtil.init(context);
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(useMaterial3: false),
+          theme: ThemeData(useMaterial3: false,
+          scaffoldBackgroundColor: AppColors.c000000
+          ),
           home: child,
         );
       },
-      child: const FirstBottomBar(),
+      child: const HomeScreen(),
     );
   }
 }
