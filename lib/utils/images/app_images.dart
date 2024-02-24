@@ -9,6 +9,7 @@ class AppImages {
 
   //.svg
   static const String bills = "assets/icons/bills.svg";
+  static const String arrowFollow = "assets/icons/arrow_follow.svg";
   static const String cardPayment = "assets/icons/card_payment.svg";
   static const String cards = "assets/icons/cards.svg";
   static const String secondCards = "assets/icons/second_cards.svg";

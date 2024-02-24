@@ -35,9 +35,7 @@ class BigCenterContainer extends StatelessWidget {
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(50.r),
                   topRight: Radius.circular(50.r),
-                  bottomLeft: Radius.circular(50.r),
-                  bottomRight: Radius.circular(50.r),
-                ),
+                  ),
               ),
               child: Expanded(
                 child: SingleChildScrollView(

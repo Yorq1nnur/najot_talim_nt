@@ -7,16 +7,17 @@ import 'package:najot_talim_nt/screens/home_screen/home_screen.dart';
 import 'package:najot_talim_nt/screens/my_cards_screen/my_cards_screen.dart';
 import 'package:najot_talim_nt/screens/transfer_actions_screen/trans_actions_screen.dart';
 import 'package:najot_talim_nt/screens/transfer_screen/transfer_screen.dart';
+import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
 
-class TabBox3 extends StatefulWidget {
-  const TabBox3({super.key});
+class ThirdBottomBar extends StatefulWidget {
+  const ThirdBottomBar({super.key});
 
   @override
-  State<TabBox3> createState() => _TabBox3State();
+  State<ThirdBottomBar> createState() => _ThirdBottomBarState();
 }
 
-class _TabBox3State extends State<TabBox3> {
+class _ThirdBottomBarState extends State<ThirdBottomBar> {
   int _activeIndex = 0;
 
   @override
@@ -24,6 +25,8 @@ class _TabBox3State extends State<TabBox3> {
     return Scaffold(
       body: HomeScreen(),
       bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: AppColors.c8D8D8D,
+        selectedItemColor: AppColors.white,
         onTap: (newActiveIndex) {
           _activeIndex = newActiveIndex;
           setState(() {});
@@ -88,7 +91,8 @@ class _TabBox3State extends State<TabBox3> {
         type: BottomNavigationBarType.fixed,
         selectedFontSize: 16,
         unselectedFontSize: 14,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         items: [
           BottomNavigationBarItem(
             activeIcon: SvgPicture.asset(
@@ -98,7 +102,7 @@ class _TabBox3State extends State<TabBox3> {
               fit: BoxFit.cover,
             ),
             icon: SvgPicture.asset(
-              AppImages.home,
+              AppImages.secondHome,
               width: 26.w,
               height: 26.h,
               fit: BoxFit.cover,
@@ -107,7 +111,7 @@ class _TabBox3State extends State<TabBox3> {
           ),
           BottomNavigationBarItem(
             activeIcon: SvgPicture.asset(
-              AppImages.cards,
+              AppImages.secondCards,
               width: 33.w,
               height: 25.h,
               fit: BoxFit.cover,
@@ -122,13 +126,13 @@ class _TabBox3State extends State<TabBox3> {
           ),
           BottomNavigationBarItem(
             activeIcon: SvgPicture.asset(
-              AppImages.cards,
+              AppImages.secondTransActions,
               width: 33.w,
               height: 25.h,
               fit: BoxFit.cover,
             ),
             icon: SvgPicture.asset(
-              AppImages.cards,
+              AppImages.transActions,
               width: 33.w,
               height: 25.h,
               fit: BoxFit.cover,
@@ -141,9 +145,13 @@ class _TabBox3State extends State<TabBox3> {
               width: 33.w,
               height: 25.h,
               fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(
+                AppColors.cF9F9F9,
+                BlendMode.srcIn,
+              ),
             ),
             icon: SvgPicture.asset(
-              AppImages.cards,
+              AppImages.bottomProfile,
               width: 25.w,
               height: 30.h,
               fit: BoxFit.cover,

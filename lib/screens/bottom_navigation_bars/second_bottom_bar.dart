@@ -7,6 +7,7 @@ import 'package:najot_talim_nt/screens/home_screen/home_screen.dart';
 import 'package:najot_talim_nt/screens/my_cards_screen/my_cards_screen.dart';
 import 'package:najot_talim_nt/screens/transfer_actions_screen/trans_actions_screen.dart';
 import 'package:najot_talim_nt/screens/transfer_screen/transfer_screen.dart';
+import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
 
 class SecondBottomBar extends StatefulWidget {
@@ -39,15 +40,16 @@ class _SecondBottomBarState extends State<SecondBottomBar> {
         children: _screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 0,
+        unselectedItemColor: AppColors.c8D8D8D,
+        selectedItemColor: AppColors.white,
         onTap: (newActiveIndex) {
           _activeIndex = newActiveIndex;
           setState(() {});
         },
         currentIndex: _activeIndex,
         type: BottomNavigationBarType.fixed,
-        selectedFontSize: 16,
-        unselectedFontSize: 14,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         items: [
           BottomNavigationBarItem(
             activeIcon: SvgPicture.asset(
@@ -57,7 +59,7 @@ class _SecondBottomBarState extends State<SecondBottomBar> {
               fit: BoxFit.cover,
             ),
             icon: SvgPicture.asset(
-              AppImages.home,
+              AppImages.secondHome,
               width: 26.w,
               height: 26.h,
               fit: BoxFit.cover,
@@ -66,7 +68,7 @@ class _SecondBottomBarState extends State<SecondBottomBar> {
           ),
           BottomNavigationBarItem(
             activeIcon: SvgPicture.asset(
-              AppImages.cards,
+              AppImages.secondCards,
               width: 33.w,
               height: 25.h,
               fit: BoxFit.cover,
@@ -81,13 +83,13 @@ class _SecondBottomBarState extends State<SecondBottomBar> {
           ),
           BottomNavigationBarItem(
             activeIcon: SvgPicture.asset(
-              AppImages.cards,
+              AppImages.secondTransActions,
               width: 33.w,
               height: 25.h,
               fit: BoxFit.cover,
             ),
             icon: SvgPicture.asset(
-              AppImages.cards,
+              AppImages.transActions,
               width: 33.w,
               height: 25.h,
               fit: BoxFit.cover,
@@ -100,9 +102,13 @@ class _SecondBottomBarState extends State<SecondBottomBar> {
               width: 33.w,
               height: 25.h,
               fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(
+                AppColors.cF9F9F9,
+                BlendMode.srcIn,
+              ),
             ),
             icon: SvgPicture.asset(
-              AppImages.cards,
+              AppImages.bottomProfile,
               width: 25.w,
               height: 30.h,
               fit: BoxFit.cover,

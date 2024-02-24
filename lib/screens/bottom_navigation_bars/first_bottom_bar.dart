@@ -38,26 +38,17 @@ class _FirstBottomBarState extends State<FirstBottomBar> {
     return Scaffold(
       body: _screens[_activeIndex],
       bottomNavigationBar: BottomNavigationBar(
-        unselectedLabelStyle: AppTextStyle.interMedium.copyWith(
-            color: AppColors.cEEEEEE.withOpacity(
-              0.6,
-            ),
-            fontSize: 12.sp,
-            fontWeight: FontWeight.w500),
-        selectedLabelStyle: AppTextStyle.interMedium.copyWith(
-            color: AppColors.cEEEEEE.withOpacity(
-              0.6,
-            ),
-            fontSize: 12.sp,
-            fontWeight: FontWeight.w500),
+        unselectedItemColor: AppColors.c8D8D8D,
+        selectedItemColor: AppColors.white,
+        elevation: 0,
         onTap: (newActiveIndex) {
           _activeIndex = newActiveIndex;
           setState(() {});
         },
         currentIndex: _activeIndex,
         type: BottomNavigationBarType.fixed,
-        selectedFontSize: 16,
-        unselectedFontSize: 14,
+        selectedFontSize: 12,
+        unselectedFontSize: 12,
         backgroundColor: AppColors.transparent,
         items: [
           BottomNavigationBarItem(

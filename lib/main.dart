@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/screens/bottom_navigation_bars/first_bottom_bar.dart';
-import 'package:najot_talim_nt/screens/home_screen/home_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 
 void main() {

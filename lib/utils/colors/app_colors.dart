@@ -6,9 +6,16 @@ class AppColors {
   static const Color transparent = Colors.transparent;
 
   static const Color c_1A72DD = Color(0xFF1A72DD);
+  static const Color c6A6A6A = Color(0xFF6A6A6A);
+  static const Color c6C6C6C = Color(0xFF6C6C6C);
   static const Color c585858 = Color(0xFF585858);
+  static const Color cBECAF5 = Color(0xFFBECAF5);
+  static const Color cB1BEEC = Color(0xFFB1BEEC);
+  static const Color c031952 = Color(0xFF031952);
+  static const Color c5A6D9E = Color(0xFF5A6D9E);
   static const Color cCECECE = Color(0xFFCECECE);
   static const Color cE9E9E9 = Color(0xFFE9E9E9);
+  static const Color c8D8D8D = Color(0xFF8D8D8D);
   static const Color c292929 = Color(0xFF292929);
   static const Color cEEEEEE = Color(0xFFEEEEEE);
   static const Color cDBE3F8 = Color(0xFFDBE3F8);
