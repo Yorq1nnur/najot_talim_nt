@@ -3,9 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:najot_talim_nt/global_widgets/small_circle_container.dart';
-import 'package:najot_talim_nt/screens/home_screen/models/small_container_model.dart';
+import 'package:najot_talim_nt/screens/home_screen/widgets/big_center_container.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
@@ -92,43 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            Container(
-              padding: EdgeInsets.fromLTRB(
-                15.w,
-                33.h,
-                15.w,
-                27.h,
-              ),
-              margin: EdgeInsets.only(
-                top: 23.h,
-              ),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: AppColors.c000000,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50.r),
-                  topRight: Radius.circular(50.r),
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ...List.generate(
-                        imagesPath.length,
-                        (index) => SmallCircleContainer(
-                          imagePath: imagesPath[index],
-                          imageHeight: imageHeight[index],
-                          imageWidth: imageWidth[index],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+            BigCenterContainer()
           ],
         ),
       ),

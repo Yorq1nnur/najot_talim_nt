@@ -7,7 +7,9 @@ import 'package:najot_talim_nt/screens/home_screen/home_screen.dart';
 import 'package:najot_talim_nt/screens/my_cards_screen/my_cards_screen.dart';
 import 'package:najot_talim_nt/screens/transfer_actions_screen/trans_actions_screen.dart';
 import 'package:najot_talim_nt/screens/transfer_screen/transfer_screen.dart';
+import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
+import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
 class FirstBottomBar extends StatefulWidget {
   const FirstBottomBar({super.key});
@@ -36,6 +38,18 @@ class _FirstBottomBarState extends State<FirstBottomBar> {
     return Scaffold(
       body: _screens[_activeIndex],
       bottomNavigationBar: BottomNavigationBar(
+        unselectedLabelStyle: AppTextStyle.interMedium.copyWith(
+            color: AppColors.cEEEEEE.withOpacity(
+              0.6,
+            ),
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w500),
+        selectedLabelStyle: AppTextStyle.interMedium.copyWith(
+            color: AppColors.cEEEEEE.withOpacity(
+              0.6,
+            ),
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w500),
         onTap: (newActiveIndex) {
           _activeIndex = newActiveIndex;
           setState(() {});
@@ -44,7 +58,7 @@ class _FirstBottomBarState extends State<FirstBottomBar> {
         type: BottomNavigationBarType.fixed,
         selectedFontSize: 16,
         unselectedFontSize: 14,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.transparent,
         items: [
           BottomNavigationBarItem(
             activeIcon: SvgPicture.asset(
@@ -54,7 +68,7 @@ class _FirstBottomBarState extends State<FirstBottomBar> {
               fit: BoxFit.cover,
             ),
             icon: SvgPicture.asset(
-              AppImages.home,
+              AppImages.secondHome,
               width: 26.w,
               height: 26.h,
               fit: BoxFit.cover,
@@ -63,7 +77,7 @@ class _FirstBottomBarState extends State<FirstBottomBar> {
           ),
           BottomNavigationBarItem(
             activeIcon: SvgPicture.asset(
-              AppImages.cards,
+              AppImages.secondCards,
               width: 33.w,
               height: 25.h,
               fit: BoxFit.cover,
@@ -78,13 +92,13 @@ class _FirstBottomBarState extends State<FirstBottomBar> {
           ),
           BottomNavigationBarItem(
             activeIcon: SvgPicture.asset(
-              AppImages.cards,
+              AppImages.secondTransActions,
               width: 33.w,
               height: 25.h,
               fit: BoxFit.cover,
             ),
             icon: SvgPicture.asset(
-              AppImages.cards,
+              AppImages.transActions,
               width: 33.w,
               height: 25.h,
               fit: BoxFit.cover,
@@ -97,9 +111,13 @@ class _FirstBottomBarState extends State<FirstBottomBar> {
               width: 33.w,
               height: 25.h,
               fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(
+                AppColors.cF9F9F9,
+                BlendMode.srcIn,
+              ),
             ),
             icon: SvgPicture.asset(
-              AppImages.cards,
+              AppImages.bottomProfile,
               width: 25.w,
               height: 30.h,
               fit: BoxFit.cover,
