@@ -35,6 +35,9 @@ class _EditScreenState extends State<EditScreen> {
               vertical: 10.h,
             ),
             child: ZoomTapAnimation(
+              onTap: () {
+                Navigator.pop(context);
+              },
               child: Icon(
                 Icons.arrow_back_ios,
                 color: AppColors.black,
@@ -50,6 +53,7 @@ class _EditScreenState extends State<EditScreen> {
               fontSize: 20.sp,
             ),
           ),
+          centerTitle: true,
         ),
       ),
     );
