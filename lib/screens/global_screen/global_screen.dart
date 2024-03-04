@@ -17,8 +17,8 @@ class GlobalScreen extends StatefulWidget {
 }
 
 class _GlobalScreenState extends State<GlobalScreen> {
-
   final ProductRepo productRepo = ProductRepo();
+
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(
@@ -48,61 +48,95 @@ class _GlobalScreenState extends State<GlobalScreen> {
 
             if (snapshot.hasData) {
               List<ProductModel> products =
-              (snapshot.data as MyResponse).data as List<ProductModel>;
-              return ListView(
+                  (snapshot.data as MyResponse).data as List<ProductModel>;
+              return GridView.count(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 10.w,
+                  vertical: 10.h,
+                ),
+                mainAxisSpacing: 10.h,
+                crossAxisSpacing: 10.w,
+                crossAxisCount: 2,
+                childAspectRatio: 0.6,
                 children: [
                   ...List.generate(products.length, (index) {
                     var product = products[index];
-                    return ListTile(
-                        title: Text(product.productName),
-                        subtitle: Text(product.description),
-                        leading: Image.network(
-                          product.imageUrl,
-                          width: 42,
+                    int color = int.parse("0xFF${product.color}");
+                    return Container(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 10.h,
+                        horizontal: 10.w,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: AppColors.c0001FC,
+                          width: 2.w,
                         ),
-                        trailing: SizedBox(
-                          width: 100,
-                          child: Row(
+                        borderRadius: BorderRadius.circular(
+                          16.r,
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.network(
+                            product.imageUrl,
+                            height: 100.h,
+                            width: 200.w,
+                            fit: BoxFit.contain,
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Center(
+                            child: Text(
+                              "Name: ${product.productName}",
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Center(
+                            child: Text("Price: ${product.price}"),
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Center(child: Text("Made in: ${product.madeIn}")),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              IconButton(
-                                onPressed: () async {
-                                  ProductModel productModel = ProductModel(
-                                    color: Colors.red,
-                                    description: product.description,
-                                    productName: "Macbook Pro M2",
-                                    imageUrl: product.imageUrl,
-                                    price: product.price,
-                                    dateTime: DateTime.now(),
-                                    productId: product.productId,
-                                  );
-
-                                  await productRepo.updateProduct(productModel);
-                                  setState(() {});
-                                },
-                                icon: const Icon(
-                                  Icons.edit,
-                                  color: Colors.green,
-                                ),
+                              Text("Color:"),
+                              SizedBox(
+                                width: 20.w,
                               ),
-                              IconButton(
-                                onPressed: () async {
-                                  await productRepo
-                                      .deleteProduct(product.productId);
-                                  setState(() {});
-                                },
-                                icon: const Icon(
-                                  Icons.delete,
-                                  color: Colors.red,
+                              Container(
+                                height: 20.h,
+                                width: 20.w,
+                                decoration: BoxDecoration(
+                                  color: Color(
+                                    color,
+                                  ),
+                                  shape: BoxShape.circle,
                                 ),
                               ),
                             ],
                           ),
-                        ));
+                        ],
+                      ),
+                    );
                   })
                 ],
               );
             }
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           },
         ),
       ),
