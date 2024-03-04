@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/data/models/my_response.dart';
 import 'package:najot_talim_nt/data/models/product_model.dart';
 import 'package:najot_talim_nt/data/repositories/product_repo.dart';
+import 'package:najot_talim_nt/screens/add_product_screen/add_product_screen.dart';
 import 'package:najot_talim_nt/screens/description_screen/description_screen.dart';
 import 'package:najot_talim_nt/screens/edit_screen/edit_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
@@ -23,6 +24,14 @@ class GlobalScreen extends StatefulWidget {
 
 class _GlobalScreenState extends State<GlobalScreen> {
   final ProductRepo productRepo = ProductRepo();
+  final ProductModel productModel = ProductModel(
+      uuid: "",
+      color: "",
+      description: "",
+      imageUrl: "",
+      madeIn: "",
+      price: 0,
+      productName: "");
 
   @override
   Widget build(BuildContext context) {
@@ -273,6 +282,20 @@ class _GlobalScreenState extends State<GlobalScreen> {
               child: CircularProgressIndicator(),
             );
           },
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AddProductScreen(
+                  productModel: productModel,
+                ),
+              ),
+            );
+            setState(() {});
+          },
+          child: const Icon(Icons.add),
         ),
       ),
     );

@@ -1,29 +1,22 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/data/models/product_model.dart';
+import 'package:najot_talim_nt/data/repositories/product_repo.dart';
 import 'package:najot_talim_nt/screens/edit_screen/items/text_field_item.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-import '../../data/repositories/product_repo.dart';
-
-class EditScreen extends StatefulWidget {
-  const EditScreen({
-    super.key,
-    required this.productModel,
-  });
-
+class AddProductScreen extends StatefulWidget {
+  const AddProductScreen({super.key, required this.productModel});
   final ProductModel productModel;
 
   @override
-  State<EditScreen> createState() => _EditScreenState();
+  State<AddProductScreen> createState() => _AddProductScreenState();
 }
 
-class _EditScreenState extends State<EditScreen> {
+class _AddProductScreenState extends State<AddProductScreen> {
   final ProductRepo productRepo = ProductRepo();
   TextEditingController productNameController = TextEditingController();
   TextEditingController priceController = TextEditingController();
@@ -31,7 +24,6 @@ class _EditScreenState extends State<EditScreen> {
   TextEditingController madeInController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController imageUrlController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(
@@ -57,7 +49,7 @@ class _EditScreenState extends State<EditScreen> {
             ),
           ),
           title: Text(
-            "UPDATE ITEM",
+            "ADD PRODUCT",
             style: AppTextStyle.interBold.copyWith(
               color: AppColors.black,
               fontWeight: FontWeight.w900,
@@ -71,7 +63,7 @@ class _EditScreenState extends State<EditScreen> {
             Expanded(
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -155,15 +147,15 @@ class _EditScreenState extends State<EditScreen> {
                     productName: productNameController.text,
                     imageUrl: imageUrlController.text,
                     price: int.parse(priceController.text),
-                    uuid: widget.productModel.uuid,
+                    uuid: "",
                     madeIn: madeInController.text,
                   );
 
-                  await productRepo.updateProduct(productModel);
+                  await productRepo.addProduct(productModel);
                   setState(() {});
                   Future.delayed(
                     const Duration(seconds: 1),
-                    () {
+                        () {
                       Navigator.pop(context);
                     },
                   );
@@ -194,6 +186,13 @@ class _EditScreenState extends State<EditScreen> {
               ),
             ),
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: (){
+
+            setState(() {});
+          },
+          child: const Icon(Icons.add),
         ),
       ),
     );
