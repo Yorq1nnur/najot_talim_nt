@@ -13,7 +13,9 @@ import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class GlobalScreen extends StatefulWidget {
-  const GlobalScreen({super.key});
+  const GlobalScreen({
+    super.key,
+  });
 
   @override
   State<GlobalScreen> createState() => _GlobalScreenState();
