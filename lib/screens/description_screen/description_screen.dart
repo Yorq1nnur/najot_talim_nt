@@ -24,11 +24,16 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(
-      value: SystemUiOverlayStyle(statusBarColor: AppColors.transparent),
+      value: SystemUiOverlayStyle(
+        statusBarColor: AppColors.transparent,
+      ),
       child: Scaffold(
         appBar: AppBar(
           leading: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
+            padding: EdgeInsets.symmetric(
+              vertical: 10.h,
+              horizontal: 10.w,
+            ),
             child: ZoomTapAnimation(
               onTap: () {
                 Navigator.pop(context);
@@ -51,7 +56,10 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
           centerTitle: true,
         ),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+          padding: EdgeInsets.symmetric(
+            horizontal: 20.w,
+            vertical: 20.h,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

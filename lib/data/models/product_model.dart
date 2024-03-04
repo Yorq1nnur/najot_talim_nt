@@ -48,4 +48,5 @@ class ProductModel {
       "made_in":madeIn
     };
   }
+
 }

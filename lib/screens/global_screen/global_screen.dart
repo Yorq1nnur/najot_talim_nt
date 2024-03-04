@@ -7,6 +7,7 @@ import 'package:najot_talim_nt/data/models/my_response.dart';
 import 'package:najot_talim_nt/data/models/product_model.dart';
 import 'package:najot_talim_nt/data/repositories/product_repo.dart';
 import 'package:najot_talim_nt/screens/description_screen/description_screen.dart';
+import 'package:najot_talim_nt/screens/edit_screen/edit_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
@@ -66,17 +67,13 @@ class _GlobalScreenState extends State<GlobalScreen> {
                   ...List.generate(products.length, (index) {
                     var product = products[index];
                     int color = int.parse("0xFF${product.color}");
-                    return TextButton(
-                      style: TextButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                      ),
-                      onPressed: () {
+                    return InkWell(
+                      onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => DescriptionScreen(
-                              productModel: product,
-                            ),
+                            builder: (context) =>
+                                DescriptionScreen(productModel: product),
                           ),
                         );
                       },
@@ -90,7 +87,7 @@ class _GlobalScreenState extends State<GlobalScreen> {
                             color: AppColors.c0001FC,
                             width: 2.w,
                           ),
-                          color: Colors.blueGrey.withOpacity(0.5),
+                          color: Colors.blueGrey.withOpacity(0.25),
                           borderRadius: BorderRadius.circular(
                             16.r,
                           ),
@@ -98,11 +95,16 @@ class _GlobalScreenState extends State<GlobalScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.network(
-                              product.imageUrl,
-                              height: 100.h,
-                              width: 200.w,
-                              fit: BoxFit.fill,
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(
+                                16.r,
+                              ),
+                              child: Image.network(
+                                product.imageUrl,
+                                height: 100.h,
+                                width: 200.w,
+                                fit: BoxFit.fill,
+                              ),
                             ),
                             SizedBox(
                               height: 10.h,
@@ -180,7 +182,16 @@ class _GlobalScreenState extends State<GlobalScreen> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 ZoomTapAnimation(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (color) => EditScreen(
+                                          productModel: product,
+                                        ),
+                                      ),
+                                    );
+                                  },
                                   child: Icon(
                                     Icons.edit,
                                     color: Colors.blue,
