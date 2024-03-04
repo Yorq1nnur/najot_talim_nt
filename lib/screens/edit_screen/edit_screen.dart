@@ -155,12 +155,18 @@ class _EditScreenState extends State<EditScreen> {
                     productName: productNameController.text,
                     imageUrl: imageUrlController.text,
                     price: int.parse(priceController.text),
-                    uuid: '',
-                    madeIn: '',
+                    uuid: widget.productModel.uuid,
+                    madeIn: madeInController.text,
                   );
 
                   await productRepo.updateProduct(productModel);
                   setState(() {});
+                  Future.delayed(
+                    const Duration(seconds: 3),
+                        () {
+                      Navigator.pop(context);
+                    },
+                  );
                 },
                 child: Container(
                   width: double.infinity,

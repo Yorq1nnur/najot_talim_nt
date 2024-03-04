@@ -42,7 +42,7 @@ class ProductModel {
       "product_name": productName,
       "price": price,
       "description": description,
-      "color": "FF0000",
+      "color": color,
       "image_url": imageUrl,
       "_uuid": uuid,
       "made_in":madeIn
