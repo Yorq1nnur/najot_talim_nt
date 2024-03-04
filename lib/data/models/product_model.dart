@@ -18,13 +18,13 @@ class ProductModel {
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
-    uuid: json["_uuid"],
-    color: json["color"],
-    description: json["description"],
-    imageUrl: json["image_url"],
-    madeIn: json["made_in"],
-    price: json["price"],
-    productName: json["product_name"],
+    uuid: json["_uuid"] as String? ?? "",
+    color: json["color"] as String? ?? "000000",
+    description: json["description"] as String? ?? "This is description item",
+    imageUrl: json["image_url"] as String? ?? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPwLh_Axc1Y5ShUppkHuzi_UbqMYLIrGTTI6iMlPfS0g&s",
+    madeIn: json["made_in"] as String? ?? "Country",
+    price: json["price"] as int ? ?? 0,
+    productName: json["product_name"] as String? ?? "This is product name",
   );
 
   Map<String, dynamic> toJson() => {
