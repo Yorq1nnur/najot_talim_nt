@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
         ScreenUtil.init(context);
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(useMaterial3: false,
-              scaffoldBackgroundColor: AppColors.c0001FC
+          theme: ThemeData(useMaterial3: true,
+              scaffoldBackgroundColor: AppColors.cFFFFFF,
           ),
           home: child,
         );
