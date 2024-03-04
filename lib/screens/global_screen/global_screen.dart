@@ -53,6 +53,7 @@ class _GlobalScreenState extends State<GlobalScreen> {
               List<ProductModel> products =
                   (snapshot.data as MyResponse).data as List<ProductModel>;
               return GridView.count(
+                physics: BouncingScrollPhysics(),
                 padding: EdgeInsets.symmetric(
                   horizontal: 10.w,
                   vertical: 10.h,
@@ -65,12 +66,17 @@ class _GlobalScreenState extends State<GlobalScreen> {
                   ...List.generate(products.length, (index) {
                     var product = products[index];
                     int color = int.parse("0xFF${product.color}");
-                    return ZoomTapAnimation(
-                      onTap: () {
+                    return TextButton(
+                      style: TextButton.styleFrom(
+                        padding: EdgeInsets.zero,
+                      ),
+                      onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => DescriptionScreen(productModel: product,),
+                            builder: (context) => DescriptionScreen(
+                              productModel: product,
+                            ),
                           ),
                         );
                       },
@@ -96,7 +102,7 @@ class _GlobalScreenState extends State<GlobalScreen> {
                               product.imageUrl,
                               height: 100.h,
                               width: 200.w,
-                              fit: BoxFit.contain,
+                              fit: BoxFit.fill,
                             ),
                             SizedBox(
                               height: 10.h,
@@ -174,6 +180,7 @@ class _GlobalScreenState extends State<GlobalScreen> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 ZoomTapAnimation(
+                                  onTap: () {},
                                   child: Icon(
                                     Icons.edit,
                                     color: Colors.blue,
