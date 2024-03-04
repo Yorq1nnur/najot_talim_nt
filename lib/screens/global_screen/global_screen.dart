@@ -8,6 +8,7 @@ import 'package:najot_talim_nt/data/models/product_model.dart';
 import 'package:najot_talim_nt/data/repositories/product_repo.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class GlobalScreen extends StatefulWidget {
   const GlobalScreen({super.key});
@@ -57,7 +58,7 @@ class _GlobalScreenState extends State<GlobalScreen> {
                 mainAxisSpacing: 10.h,
                 crossAxisSpacing: 10.w,
                 crossAxisCount: 2,
-                childAspectRatio: 0.6,
+                childAspectRatio: 0.55,
                 children: [
                   ...List.generate(products.length, (index) {
                     var product = products[index];
@@ -72,6 +73,7 @@ class _GlobalScreenState extends State<GlobalScreen> {
                           color: AppColors.c0001FC,
                           width: 2.w,
                         ),
+                        color: Colors.blueGrey.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(
                           16.r,
                         ),
@@ -93,25 +95,52 @@ class _GlobalScreenState extends State<GlobalScreen> {
                               "Name: ${product.productName}",
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w900,
+                              ),
                             ),
                           ),
                           SizedBox(
                             height: 10.h,
                           ),
                           Center(
-                            child: Text("Price: ${product.price}"),
+                            child: Text(
+                              "Price: ${product.price}",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
                           ),
                           SizedBox(
                             height: 10.h,
                           ),
-                          Center(child: Text("Made in: ${product.madeIn}")),
+                          Center(
+                              child: Text(
+                            "Made in: ${product.madeIn}",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15.sp,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          )),
                           SizedBox(
                             height: 10.h,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Color:"),
+                              Text(
+                                "Color:",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
                               SizedBox(
                                 width: 20.w,
                               ),
@@ -123,6 +152,57 @@ class _GlobalScreenState extends State<GlobalScreen> {
                                     color,
                                   ),
                                   shape: BoxShape.circle,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              ZoomTapAnimation(
+                                child: Icon(
+                                  Icons.edit,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20.w,
+                              ),
+                              ZoomTapAnimation(
+                                onTap: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text(
+                                          'WARNING!!!',
+                                          style: TextStyle(
+                                            color: Colors.red,
+                                            fontSize: 20.sp,
+                                            fontWeight: FontWeight.w900,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        content: Text(
+                                            'This is the content of the dialog.'),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text('Close'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                },
+                                child: Icon(
+                                  Icons.delete,
+                                  color: Colors.red,
                                 ),
                               ),
                             ],
