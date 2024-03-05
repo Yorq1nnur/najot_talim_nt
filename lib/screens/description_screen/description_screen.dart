@@ -82,6 +82,7 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                     fontSize: 24.sp,
                     fontWeight: FontWeight.w900,
                   ),
+                  textAlign: TextAlign.center,
                 ),
               ),
               SizedBox(

@@ -139,7 +139,7 @@ class _GlobalScreenState extends State<GlobalScreen> {
                             ),
                             Center(
                               child: Text(
-                                "Price: ${product.price}",
+                                "Price: ${product.price} \$",
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 15.sp,

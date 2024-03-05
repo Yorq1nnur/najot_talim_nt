@@ -186,7 +186,7 @@ class _EditScreenState extends State<EditScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      "DONE...",
+                      "UPDATE...",
                       style: AppTextStyle.interBold.copyWith(
                         color: AppColors.white,
                         fontSize: 20.sp,
