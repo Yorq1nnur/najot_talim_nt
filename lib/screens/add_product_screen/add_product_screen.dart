@@ -9,8 +9,9 @@ import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class AddProductScreen extends StatefulWidget {
-  const AddProductScreen({super.key, required this.productModel});
+  const AddProductScreen({super.key, required this.productModel, required this.onSet});
   final ProductModel productModel;
+  final VoidCallback onSet;
 
   @override
   State<AddProductScreen> createState() => _AddProductScreenState();
@@ -27,7 +28,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(
-      value: SystemUiOverlayStyle(
+      value: const SystemUiOverlayStyle(
         statusBarColor: AppColors.transparent,
       ),
       child: Scaffold(
@@ -152,10 +153,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   );
 
                   await productRepo.addProduct(productModel);
-                  setState(() {});
                   Future.delayed(
                     const Duration(seconds: 1),
                         () {
+                          widget.onSet.call();
                       Navigator.pop(context);
                     },
                   );
@@ -174,7 +175,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      "DONE...",
+                      "ADD PRODUCT",
                       style: AppTextStyle.interBold.copyWith(
                         color: AppColors.white,
                         fontSize: 20.sp,

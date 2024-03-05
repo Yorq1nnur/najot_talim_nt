@@ -200,7 +200,11 @@ class _GlobalScreenState extends State<GlobalScreen> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (color) => EditScreen(
-                                          productModel: product,
+                                          productModel: product, onSet: () {
+                                            setState(() {
+
+                                            });
+                                        },
                                         ),
                                       ),
                                     );
@@ -287,12 +291,15 @@ class _GlobalScreenState extends State<GlobalScreen> {
           },
         ),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.lightBlue,
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => AddProductScreen(
-                  productModel: productModel,
+                  productModel: productModel, onSet: () {setState(() {
+
+                  });  },
                 ),
               ),
             );

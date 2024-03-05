@@ -14,9 +14,9 @@ import '../../data/repositories/product_repo.dart';
 class EditScreen extends StatefulWidget {
   const EditScreen({
     super.key,
-    required this.productModel,
+    required this.productModel, required this.onSet,
   });
-
+  final VoidCallback onSet;
   final ProductModel productModel;
 
   @override
@@ -57,7 +57,7 @@ class _EditScreenState extends State<EditScreen> {
             ),
           ),
           title: Text(
-            "UPDATE ITEM",
+            "UPDATE PRODUCT",
             style: AppTextStyle.interBold.copyWith(
               color: AppColors.black,
               fontWeight: FontWeight.w900,
@@ -160,15 +160,11 @@ class _EditScreenState extends State<EditScreen> {
                   );
 
                   await productRepo.updateProduct(productModel);
-                  setState(() {});
+                  widget.onSet.call();
                   Future.delayed(
                     const Duration(seconds: 1),
                     () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) => GlobalScreen(),
-                        ),
-                      );
+                     Navigator.pop(context);
                     },
                   );
                 },
@@ -186,7 +182,7 @@ class _EditScreenState extends State<EditScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      "UPDATE...",
+                      "UPDATE PRODUCT",
                       style: AppTextStyle.interBold.copyWith(
                         color: AppColors.white,
                         fontSize: 20.sp,
