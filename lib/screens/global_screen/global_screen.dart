@@ -15,8 +15,10 @@ import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class GlobalScreen extends StatefulWidget {
   const GlobalScreen({
-    super.key,
+    super.key, this.voidCallBack,
   });
+
+  final VoidCallback? voidCallBack;
 
   @override
   State<GlobalScreen> createState() => _GlobalScreenState();
@@ -202,6 +204,7 @@ class _GlobalScreenState extends State<GlobalScreen> {
                                         ),
                                       ),
                                     );
+                                    setState((){});
                                   },
                                   child: Icon(
                                     Icons.edit,

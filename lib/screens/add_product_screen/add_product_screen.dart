@@ -187,13 +187,6 @@ class _AddProductScreenState extends State<AddProductScreen> {
             ),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: (){
-
-            setState(() {});
-          },
-          child: const Icon(Icons.add),
-        ),
       ),
     );
   }
