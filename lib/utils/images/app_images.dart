@@ -1,10 +1,9 @@
 class AppImages {
   //.png
-  static const String mobile = "assets/images/mobile.png";
-  static const String smartphones = "assets/images/smartphones.png";
+  static const String pc = "assets/images/pc.png";
 
   //.svg
-  static const String delete = "assets/icons/delete.svg";
+  static const String arrowBack = "assets/icons/arrow_back.svg";
 
   //.jpg
 
