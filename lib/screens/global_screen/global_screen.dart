@@ -21,6 +21,7 @@ class _GlobalScreenState extends State<GlobalScreen> {
       child: Scaffold(
         backgroundColor: const Color(0xFFEFEFEF),
         body: CustomScrollView(
+          physics: BouncingScrollPhysics(),
           slivers: [
             SliverAppBar(
               pinned: true,
