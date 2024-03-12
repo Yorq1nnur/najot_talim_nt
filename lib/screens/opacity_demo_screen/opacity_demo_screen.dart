@@ -1,10 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot_talim_nt/utils/colors/app_colors.dart';
-import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
 class OpacityDemoScreen extends StatefulWidget {
   const OpacityDemoScreen({
@@ -18,25 +14,60 @@ class OpacityDemoScreen extends StatefulWidget {
   State<OpacityDemoScreen> createState() => _OpacityDemoScreenState();
 }
 
-class _OpacityDemoScreenState extends State<OpacityDemoScreen> {
+class _OpacityDemoScreenState extends State<OpacityDemoScreen> with SingleTickerProviderStateMixin {
+  late Animation<Color?> animation;
+  late AnimationController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller =
+        AnimationController(duration: const Duration(seconds: 1), vsync: this);
+    animation =
+    ColorTween(begin: Colors.indigo, end: Colors.lime).animate(controller)
+      ..addListener(() {
+        setState(() {
+          // The state that has changed here is the animation object’s value.
+        });
+      });
+  }
+
+  bool buttonToggle = true;
+
+  void animateColor() {
+    if (buttonToggle) {
+      controller.forward();
+    } else {
+      controller.reverse();
+    }
+    buttonToggle = !buttonToggle;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion(
-      value: SystemUiOverlayStyle(
-        statusBarColor: AppColors.transparent,
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(child: Text('Flutter - tutorialkart.com')),
       ),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            widget.title,
-            style: AppTextStyle.interBold.copyWith(
-              color: AppColors.black,
-              fontSize: 20.sp,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-        ),
-      ),
+      body: ListView(children: <Widget>[
+        Container(
+            margin: EdgeInsets.all(10),
+            padding: EdgeInsets.all(20),
+            height: 400,
+            child: TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: animation.value,
+              ),
+              onPressed: () => {animateColor()},
+              child: Text(''),
+            ))
+      ]),
     );
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 }
