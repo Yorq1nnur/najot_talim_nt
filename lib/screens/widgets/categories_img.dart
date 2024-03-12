@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../../size/app_size.dart';
 
 class CategoriesImg extends StatelessWidget {
@@ -17,34 +18,36 @@ class CategoriesImg extends StatelessWidget {
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
 
-    return SizedBox(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: color,
-            ),
-            width: 55.getW(),
-            height: 55.getH(),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.network(
-                imgPath,
-                fit: BoxFit.cover,
+    return ZoomTapAnimation(
+      child: SizedBox(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: color,
+              ),
+              width: 55.getW(),
+              height: 55.getH(),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.network(
+                  imgPath,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 3.getH()),
-          Text(
-            title,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 12.getW(),
+            SizedBox(height: 3.getH()),
+            Text(
+              title,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 12.getW(),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

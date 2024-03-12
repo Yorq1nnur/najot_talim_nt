@@ -18,6 +18,7 @@ class _SecondScreenState extends State<SecondScreen> {
 
     return Scaffold(
       body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
             automaticallyImplyLeading: false,
@@ -241,7 +242,7 @@ class _SecondScreenState extends State<SecondScreen> {
                         shrinkWrap: true,
                         physics: const BouncingScrollPhysics(),
                         children: List.generate(
-                          10,
+                          imagesPath.length,
                           (index) => Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12.getW()),
@@ -253,7 +254,7 @@ class _SecondScreenState extends State<SecondScreen> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(12.getW()),
                               child: Image.network(
-                                "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
+                                imagesPath[index],
                                 fit: BoxFit.cover,
                               ),
                             ),
