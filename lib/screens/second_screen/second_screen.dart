@@ -2,18 +2,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:najot_talim_nt/screens/global_screen/widgets/categories_view.dart';
+import 'package:najot_talim_nt/screens/first_screen/widgets/categories_view.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
-class GlobalScreen extends StatefulWidget {
-  const GlobalScreen({super.key});
+class SecondScreen extends StatefulWidget {
+  const SecondScreen({super.key});
 
   @override
-  State<GlobalScreen> createState() => _GlobalScreenState();
+  State<SecondScreen> createState() => _SecondScreenState();
 }
 
-class _GlobalScreenState extends State<GlobalScreen> {
+class _SecondScreenState extends State<SecondScreen> {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot_talim_nt/screens/global_screen/global_screen.dart';
+import 'package:najot_talim_nt/screens/helper_screen/helper_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 
 void main() {
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: const GlobalScreen(),
+      child: const HelperScreen(),
     );
   }
 }
