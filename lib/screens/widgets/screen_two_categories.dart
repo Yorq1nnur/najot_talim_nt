@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../size/app_size.dart';
 import 'categories_img.dart';
 
@@ -14,6 +15,9 @@ class CategoriesViewScreenTwo extends SliverPersistentHeaderDelegate {
       color: Colors.white,
       child: Column(
         children: [
+          SizedBox(
+            height: 30.h,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -49,10 +53,10 @@ class CategoriesViewScreenTwo extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => 100.0;
+  double get maxExtent => 130.0;
 
   @override
-  double get minExtent => 100.0;
+  double get minExtent => 130.0;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
