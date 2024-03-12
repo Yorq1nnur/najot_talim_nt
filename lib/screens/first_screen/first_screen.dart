@@ -34,6 +34,7 @@ class _FirstScreenState extends State<FirstScreen> {
         child: Scaffold(
           backgroundColor: Colors.white.withOpacity(.98),
           body: CustomScrollView(
+            physics: const BouncingScrollPhysics(),
             controller: scrollController,
             slivers: [
               SliverToBoxAdapter(
