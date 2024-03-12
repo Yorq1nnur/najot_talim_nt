@@ -10,7 +10,9 @@ class CategoriesView extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(
+        vertical: 8,
+      ),
       height: 100,
       color: Colors.white,
       child: Center(
@@ -25,12 +27,16 @@ class CategoriesView extends SliverPersistentHeaderDelegate {
                   children: [
                     FloatingActionButton(
                       onPressed: onTap,
-                      child: const Icon(Icons.currency_exchange),
+                      child: const Icon(
+                        Icons.currency_exchange,
+                      ),
                     ),
                     const SizedBox(height: 5),
                     Text(
                       "Transfer",
-                      style: AppTextStyle.interSemiBold.copyWith(fontSize: 12),
+                      style: AppTextStyle.interSemiBold.copyWith(
+                        fontSize: 12,
+                      ),
                     )
                   ],
                 ),

@@ -17,9 +17,13 @@ class _GlobalScreenState extends State<GlobalScreen> {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(
-      value: SystemUiOverlayStyle(statusBarColor: AppColors.transparent),
+      value: SystemUiOverlayStyle(
+        statusBarColor: AppColors.transparent,
+      ),
       child: Scaffold(
-        backgroundColor: const Color(0xFFEFEFEF),
+        backgroundColor: const Color(
+          0xFFEFEFEF,
+        ),
         body: CustomScrollView(
           physics: BouncingScrollPhysics(),
           slivers: [
@@ -32,68 +36,99 @@ class _GlobalScreenState extends State<GlobalScreen> {
                 IconButton(
                   style: IconButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(
+                        15,
+                      ),
+                    ),
                     backgroundColor: Colors.white,
                     elevation: 20,
                   ),
                   onPressed: () {},
                   color: Colors.black,
-                  icon: const Icon(Icons.more_horiz),
+                  icon: const Icon(
+                    Icons.more_horiz,
+                  ),
                 ),
               ],
               leading: Container(
-                padding: const EdgeInsets.all(5),
+                padding: const EdgeInsets.all(
+                  5,
+                ),
                 height: 50,
                 child: IconButton(
                   style: IconButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(
+                        15,
+                      ),
+                    ),
                     backgroundColor: Colors.white,
                     elevation: 20,
                   ),
                   onPressed: () {},
                   color: Colors.black,
-                  icon: const Icon(Icons.category),
+                  icon: const Icon(
+                    Icons.category,
+                  ),
                 ),
               ),
               flexibleSpace: FlexibleSpaceBar(
                 background: Column(
                   children: [
-                    const SizedBox(height: 70),
+                    const SizedBox(
+                      height: 70,
+                    ),
                     Stack(
                       children: [
                         Container(
                           width: double.infinity,
-                          padding: const EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(
+                            16,
+                          ),
                           margin: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 32),
+                            horizontal: 16,
+                            vertical: 32,
+                          ),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(0.3),
-                                offset: const Offset(4, 4),
+                                color: Colors.grey.withOpacity(
+                                  0.3,
+                                ),
+                                offset: const Offset(
+                                  4,
+                                  4,
+                                ),
                                 blurRadius: 10,
                                 spreadRadius: 6,
                               )
                             ],
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(
+                              16,
+                            ),
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const SizedBox(height: 30),
+                              const SizedBox(
+                                height: 30,
+                              ),
                               Text(
                                 "Domhnall Gleeson",
-                                style: AppTextStyle.interSemiBold
-                                    .copyWith(fontSize: 26),
+                                style: AppTextStyle.interSemiBold.copyWith(
+                                  fontSize: 26,
+                                ),
                               ),
-                              const SizedBox(height: 12),
+                              const SizedBox(
+                                height: 12,
+                              ),
                               Text(
                                 "account ending with 1545",
-                                style: AppTextStyle.interSemiBold
-                                    .copyWith(fontSize: 16),
+                                style: AppTextStyle.interSemiBold.copyWith(
+                                  fontSize: 16,
+                                ),
                               ),
                             ],
                           ),
@@ -106,8 +141,13 @@ class _GlobalScreenState extends State<GlobalScreen> {
                               height: 65,
                               width: 65,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Colors.grey.withOpacity(0.6)),
+                                borderRadius: BorderRadius.circular(
+                                  10,
+                                ),
+                                color: Colors.grey.withOpacity(
+                                  0.6,
+                                ),
+                              ),
                               child: const Center(
                                 child: Icon(
                                   Icons.person,
@@ -134,13 +174,14 @@ class _GlobalScreenState extends State<GlobalScreen> {
                 [
                   ...List.generate(
                     100,
-                        (index) => ListTile(
+                    (index) => ListTile(
                       onTap: () {},
                       title: Text(
                         "Behance Project",
                         style: AppTextStyle.interSemiBold.copyWith(
-                            fontSize: 16,
-                            color: Colors.black),
+                          fontSize: 16,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   )
