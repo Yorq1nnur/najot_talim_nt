@@ -6,11 +6,12 @@ class GlobalButton extends StatefulWidget {
   const GlobalButton({
     super.key,
     required this.onTap,
-    required this.activeIndex,
+    required this.activeIndex, required this.price,
   });
 
   final VoidCallback onTap;
   final bool activeIndex;
+  final int price;
 
   @override
   State<GlobalButton> createState() => _GlobalButtonState();
@@ -43,7 +44,7 @@ class _GlobalButtonState extends State<GlobalButton> {
             ),
             SizedBox(width: 8.getW()),
             Text(
-              "Payments | \$398",
+              "Payments | \$ ${widget.price}",
               style: TextStyle(
                 color:
                     widget.activeIndex ? Colors.white : const Color(0xFF7F8192),

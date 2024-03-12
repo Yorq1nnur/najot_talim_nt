@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:najot_talim_nt/models/global_button_model.dart';
+import 'package:najot_talim_nt/models/global_category_model.dart';
 import 'package:najot_talim_nt/screens/widgets/categories_.dart';
 import 'package:najot_talim_nt/screens/widgets/global_button.dart';
 import 'package:najot_talim_nt/screens/widgets/global_category.dart';
@@ -40,17 +42,27 @@ class _FirstScreenState extends State<FirstScreen> {
               SliverToBoxAdapter(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF5F6FA,),
-                    borderRadius: BorderRadius.circular(16,),
+                    color: const Color(
+                      0xFFF5F6FA,
+                    ),
+                    borderRadius: BorderRadius.circular(
+                      16,
+                    ),
                   ),
                   margin: EdgeInsets.symmetric(
-                      horizontal: 18.getW(), vertical: 0.getW(),),
+                    horizontal: 18.getW(),
+                    vertical: 0.getW(),
+                  ),
                   padding: EdgeInsets.symmetric(
-                      horizontal: 18.getW(), vertical: 18.getH(),),
+                    horizontal: 18.getW(),
+                    vertical: 18.getH(),
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 10.getH(),),
+                      SizedBox(
+                        height: 10.getH(),
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -62,12 +74,16 @@ class _FirstScreenState extends State<FirstScreen> {
                               height: 47.getH(),
                               width: 47.getW(),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12,),
+                                borderRadius: BorderRadius.circular(
+                                  12,
+                                ),
                                 color: Colors.white,
                               ),
                               child: const Center(
-                                child:
-                                    Icon(Icons.arrow_back, color: Colors.black,),
+                                child: Icon(
+                                  Icons.arrow_back,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                           ),
@@ -77,12 +93,16 @@ class _FirstScreenState extends State<FirstScreen> {
                               height: 47.getH(),
                               width: 47.getW(),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12,),
+                                borderRadius: BorderRadius.circular(
+                                  12,
+                                ),
                                 color: Colors.white,
                               ),
                               child: const Center(
-                                child:
-                                    Icon(Icons.more_horiz, color: Colors.black,),
+                                child: Icon(
+                                  Icons.more_horiz,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                           ),
@@ -97,34 +117,23 @@ class _FirstScreenState extends State<FirstScreen> {
                         ),
                       ),
                       SizedBox(height: 40.getH()),
-                      const SingleChildScrollView(
+                      SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: [
-                            GlobalCategory(
-                              iconPath: "assets/icons/euro.svg",
-                              title: "EUR Balance",
-                              moneyText: "585.00",
-                            ),
-                            GlobalCategory(
-                              iconPath: "assets/icons/dollar.svg",
-                              title: "USD Balance",
-                              moneyText: "105.00",
-                            ),
-                            GlobalCategory(
-                              iconPath: "assets/icons/euro.svg",
-                              title: "EUR Balance",
-                              moneyText: "698.00",
-                            ),
-                            GlobalCategory(
-                              iconPath: "assets/icons/dollar.svg",
-                              title: "USD Balance",
-                              moneyText: "585.00",
+                            ...List.generate(
+                              globalCategoryList.length,
+                              (index) => GlobalCategory(
+                                  iconPath: globalCategoryList[index].imagePath,
+                                  title: globalCategoryList[index].title,
+                                  moneyText: globalCategoryList[index].price),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 29.getH(),),
+                      SizedBox(
+                        height: 30.getH(),
+                      ),
                       Center(
                         child: Text(
                           "See Balance Details",
@@ -145,19 +154,20 @@ class _FirstScreenState extends State<FirstScreen> {
                     height: 80,
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(),
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20.getW()),
                         child: Row(
                           children: [
                             ...List.generate(
-                              3,
+                              prices.length,
                               (index) => GlobalButton(
                                 onTap: () {
                                   activeIndexButton = index;
                                   setState(() {});
                                 },
                                 activeIndex:
-                                    (activeIndexButton == index) ? true : false,
+                                    (activeIndexButton == index) ? true : false, price: prices[index],
                               ),
                             ),
                           ],
