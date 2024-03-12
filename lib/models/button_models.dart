@@ -11,6 +11,7 @@ import 'package:najot_talim_nt/screens/opacity_demo_screen/opacity_demo_screen.d
 import 'package:najot_talim_nt/screens/size_screen/size_screen.dart';
 import 'package:najot_talim_nt/screens/square_screen/square_screen.dart';
 import 'package:najot_talim_nt/screens/widgets_screen/widgets_screen.dart';
+import 'package:najot_talim_nt/screens/woolha_screen/woolha_screen.dart';
 
 class ButtonModels {
   final String title;
@@ -98,7 +99,7 @@ final List<ButtonModels> buttonModels = [
   ButtonModels(
     title: "Woolha.com Flutter Tutorial",
     color: Colors.amber,
-    screen: const OpacityDemoScreen(
+    screen: const WoolhaScreen(
       title: 'Woolha.com Flutter Tutorial',
     ),
   ),

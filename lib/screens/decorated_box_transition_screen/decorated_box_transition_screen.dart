@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot_talim_nt/utils/colors/app_colors.dart';
+import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
 class DecoratedBoxTransitionScreen extends StatefulWidget {
   const DecoratedBoxTransitionScreen({
@@ -11,7 +14,8 @@ class DecoratedBoxTransitionScreen extends StatefulWidget {
   final String title;
 
   @override
-  State<DecoratedBoxTransitionScreen> createState() => _DecoratedBoxTransitionScreenState();
+  State<DecoratedBoxTransitionScreen> createState() =>
+      _DecoratedBoxTransitionScreenState();
 }
 
 class _DecoratedBoxTransitionScreenState
@@ -21,7 +25,7 @@ class _DecoratedBoxTransitionScreenState
       color: const Color(0xFFFFFFFF),
       border: Border.all(style: BorderStyle.none),
       borderRadius: BorderRadius.circular(60.0),
-      boxShadow: const <BoxShadow>[
+      boxShadow: const[
         BoxShadow(
           color: Color(0x66666666),
           blurRadius: 10.0,
@@ -53,16 +57,28 @@ class _DecoratedBoxTransitionScreenState
 
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(
-      color: Colors.white,
-      child: Center(
-        child: DecoratedBoxTransition(
-          decoration: decorationTween.animate(_controller),
-          child: Container(
-            width: 200,
-            height: 200,
-            padding: const EdgeInsets.all(10),
-            child: const FlutterLogo(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          widget.title,
+          style: AppTextStyle.interBold.copyWith(
+            color: AppColors.black,
+            fontSize: 20.sp,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+      ),
+      body: ColoredBox(
+        color: Colors.white,
+        child: Center(
+          child: DecoratedBoxTransition(
+            decoration: decorationTween.animate(_controller),
+            child: Container(
+              width: 200,
+              height: 200,
+              padding: const EdgeInsets.all(10),
+              child: const FlutterLogo(),
+            ),
           ),
         ),
       ),
