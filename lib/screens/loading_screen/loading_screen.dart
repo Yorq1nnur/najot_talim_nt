@@ -6,35 +6,35 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
-class GlobalScreen extends StatefulWidget {
-  const GlobalScreen({super.key});
+class LoadingScreen extends StatefulWidget {
+  const LoadingScreen({
+    super.key,
+    required this.title,
+  });
+
+  final String title;
 
   @override
-  State<GlobalScreen> createState() => _GlobalScreenState();
+  State<LoadingScreen> createState() => _LoadingScreenState();
 }
 
-class _GlobalScreenState extends State<GlobalScreen> {
+class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(
-      value: SystemUiOverlayStyle(statusBarColor: AppColors.transparent),
+      value: SystemUiOverlayStyle(
+        statusBarColor: AppColors.transparent,
+      ),
       child: Scaffold(
         appBar: AppBar(
-          elevation: 0,
           title: Text(
-            "ANIMATIONS",
+            widget.title,
             style: AppTextStyle.interBold.copyWith(
               color: AppColors.black,
               fontSize: 20.sp,
               fontWeight: FontWeight.w900,
             ),
           ),
-        ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            
-          ],
         ),
       ),
     );

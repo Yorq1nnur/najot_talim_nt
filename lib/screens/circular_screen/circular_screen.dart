@@ -6,35 +6,35 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
-class GlobalScreen extends StatefulWidget {
-  const GlobalScreen({super.key});
+class CircularScreen extends StatefulWidget {
+  const CircularScreen({
+    super.key,
+    required this.title,
+  });
+
+  final String title;
 
   @override
-  State<GlobalScreen> createState() => _GlobalScreenState();
+  State<CircularScreen> createState() => _CircularScreenState();
 }
 
-class _GlobalScreenState extends State<GlobalScreen> {
+class _CircularScreenState extends State<CircularScreen> {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(
-      value: SystemUiOverlayStyle(statusBarColor: AppColors.transparent),
+      value: SystemUiOverlayStyle(
+        statusBarColor: AppColors.transparent,
+      ),
       child: Scaffold(
         appBar: AppBar(
-          elevation: 0,
           title: Text(
-            "ANIMATIONS",
+            widget.title,
             style: AppTextStyle.interBold.copyWith(
               color: AppColors.black,
               fontSize: 20.sp,
               fontWeight: FontWeight.w900,
             ),
           ),
-        ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            
-          ],
         ),
       ),
     );
