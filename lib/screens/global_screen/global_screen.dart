@@ -73,7 +73,7 @@ class _GlobalScreenState extends State<GlobalScreen> {
                         style: AppTextStyle.interBold.copyWith(
                           color: AppColors.black,
                           fontSize: 16.sp,
-                          fontWeight: FontWeight.w900
+                          fontWeight: FontWeight.w900,
                         ),
                       ),
                     ),
