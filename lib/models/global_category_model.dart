@@ -10,10 +10,13 @@ class GlobalCategoryModel {
   });
 }
 
-
 final List<GlobalCategoryModel> globalCategoryList = [
-  GlobalCategoryModel(price: "469", title: "EURO Balance", imagePath: "assets/icons/euro.svg"),
-  GlobalCategoryModel(price: "215", title: "USD Balance", imagePath: "assets/icons/dollar.svg"),
-  GlobalCategoryModel(price: "154", title: "EURO Balance", imagePath: "assets/icons/euro.svg"),
-  GlobalCategoryModel(price: "596", title: "USD Balance", imagePath: "assets/icons/dollar.svg"),
+  GlobalCategoryModel(
+      price: "469", title: "EURO Balance", imagePath: "assets/icons/euro.svg"),
+  GlobalCategoryModel(
+      price: "215", title: "USD Balance", imagePath: "assets/icons/dollar.svg"),
+  GlobalCategoryModel(
+      price: "154", title: "EURO Balance", imagePath: "assets/icons/euro.svg"),
+  GlobalCategoryModel(
+      price: "596", title: "USD Balance", imagePath: "assets/icons/dollar.svg"),
 ];

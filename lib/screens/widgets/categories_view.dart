@@ -25,4 +25,3 @@ class CategoriesView extends SliverPersistentHeaderDelegate {
     return true;
   }
 }
-

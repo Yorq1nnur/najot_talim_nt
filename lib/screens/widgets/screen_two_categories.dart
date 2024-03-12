@@ -39,7 +39,7 @@ class CategoriesViewScreenTwo extends SliverPersistentHeaderDelegate {
             children: [
               ...List.generate(
                 categories.length,
-                    (index) => categories[index],
+                (index) => categories[index],
               ),
             ],
           ),
@@ -92,7 +92,6 @@ List<CategoriesImg> categories = [
     color: Colors.lightBlue.shade500,
   ),
 ];
-
 
 final List<String> imagesPath = [
   "https://e7.pngegg.com/pngimages/575/463/png-clipart-fried-rice-with-carrots-and-green-peas-hyderabadi-biryani-fried-rice-raita-vegetable-vegetable-food-recipe.png",

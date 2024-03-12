@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:najot_talim_nt/models/global_button_model.dart';
 import 'package:najot_talim_nt/models/global_category_model.dart';
-import 'package:najot_talim_nt/screens/widgets/categories_.dart';
+import 'package:najot_talim_nt/screens/widgets/categories_view.dart';
 import 'package:najot_talim_nt/screens/widgets/global_button.dart';
 import 'package:najot_talim_nt/screens/widgets/global_category.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
@@ -119,6 +119,7 @@ class _FirstScreenState extends State<FirstScreen> {
                       SizedBox(height: 40.getH()),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
+                        physics: const BouncingScrollPhysics(),
                         child: Row(
                           children: [
                             ...List.generate(
@@ -167,7 +168,8 @@ class _FirstScreenState extends State<FirstScreen> {
                                   setState(() {});
                                 },
                                 activeIndex:
-                                    (activeIndexButton == index) ? true : false, price: prices[index],
+                                    (activeIndexButton == index) ? true : false,
+                                price: prices[index],
                               ),
                             ),
                           ],

@@ -6,7 +6,8 @@ class GlobalButton extends StatefulWidget {
   const GlobalButton({
     super.key,
     required this.onTap,
-    required this.activeIndex, required this.price,
+    required this.activeIndex,
+    required this.price,
   });
 
   final VoidCallback onTap;

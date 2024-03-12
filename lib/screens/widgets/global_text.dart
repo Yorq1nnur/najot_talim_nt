@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import '../../size/app_size.dart';
 
 class GlobalMoney extends StatelessWidget {
-  const GlobalMoney({super.key, required this.title1, required this.title2, required this.title3, required this.imgPath});
+  const GlobalMoney(
+      {super.key,
+      required this.title1,
+      required this.title2,
+      required this.title3,
+      required this.imgPath});
 
   final String title1;
   final String title2;
@@ -25,8 +30,7 @@ class GlobalMoney extends StatelessWidget {
                 width: 54.getW(),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius:
-                  BorderRadius.circular(8.getW()),
+                  borderRadius: BorderRadius.circular(8.getW()),
                 ),
                 child: Image.asset(imgPath),
               ),
