@@ -31,80 +31,85 @@ class _HelperScreenState extends State<HelperScreen> {
           0xFFEFEFEF,
         ),
         body: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 300.h,
-              ),
-              ZoomTapAnimation(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FirstScreen(),
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 30.w,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 300.h,
+                ),
+                ZoomTapAnimation(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FirstScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10.w,
+                      vertical: 10.h,
                     ),
-                  );
-                },
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10.w,
-                    vertical: 10.h,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF1A72DD),
-                    borderRadius: BorderRadius.circular(
-                      16.r,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF1A72DD),
+                      borderRadius: BorderRadius.circular(
+                        16.r,
+                      ),
                     ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "FIRST SCREEN",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w900,
+                    child: Center(
+                      child: Text(
+                        "FIRST SCREEN",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 100.h,
-              ),
-              ZoomTapAnimation(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SecondScreen(),
+                SizedBox(
+                  height: 100.h,
+                ),
+                ZoomTapAnimation(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SecondScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10.w,
+                      vertical: 10.h,
                     ),
-                  );
-                },
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10.w,
-                    vertical: 10.h,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(
-                      16.r,
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(
+                        16.r,
+                      ),
                     ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "SECOND SCREEN",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w900,
+                    child: Center(
+                      child: Text(
+                        "SECOND SCREEN",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
