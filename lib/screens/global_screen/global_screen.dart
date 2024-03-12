@@ -69,7 +69,7 @@ class _GlobalScreenState extends State<GlobalScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        buttonModels[index].title,
+                        "${index + 1}. ${buttonModels[index].title}",
                         style: AppTextStyle.interBold.copyWith(
                           color: AppColors.black,
                           fontSize: 16.sp,
