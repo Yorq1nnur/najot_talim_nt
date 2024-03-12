@@ -5,10 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/screens/first_screen/first_screen.dart';
 import 'package:najot_talim_nt/screens/second_screen/second_screen.dart';
-import 'package:najot_talim_nt/utils/colors/app_colors.dart';
-import 'package:najot_talim_nt/utils/size/size_utils.dart';
-import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+
+import '../../size/app_size.dart';
 
 class HelperScreen extends StatefulWidget {
   const HelperScreen({super.key});
@@ -25,7 +24,7 @@ class _HelperScreenState extends State<HelperScreen> {
 
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
-        statusBarColor: AppColors.transparent,
+        statusBarColor: Colors.transparent,
       ),
       child: Scaffold(
         backgroundColor: const Color(
@@ -35,7 +34,9 @@ class _HelperScreenState extends State<HelperScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              300.getH(),
+              SizedBox(
+                height: 300.h,
+              ),
               ZoomTapAnimation(
                 onTap: () {
                   Navigator.push(
@@ -51,7 +52,7 @@ class _HelperScreenState extends State<HelperScreen> {
                     vertical: 10.h,
                   ),
                   decoration: BoxDecoration(
-                    color: AppColors.c_1A72DD,
+                    color: Color(0xFF1A72DD),
                     borderRadius: BorderRadius.circular(
                       16.r,
                     ),
@@ -59,8 +60,8 @@ class _HelperScreenState extends State<HelperScreen> {
                   child: Center(
                     child: Text(
                       "FIRST SCREEN",
-                      style: AppTextStyle.interBold.copyWith(
-                        color: AppColors.black,
+                      style: TextStyle(
+                        color: Colors.black,
                         fontSize: 20.sp,
                         fontWeight: FontWeight.w900,
                       ),
@@ -68,7 +69,9 @@ class _HelperScreenState extends State<HelperScreen> {
                   ),
                 ),
               ),
-              100.getH(),
+              SizedBox(
+                height: 100.h,
+              ),
               ZoomTapAnimation(
                 onTap: () {
                   Navigator.push(
@@ -92,8 +95,8 @@ class _HelperScreenState extends State<HelperScreen> {
                   child: Center(
                     child: Text(
                       "SECOND SCREEN",
-                      style: AppTextStyle.interBold.copyWith(
-                        color: AppColors.black,
+                      style: TextStyle(
+                        color: Colors.black,
                         fontSize: 20.sp,
                         fontWeight: FontWeight.w900,
                       ),

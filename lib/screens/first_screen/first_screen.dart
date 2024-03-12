@@ -1,10 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:najot_talim_nt/screens/first_screen/widgets/categories_view.dart';
-import 'package:najot_talim_nt/utils/colors/app_colors.dart';
-import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
+import 'package:najot_talim_nt/screens/widgets/categories_.dart';
+import 'package:najot_talim_nt/screens/widgets/global_button.dart';
+import 'package:najot_talim_nt/screens/widgets/global_category.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+import '../../size/app_size.dart';
+import '../widgets/global_text.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
@@ -14,181 +15,186 @@ class FirstScreen extends StatefulWidget {
 }
 
 class _FirstScreenState extends State<FirstScreen> {
+  final ScrollController scrollController = ScrollController();
+  int activeIndexButton = 0;
+
   @override
   Widget build(BuildContext context) {
+    width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
     return AnnotatedRegion(
-      value: SystemUiOverlayStyle(
-        statusBarColor: AppColors.transparent,
+      value: const SystemUiOverlayStyle(
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: Colors.white,
+        statusBarColor: Colors.white,
+        statusBarBrightness: Brightness.dark,
+        systemNavigationBarIconBrightness: Brightness.dark,
       ),
-      child: Scaffold(
-        backgroundColor: const Color(
-          0xFFEFEFEF,
-        ),
-        body: CustomScrollView(
-          physics: BouncingScrollPhysics(),
-          slivers: [
-            SliverAppBar(
-              pinned: true,
-              expandedHeight: 250,
-              elevation: 0,
-              backgroundColor: Colors.white,
-              actions: [
-                IconButton(
-                  style: IconButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        15,
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: Colors.white.withOpacity(.98),
+          body: CustomScrollView(
+            controller: scrollController,
+            slivers: [
+              SliverToBoxAdapter(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF5F6FA,),
+                    borderRadius: BorderRadius.circular(16,),
+                  ),
+                  margin: EdgeInsets.symmetric(
+                      horizontal: 18.getW(), vertical: 0.getW(),),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 18.getW(), vertical: 18.getH(),),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 10.getH(),),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ZoomTapAnimation(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Container(
+                              height: 47.getH(),
+                              width: 47.getW(),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12,),
+                                color: Colors.white,
+                              ),
+                              child: const Center(
+                                child:
+                                    Icon(Icons.arrow_back, color: Colors.black,),
+                              ),
+                            ),
+                          ),
+                          ZoomTapAnimation(
+                            onTap: () {},
+                            child: Container(
+                              height: 47.getH(),
+                              width: 47.getW(),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12,),
+                                color: Colors.white,
+                              ),
+                              child: const Center(
+                                child:
+                                    Icon(Icons.more_horiz, color: Colors.black,),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    backgroundColor: Colors.white,
-                    elevation: 20,
-                  ),
-                  onPressed: () {},
-                  color: Colors.black,
-                  icon: const Icon(
-                    Icons.more_horiz,
-                  ),
-                ),
-              ],
-              leading: Container(
-                padding: const EdgeInsets.all(
-                  5,
-                ),
-                height: 50,
-                child: IconButton(
-                  style: IconButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        15,
+                      SizedBox(height: 30.getH()),
+                      Text(
+                        "Balances",
+                        style: TextStyle(
+                          color: const Color(0xFF151940),
+                          fontSize: 44.getW(),
+                        ),
                       ),
-                    ),
-                    backgroundColor: Colors.white,
-                    elevation: 20,
-                  ),
-                  onPressed: () {},
-                  color: Colors.black,
-                  icon: const Icon(
-                    Icons.category,
+                      SizedBox(height: 40.getH()),
+                      const SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            GlobalCategory(
+                              iconPath: "assets/icons/euro.svg",
+                              title: "EUR Balance",
+                              moneyText: "585.00",
+                            ),
+                            GlobalCategory(
+                              iconPath: "assets/icons/dollar.svg",
+                              title: "USD Balance",
+                              moneyText: "105.00",
+                            ),
+                            GlobalCategory(
+                              iconPath: "assets/icons/euro.svg",
+                              title: "EUR Balance",
+                              moneyText: "698.00",
+                            ),
+                            GlobalCategory(
+                              iconPath: "assets/icons/dollar.svg",
+                              title: "USD Balance",
+                              moneyText: "585.00",
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 29.getH(),),
+                      Center(
+                        child: Text(
+                          "See Balance Details",
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 18.getW(),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              flexibleSpace: FlexibleSpaceBar(
-                background: Column(
-                  children: [
-                    const SizedBox(
-                      height: 70,
+              SliverPersistentHeader(
+                delegate: CategoriesView(
+                  widget: Container(
+                    color: Colors.white,
+                    height: 80,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.getW()),
+                        child: Row(
+                          children: [
+                            ...List.generate(
+                              3,
+                              (index) => GlobalButton(
+                                onTap: () {
+                                  activeIndexButton = index;
+                                  setState(() {});
+                                },
+                                activeIndex:
+                                    (activeIndexButton == index) ? true : false,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    Stack(
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(
-                            16,
-                          ),
-                          margin: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 32,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(
-                                  0.3,
-                                ),
-                                offset: const Offset(
-                                  4,
-                                  4,
-                                ),
-                                blurRadius: 10,
-                                spreadRadius: 6,
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(
-                              16,
+                  ),
+                ),
+                pinned: true,
+              ),
+              SliverList(
+                delegate: SliverChildListDelegate(
+                  [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 42.getW()),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Today",
+                            style: TextStyle(
+                              color: const Color(0xFF020000),
+                              fontSize: 26.getW(),
                             ),
                           ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const SizedBox(
-                                height: 30,
-                              ),
-                              Text(
-                                "Domhnall Gleeson",
-                                style: AppTextStyle.interSemiBold.copyWith(
-                                  fontSize: 26,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 12,
-                              ),
-                              Text(
-                                "account ending with 1545",
-                                style: AppTextStyle.interSemiBold.copyWith(
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
+                          SizedBox(height: 14.getH()),
+                          ...List.generate(
+                            money.length,
+                            (index) => money[index],
                           ),
-                        ),
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          child: Center(
-                            child: Container(
-                              height: 65,
-                              width: 65,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                  10,
-                                ),
-                                color: Colors.grey.withOpacity(
-                                  0.6,
-                                ),
-                              ),
-                              child: const Center(
-                                child: Icon(
-                                  Icons.person,
-                                  size: 50,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
-            ),
-            SliverPersistentHeader(
-              delegate: CategoriesView(
-                onTap: () {},
-              ),
-              pinned: true,
-            ),
-            SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  ...List.generate(
-                    100,
-                    (index) => ListTile(
-                      onTap: () {},
-                      title: Text(
-                        "Behance Project",
-                        style: AppTextStyle.interSemiBold.copyWith(
-                          fontSize: 16,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

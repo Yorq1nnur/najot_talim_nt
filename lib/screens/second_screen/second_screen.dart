@@ -1,10 +1,7 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:najot_talim_nt/screens/first_screen/widgets/categories_view.dart';
-import 'package:najot_talim_nt/utils/colors/app_colors.dart';
-import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
+import 'package:najot_talim_nt/screens/widgets/screen_two_categories.dart';
+import 'package:najot_talim_nt/size/app_size.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({super.key});
@@ -16,180 +13,276 @@ class SecondScreen extends StatefulWidget {
 class _SecondScreenState extends State<SecondScreen> {
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion(
-      value: SystemUiOverlayStyle(
-        statusBarColor: AppColors.transparent,
-      ),
-      child: Scaffold(
-        backgroundColor: const Color(
-          0xFFEFEFEF,
-        ),
-        body: CustomScrollView(
-          physics: BouncingScrollPhysics(),
-          slivers: [
-            SliverAppBar(
-              pinned: true,
-              expandedHeight: 250,
-              elevation: 0,
-              backgroundColor: Colors.white,
-              actions: [
-                IconButton(
-                  style: IconButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        15,
-                      ),
-                    ),
-                    backgroundColor: Colors.white,
-                    elevation: 20,
-                  ),
-                  onPressed: () {},
-                  color: Colors.black,
-                  icon: const Icon(
-                    Icons.more_horiz,
-                  ),
-                ),
-              ],
-              leading: Container(
-                padding: const EdgeInsets.all(
-                  5,
-                ),
-                height: 50,
-                child: IconButton(
-                  style: IconButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        15,
-                      ),
-                    ),
-                    backgroundColor: Colors.white,
-                    elevation: 20,
-                  ),
-                  onPressed: () {},
-                  color: Colors.black,
-                  icon: const Icon(
-                    Icons.category,
-                  ),
-                ),
-              ),
-              flexibleSpace: FlexibleSpaceBar(
-                background: Column(
+    width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
+
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            automaticallyImplyLeading: false,
+            expandedHeight: 235.getH(),
+            elevation: 0,
+            backgroundColor: Colors.white,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.getW()),
+                child: Column(
                   children: [
-                    const SizedBox(
-                      height: 70,
-                    ),
-                    Stack(
+                    SizedBox(height: 50.getH()),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(
-                            16,
-                          ),
-                          margin: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 32,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(
-                                  0.3,
+                        SizedBox(
+                          width: 250.getW(),
+                          height: 120.getH(),
+                          child: RichText(
+                            text: TextSpan(
+                              text: "Hello ",
+                              style: TextStyle(
+                                fontSize: 25.getW(),
+                                color: Colors.black45,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: "Fahmi \n",
+                                  style: TextStyle(
+                                    fontSize: 25.getW(),
+                                    color: Colors.orange,
+                                  ),
                                 ),
-                                offset: const Offset(
-                                  4,
-                                  4,
+                                TextSpan(
+                                  text: "Find the Right One For A Healthy Body",
+                                  style: TextStyle(
+                                    fontSize: 25.getW(),
+                                    color: Colors.brown,
+                                  ),
                                 ),
-                                blurRadius: 10,
-                                spreadRadius: 6,
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(
-                              16,
+                              ],
                             ),
                           ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const SizedBox(
-                                height: 30,
-                              ),
-                              Text(
-                                "Domhnall Gleeson",
-                                style: AppTextStyle.interSemiBold.copyWith(
-                                  fontSize: 26,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 12,
-                              ),
-                              Text(
-                                "account ending with 1545",
-                                style: AppTextStyle.interSemiBold.copyWith(
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
-                          ),
                         ),
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          child: Center(
-                            child: Container(
-                              height: 65,
-                              width: 65,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                  10,
-                                ),
-                                color: Colors.grey.withOpacity(
-                                  0.6,
-                                ),
+                        ZoomTapAnimation(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            height: 50.getH(),
+                            width: 50.getW(),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: Colors.orange,
+                                width: 1.getW(),
                               ),
-                              child: const Center(
-                                child: Icon(
-                                  Icons.person,
-                                  size: 50,
-                                ),
+                            ),
+                            child: const Center(
+                              child: Icon(
+                                Icons.notifications_none,
+                                color: Colors.orange,
                               ),
                             ),
                           ),
                         ),
                       ],
                     ),
+                    SizedBox(height: 20.getH()),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: SizedBox(
+                            height: 50.getH(),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                border: const OutlineInputBorder(),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                  borderSide: const BorderSide(
+                                    width: 1,
+                                    color: Colors.orange,
+                                  ),
+                                ),
+                                prefixIcon: const Icon(Icons.search),
+                                hintText: "Search",
+                                hintStyle: TextStyle(
+                                  color: Colors.grey.withOpacity(0.9),
+                                  fontSize: 14.getW(),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 10.getW()),
+                        Container(
+                          height: 50.getH(),
+                          width: 50.getW(),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: Colors.orange,
+                              width: 1.getW(),
+                            ),
+                          ),
+                          child: const Center(
+                            child: Icon(
+                              Icons.format_line_spacing_sharp,
+                              color: Colors.orange,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20.getH()),
                   ],
                 ),
               ),
             ),
-            SliverPersistentHeader(
-              delegate: CategoriesView(
-                onTap: () {},
-              ),
-              pinned: true,
-            ),
-            SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  ...List.generate(
-                    100,
-                    (index) => ListTile(
-                      onTap: () {},
-                      title: Text(
-                        "Behance Project",
-                        style: AppTextStyle.interSemiBold.copyWith(
-                          fontSize: 16,
+          ),
+          SliverPersistentHeader(
+            delegate: CategoriesViewScreenTwo(),
+            pinned: true,
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                SizedBox(height: 15.getH()),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.getW()),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Best Deal",
+                        style: TextStyle(
                           color: Colors.black,
+                          fontSize: 20.getW(),
                         ),
                       ),
-                    ),
-                  )
-                ],
-              ),
+                      Stack(
+                        children: [
+                          Container(
+                            // color: Colors.red,
+                            padding: EdgeInsets.only(top: 20.getH()),
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16.getW()),
+                                color: Colors.orangeAccent,
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 20.getW(),
+                                vertical: 15.getH(),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "#SimpleKitchen",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.getW(),
+                                    ),
+                                  ),
+                                  SizedBox(height: 20.getH()),
+                                  SizedBox(
+                                    width: 140.getW(),
+                                    child: Text(
+                                      "Soup Package",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 35.getW(),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 10.getH()),
+                                  SizedBox(
+                                    width: 190.getW(),
+                                    child: Text(
+                                      "No Need to think about ingredients anymore let's fins your menu today",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12.getW(),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 10.getH()),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 15.getH()),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Best Price",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20.getW(),
+                            ),
+                          ),
+                          Text(
+                            "Show All",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18.getW(),
+                            ),
+                          ),
+                        ],
+                      ),
+                      GridView.count(
+                        scrollDirection: Axis.vertical,
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 10,
+                        childAspectRatio: 0.7,
+                        shrinkWrap: true,
+                        physics: const BouncingScrollPhysics(),
+                        children: List.generate(
+                          10,
+                          (index) => Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.getW()),
+                              border: Border.all(
+                                width: 1.getW(),
+                                color: Colors.grey,
+                              ),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12.getW()),
+                              child: Image.network(
+                                "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                // BottomNavigationBar(
+                //   items: const [
+                //     BottomNavigationBarItem(
+                //       icon: Icon(Icons.home),
+                //       label: 'Home',
+                //     ),
+                //     BottomNavigationBarItem(
+                //       icon: Icon(Icons.search),
+                //       label: 'Search',
+                //     ),
+                //     BottomNavigationBarItem(
+                //       icon: Icon(Icons.settings),
+                //       label: 'Settings',
+                //     ),
+                //   ],
+                // ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
