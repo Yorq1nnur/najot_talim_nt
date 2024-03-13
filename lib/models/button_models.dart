@@ -89,14 +89,14 @@ final List<ButtonModels> buttonModels = [
   ),
   ButtonModels(
     title: "Flutter - tutorialkart.com",
-    color: Colors.indigoAccent,
+    color: Colors.purpleAccent,
     screen: const FlutterTutorialKartScreen(
       title: 'Flutter - tutorialkart.com',
     ),
   ),
   ButtonModels(
     title: "ANIMATED DEFAULT TEXT STYLE",
-    color: Colors.indigoAccent,
+    color: Colors.grey,
     screen: const AnimatedDefaultScreen(
       title: 'ANIMATED DEFAULT TEXT STYLE',
     ),

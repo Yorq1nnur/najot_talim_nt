@@ -16,16 +16,10 @@ class AnimatedDemoScreen extends StatefulWidget {
 
 class _AnimatedDemoScreenState extends State<AnimatedDemoScreen> {
   bool _isLeft = true;
-  bool _isTop = true;
 
   void _togglePosition() {
     setState(() {
       _isLeft = !_isLeft;
-    });
-  }
-  void _bottomPosition() {
-    setState(() {
-      _isTop = !_isTop;
     });
   }
 
@@ -41,7 +35,9 @@ class _AnimatedDemoScreenState extends State<AnimatedDemoScreen> {
             // AnimatedPositioned widget to create the animated transition
             AnimatedPositioned(
               duration: Duration(seconds: 1), // Animation duration
-              left: _isLeft ? 50 : 150, // Change the left position based on the _isLeft state
+              left: _isLeft
+                  ? 50
+                  : 150, // Change the left position based on the _isLeft state
               top: 50, // Fixed top position
               child: Container(
                 width: 100,
@@ -60,78 +56,3 @@ class _AnimatedDemoScreenState extends State<AnimatedDemoScreen> {
     );
   }
 }
-
-
-// class _AnimatedDemoScreenState extends State<AnimatedDemoScreen>
-//     with SingleTickerProviderStateMixin {
-//   late AnimationController controller;
-//   late Animation colorAnimation;
-//   late Animation sizeAnimation;
-//   late Animation borderSizeAnimation;
-//   bool isSquare = true;
-//
-//   @override
-//   void initState() {
-//     super.initState();
-//
-//     controller = AnimationController(
-//       vsync: this,
-//       duration: const Duration(seconds: 2),
-//     );
-//
-//     colorAnimation =
-//         ColorTween(begin: Colors.green, end: Colors.deepPurple).animate(controller);
-//
-//     sizeAnimation =
-//     Tween<double>(begin: 50.0, end: 300.0).animate(CurvedAnimation(
-//       parent: controller,
-//       curve: Curves.bounceIn,
-//       reverseCurve: Curves.bounceIn,
-//     ))
-//       ..addListener(() {
-//         setState(() {});
-//       });
-//     borderSizeAnimation =
-//         Tween<double>(begin: 5.0, end: 50.0).animate(controller);
-//
-//     controller.addListener(() {
-//       setState(() {});
-//     });
-//
-//     controller.repeat(reverse: true);
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(
-//           widget.title,
-//           style: AppTextStyle.interBold.copyWith(
-//             color: AppColors.black,
-//             fontSize: 20.sp,
-//             fontWeight: FontWeight.w900,
-//           ),
-//         ),
-//       ),
-//       body: GestureDetector(
-//         onTap: () {
-//           setState(() {
-//             isSquare = !isSquare;
-//           });
-//         },
-//         child: Center(
-//           child: AnimatedContainer(
-//             duration: const Duration(seconds: 2),
-//             height: isSquare ? 50.0 : 300.0,
-//             width: isSquare ? 50.0 : 300.0,
-//             decoration: BoxDecoration(
-//               color: colorAnimation.value,
-//               borderRadius: isSquare ? null : BorderRadius.circular(30.0),
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
