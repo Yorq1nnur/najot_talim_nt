@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot_talim_nt/utils/colors/app_colors.dart';
+import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
 class OpacityDemoScreen extends StatefulWidget {
   const OpacityDemoScreen({
@@ -14,60 +17,44 @@ class OpacityDemoScreen extends StatefulWidget {
   State<OpacityDemoScreen> createState() => _OpacityDemoScreenState();
 }
 
-class _OpacityDemoScreenState extends State<OpacityDemoScreen> with SingleTickerProviderStateMixin {
-  late Animation<Color?> animation;
-  late AnimationController controller;
+class _OpacityDemoScreenState extends State<OpacityDemoScreen> {
+  double opacityLevel = 1.0;
 
-  @override
-  void initState() {
-    super.initState();
-    controller =
-        AnimationController(duration: const Duration(seconds: 1), vsync: this);
-    animation =
-    ColorTween(begin: Colors.indigo, end: Colors.lime).animate(controller)
-      ..addListener(() {
-        setState(() {
-          // The state that has changed here is the animation object’s value.
-        });
-      });
-  }
-
-  bool buttonToggle = true;
-
-  void animateColor() {
-    if (buttonToggle) {
-      controller.forward();
-    } else {
-      controller.reverse();
-    }
-    buttonToggle = !buttonToggle;
+  void changeOpacity() {
+    setState(() {
+      opacityLevel = opacityLevel == 0 ? 1.0 : 0.0;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Flutter - tutorialkart.com')),
+        title: Text(
+          widget.title,
+          style: AppTextStyle.interBold.copyWith(
+            color: AppColors.black,
+            fontSize: 20.sp,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
       ),
-      body: ListView(children: <Widget>[
-        Container(
-            margin: EdgeInsets.all(10),
-            padding: EdgeInsets.all(20),
-            height: 400,
-            child: TextButton(
-              style: TextButton.styleFrom(
-                backgroundColor: animation.value,
-              ),
-              onPressed: () => {animateColor()},
-              child: Text(''),
-            ))
-      ]),
+      body: Center(
+        child: AnimatedOpacity(
+          opacity: opacityLevel,
+          duration: const Duration(seconds: 2),
+          curve: Curves.decelerate,
+          child: Container(
+            width: 200,
+            height: 200,
+            color: Colors.amberAccent,
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: changeOpacity,
+        child: const Icon(Icons.qr_code_scanner_outlined),
+      ),
     );
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
   }
 }

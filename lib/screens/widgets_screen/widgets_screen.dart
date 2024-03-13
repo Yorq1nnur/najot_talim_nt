@@ -1,10 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot_talim_nt/utils/colors/app_colors.dart';
-import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
 class WidgetsScreen extends StatefulWidget {
   const WidgetsScreen({
@@ -19,22 +15,68 @@ class WidgetsScreen extends StatefulWidget {
 }
 
 class _WidgetsScreenState extends State<WidgetsScreen> {
+  bool isTrue = true;
+
+  void _toggleText() {
+    setState(() {
+      isTrue = !isTrue;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion(
-      value: SystemUiOverlayStyle(
-        statusBarColor: AppColors.transparent,
-      ),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            widget.title,
-            style: AppTextStyle.interBold.copyWith(
-              color: AppColors.black,
-              fontSize: 20.sp,
-              fontWeight: FontWeight.w900,
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AnimatedContainer(
+              duration: const Duration(seconds: 2),
+              width: 200,
+              height: 200,
+              color: isTrue ? Colors.orange : Colors.green,
+              child: Center(
+                child: AnimatedCrossFade(
+                  alignment: Alignment.center,
+                  duration: const Duration(seconds: 2),
+                  firstChild: const Text(
+                    "This is first Widget",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 15),
+                  ),
+                  secondChild: const Text(
+                    "This is second Widget",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 15),
+                  ),
+                  crossFadeState: isTrue
+                      ? CrossFadeState.showFirst
+                      : CrossFadeState.showSecond,
+                ),
+              ),
             ),
-          ),
+            const SizedBox(
+              height: 20,
+            ),
+            TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.grey,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+              ),
+              onPressed: _toggleText,
+              child: const Text(
+                "Click here",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
