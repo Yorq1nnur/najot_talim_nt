@@ -52,27 +52,31 @@ class _SecondScreenState extends State<SecondScreen> {
 
             if (snapshot.hasData) {
               List<SecondModel> users =
-              (snapshot.data as MyResponse).data as List<SecondModel>;
+                  (snapshot.data as MyResponse).data as List<SecondModel>;
               return ListView(
                 children: [
-                  ...List.generate(users.length, (index) {
-                    var user = users[index];
-                    return ListTile(
-                      title: Text(user.name,
-                          style: Theme.of(context).textTheme.titleMedium),
-                      subtitle: Text(
-                        user.state,
-                        style: Theme.of(context).textTheme.titleSmall,
-                      ),
-                    );
-                  })
+                  ...List.generate(
+                    users.length,
+                    (index) {
+                      var user = users[index];
+                      return ListTile(
+                        title: Text(user.name,
+                            style: Theme.of(context).textTheme.titleMedium),
+                        subtitle: Text(
+                          user.state,
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
+                        trailing: Image.network(user.avatarUrl, height: 50.h, width: 50.w, fit: BoxFit.cover,),
+                        leading: Text(user.id.toString()),
+                      );
+                    },
+                  ),
                 ],
               );
             }
             return const Center(child: CircularProgressIndicator());
           },
         ),
-
       ),
     );
   }
