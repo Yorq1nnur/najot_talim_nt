@@ -66,7 +66,7 @@ class _SecondScreenState extends State<SecondScreen> {
                           user.state,
                           style: Theme.of(context).textTheme.titleSmall,
                         ),
-                        trailing: Image.network(user.avatarUrl, height: 50.h, width: 50.w, fit: BoxFit.cover,),
+                        trailing: ClipRRect(borderRadius: BorderRadius.circular(16.r,),child: Image.network(user.avatarUrl, height: 50.h, width: 50.w, fit: BoxFit.cover,)),
                         leading: Text(user.id.toString()),
                       );
                     },

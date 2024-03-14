@@ -55,17 +55,21 @@ class _FirstScreenState extends State<FirstScreen> {
                   (snapshot.data as MyResponse).data as List<FirstModel>;
               return ListView(
                 children: [
-                  ...List.generate(cyprus.length, (index) {
-                    var cyp = cyprus[index];
-                    return ListTile(
-                      title: Text(cyp.region,
-                          style: Theme.of(context).textTheme.titleMedium),
-                      subtitle: Text(
-                        cyp.startOfWeek,
-                        style: Theme.of(context).textTheme.titleSmall,
-                      ),
-                    );
-                  })
+                  ...List.generate(
+                    cyprus.length,
+                    (index) {
+                      var cyp = cyprus[index];
+                      return ListTile(
+                        title: Text(cyp.region,
+                            style: Theme.of(context).textTheme.titleMedium),
+                        subtitle: Text(
+                          cyp.subregion,
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
+                        trailing: ClipRRect(borderRadius: BorderRadius.circular(16.r,),child: Image.network(cyp.flags["png"], height: 50.h, width: 100.w,fit: BoxFit.cover,)),
+                      );
+                    },
+                  ),
                 ],
               );
             }
