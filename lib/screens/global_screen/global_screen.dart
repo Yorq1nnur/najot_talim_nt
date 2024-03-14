@@ -3,6 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot_talim_nt/screens/first_screen/first_screen.dart';
+import 'package:najot_talim_nt/screens/fourth_screen/fourth_screen.dart';
+import 'package:najot_talim_nt/screens/second_screen/second_screen.dart';
+import 'package:najot_talim_nt/screens/third_screen/third_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
@@ -36,8 +40,16 @@ class _GlobalScreenState extends State<GlobalScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ...List.generate(
-              titles.length,
+              buttonModels.length,
               (index) => ZoomTapAnimation(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => buttonModels[index].widget,
+                    ),
+                  );
+                },
                 child: Container(
                   padding: EdgeInsets.symmetric(
                     vertical: 10.h,
@@ -55,7 +67,7 @@ class _GlobalScreenState extends State<GlobalScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      titles[index],
+                      buttonModels[index].title,
                       style: AppTextStyle.interBold.copyWith(
                         color: AppColors.white,
                         fontSize: 16.sp,
@@ -73,9 +85,31 @@ class _GlobalScreenState extends State<GlobalScreen> {
   }
 }
 
-final List<String> titles = [
-  "FIRST SCREEN",
-  "SECOND SCREEN",
-  "THIRD SCREEN",
-  "FOURTH SCREEN",
+class ButtonModels {
+  final String title;
+  final Widget widget;
+
+  ButtonModels({
+    required this.title,
+    required this.widget,
+  });
+}
+
+final List<ButtonModels> buttonModels = [
+  ButtonModels(
+    title: "FIRST SCREEN",
+    widget: FirstScreen(title: "FIRST SCREEN"),
+  ),
+  ButtonModels(
+    title: "SECOND SCREEN",
+    widget: SecondScreen(title: "SECOND SCREEN"),
+  ),
+  ButtonModels(
+    title: "THIRD SCREEN",
+    widget: ThirdScreen(title: "THIRD SCREEN"),
+  ),
+  ButtonModels(
+    title: "FOURTH SCREEN",
+    widget: FourthScreen(title: "FOURTH SCREEN"),
+  ),
 ];
