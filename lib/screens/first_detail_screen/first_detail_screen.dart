@@ -76,44 +76,120 @@ class _FirstDetailScreenState extends State<FirstDetailScreen> {
             vertical: 20.h,
             horizontal: 20.w,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              DetailItems(
-                title: "DAVLAT NOMI",
-                subTitle: widget.firstModel.name["common"],
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              DetailItems(
-                title: "POYTAXTI:",
-                subTitle: widget.firstModel.capital[0],
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              DetailItems(
-                title: "AHOLISI:",
-                subTitle: widget.firstModel.population.toString(),
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              DetailItems(
-                title: "FIFADA NOMLANISHI:",
-                subTitle: widget.firstModel.fifa,
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              DetailItems(
-                title: "HOLATI:",
-                subTitle: widget.firstModel.independent
-                    ? "Mustaqil"
-                    : "Mustaqil emas",
-              ),
-            ],
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                DetailItems(
+                  title: "RASMIY NOMI:",
+                  subTitle: widget.firstModel.name['official'],
+                ),
+                DetailItems(
+                  title: "DAVLAT NOMI",
+                  subTitle: widget.firstModel.name["common"],
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                DetailItems(
+                  title: "POYTAXTI:",
+                  subTitle: widget.firstModel.capital[0],
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                DetailItems(
+                  title: "AHOLISI:",
+                  subTitle: widget.firstModel.population.toString(),
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                DetailItems(
+                  title: "FIFADA NOMLANISHI:",
+                  subTitle: widget.firstModel.fifa,
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                DetailItems(
+                  title: "HOLATI:",
+                  subTitle: widget.firstModel.independent
+                      ? "Mustaqil"
+                      : "Mustaqil emas",
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                DetailItems(
+                  title: "VAQT MINTAQASI:",
+                  subTitle: widget.firstModel.timezones[0],
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                DetailItems(
+                  title: "QIT'A:",
+                  subTitle: widget.firstModel.continents[0],
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                DetailItems(
+                  title: "JOYLASHUVI:",
+                  subTitle: widget.firstModel.subregion,
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                DetailItems(
+                  title: "HAFTA BOSHI:",
+                  subTitle: widget.firstModel.startOfWeek,
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                DetailItems(title: "MAYDONI (km. kv da):", subTitle: "${widget.firstModel.area} km. kv",),
+                SizedBox(
+                  height: 20.h,
+                ),
+                Center(
+                  child: Text(
+                    "GERBI:",
+                    textAlign: TextAlign.center,
+                    style: AppTextStyle.interBold.copyWith(
+                      color: AppColors.black,
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                Image.network(
+                  widget.firstModel.coatOfArms["png"],
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                Center(
+                  child: Text(
+                    "BAYROG'I:",
+                    textAlign: TextAlign.center,
+                    style: AppTextStyle.interBold.copyWith(
+                      color: AppColors.black,
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                Image.network(
+                  widget.firstModel.flags['png'],
+                  width: double.infinity,
+                ),
+                SizedBox(height: 20.h,),
+              ],
+            ),
           ),
         ),
       ),

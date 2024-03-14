@@ -15,26 +15,37 @@ class DetailItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: AppTextStyle.interBold.copyWith(
-            color: AppColors.black,
-            fontSize: 20.sp,
-            fontWeight: FontWeight.w900,
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      physics: const BouncingScrollPhysics(),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: AppTextStyle.interBold.copyWith(
+              color: AppColors.black,
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w900,
+            ),
           ),
-        ),
-        Text(
-          subTitle,
-          style: AppTextStyle.interBold.copyWith(
-            color: Colors.amber,
-            fontSize: 20.sp,
-            fontWeight: FontWeight.w900,
-          ),
-        )
-      ],
+          Padding(
+            padding: EdgeInsets.only(
+              left: 10.w,
+            ),
+            child: Text(
+              subTitle,
+              style: AppTextStyle.interBold.copyWith(
+                color: Colors.amber,
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w900,
+              ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
