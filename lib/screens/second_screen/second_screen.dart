@@ -100,7 +100,8 @@ class MyPainter extends CustomPainter {
       false,
       eye1,
     );
-    canvas.drawOval(Rect.fromCircle(center: const Offset(195, 80), radius: 20), nose);
+    canvas.drawOval(
+        Rect.fromCircle(center: const Offset(195, 80), radius: 20), nose);
     canvas.drawLine(const Offset(20, 130), const Offset(108.5, 210), hand);
     canvas.drawLine(const Offset(390, 130), const Offset(296, 210), hand);
   }
