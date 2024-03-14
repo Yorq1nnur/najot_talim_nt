@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/data/models/first_model/first_model.dart';
 import 'package:najot_talim_nt/data/repositories/first_repo.dart';
-import 'package:najot_talim_nt/data/repositories/first_repo.dart';
 import 'package:najot_talim_nt/data/response/my_response.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
@@ -52,8 +51,8 @@ class _FirstScreenState extends State<FirstScreen> {
             }
 
             if (snapshot.hasData) {
-              List<CyprusModel> cyprus =
-                  (snapshot.data as MyResponse).data as List<CyprusModel>;
+              List<FirstModel> cyprus =
+                  (snapshot.data as MyResponse).data as List<FirstModel>;
               return ListView(
                 children: [
                   ...List.generate(cyprus.length, (index) {

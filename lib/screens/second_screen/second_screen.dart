@@ -3,6 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot_talim_nt/data/models/second_model/second_model.dart';
+import 'package:najot_talim_nt/data/repositories/second_repo.dart';
+import 'package:najot_talim_nt/data/response/my_response.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
@@ -17,6 +20,8 @@ class SecondScreen extends StatefulWidget {
   @override
   State<SecondScreen> createState() => _SecondScreenState();
 }
+
+final SecondRepo secondRepo = SecondRepo();
 
 class _SecondScreenState extends State<SecondScreen> {
   @override
@@ -36,6 +41,38 @@ class _SecondScreenState extends State<SecondScreen> {
             ),
           ),
         ),
+        body: FutureBuilder<MyResponse>(
+          future: secondRepo.getAllUserData(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Center(
+                child: Text(snapshot.error.toString()),
+              );
+            }
+
+            if (snapshot.hasData) {
+              List<SecondModel> users =
+              (snapshot.data as MyResponse).data as List<SecondModel>;
+              return ListView(
+                children: [
+                  ...List.generate(users.length, (index) {
+                    var user = users[index];
+                    return ListTile(
+                      title: Text(user.name,
+                          style: Theme.of(context).textTheme.titleMedium),
+                      subtitle: Text(
+                        user.state,
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                    );
+                  })
+                ],
+              );
+            }
+            return const Center(child: CircularProgressIndicator());
+          },
+        ),
+
       ),
     );
   }

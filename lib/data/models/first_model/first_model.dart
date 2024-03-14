@@ -1,4 +1,4 @@
-class CyprusModel {
+class FirstModel {
   final String cca2;
   final String ccn3;
   final String cca3;
@@ -13,7 +13,7 @@ class CyprusModel {
   final List<String> continents;
   final String startOfWeek;
 
-  CyprusModel({
+  FirstModel({
     required this.cca2,
     required this.ccn3,
     required this.cca3,
@@ -29,8 +29,8 @@ class CyprusModel {
     required this.startOfWeek,
   });
 
-  factory CyprusModel.fromJson(Map<String, dynamic> json) {
-    return CyprusModel(
+  factory FirstModel.fromJson(Map<String, dynamic> json) {
+    return FirstModel(
       cca2: json['cca2'] as String? ?? "",
       ccn3: json['ccn3'] as String? ?? "",
       cca3: json['cca3'] as String? ?? "",
