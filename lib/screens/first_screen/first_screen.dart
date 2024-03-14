@@ -56,12 +56,12 @@ class _FirstScreenState extends State<FirstScreen> {
               return ListView(
                 children: [
                   ...List.generate(cyprus.length, (index) {
-                    var product = cyprus[index];
+                    var cyp = cyprus[index];
                     return ListTile(
-                      title: Text(product.region,
+                      title: Text(cyp.region,
                           style: Theme.of(context).textTheme.titleMedium),
                       subtitle: Text(
-                        product.startOfWeek,
+                        cyp.startOfWeek,
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                     );
