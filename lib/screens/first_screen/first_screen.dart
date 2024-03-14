@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +8,9 @@ import 'package:najot_talim_nt/data/repositories/first_repo.dart';
 import 'package:najot_talim_nt/data/response/my_response.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
+import 'package:provider/provider.dart';
+
+import '../../view_models/first_view_model.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({
@@ -41,58 +44,33 @@ class _FirstScreenState extends State<FirstScreen> {
             ),
           ),
         ),
-        body: FutureBuilder<MyResponse>(
-          future: firstRepo.getAllData(),
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
-              return Center(
-                child: Text(snapshot.error.toString()),
-              );
-            }
-
-            if (snapshot.hasData) {
-              List<FirstModel> cyprus =
-                  (snapshot.data as MyResponse).data as List<FirstModel>;
-              return ListView(
-                children: [
-                  ...List.generate(
-                    cyprus.length,
-                    (index) {
-                      var cyp = cyprus[index];
-                      return ListTile(
-                        title: Text(cyp.region,
-                            style: Theme.of(context).textTheme.titleMedium),
-                        subtitle: Text(
-                          cyp.subregion,
-                          style: Theme.of(context).textTheme.titleSmall,
-                        ),
-                        trailing: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                  16.r,
-                                ),
-                                border: Border.all(
-                                  color: AppColors.black,
-                                  width: 1.w,
-                                )),
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.circular(
-                                  16.r,
-                                ),
-                                child: Image.network(
-                                  cyp.flags["png"],
-                                  height: 50.h,
-                                  width: 100.w,
-                                  fit: BoxFit.cover,
-                                ))),
-                      );
-                    },
-                  ),
-                ],
-              );
-            }
-            return const Center(child: CircularProgressIndicator());
+        body: context.watch<FirstViewModel>().isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : RefreshIndicator(
+          onRefresh: () {
+            return Future<void>.delayed(
+              const Duration(seconds: 2),
+                  () {
+                context.read<FirstViewModel>().fetchFirstData();
+              },
+            );
           },
+          child: ListView(
+            children: [
+              ...List.generate(
+                context.watch<FirstViewModel>().currencies.length,
+                    (index) {
+                  FirstModel first = context
+                      .watch<FirstViewModel>()
+                      .currencies[index];
+                  return ListTile(
+                    title: Text(first.region),
+                    subtitle: Text(first.subregion),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
