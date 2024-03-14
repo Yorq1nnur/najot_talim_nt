@@ -45,7 +45,7 @@ class _SecondScreenState extends State<SecondScreen> {
               child: CustomPaint(
                 size: Size(
                   double.infinity,
-                  400.h,
+                  350.h,
                 ),
                 //300, 300
                 painter: MyPainter(),

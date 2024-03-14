@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(
-        428,
-        926,
+        312,
+        875,
       ),
       builder: (context, child) {
         ScreenUtil.init(context);
