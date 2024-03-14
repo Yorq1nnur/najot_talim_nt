@@ -1,0 +1,23 @@
+{
+  "name": {
+    "common": "Cyprus",
+    "official": "Republic of Cyprus"
+  },
+  "cca2": "CY",
+  "ccn3": "196",
+  "cca3": "CYP",
+  "cioc": "CYP",
+  "status": "officially-assigned",
+  "region": "Europe",
+  "subregion": "Southern Europe",
+  "area": 9251.0,
+  "population": 1207361,
+  "fifa": "CYP",
+  "timezones": [
+    "UTC+02:00"
+  ],
+  "continents": [
+    "Europe"
+  ],
+  "startOfWeek": "monday",
+}
