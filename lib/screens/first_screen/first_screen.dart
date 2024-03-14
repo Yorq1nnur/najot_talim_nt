@@ -66,7 +66,25 @@ class _FirstScreenState extends State<FirstScreen> {
                           cyp.subregion,
                           style: Theme.of(context).textTheme.titleSmall,
                         ),
-                        trailing: ClipRRect(borderRadius: BorderRadius.circular(16.r,),child: Image.network(cyp.flags["png"], height: 50.h, width: 100.w,fit: BoxFit.cover,)),
+                        trailing: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                  16.r,
+                                ),
+                                border: Border.all(
+                                  color: AppColors.black,
+                                  width: 1.w,
+                                )),
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.circular(
+                                  16.r,
+                                ),
+                                child: Image.network(
+                                  cyp.flags["png"],
+                                  height: 50.h,
+                                  width: 100.w,
+                                  fit: BoxFit.cover,
+                                ))),
                       );
                     },
                   ),
