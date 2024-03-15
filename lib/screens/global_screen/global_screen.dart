@@ -95,11 +95,11 @@ class Models {
 
 final List<Models> model = [
   Models(
-    title: "FIRST SCREEN",
-    widget: FirstScreen(title: "FIRST SCREEN"),
+    title: "COUNTRIES SCREEN",
+    widget: FirstScreen(title: "COUNTRIES SCREEN"),
   ),
   Models(
-    title: "SECOND SCREEN",
-    widget: SecondScreen(title: "SECOND SCREEN"),
+    title: "USERS SCREEN",
+    widget: SecondScreen(title: "USERS SCREEN"),
   ),
 ];

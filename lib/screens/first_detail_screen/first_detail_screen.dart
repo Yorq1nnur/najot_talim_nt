@@ -183,11 +183,13 @@ class _FirstDetailScreenState extends State<FirstDetailScreen> {
                     ),
                   ),
                 ),
-                Image.network(
-                  widget.countryModel.flags['png'],
-                  width: double.infinity,
+                Container(
+                  decoration: BoxDecoration(border: Border.all(color: AppColors.black, width: 1.w)),
+                  child: Image.network(
+                    widget.countryModel.flags['png'],
+                    width: double.infinity,
+                  ),
                 ),
-                SizedBox(height: 20.h,),
               ],
             ),
           ),
