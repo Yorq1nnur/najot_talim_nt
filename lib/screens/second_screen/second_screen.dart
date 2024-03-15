@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot_talim_nt/data/models/second_model/second_model.dart';
-import 'package:najot_talim_nt/data/repositories/second_repo.dart';
+import 'package:najot_talim_nt/data/models/user_model/user_model.dart';
+import 'package:najot_talim_nt/data/repositories/user_repo.dart';
 import 'package:najot_talim_nt/data/response/my_response.dart';
 import 'package:najot_talim_nt/screens/second_detail_screen/second_detail_screen.dart';
 import 'package:najot_talim_nt/screens/second_detail_screen/widgets/second_view_widget.dart';
@@ -13,8 +13,6 @@ import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import 'package:najot_talim_nt/view_models/first_view_model.dart';
 import 'package:najot_talim_nt/view_models/second_view_model.dart';
 import 'package:provider/provider.dart';
-
-import '../../data/models/first_model/first_model.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({
@@ -28,7 +26,7 @@ class SecondScreen extends StatefulWidget {
   State<SecondScreen> createState() => _SecondScreenState();
 }
 
-final SecondRepo secondRepo = SecondRepo();
+final UserRepo secondRepo = UserRepo();
 
 class _SecondScreenState extends State<SecondScreen> {
   @override
@@ -55,31 +53,31 @@ class _SecondScreenState extends State<SecondScreen> {
                   return Future<void>.delayed(
                     const Duration(seconds: 2),
                     () {
-                      context.read<SecondViewModel>().fetchSecondData();
+                      context.read<SecondViewModel>().fetchUsersData();
                     },
                   );
                 },
                 child: ListView(
                   children: [
                     ...List.generate(
-                      context.watch<SecondViewModel>().currencies.length,
+                      context.watch<SecondViewModel>().users.length,
                       (index) {
-                        SecondModel first =
-                            context.watch<SecondViewModel>().currencies[index];
+                        UserModel user =
+                            context.watch<SecondViewModel>().users[index];
                         return SecondViewWidget(
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    SecondDetailScreen(secondModel: first),
+                                    SecondDetailScreen(userModel: user),
                               ),
                             );
                           },
-                          title: first.name,
-                          subTitle: first.username,
-                          id: first.id,
-                          imagePath: first.avatarUrl,
+                          title: user.name,
+                          subTitle: user.username,
+                          id: user.id,
+                          imagePath: user.avatarUrl,
                         );
                       },
                     ),

@@ -1,4 +1,4 @@
-class FirstModel {
+class CountryModel {
   final Map<String, dynamic> name;
   final List<String> tld;
   final String cca2;
@@ -34,7 +34,7 @@ class FirstModel {
   final Map<String, dynamic> capitalInfo;
   final Map<String, dynamic> postalCode;
 
-  FirstModel({
+  CountryModel({
     required this.name,
     required this.tld,
     required this.cca2,
@@ -71,8 +71,8 @@ class FirstModel {
     required this.postalCode,
   });
 
-  factory FirstModel.fromJson(Map<String, dynamic> json) {
-    return FirstModel(
+  factory CountryModel.fromJson(Map<String, dynamic> json) {
+    return CountryModel(
       name: json['name'] ?? {},
       tld: json['tld'] != null ? List<String>.from(json['tld']) : [],
       cca2: json['cca2'] ?? '',

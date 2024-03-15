@@ -1,11 +1,11 @@
-class SecondModel {
+class UserModel {
   final int id;
   final String username;
   final String name;
   final String state;
   final String avatarUrl;
 
-  SecondModel({
+  UserModel({
     required this.id,
     required this.username,
     required this.name,
@@ -13,8 +13,8 @@ class SecondModel {
     required this.avatarUrl,
   });
 
-  factory SecondModel.fromJson(Map<String, dynamic> json) {
-    return SecondModel(
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
       id: json['id'] as int? ?? 0,
       username: json['username'] as String? ?? '',
       name: json['name'] as String? ?? '',

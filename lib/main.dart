@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot_talim_nt/data/repositories/first_repo.dart';
-import 'package:najot_talim_nt/data/repositories/second_repo.dart';
+import 'package:najot_talim_nt/data/repositories/country_repo.dart';
+import 'package:najot_talim_nt/data/repositories/user_repo.dart';
 import 'package:najot_talim_nt/screens/global_screen/global_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/view_models/first_view_model.dart';
@@ -14,12 +14,12 @@ void main() {
       providers: [
         ChangeNotifierProvider(
           create: (_) => FirstViewModel(
-            firstRepo: FirstRepo(),
+            countryRepo: CountryRepo(),
           ),
         ),
         ChangeNotifierProvider(
           create: (_) => SecondViewModel(
-            secondRepo: SecondRepo(),
+            userRepo: UserRepo(),
           ),
         ),
       ],

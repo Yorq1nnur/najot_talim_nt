@@ -1,26 +1,26 @@
 import 'package:flutter/cupertino.dart';
-import 'package:najot_talim_nt/data/models/first_model/first_model.dart';
-import 'package:najot_talim_nt/data/repositories/first_repo.dart';
+import 'package:najot_talim_nt/data/models/country_model/country_model.dart';
+import 'package:najot_talim_nt/data/repositories/country_repo.dart';
 
 class FirstViewModel extends ChangeNotifier {
   FirstViewModel({
-    required this.firstRepo,
+    required this.countryRepo,
   }){
     fetchFirstData();
   }
 
-  final FirstRepo firstRepo;
+  final CountryRepo countryRepo;
 
   bool isLoading = false;
-  List<FirstModel> currencies = [];
+  List<CountryModel> countries = [];
 
   fetchFirstData() async {
     isLoading = true;
     notifyListeners();
-    var cur = await firstRepo.getAllData();
+    List<CountryModel> country = await countryRepo.getAllData();
     isLoading = false;
     notifyListeners();
-      currencies = cur;
+      countries = country;
       notifyListeners();
   }
 }

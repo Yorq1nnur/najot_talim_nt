@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot_talim_nt/data/models/first_model/first_model.dart';
+import 'package:najot_talim_nt/data/models/country_model/country_model.dart';
 import 'package:najot_talim_nt/screens/first_detail_screen/widgets/detail_items.dart';
 import 'package:najot_talim_nt/screens/first_screen/widgets/call_links.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
@@ -14,10 +14,10 @@ import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 class FirstDetailScreen extends StatefulWidget {
   const FirstDetailScreen({
     super.key,
-    required this.firstModel,
+    required this.countryModel,
   });
 
-  final FirstModel firstModel;
+  final CountryModel countryModel;
 
   @override
   State<FirstDetailScreen> createState() => _FirstDetailScreenState();
@@ -33,7 +33,7 @@ class _FirstDetailScreenState extends State<FirstDetailScreen> {
           elevation: 0,
           centerTitle: false,
           title: Text(
-            widget.firstModel.name["official"],
+            widget.countryModel.name["official"],
             style: AppTextStyle.interBold.copyWith(
               color: AppColors.black,
               fontSize: 16.sp,
@@ -48,7 +48,7 @@ class _FirstDetailScreenState extends State<FirstDetailScreen> {
               decoration:
                   BoxDecoration(color: AppColors.black, shape: BoxShape.circle),
               child: Text(
-                widget.firstModel.flag,
+                widget.countryModel.flag,
                 style: AppTextStyle.interBold.copyWith(fontSize: 16.sp),
               ),
             ),
@@ -56,14 +56,14 @@ class _FirstDetailScreenState extends State<FirstDetailScreen> {
               width: 20.w,
             ),
             CallLinks(
-              link: widget.firstModel.maps["googleMaps"],
+              link: widget.countryModel.maps["googleMaps"],
               imagePath: AppImages.map,
             ),
             SizedBox(
               width: 20.w,
             ),
             CallLinks(
-              link: widget.firstModel.maps["openStreetMaps"],
+              link: widget.countryModel.maps["openStreetMaps"],
               imagePath: AppImages.cityMap,
             ),
             SizedBox(
@@ -84,39 +84,39 @@ class _FirstDetailScreenState extends State<FirstDetailScreen> {
               children: [
                 DetailItems(
                   title: "RASMIY NOMI:",
-                  subTitle: widget.firstModel.name['official'],
+                  subTitle: widget.countryModel.name['official'],
                 ),
                 DetailItems(
                   title: "DAVLAT NOMI",
-                  subTitle: widget.firstModel.name["common"],
+                  subTitle: widget.countryModel.name["common"],
                 ),
                 SizedBox(
                   height: 20.h,
                 ),
                 DetailItems(
                   title: "POYTAXTI:",
-                  subTitle: widget.firstModel.capital[0],
+                  subTitle: widget.countryModel.capital[0],
                 ),
                 SizedBox(
                   height: 20.h,
                 ),
                 DetailItems(
                   title: "AHOLISI:",
-                  subTitle: widget.firstModel.population.toString(),
+                  subTitle: widget.countryModel.population.toString(),
                 ),
                 SizedBox(
                   height: 20.h,
                 ),
                 DetailItems(
                   title: "FIFADA NOMLANISHI:",
-                  subTitle: widget.firstModel.fifa,
+                  subTitle: widget.countryModel.fifa,
                 ),
                 SizedBox(
                   height: 20.h,
                 ),
                 DetailItems(
                   title: "HOLATI:",
-                  subTitle: widget.firstModel.independent
+                  subTitle: widget.countryModel.independent
                       ? "Mustaqil"
                       : "Mustaqil emas",
                 ),
@@ -125,33 +125,33 @@ class _FirstDetailScreenState extends State<FirstDetailScreen> {
                 ),
                 DetailItems(
                   title: "VAQT MINTAQASI:",
-                  subTitle: widget.firstModel.timezones[0],
+                  subTitle: widget.countryModel.timezones[0],
                 ),
                 SizedBox(
                   height: 20.h,
                 ),
                 DetailItems(
                   title: "QIT'A:",
-                  subTitle: widget.firstModel.continents[0],
+                  subTitle: widget.countryModel.continents[0],
                 ),
                 SizedBox(
                   height: 20.h,
                 ),
                 DetailItems(
                   title: "JOYLASHUVI:",
-                  subTitle: widget.firstModel.subregion,
+                  subTitle: widget.countryModel.subregion,
                 ),
                 SizedBox(
                   height: 20.h,
                 ),
                 DetailItems(
                   title: "HAFTA BOSHI:",
-                  subTitle: widget.firstModel.startOfWeek,
+                  subTitle: widget.countryModel.startOfWeek,
                 ),
                 SizedBox(
                   height: 20.h,
                 ),
-                DetailItems(title: "MAYDONI (km. kv da):", subTitle: "${widget.firstModel.area} km. kv",),
+                DetailItems(title: "MAYDONI (km. kv da):", subTitle: "${widget.countryModel.area} km. kv",),
                 SizedBox(
                   height: 20.h,
                 ),
@@ -167,7 +167,7 @@ class _FirstDetailScreenState extends State<FirstDetailScreen> {
                   ),
                 ),
                 Image.network(
-                  widget.firstModel.coatOfArms["png"],
+                  widget.countryModel.coatOfArms["png"],
                 ),
                 SizedBox(
                   height: 20.h,
@@ -184,7 +184,7 @@ class _FirstDetailScreenState extends State<FirstDetailScreen> {
                   ),
                 ),
                 Image.network(
-                  widget.firstModel.flags['png'],
+                  widget.countryModel.flags['png'],
                   width: double.infinity,
                 ),
                 SizedBox(height: 20.h,),

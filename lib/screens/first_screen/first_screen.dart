@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot_talim_nt/data/models/first_model/first_model.dart';
-import 'package:najot_talim_nt/data/repositories/first_repo.dart';
+import 'package:najot_talim_nt/data/models/country_model/country_model.dart';
+import 'package:najot_talim_nt/data/repositories/country_repo.dart';
 import 'package:najot_talim_nt/data/response/my_response.dart';
 import 'package:najot_talim_nt/screens/first_detail_screen/first_detail_screen.dart';
 import 'package:najot_talim_nt/screens/global_widgets/view_items.dart';
@@ -26,7 +26,7 @@ class FirstScreen extends StatefulWidget {
   State<FirstScreen> createState() => _FirstScreenState();
 }
 
-final FirstRepo firstRepo = FirstRepo();
+final CountryRepo firstRepo = CountryRepo();
 
 class _FirstScreenState extends State<FirstScreen> {
   @override
@@ -60,17 +60,17 @@ class _FirstScreenState extends State<FirstScreen> {
                 child: ListView(
                   children: [
                     ...List.generate(
-                      context.watch<FirstViewModel>().currencies.length,
+                      context.watch<FirstViewModel>().countries.length,
                       (index) {
-                        FirstModel first =
-                            context.watch<FirstViewModel>().currencies[index];
+                        CountryModel first =
+                            context.watch<FirstViewModel>().countries[index];
                         return ViewItems(
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => FirstDetailScreen(
-                                  firstModel: first,
+                                  countryModel: first,
                                 ),
                               ),
                             );

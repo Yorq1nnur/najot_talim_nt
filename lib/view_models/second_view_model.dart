@@ -1,30 +1,29 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/cupertino.dart';
-import 'package:najot_talim_nt/data/models/first_model/first_model.dart';
-import 'package:najot_talim_nt/data/models/second_model/second_model.dart';
-import 'package:najot_talim_nt/data/repositories/first_repo.dart';
-import 'package:najot_talim_nt/data/repositories/second_repo.dart';
+import 'package:najot_talim_nt/data/models/user_model/user_model.dart';
+import 'package:najot_talim_nt/data/repositories/country_repo.dart';
+import 'package:najot_talim_nt/data/repositories/user_repo.dart';
 
 class SecondViewModel extends ChangeNotifier {
   SecondViewModel({
-    required this.secondRepo,
+    required this.userRepo,
   }){
-    fetchSecondData();
+    fetchUsersData();
   }
 
-  final SecondRepo secondRepo;
+  final UserRepo userRepo;
 
   bool isLoading = false;
-  List<SecondModel> currencies = [];
+  List<UserModel> users = [];
 
-  fetchSecondData() async {
+  fetchUsersData() async {
     isLoading = true;
     notifyListeners();
-    var cur = await secondRepo.getAllUserData();
+    List<UserModel> user = await userRepo.getAllUserData();
     isLoading = false;
     notifyListeners();
-      currencies = cur;
+      users = user;
       notifyListeners();
   }
 }

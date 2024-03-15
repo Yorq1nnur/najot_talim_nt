@@ -4,7 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot_talim_nt/data/models/second_model/second_model.dart';
+import 'package:najot_talim_nt/data/models/user_model/user_model.dart';
 import 'package:najot_talim_nt/screens/second_detail_screen/widgets/second_detail_items.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
@@ -13,10 +13,10 @@ import 'package:carousel_slider/carousel_controller.dart';
 class SecondDetailScreen extends StatelessWidget {
   const SecondDetailScreen({
     super.key,
-    required this.secondModel,
+    required this.userModel,
   });
 
-  final SecondModel secondModel;
+  final UserModel userModel;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class SecondDetailScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            secondModel.name,
+            userModel.name,
             style: AppTextStyle.interBold.copyWith(
               color: AppColors.black,
               fontSize: 20.sp,
@@ -52,7 +52,7 @@ class SecondDetailScreen extends StatelessWidget {
                   16.r,
                 ),
                 child: Image.network(
-                  secondModel.avatarUrl,
+                  userModel.avatarUrl,
                   height: 30.h,
                   width: 30.w,
                   fit: BoxFit.cover,
@@ -91,7 +91,7 @@ class SecondDetailScreen extends StatelessWidget {
                           16.r,
                         ),
                         child: Image.network(
-                          secondModel.avatarUrl,
+                          userModel.avatarUrl,
                         ),
                       ),
                     );
@@ -119,21 +119,21 @@ class SecondDetailScreen extends StatelessWidget {
               ),
               SecondDetailItems(
                 title: "NAME:",
-                subTitle: secondModel.name,
+                subTitle: userModel.name,
               ),
               SizedBox(
                 height: 20.h,
               ),
               SecondDetailItems(
                 title: "USERNAME:",
-                subTitle: secondModel.username,
+                subTitle: userModel.username,
               ),
               SizedBox(
                 height: 20.h,
               ),
               SecondDetailItems(
                 title: "STATE:",
-                subTitle: secondModel.state,
+                subTitle: userModel.state,
               ),
             ],
           ),
