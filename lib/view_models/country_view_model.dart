@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:najot_talim_nt/data/models/country_model/country_model.dart';
 import 'package:najot_talim_nt/data/repositories/country_repo.dart';
 
-class FirstViewModel extends ChangeNotifier {
-  FirstViewModel({
+class CountryViewModel extends ChangeNotifier {
+  CountryViewModel({
     required this.countryRepo,
   }){
     fetchFirstData();

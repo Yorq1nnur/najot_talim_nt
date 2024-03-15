@@ -4,8 +4,8 @@ import 'package:najot_talim_nt/data/repositories/country_repo.dart';
 import 'package:najot_talim_nt/data/repositories/user_repo.dart';
 import 'package:najot_talim_nt/screens/global_screen/global_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
-import 'package:najot_talim_nt/view_models/first_view_model.dart';
-import 'package:najot_talim_nt/view_models/second_view_model.dart';
+import 'package:najot_talim_nt/view_models/country_view_model.dart';
+import 'package:najot_talim_nt/view_models/user_view_model.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -13,12 +13,12 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => FirstViewModel(
+          create: (_) => CountryViewModel(
             countryRepo: CountryRepo(),
           ),
         ),
         ChangeNotifierProvider(
-          create: (_) => SecondViewModel(
+          create: (_) => UserViewModel(
             userRepo: UserRepo(),
           ),
         ),

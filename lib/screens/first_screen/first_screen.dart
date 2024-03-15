@@ -12,7 +12,7 @@ import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import 'package:provider/provider.dart';
 
-import '../../view_models/first_view_model.dart';
+import '../../view_models/country_view_model.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({
@@ -46,24 +46,24 @@ class _FirstScreenState extends State<FirstScreen> {
             ),
           ),
         ),
-        body: context.watch<FirstViewModel>().isLoading
+        body: context.watch<CountryViewModel>().isLoading
             ? const Center(child: CircularProgressIndicator())
             : RefreshIndicator(
                 onRefresh: () {
                   return Future<void>.delayed(
                     const Duration(seconds: 2),
                     () {
-                      context.read<FirstViewModel>().fetchFirstData();
+                      context.read<CountryViewModel>().fetchFirstData();
                     },
                   );
                 },
                 child: ListView(
                   children: [
                     ...List.generate(
-                      context.watch<FirstViewModel>().countries.length,
+                      context.watch<CountryViewModel>().countries.length,
                       (index) {
                         CountryModel first =
-                            context.watch<FirstViewModel>().countries[index];
+                            context.watch<CountryViewModel>().countries[index];
                         return ViewItems(
                           onTap: () {
                             Navigator.push(

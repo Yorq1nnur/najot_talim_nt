@@ -10,8 +10,8 @@ import 'package:najot_talim_nt/screens/second_detail_screen/second_detail_screen
 import 'package:najot_talim_nt/screens/second_detail_screen/widgets/second_view_widget.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
-import 'package:najot_talim_nt/view_models/first_view_model.dart';
-import 'package:najot_talim_nt/view_models/second_view_model.dart';
+import 'package:najot_talim_nt/view_models/country_view_model.dart';
+import 'package:najot_talim_nt/view_models/user_view_model.dart';
 import 'package:provider/provider.dart';
 
 class SecondScreen extends StatefulWidget {
@@ -46,24 +46,24 @@ class _SecondScreenState extends State<SecondScreen> {
             ),
           ),
         ),
-        body: context.watch<SecondViewModel>().isLoading
+        body: context.watch<UserViewModel>().isLoading
             ? const Center(child: CircularProgressIndicator())
             : RefreshIndicator(
                 onRefresh: () {
                   return Future<void>.delayed(
                     const Duration(seconds: 2),
                     () {
-                      context.read<SecondViewModel>().fetchUsersData();
+                      context.read<UserViewModel>().fetchUsersData();
                     },
                   );
                 },
                 child: ListView(
                   children: [
                     ...List.generate(
-                      context.watch<SecondViewModel>().users.length,
+                      context.watch<UserViewModel>().users.length,
                       (index) {
                         UserModel user =
-                            context.watch<SecondViewModel>().users[index];
+                            context.watch<UserViewModel>().users[index];
                         return SecondViewWidget(
                           onTap: () {
                             Navigator.push(

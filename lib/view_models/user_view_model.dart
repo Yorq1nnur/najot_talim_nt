@@ -5,8 +5,8 @@ import 'package:najot_talim_nt/data/models/user_model/user_model.dart';
 import 'package:najot_talim_nt/data/repositories/country_repo.dart';
 import 'package:najot_talim_nt/data/repositories/user_repo.dart';
 
-class SecondViewModel extends ChangeNotifier {
-  SecondViewModel({
+class UserViewModel extends ChangeNotifier {
+  UserViewModel({
     required this.userRepo,
   }){
     fetchUsersData();
