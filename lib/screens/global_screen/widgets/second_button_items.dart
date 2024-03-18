@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
+import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
-class ButtonItems extends StatelessWidget {
-  const ButtonItems({
+class SecondButtonItems extends StatelessWidget {
+  const SecondButtonItems({
     super.key,
-    required this.imageUrl,
+    required this.text,
   });
 
-  final String imageUrl;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +27,12 @@ class ButtonItems extends StatelessWidget {
           shape: BoxShape.circle,
         ),
         child: Center(
-          child: SvgPicture.asset(
-            imageUrl,
-            // width: 20.w,
-            // height: 35.h,
+          child: Text(
+            text,
+            style: AppTextStyle.interBold.copyWith(
+              fontSize: 25.sp,
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ),
       ),

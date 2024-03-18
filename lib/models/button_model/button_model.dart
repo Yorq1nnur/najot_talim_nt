@@ -13,7 +13,7 @@ class ButtonModel {
   });
 }
 
-List<ButtonModel> buttonModels = [
+final List<ButtonModel> buttonModels = [
   ButtonModel(
     height: 20.h,
     width: 20.w,
@@ -34,4 +34,24 @@ List<ButtonModel> buttonModels = [
     width: 20.w,
     image: AppImages.divide,
   ),
+];
+
+final List<String> firstButtonModel = [
+  "7",
+  "8",
+  "9",
+];
+final List<String> secondButtonModel = [
+  "4",
+  "5",
+  "6",
+];
+final List<String> thirdButtonModel = [
+  "1",
+  "2",
+  "3",
+];
+final List<String> fourthButtonModel = [
+  ".",
+  "0",
 ];

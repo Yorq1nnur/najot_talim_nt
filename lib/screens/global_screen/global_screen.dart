@@ -3,9 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:najot_talim_nt/models/button_model/button_model.dart';
 import 'package:najot_talim_nt/screens/global_screen/widgets/button_items.dart';
+import 'package:najot_talim_nt/screens/global_screen/widgets/result_item.dart';
+import 'package:najot_talim_nt/screens/global_screen/widgets/second_button_items.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
 
@@ -27,8 +28,15 @@ class _GlobalScreenState extends State<GlobalScreen> {
         body: Stack(
           children: [
             Container(
-              color: AppColors.black,
-              height: 300.h,
+              color: AppColors.white,
+              height: 440.h,
+              child: Padding(
+                padding: EdgeInsets.only(
+                  top: 200.h,
+                  bottom: 120.h,
+                ),
+                child: ResultItem(),
+              ),
             ),
             Align(
               alignment: Alignment.bottomCenter,
@@ -37,9 +45,9 @@ class _GlobalScreenState extends State<GlobalScreen> {
                   horizontal: 15.w,
                   vertical: 20.h,
                 ),
-                height: 430.h,
+                height: 350.h,
                 decoration: BoxDecoration(
-                  color: Colors.red,
+                  color: AppColors.cE9F6FF,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(
                       20.r,
@@ -59,12 +67,69 @@ class _GlobalScreenState extends State<GlobalScreen> {
                           buttonModels.length,
                           (index) => ButtonItems(
                             imageUrl: buttonModels[index].image,
-                            height: buttonModels[index].height,
-                            width: buttonModels[index].width,
                           ),
                         ),
                       ],
-                    )
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ...List.generate(
+                          firstButtonModel.length,
+                          (index) => SecondButtonItems(
+                            text: firstButtonModel[index],
+                          ),
+                        ),
+                        ButtonItems(
+                          imageUrl: AppImages.multiply,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ...List.generate(
+                          firstButtonModel.length,
+                          (index) => SecondButtonItems(
+                            text: secondButtonModel[index],
+                          ),
+                        ),
+                        ButtonItems(
+                          imageUrl: AppImages.subtract,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ...List.generate(
+                          firstButtonModel.length,
+                          (index) => SecondButtonItems(
+                            text: thirdButtonModel[index],
+                          ),
+                        ),
+                        ButtonItems(
+                          imageUrl: AppImages.add,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ...List.generate(
+                          fourthButtonModel.length,
+                          (index) => SecondButtonItems(
+                            text: fourthButtonModel[index],
+                          ),
+                        ),
+                        ButtonItems(
+                          imageUrl: AppImages.history,
+                        ),
+                        ButtonItems(
+                          imageUrl: AppImages.equal,
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
