@@ -93,6 +93,16 @@ class StorageRepository {
     }
   }
 
+  static Future<void> addListString({
+    required String key,
+    required List<String> values,
+  }) async {
+    if (_preference != null) {
+      debugPrint("SAVING LIST:$values");
+      _preference!.setStringList(key, values);
+    }
+  }
+
   static List<String> getStringList({required String key}) {
     if (_preference != null) {
       return _preference!.getStringList(key) ?? [];

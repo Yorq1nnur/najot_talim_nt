@@ -8,7 +8,9 @@ class CalculatorViewModel with ChangeNotifier {
 
   String get displayValue => _displayValue;
 
-  void appendDigit(String digit) {
+  void appendDigit(
+    String digit,
+  ) {
     if (_shouldClearDisplay) {
       _displayValue = digit;
       _shouldClearDisplay = false;
@@ -27,13 +29,17 @@ class CalculatorViewModel with ChangeNotifier {
       calculateResult();
     }
     _operator = operator;
-    _result = double.parse(_displayValue);
+    _result = double.parse(
+      _displayValue,
+    );
     _shouldClearDisplay = true;
     notifyListeners();
   }
 
   void calculateResult() {
-    final currentValue = double.parse(_displayValue);
+    final currentValue = double.parse(
+      _displayValue,
+    );
     switch (_operator) {
       case '+':
         _result += currentValue;
@@ -55,7 +61,9 @@ class CalculatorViewModel with ChangeNotifier {
   }
 
   void divideByPercentage() {
-    final currentValue = double.parse(_displayValue);
+    final currentValue = double.parse(
+      _displayValue,
+    );
     final result = currentValue / 100;
     _displayValue = result.toString();
     _shouldClearDisplay = true;
@@ -72,7 +80,10 @@ class CalculatorViewModel with ChangeNotifier {
 
   void backspace() {
     if (_displayValue.length > 1) {
-      _displayValue = _displayValue.substring(0, _displayValue.length - 1);
+      _displayValue = _displayValue.substring(
+        0,
+        _displayValue.length - 1,
+      );
     } else {
       _displayValue = '0';
     }
