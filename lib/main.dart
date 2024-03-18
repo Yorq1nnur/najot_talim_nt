@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot_talim_nt/repositories/storage_repository/storage_repository.dart';
 import 'package:najot_talim_nt/screens/global_screen/global_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/view_models/calculator_view_model.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async{
+
+  WidgetsFlutterBinding.ensureInitialized();
+  StorageRepository.instance;
+
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(
