@@ -20,7 +20,7 @@ class ResultItem extends StatelessWidget {
           ),
           child: Text(
             calculatorViewModel.displayValue.contains(".0")
-                ? (double.parse(calculatorViewModel.displayValue).toInt(),)
+                ? double.parse(calculatorViewModel.displayValue).toInt()
                     .toString()
                 : calculatorViewModel.displayValue,
             style: TextStyle(
