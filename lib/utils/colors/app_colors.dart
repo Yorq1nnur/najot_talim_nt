@@ -8,4 +8,5 @@ class AppColors {
   static const Color transparent = Colors.transparent;
 
   static const Color c_1A72DD = Color(0xFF1A72DD);
+  static const Color cFAFAFA = Color(0xFFFAFAFA);
 }
