@@ -15,7 +15,7 @@ class ResultItem extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(
-              color: Colors.black,
+              color: Colors.transparent,
             ),
           ),
           padding: EdgeInsets.symmetric(
