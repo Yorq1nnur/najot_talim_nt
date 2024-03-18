@@ -164,7 +164,7 @@ class _GlobalScreenState extends State<GlobalScreen> {
                           ),
                         ),
                         ButtonItems(
-                          imageUrl: AppImages.history, onTap: () {  },
+                          imageUrl: AppImages.history, onTap: () {},
                         ),
                         ButtonItems(
                           imageUrl: AppImages.equal, onTap: () {
