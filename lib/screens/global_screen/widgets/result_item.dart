@@ -11,6 +11,7 @@ class ResultItem extends StatelessWidget {
     return Consumer<CalculatorViewModel>(
       builder: (context, calculatorProvider, _) {
         return Container(
+          width: 350.w,
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(
@@ -18,18 +19,21 @@ class ResultItem extends StatelessWidget {
             ),
           ),
           padding: EdgeInsets.symmetric(
-            horizontal: 16.w,
-            vertical: 16.h,
+            horizontal: 5.w,
+            vertical: 5.h,
           ),
           margin: EdgeInsets.symmetric(
             horizontal: 5.w,
           ),
-          alignment: Alignment.bottomRight,
           child: Text(
             calculatorProvider.displayValue,
             style: TextStyle(
-              fontSize: 48.sp,
+              fontSize: 50.sp,
             ),
+            maxLines: 10,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.right,
+            // softWrap: true,
           ),
         );
       },

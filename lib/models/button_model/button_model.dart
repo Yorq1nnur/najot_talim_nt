@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
 
@@ -55,3 +56,14 @@ final List<String> fourthButtonModel = [
   ".",
   "0",
 ];
+
+class Book extends StatelessWidget {
+  const Book({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: TextField(),
+    );
+  }
+}
