@@ -32,8 +32,6 @@ class ButtonItems extends StatelessWidget {
         child: Center(
           child: SvgPicture.asset(
             imageUrl,
-            // width: 20.w,
-            // height: 35.h,
           ),
         ),
       ),

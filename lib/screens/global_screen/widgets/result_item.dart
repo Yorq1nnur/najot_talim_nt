@@ -9,21 +9,14 @@ class ResultItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<CalculatorViewModel>(
-      builder: (context, calculatorViewModel, _) {
-        return Container(
-          width: 350.w,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(
-              color: Colors.transparent,
-            ),
-          ),
+      builder: (
+        context,
+        calculatorViewModel,
+        _,
+      ) {
+        return Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: 5.w,
-            vertical: 5.h,
-          ),
-          margin: EdgeInsets.symmetric(
-            horizontal: 5.w,
+            horizontal: 10.w,
           ),
           child: Text(
             calculatorViewModel.displayValue,
