@@ -9,6 +9,8 @@ import 'package:najot_talim_nt/screens/global_screen/widgets/result_item.dart';
 import 'package:najot_talim_nt/screens/global_screen/widgets/second_button_items.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
+import 'package:najot_talim_nt/view_models/calculator_view_model.dart';
+import 'package:provider/provider.dart';
 
 class GlobalScreen extends StatefulWidget {
   const GlobalScreen({super.key});
@@ -66,7 +68,20 @@ class _GlobalScreenState extends State<GlobalScreen> {
                         ...List.generate(
                           buttonModels.length,
                           (index) => ButtonItems(
-                            imageUrl: buttonModels[index].image,
+                            imageUrl: buttonModels[index].image, onTap: () {
+                              if(index == 0){
+                                context.read<CalculatorViewModel>().clear();
+                              }
+                              if(index == 1){
+                                context.read<CalculatorViewModel>().divideByPercentage();
+                              }
+                              if(index == 2){
+                                context.read<CalculatorViewModel>().backspace();
+                              }
+                              if(index == 3){
+                                context.read<CalculatorViewModel>().appendOperator("/");
+                              }
+                          },
                           ),
                         ),
                       ],
@@ -78,10 +93,17 @@ class _GlobalScreenState extends State<GlobalScreen> {
                           firstButtonModel.length,
                           (index) => SecondButtonItems(
                             text: firstButtonModel[index],
+                            onTap: () {
+                              context.read<CalculatorViewModel>().appendDigit(
+                                    firstButtonModel[index],
+                                  );
+                            },
                           ),
                         ),
                         ButtonItems(
-                          imageUrl: AppImages.multiply,
+                          imageUrl: AppImages.multiply, onTap: () {
+                          context.read<CalculatorViewModel>().appendOperator("*");
+                        },
                         ),
                       ],
                     ),
@@ -92,10 +114,17 @@ class _GlobalScreenState extends State<GlobalScreen> {
                           firstButtonModel.length,
                           (index) => SecondButtonItems(
                             text: secondButtonModel[index],
+                            onTap: () {
+                              context.read<CalculatorViewModel>().appendDigit(
+                                    secondButtonModel[index],
+                                  );
+                            },
                           ),
                         ),
                         ButtonItems(
-                          imageUrl: AppImages.subtract,
+                          imageUrl: AppImages.subtract, onTap: () {
+                          context.read<CalculatorViewModel>().appendOperator("-");
+                        },
                         ),
                       ],
                     ),
@@ -106,10 +135,17 @@ class _GlobalScreenState extends State<GlobalScreen> {
                           firstButtonModel.length,
                           (index) => SecondButtonItems(
                             text: thirdButtonModel[index],
+                            onTap: () {
+                              context.read<CalculatorViewModel>().appendDigit(
+                                    thirdButtonModel[index],
+                                  );
+                            },
                           ),
                         ),
                         ButtonItems(
-                          imageUrl: AppImages.add,
+                          imageUrl: AppImages.add, onTap: () {
+                          context.read<CalculatorViewModel>().appendOperator("+");
+                        },
                         ),
                       ],
                     ),
@@ -120,13 +156,20 @@ class _GlobalScreenState extends State<GlobalScreen> {
                           fourthButtonModel.length,
                           (index) => SecondButtonItems(
                             text: fourthButtonModel[index],
+                            onTap: () {
+                              context.read<CalculatorViewModel>().appendDigit(
+                                    fourthButtonModel[index],
+                                  );
+                            },
                           ),
                         ),
                         ButtonItems(
-                          imageUrl: AppImages.history,
+                          imageUrl: AppImages.history, onTap: () {  },
                         ),
                         ButtonItems(
-                          imageUrl: AppImages.equal,
+                          imageUrl: AppImages.equal, onTap: () {
+                          context.read<CalculatorViewModel>().calculateResult();
+                        },
                         ),
                       ],
                     ),

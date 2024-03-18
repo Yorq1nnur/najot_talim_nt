@@ -7,14 +7,16 @@ class SecondButtonItems extends StatelessWidget {
   const SecondButtonItems({
     super.key,
     required this.text,
+    required this.onTap,
   });
 
+  final VoidCallback onTap;
   final String text;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      onTap: onTap,
       child: Container(
         height: 50.h,
         width: 50.w,

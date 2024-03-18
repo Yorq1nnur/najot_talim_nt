@@ -12,15 +12,24 @@ class ResultItem extends StatelessWidget {
       builder: (context, calculatorProvider, _) {
         return Container(
           decoration: BoxDecoration(
-              color: Colors.white, border: Border.all(color: Colors.black)),
-          padding: const EdgeInsets.all(16.0),
+            color: Colors.white,
+            border: Border.all(
+              color: Colors.black,
+            ),
+          ),
+          padding: EdgeInsets.symmetric(
+            horizontal: 16.w,
+            vertical: 16.h,
+          ),
           margin: EdgeInsets.symmetric(
             horizontal: 5.w,
           ),
           alignment: Alignment.bottomRight,
           child: Text(
             calculatorProvider.displayValue,
-            style: const TextStyle(fontSize: 48.0),
+            style: TextStyle(
+              fontSize: 48.sp,
+            ),
           ),
         );
       },

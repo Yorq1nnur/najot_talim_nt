@@ -19,6 +19,7 @@ class CalculatorViewModel with ChangeNotifier {
         _displayValue += digit;
       }
     }
+    debugPrint("====================$_displayValue===================");
     notifyListeners();
   }
 
@@ -53,6 +54,35 @@ class CalculatorViewModel with ChangeNotifier {
     _shouldClearDisplay = true;
     notifyListeners();
   }
+  // void precentResult() {
+  //   final currentValue = double.parse(_displayValue);
+  //   switch (_operator) {
+  //     case '%':
+  //       _result /= currentValue;
+  //       break;
+  //   }
+  //   _displayValue = _result.toString();
+  //   _operator = '';
+  //   _shouldClearDisplay = true;
+  //   notifyListeners();
+  // }
+
+  void divideByPercentage() {
+    final currentValue = double.parse(_displayValue);
+    final result = currentValue / 100;
+    _displayValue = result.toString();
+    _shouldClearDisplay = true;
+    notifyListeners();
+  }
+
+  // void multiply() {
+  //   final currentValue = double.parse(_displayValue);
+  //   _displayValue = currentValue;
+  //   _currentOperator = Operator.multiply;
+  //   _shouldClearDisplay = true;
+  //   notifyListeners();
+  // }
+
 
   void clear() {
     _displayValue = '0';
@@ -61,4 +91,14 @@ class CalculatorViewModel with ChangeNotifier {
     _shouldClearDisplay = false;
     notifyListeners();
   }
+
+  void backspace() {
+    if (_displayValue.length > 1) {
+      _displayValue = _displayValue.substring(0, _displayValue.length - 1);
+    } else {
+      _displayValue = '0';
+    }
+    notifyListeners();
+  }
+
 }

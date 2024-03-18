@@ -7,14 +7,16 @@ class ButtonItems extends StatelessWidget {
   const ButtonItems({
     super.key,
     required this.imageUrl,
+    required this.onTap,
   });
 
+  final VoidCallback onTap;
   final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      onTap: onTap,
       child: Container(
         height: 50.h,
         width: 50.w,
