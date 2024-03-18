@@ -16,7 +16,11 @@ class _GlobalScreenState extends State<GlobalScreen> {
   Widget build(BuildContext context) {
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(statusBarColor: AppColors.transparent),
-      child: Scaffold(),
+      child: Scaffold(
+        body: Center(
+          child: Text("0"),
+        ),
+      ),
     );
   }
 }
