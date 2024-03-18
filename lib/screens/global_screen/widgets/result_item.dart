@@ -29,7 +29,6 @@ class ResultItem extends StatelessWidget {
             maxLines: 5,
             overflow: TextOverflow.fade,
             textAlign: TextAlign.right,
-            // softWrap: true,
           ),
         );
       },
