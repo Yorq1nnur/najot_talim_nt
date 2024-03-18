@@ -19,7 +19,10 @@ class ResultItem extends StatelessWidget {
             horizontal: 10.w,
           ),
           child: Text(
-            calculatorViewModel.displayValue,
+            calculatorViewModel.displayValue.contains(".0")
+                ? (double.parse(calculatorViewModel.displayValue).toInt(),)
+                    .toString()
+                : calculatorViewModel.displayValue,
             style: TextStyle(
               fontSize: 35.sp,
             ),
