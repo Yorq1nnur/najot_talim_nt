@@ -9,7 +9,7 @@ class ResultItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<CalculatorViewModel>(
-      builder: (context, calculatorProvider, _) {
+      builder: (context, calculatorViewModel, _) {
         return Container(
           width: 350.w,
           decoration: BoxDecoration(
@@ -26,7 +26,7 @@ class ResultItem extends StatelessWidget {
             horizontal: 5.w,
           ),
           child: Text(
-            calculatorProvider.displayValue,
+            calculatorViewModel.displayValue,
             style: TextStyle(
               fontSize: 35.sp,
             ),
