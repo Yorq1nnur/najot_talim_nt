@@ -28,10 +28,10 @@ class ResultItem extends StatelessWidget {
           child: Text(
             calculatorProvider.displayValue,
             style: TextStyle(
-              fontSize: 50.sp,
+              fontSize: 35.sp,
             ),
-            maxLines: 10,
-            overflow: TextOverflow.ellipsis,
+            maxLines: 5,
+            overflow: TextOverflow.fade,
             textAlign: TextAlign.right,
             // softWrap: true,
           ),
