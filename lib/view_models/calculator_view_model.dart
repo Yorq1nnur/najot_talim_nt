@@ -55,6 +55,9 @@ class CalculatorViewModel with ChangeNotifier {
         break;
     }
     _displayValue = _result.toString();
+    _displayValue = _displayValue.contains(".0")
+        ? _result.toInt().toString()
+        : _displayValue;
     _operator = '';
     _shouldClearDisplay = true;
     notifyListeners();
@@ -66,6 +69,9 @@ class CalculatorViewModel with ChangeNotifier {
     );
     final result = currentValue / 100;
     _displayValue = result.toString();
+    _displayValue = _displayValue.contains(".00")
+        ? int.parse(_displayValue).toString()
+        : _displayValue;
     _shouldClearDisplay = true;
     notifyListeners();
   }
