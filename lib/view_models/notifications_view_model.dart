@@ -10,6 +10,7 @@ class NotificationsViewModel extends ChangeNotifier {
         .showNotification(title: title, body: body, id: id);
     indexes.add(id);
     notifyListeners();
+    debugPrint("==========\$\$\$\$\$\$\$\$\$\$==========");
   }
 
   void cancelOneNotifications({required int id}) {

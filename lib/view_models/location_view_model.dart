@@ -6,8 +6,10 @@ class LocationViewModel extends ChangeNotifier {
   Location location = Location();
 
   LatLng? latLng;
+  LocationData? userLocationData;
 
   LocationViewModel() {
+
     getUserLocation();
   }
 
@@ -51,6 +53,8 @@ class LocationViewModel extends ChangeNotifier {
       debugPrint("LATITUDE FROM STREAM:${locationData.latitude}");
       debugPrint("SPEED FROM STREAM:${locationData.speed}");
       debugPrint("ALTITUDE FROM STREAM:${locationData.altitude}");
+      userLocationData = locationData;
+      // context
     });
   }
 }

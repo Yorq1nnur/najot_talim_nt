@@ -16,7 +16,7 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
-        title: Text("Deafult"),
+        title: const Text("Default"),
       ),
       body: Center(
         child: TextButton(
@@ -29,13 +29,13 @@ class SplashScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return GoogleMapsScreen();
+                    return const GoogleMapsScreen();
                   },
                 ),
               );
             }
           },
-          child: Text("GOOGLE MAPS OYNASI"),
+          child: const Text("GOOGLE MAPS OYNASI"),
         ),
       ),
     );

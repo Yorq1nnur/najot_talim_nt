@@ -13,6 +13,7 @@ void main() {
     providers: [
       ChangeNotifierProvider(create: (_) => LocationViewModel()),
       ChangeNotifierProvider(create: (_) => MapsViewModel()),
+      ChangeNotifierProvider(create: (_) => LocationViewModel()),
     ],
     child: const MyApp(),
   ));
