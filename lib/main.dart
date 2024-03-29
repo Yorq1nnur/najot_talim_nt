@@ -9,14 +9,22 @@ import 'package:provider/provider.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(create: (_) => LocationViewModel()),
-      ChangeNotifierProvider(create: (_) => MapsViewModel()),
-      ChangeNotifierProvider(create: (_) => LocationViewModel()),
-    ],
-    child: const MyApp(),
-  ));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => LocationViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => MapsViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => LocationViewModel(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
