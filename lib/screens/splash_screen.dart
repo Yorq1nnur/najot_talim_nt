@@ -47,7 +47,7 @@ class SplashScreen extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return const GoogleMapsScreen();
+                          return GoogleMapsScreen();
                         },
                       ),
                     );
@@ -67,7 +67,7 @@ class SplashScreen extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return const GoogleMapsScreen();
+                          return GoogleMapsScreen();
                         },
                       ),
                     );
