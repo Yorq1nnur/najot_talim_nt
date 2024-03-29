@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
-// import 'package:najot_talim_nt/services/local_notification_service.dart';
+import 'package:najot_talim_nt/services/local_notification_service.dart';
 
 class LocationViewModel extends ChangeNotifier {
   Location location = Location();
@@ -41,6 +41,12 @@ class LocationViewModel extends ChangeNotifier {
     debugPrint("LATITUDE:${locationData.latitude}");
     debugPrint("SPEED:${locationData.speed}");
     debugPrint("ALTITUDE:${locationData.altitude}");
+    LocalNotificationService().showNotification(
+      title: "Diqqat",
+      body:
+          "Foydalanuvchining joriy koordinatasi: (${locationData.longitude}, ${locationData.latitude}) ga o'zgardi!!!",
+      id: DateTime.now().millisecond.toInt(),
+    );
 
     listenCurrentLocation();
 
@@ -54,12 +60,7 @@ class LocationViewModel extends ChangeNotifier {
       debugPrint("SPEED FROM STREAM:${locationData.speed}");
       debugPrint("ALTITUDE FROM STREAM:${locationData.altitude}");
       userLocationData = locationData;
-      // LocalNotificationService().showNotification(
-      //   title: "Diqqat",
-      //   body:
-      //       "Foydalanuvchining joriy koordinatasi: (${locationData.longitude}, ${locationData.latitude}) ga o'zgardi!!!",
-      //   id: DateTime.now().millisecond.toInt(),
-      // );
+
       // context
     });
   }

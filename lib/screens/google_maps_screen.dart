@@ -85,3 +85,11 @@ class GoogleMapsScreen extends StatelessWidget {
     );
   }
 }
+
+
+/*
+#0      StandardMethodCodec.decodeEnvelope (package:flutter/src/services/message_codecs.dart:651:7)
+E/flutter (12497): #1      MethodChannel._invokeMethod (package:flutter/src/services/platform_channel.dart:334:18)
+E/flutter (12497): <asynchronous suspension>
+E/flutter (12497): #2      MethodChannelLocation.enableBackgroundMode (package:location_platform_interface/src/method_channel_location.dart:68:20)
+ */
