@@ -14,29 +14,29 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  // _init() async {
-  //   await Future.delayed(
-  //     const Duration(
-  //       seconds: 3,
-  //     ),
-  //   );
-  //   if (mounted) {
-  //     Navigator.pushReplacement(
-  //       context,
-  //       MaterialPageRoute(
-  //         builder: (context) {
-  //           return const AddressesScreen();
-  //         },
-  //       ),
-  //     );
-  //   }
-  // }
-  //
-  // @override
-  // void initState() {
-  //   _init();
-  //   super.initState();
-  // }
+  _init() async {
+    await Future.delayed(
+      const Duration(
+        seconds: 3,
+      ),
+    );
+    if (mounted) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return const AddressesScreen();
+          },
+        ),
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    _init();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
