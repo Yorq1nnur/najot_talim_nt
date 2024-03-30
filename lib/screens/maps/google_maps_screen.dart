@@ -7,8 +7,6 @@ import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import 'package:najot_talim_nt/view_models/addressess_view_model.dart';
 import 'package:najot_talim_nt/view_models/maps_view_model.dart';
 import 'package:provider/provider.dart';
-
-import '../../data/models/place_category.dart';
 import '../widgets/map_type_item.dart';
 
 class GoogleMapsScreen extends StatefulWidget {
@@ -93,7 +91,9 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
                   PlaceModel? place = newAddressDetails as PlaceModel?;
                   place?.lat = cameraPosition!.target.latitude.toString();
                   place?.placeCategory = 'work';
-                  context.read<AddressesViewModel>().addNewAddress(placeModel: place!,);
+                  context.read<AddressesViewModel>().addNewAddress(
+                        placeModel: place!,
+                      );
                   Navigator.pop(context);
                 },
               );
