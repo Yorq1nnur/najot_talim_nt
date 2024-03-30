@@ -28,7 +28,9 @@ class MyApp extends StatelessWidget {
         ScreenUtil.init(context);
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(useMaterial3: false),
+          theme: ThemeData(
+            useMaterial3: true,
+          ),
           home: child,
         );
       },
