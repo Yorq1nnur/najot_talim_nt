@@ -52,82 +52,89 @@ class _AddressesScreenState extends State<AddressesScreen> {
                           viewModel.myAddresses.length,
                           (index) {
                             var myAddress = viewModel.myAddresses[index];
-                            return ZoomTapAnimation(
+                            return GestureDetector(
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) {
-                                //       return UpdateAddressScreen(
-                                //         placeModel: myAddress,
-                                //       );
-                                //     },
-                                //   ),
-                                // );
-                              },
-                              child: Stack(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 15.w,
-                                      vertical: 15.h,
-                                    ),
-                                    margin: EdgeInsets.symmetric(
-                                      horizontal: 30.w,
-                                      vertical: 10.h,
-                                    ),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(
-                                        16.r,
-                                      ),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey,
-                                          blurRadius: 5.w,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Image.asset(
-                                          AppImages.home,
-                                          height: 30.h,
-                                          width: 40.w,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Home",
-                                              style:
-                                              AppTextStyle.interBold.copyWith(
-                                                color: Colors.black,
-                                                fontSize: 20.sp,
-                                              ),
-                                            ),
-                                            Text(
-                                              "Mirtemir ko'chasi, 29",
-                                              style:
-                                              AppTextStyle.interBold.copyWith(
-                                                color: Colors.black.withOpacity(
-                                                  0.5,
-                                                ),
-                                                fontSize: 16.sp,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        const Spacer(),
-
-                                      ],
-                                    ),
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return UpdateAddressScreen(
+                                        placeModel: myAddress,
+                                      );
+                                    },
                                   ),
+                                );
+                              },
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 15.w,
+                                  vertical: 15.h,
+                                ),
+                                margin: EdgeInsets.symmetric(
+                                  horizontal: 30.w,
+                                  vertical: 10.h,
+                                ),
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(
+                                    16.r,
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey,
+                                      blurRadius: 5.w,
+                                    ),
                                   ],
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.start,
+                                  children: [
+                                    Image.asset(
+                                      AppImages.home,
+                                      height: 30.h,
+                                      width: 40.w,
+                                    ),
+                                    SizedBox(
+                                      width: 15.w,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Home",
+                                          style: AppTextStyle.interBold
+                                              .copyWith(
+                                            color: Colors.black,
+                                            fontSize: 20.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          "Mirtemir ko'chasi, 29",
+                                          style: AppTextStyle.interBold
+                                              .copyWith(
+                                            color: Colors.black.withOpacity(
+                                              0.5,
+                                            ),
+                                            fontSize: 16.sp,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const Spacer(),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        ZoomTapAnimation(
+                                          onTap: (){},
+                                          child: Icon(Icons.cancel_outlined, color: Colors.black, size: 30.w,),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
                               ),
                             );
                           },

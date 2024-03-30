@@ -5,9 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:najot_talim_nt/data/api_provider/api_provider.dart';
-import 'package:najot_talim_nt/data/models/place_category.dart';
 import 'package:najot_talim_nt/data/models/place_model.dart';
-import 'package:najot_talim_nt/utils/images/app_images.dart';
 
 class MapsViewModel extends ChangeNotifier {
   MapsViewModel() {
@@ -67,31 +65,12 @@ class MapsViewModel extends ChangeNotifier {
 
     Uint8List? markerImage;
 
-    switch (placeModel.placeCategory) {
-      case PlaceCategory.work:
-        markerImage = await getBytesFromAsset(
-          AppImages.work,
-          100,
-        );
-        break;
-      case PlaceCategory.home:
-        markerImage = await getBytesFromAsset(
-          AppImages.home,
-          100,
-        );
-      case PlaceCategory.other:
-        markerImage = await getBytesFromAsset(
-          AppImages.other,
-          100,
-        );
-    }
-
     markers.add(
       Marker(
-        position: placeModel.latLng,
+        position: LatLng(double.parse(placeModel.lat), double.parse(placeModel.long)),
         infoWindow: InfoWindow(
           title: placeModel.placeName,
-          snippet: placeModel.placeCategory.name,
+          snippet: placeModel.placeCategory,
         ),
         //BitmapDescriptor.defaultMarker,
         icon: BitmapDescriptor.fromBytes(markerImage!),

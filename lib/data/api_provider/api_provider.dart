@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
+import 'package:najot_talim_nt/data/models/place_model.dart';
+import '../../utils/constants/app_constants.dart';
+import '../my_response.dart';
 
 class ApiProvider {
   static Future<String> getPlaceNameByLocation(LatLng latLng) async {
@@ -31,5 +33,92 @@ class ApiProvider {
       }
     }
     return place;
+  }
+
+  static Future<MyResponse> getAllAddresses() async {
+    Uri uri = Uri.https(AppConstants.baseUrl, "/api/v1/map");
+    try {
+      http.Response response = await http.get(
+        uri,
+        headers: {
+          "Authorization": "Bearer ${AppConstants.crudToken}",
+          "Content-Type": "application/json",
+        },
+      );
+
+      if (response.statusCode == 200) {
+        return MyResponse(
+          data: (jsonDecode(response.body)["items"] as List?)
+              ?.map((e) => PlaceModel.fromJson(e))
+              .toList() ??
+              [],
+        );
+      }
+      return MyResponse(errorText: response.statusCode.toString());
+    } catch (error) {
+      return MyResponse(errorText: error.toString());
+    }
+  }
+
+  static Future<MyResponse> addNewAddress(PlaceModel placeModel) async {
+    Uri uri = Uri.https(AppConstants.baseUrl, "/api/v1/library");
+    try {
+      http.Response response = await http.post(
+        uri,
+        headers: {
+          "Authorization": "Bearer ${AppConstants.crudToken}",
+          "Content-Type": "application/json",
+        },
+        body: jsonEncode([placeModel.toJson()]),
+      );
+      if (response.statusCode == 201) {
+        return MyResponse(data: "Product added successfully!");
+      }
+      return MyResponse(errorText: response.statusCode.toString());
+    } catch (error) {
+      return MyResponse(errorText: error.toString());
+    }
+  }
+
+  static Future<MyResponse> deleteAddress(String id) async {
+    Uri uri = Uri.https(AppConstants.baseUrl, "/api/v1/library");
+    try {
+      http.Response response = await http.delete(
+        uri,
+        headers: {
+          "Authorization": "Bearer ${AppConstants.crudToken}",
+          "Content-Type": "application/json",
+        },
+        body: jsonEncode([
+          {"id": id}
+        ]),
+      );
+      if (response.statusCode == 200) {
+        return MyResponse(data: "Product deleted successfully!");
+      }
+      return MyResponse(errorText: response.statusCode.toString());
+    } catch (error) {
+      return MyResponse(errorText: error.toString());
+    }
+  }
+
+  static Future<MyResponse> updateAddress(PlaceModel placeModel) async {
+    Uri uri = Uri.https(AppConstants.baseUrl, "/api/v1/library");
+    try {
+      http.Response response = await http.put(
+        uri,
+        headers: {
+          "Authorization": "Bearer ${AppConstants.crudToken}",
+          "Content-Type": "application/json",
+        },
+        body: jsonEncode([placeModel.toJsonForUpdate()]),
+      );
+      if (response.statusCode == 200) {
+        return MyResponse(data: "Product updated successfully!");
+      }
+      return MyResponse(errorText: response.statusCode.toString());
+    } catch (error) {
+      return MyResponse(errorText: error.toString());
+    }
   }
 }

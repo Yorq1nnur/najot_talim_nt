@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:najot_talim_nt/data/models/place_category.dart';
 import 'package:najot_talim_nt/data/models/place_model.dart';
 import 'package:najot_talim_nt/screens/maps/dialogs/address_detail_dialog.dart';
 import 'package:najot_talim_nt/screens/widgets/map_type_item.dart';
@@ -28,7 +27,12 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
     context.read<MapsViewModel>().currentPlaceName =
         widget.placeModel.placeName;
 
-    context.read<MapsViewModel>().setLatInitialLong(widget.placeModel.latLng);
+    context.read<MapsViewModel>().setLatInitialLong(
+          LatLng(
+            double.parse(widget.placeModel.lat),
+            double.parse(widget.placeModel.long),
+          ),
+        );
     super.initState();
   }
 
@@ -100,8 +104,9 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
                 context: context,
                 placeModel: (newAddressDetails) {
                   PlaceModel? place = newAddressDetails as PlaceModel?;
-                  place?.latLng = cameraPosition!.target;
-                  place?.placeCategory = PlaceCategory.work;
+                  place?.lat = cameraPosition!.target.latitude.toString();
+                  place?.long = cameraPosition!.target.longitude.toString();
+                  place?.placeCategory = 'work';
                   context.read<AddressesViewModel>().addNewAddress(place!);
                   Navigator.pop(context);
                 },

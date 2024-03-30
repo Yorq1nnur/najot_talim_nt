@@ -14,7 +14,6 @@ class AddressesViewModel extends ChangeNotifier {
   bool get getLoader => _isLoading;
 
   addNewAddress(PlaceModel placeModel) async {
-
     myAddresses.add(placeModel);
     notifyListeners();
     //Save some place

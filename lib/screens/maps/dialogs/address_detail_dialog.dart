@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:najot_talim_nt/data/models/place_category.dart';
 import 'package:najot_talim_nt/data/models/place_model.dart';
 
 addressDetailDialog({
@@ -29,10 +27,11 @@ addressDetailDialog({
                       entrance: "",
                       flatNumber: "",
                       orientAddress: "",
-                      placeCategory: PlaceCategory.home,
-                      latLng:const  LatLng(0,0),
+                      placeCategory: "home",
+                      lat:"0",
+                      long: "0",
                       placeName: "Chilonzor",
-                      stage: "",
+                      stage: "", id: DateTime.now().millisecond,
                     ),);
                     Navigator.pop(context);
                   },
