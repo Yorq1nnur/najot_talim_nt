@@ -9,7 +9,7 @@ class ApiProvider {
     String place = "Hudud noma'lum";
 
     Uri uri = Uri.https("geocode-maps.yandex.ru", "/1.x/", {
-      "apikey": "8b8b8f84-9b23-4b53-965d-92698b338711",
+      "apikey": "5f31bfed-b0d6-428c-9835-d6d0ac9d1e65",
       "geocode": "${latLng.longitude}, ${latLng.latitude}",
       "lang": "uz",
       "format": "json",
