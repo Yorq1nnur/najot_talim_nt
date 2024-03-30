@@ -4,9 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/screens/maps/google_maps_screen.dart';
 import 'package:najot_talim_nt/screens/maps/update_address_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
+import 'package:najot_talim_nt/utils/images/app_images.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import 'package:najot_talim_nt/view_models/addressess_view_model.dart';
 import 'package:provider/provider.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class AddressesScreen extends StatefulWidget {
   const AddressesScreen({super.key});
@@ -44,46 +46,125 @@ class _AddressesScreenState extends State<AddressesScreen> {
               Expanded(
                 child: Consumer<AddressesViewModel>(
                   builder: (context, viewModel, child) {
-                    return ListView(children: [
-                      ...List.generate(viewModel.myAddresses.length, (index) {
-                        var myAddress = viewModel.myAddresses[index];
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return UpdateAddressScreen(
-                                    placeModel: myAddress,
-                                  );
-                                },
+                    return ListView(
+                      children: [
+                        ...List.generate(
+                          viewModel.myAddresses.length,
+                          (index) {
+                            var myAddress = viewModel.myAddresses[index];
+                            return ZoomTapAnimation(
+                              onTap: () {
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //     builder: (context) {
+                                //       return UpdateAddressScreen(
+                                //         placeModel: myAddress,
+                                //       );
+                                //     },
+                                //   ),
+                                // );
+                              },
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 15.w,
+                                      vertical: 15.h,
+                                    ),
+                                    margin: EdgeInsets.symmetric(
+                                      horizontal: 30.w,
+                                      vertical: 10.h,
+                                    ),
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(
+                                        16.r,
+                                      ),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey,
+                                          blurRadius: 5.w,
+                                        ),
+                                      ],
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Image.asset(
+                                          AppImages.home,
+                                          height: 30.h,
+                                          width: 40.w,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Home",
+                                              style:
+                                              AppTextStyle.interBold.copyWith(
+                                                color: Colors.black,
+                                                fontSize: 20.sp,
+                                              ),
+                                            ),
+                                            Text(
+                                              "Mirtemir ko'chasi, 29",
+                                              style:
+                                              AppTextStyle.interBold.copyWith(
+                                                color: Colors.black.withOpacity(
+                                                  0.5,
+                                                ),
+                                                fontSize: 16.sp,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const Spacer(),
+
+                                      ],
+                                    ),
+                                  ),
+                                  ],
                               ),
                             );
                           },
-                          child: Container(
-                            margin: const EdgeInsets.all(12),
-                            height: 100,
-                            width: double.infinity,
-                            color: Colors.blue,
-                          ),
-                        );
-                      })
-                    ]);
+                        )
+                      ],
+                    );
                   },
                 ),
               ),
               TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return const GoogleMapsScreen();
-                        },
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const GoogleMapsScreen();
+                      },
+                    ),
+                  );
+                },
+                child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 50.w,
+                      vertical: 10.h,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(
+                        16.r,
                       ),
-                    );
-                  },
-                  child: const Text("Yangi address qo'shish"))
+                    ),
+                    child: Text(
+                      "ADD NEW ADDRESS",
+                      style:
+                          AppTextStyle.interBold.copyWith(color: Colors.white),
+                    )),
+              ),
             ],
           ),
         ));
