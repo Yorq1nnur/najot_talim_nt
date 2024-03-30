@@ -60,7 +60,7 @@ class ApiProvider {
     }
   }
 
-  static Future<MyResponse> addNewAddress(PlaceModel placeModel) async {
+  static Future<PlaceModel> addNewAddress(PlaceModel placeModel) async {
     Uri uri = Uri.https(AppConstants.baseUrl, "/api/v1/library");
     try {
       http.Response response = await http.post(
@@ -72,11 +72,11 @@ class ApiProvider {
         body: jsonEncode([placeModel.toJson()]),
       );
       if (response.statusCode == 201) {
-        return MyResponse(data: "Product added successfully!");
+        return placeModel;
       }
-      return MyResponse(errorText: response.statusCode.toString());
+      return placeModel;
     } catch (error) {
-      return MyResponse(errorText: error.toString());
+      return placeModel;
     }
   }
 

@@ -93,7 +93,7 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
                   PlaceModel? place = newAddressDetails as PlaceModel?;
                   place?.lat = cameraPosition!.target.latitude.toString();
                   place?.placeCategory = 'work';
-                  context.read<AddressesViewModel>().addNewAddress(place!);
+                  context.read<AddressesViewModel>().addNewAddress(placeModel: place!,);
                   Navigator.pop(context);
                 },
               );

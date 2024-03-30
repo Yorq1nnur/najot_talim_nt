@@ -107,7 +107,9 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
                   place?.lat = cameraPosition!.target.latitude.toString();
                   place?.long = cameraPosition!.target.longitude.toString();
                   place?.placeCategory = 'work';
-                  context.read<AddressesViewModel>().addNewAddress(place!);
+                  context.read<AddressesViewModel>().addNewAddress(
+                        placeModel: place!,
+                      );
                   Navigator.pop(context);
                 },
               );

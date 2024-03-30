@@ -59,7 +59,7 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                   MaterialPageRoute(
                                     builder: (context) {
                                       return UpdateAddressScreen(
-                                        placeModel: myAddress,
+                                        placeModel: myAddress.data,
                                       );
                                     },
                                   ),
