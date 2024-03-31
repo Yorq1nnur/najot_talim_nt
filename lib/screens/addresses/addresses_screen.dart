@@ -6,7 +6,7 @@ import 'package:najot_talim_nt/screens/maps/update_address_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
-import 'package:najot_talim_nt/view_models/addressess_view_model.dart';
+import 'package:najot_talim_nt/view_models/addresses_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
@@ -59,7 +59,7 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                   MaterialPageRoute(
                                     builder: (context) {
                                       return UpdateAddressScreen(
-                                        placeModel: myAddress.data,
+                                        placeModel: myAddress,
                                       );
                                     },
                                   ),
@@ -88,8 +88,7 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                   ],
                                 ),
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Image.asset(
                                       AppImages.home,
@@ -105,16 +104,16 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                       children: [
                                         Text(
                                           "Home",
-                                          style: AppTextStyle.interBold
-                                              .copyWith(
+                                          style:
+                                              AppTextStyle.interBold.copyWith(
                                             color: Colors.black,
                                             fontSize: 20.sp,
                                           ),
                                         ),
                                         Text(
                                           "Mirtemir ko'chasi, 29",
-                                          style: AppTextStyle.interBold
-                                              .copyWith(
+                                          style:
+                                              AppTextStyle.interBold.copyWith(
                                             color: Colors.black.withOpacity(
                                               0.5,
                                             ),
@@ -125,11 +124,16 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                     ),
                                     const Spacer(),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         ZoomTapAnimation(
-                                          onTap: (){},
-                                          child: Icon(Icons.cancel_outlined, color: Colors.black, size: 30.w,),
+                                          onTap: () {},
+                                          child: Icon(
+                                            Icons.cancel_outlined,
+                                            color: Colors.black,
+                                            size: 30.w,
+                                          ),
                                         ),
                                       ],
                                     )

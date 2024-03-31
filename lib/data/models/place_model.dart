@@ -11,7 +11,7 @@ class PlaceModel {
     required this.id,
   });
 
-  final int id;
+  final String id;
   String lat;
   String long;
   String placeName;
@@ -31,7 +31,7 @@ class PlaceModel {
       placeCategory: json['place_category'] as String? ?? "",
       lat: json['lat'] as String? ?? "",
       long: json['long'] as String? ?? "",
-      id: json['id'] as int? ?? 0,
+      id: json['id'] as String? ?? '',
     );
   }
 
@@ -72,7 +72,7 @@ class PlaceModel {
     String? placeCategory,
     String? lat,
     String? long,
-    int? id,
+    String? id,
   }) {
     return PlaceModel(
       placeName: placeName ?? this.placeName,

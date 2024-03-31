@@ -4,7 +4,7 @@ import 'package:najot_talim_nt/data/models/place_model.dart';
 import 'package:najot_talim_nt/screens/maps/dialogs/address_detail_dialog.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
-import 'package:najot_talim_nt/view_models/addressess_view_model.dart';
+import 'package:najot_talim_nt/view_models/addresses_view_model.dart';
 import 'package:najot_talim_nt/view_models/maps_view_model.dart';
 import 'package:provider/provider.dart';
 import '../widgets/map_type_item.dart';
