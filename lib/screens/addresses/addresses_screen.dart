@@ -141,6 +141,9 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                                 .read<AddressesViewModel>()
                                                 .deleteCategory(
                                                     myAddress.docId);
+                                            context
+                                                .read<AddressesViewModel>()
+                                                .getPlaces();
                                           },
                                           child: Icon(
                                             Icons.cancel_outlined,
