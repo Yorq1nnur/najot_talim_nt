@@ -68,9 +68,7 @@ class AddressesViewModel extends ChangeNotifier {
     }
   }
 
-  updateCategory(
-    PlaceModel placeModel,
-  ) async {
+  updateCategory({required PlaceModel placeModel}) async {
     try {
       _notify(true);
       await FirebaseFirestore.instance

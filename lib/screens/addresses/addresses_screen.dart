@@ -60,6 +60,7 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                     return UpdateAddressScreen(
                                       placeModel: myAddress,
                                       onTap: () {
+                                        context.read<AddressesViewModel>().getPlaces();
                                         setState(() {});
                                       },
                                     );

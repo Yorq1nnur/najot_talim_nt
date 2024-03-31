@@ -110,20 +110,42 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                 bottom: MediaQuery.sizeOf(context).height / 50,
                 child: ZoomTapAnimation(
                   onTap: () async {
-                    PlaceModel placeModel = PlaceModel(
-                      placeCategory: category,
-                      lat: context.read<MapsViewModel>().currentCameraPosition.target.latitude.toString(),
-                      long: context.read<MapsViewModel>().currentCameraPosition.target.longitude.toString(),
-                      image: 'assets/images/$category.png',
-                      docId: '',
-                      placeName: context.read<MapsViewModel>().currentPlaceName,
-                    );
-                    await context.read<AddressesViewModel>().addNewAddress(
-                          placeModel: placeModel,
-                        );
-                    if (!context.mounted) return;
-                    widget.onTap.call();
-                    Navigator.pop(context);
+                    if(category != ''){
+                      PlaceModel placeModel = PlaceModel(
+                        placeCategory: category,
+                        lat: context.read<MapsViewModel>().currentCameraPosition.target.latitude.toString(),
+                        long: context.read<MapsViewModel>().currentCameraPosition.target.longitude.toString(),
+                        image: 'assets/images/$category.png',
+                        docId: '',
+                        placeName: context.read<MapsViewModel>().currentPlaceName,
+                      );
+                      await context.read<AddressesViewModel>().addNewAddress(
+                        placeModel: placeModel,
+                      );
+                      if (!context.mounted) return;
+                      widget.onTap.call();
+                      Navigator.pop(context);
+                    }else{
+                      ScaffoldMessenger.of(
+                          context)
+                          .showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            "PLEASE ALL VALUE COMPLETING!!!",
+                            style:
+                            AppTextStyle
+                                .interBold
+                                .copyWith(
+                              color: Colors
+                                  .white,
+                            ),
+                            textAlign:
+                            TextAlign
+                                .center,
+                          ),
+                        ),
+                      );
+                    }
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(
