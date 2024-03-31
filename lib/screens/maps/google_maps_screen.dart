@@ -12,7 +12,10 @@ import '../widgets/map_type_item.dart';
 class GoogleMapsScreen extends StatefulWidget {
   const GoogleMapsScreen({
     super.key,
+    required this.onTap,
   });
+
+  final VoidCallback onTap;
 
   @override
   State<GoogleMapsScreen> createState() => _GoogleMapsScreenState();
@@ -35,8 +38,6 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
                         .read<MapsViewModel>()
                         .changeCurrentLocation(cameraPosition!);
                   }
-                  // ScaffoldMessenger.of(context)
-                  //     .showSnackBar(const SnackBar(content: Text("IDLE")));
                 },
                 onCameraMove: (CameraPosition currentCameraPosition) {
                   cameraPosition = currentCameraPosition;
@@ -91,11 +92,13 @@ class _GoogleMapsScreenState extends State<GoogleMapsScreen> {
                   PlaceModel? place = newAddressDetails as PlaceModel?;
                   place?.lat = cameraPosition!.target.latitude.toString();
                   place?.long = cameraPosition!.target.longitude.toString();
-                  place?.placeName = context.read<MapsViewModel>().currentPlaceName;
+                  place?.placeName =
+                      context.read<MapsViewModel>().currentPlaceName;
                   context.read<AddressesViewModel>().addNewAddress(
                         placeModel: place!,
                       );
                   Navigator.pop(context);
+                  widget.onTap.call();
                 },
               );
             },

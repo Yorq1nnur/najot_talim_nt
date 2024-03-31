@@ -124,7 +124,7 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                               ),
                                               fontSize: 16.sp,
                                             ),
-                                            maxLines: 3,
+                                            maxLines: 10,
                                             overflow: TextOverflow.ellipsis,
                                           ),
                                         ),
@@ -167,12 +167,17 @@ class _AddressesScreenState extends State<AddressesScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return const GoogleMapsScreen();
+                        return GoogleMapsScreen(
+                          onTap: () {
+                            context.read<AddressesViewModel>().getPlaces();
+                          },
+                        );
                       },
                     ),
                   );
                 },
                 child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 30.w),
                     padding: EdgeInsets.symmetric(
                       horizontal: 50.w,
                       vertical: 10.h,
@@ -183,10 +188,22 @@ class _AddressesScreenState extends State<AddressesScreen> {
                         16.r,
                       ),
                     ),
-                    child: Text(
-                      "ADD NEW ADDRESS",
-                      style:
-                          AppTextStyle.interBold.copyWith(color: Colors.white),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(
+                            Icons.add,
+                            color: Colors.white,
+                            size: 20.w,
+                          ),
+                          Text(
+                            "ADD NEW ADDRESS",
+                            style: AppTextStyle.interBold
+                                .copyWith(color: Colors.white),
+                          ),
+                        ],
+                      ),
                     )),
               ),
             ],
