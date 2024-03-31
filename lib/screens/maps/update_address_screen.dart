@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:najot_talim_nt/data/models/place_model.dart';
-import 'package:najot_talim_nt/screens/maps/dialogs/address_detail_dialog.dart';
 import 'package:najot_talim_nt/screens/widgets/map_type_item.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
@@ -100,25 +99,6 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
             child: const Icon(Icons.gps_fixed),
           ),
           const SizedBox(width: 20),
-          FloatingActionButton(
-            onPressed: () {
-              addressDetailDialog(
-                context: context,
-                placeModel: (newAddressDetails) {
-                  PlaceModel? place = newAddressDetails as PlaceModel?;
-                  place?.lat = cameraPosition!.target.latitude.toString();
-                  place?.long = cameraPosition!.target.longitude.toString();
-                  place?.placeCategory = 'work';
-                  context.read<AddressesViewModel>().addNewAddress(
-                        placeModel: place!,
-                      );
-                  Navigator.pop(context);
-                  widget.onTap.call();
-                },
-              );
-            },
-            child: const Icon(Icons.place),
-          ),
           const SizedBox(width: 20),
           const MapTypeItem(),
         ],
