@@ -98,7 +98,6 @@ addressDetailDialog({
                       lat: '',
                       placeName: '',
                       stage: "",
-                      id: '',
                       docId: '',
                       image: 'assets/images/$category.png',
                     ),

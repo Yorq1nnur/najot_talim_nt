@@ -75,7 +75,7 @@ class AddressesViewModel extends ChangeNotifier {
       _notify(true);
       await FirebaseFirestore.instance
           .collection(AppConstants.places)
-          .doc(placeModel.id)
+          .doc(placeModel.docId)
           .update(placeModel.toJsonForUpdate());
 
       _notify(false);

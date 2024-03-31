@@ -8,12 +8,10 @@ class PlaceModel {
     required this.flatNumber,
     required this.orientAddress,
     required this.stage,
-    required this.id,
     required this.image,
     required this.docId,
   });
 
-  final String id;
   String docId;
   String lat;
   String image;
@@ -35,7 +33,6 @@ class PlaceModel {
       placeCategory: json['place_category'] as String? ?? "",
       lat: json['lat'] as String? ?? "",
       long: json['long'] as String? ?? "",
-      id: json['id'] as String? ?? '',
       docId: json['doc_id'] as String? ?? '',
       image: json['image'] as String? ?? '',
     );
@@ -52,7 +49,6 @@ class PlaceModel {
       'place_category': placeCategory,
       'lat': lat,
       'long': long,
-      'id': id,
       'doc_id': docId,
     };
   }
@@ -68,7 +64,6 @@ class PlaceModel {
       'place_category': placeCategory,
       'lat': lat,
       'long': long,
-      'id': id,
     };
   }
 
@@ -81,7 +76,6 @@ class PlaceModel {
     String? placeCategory,
     String? lat,
     String? long,
-    String? id,
     String? docId,
     String? image,
   }) {
@@ -94,7 +88,6 @@ class PlaceModel {
       placeCategory: placeCategory ?? this.placeCategory,
       lat: lat ?? this.lat,
       long: long ?? this.long,
-      id: id ?? this.id,
       docId: docId ?? this.docId,
       image: image ?? this.image,
     );
