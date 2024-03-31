@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:najot_talim_nt/data/api_provider/api_provider.dart';
 import 'package:najot_talim_nt/data/models/place_model.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';

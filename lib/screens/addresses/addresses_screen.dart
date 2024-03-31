@@ -136,12 +136,85 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                     children: [
                                       ZoomTapAnimation(
                                         onTap: () {
-                                          context
-                                              .read<AddressesViewModel>()
-                                              .deleteCategory(myAddress.docId);
-                                          context
-                                              .read<AddressesViewModel>()
-                                              .getPlaces();
+                                          showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return AlertDialog(
+                                                  backgroundColor:
+                                                      AppColors.white,
+                                                  title: const Text(
+                                                    "Ishonchingiz komilmi?",
+                                                  ),
+                                                  titleTextStyle: AppTextStyle
+                                                      .interBold
+                                                      .copyWith(
+                                                    color: AppColors.black,
+                                                    fontSize: 20.sp,
+                                                  ),
+                                                  actions: <Widget>[
+                                                    TextButton(
+                                                      onPressed: () async {
+                                                        if (!context.mounted) {
+                                                          return;
+                                                        }
+                                                        context
+                                                            .read<
+                                                                AddressesViewModel>()
+                                                            .deleteCategory(
+                                                              myAddress.docId,
+                                                            );
+                                                        context
+                                                            .read<
+                                                                AddressesViewModel>()
+                                                            .getPlaces();
+                                                        Navigator.pop(context);
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              "DELETED SUCCESSFULLY",
+                                                              style:
+                                                                  AppTextStyle
+                                                                      .interBold
+                                                                      .copyWith(
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                      child: Text(
+                                                        'Yes',
+                                                        style: AppTextStyle
+                                                            .interBold
+                                                            .copyWith(
+                                                          color:
+                                                              AppColors.black,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: Text(
+                                                        'No',
+                                                        style: AppTextStyle
+                                                            .interBold
+                                                            .copyWith(
+                                                          color:
+                                                              AppColors.black,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                );
+                                              });
                                         },
                                         child: Icon(
                                           Icons.cancel_outlined,
