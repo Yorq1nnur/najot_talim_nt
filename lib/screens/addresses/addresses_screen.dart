@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/screens/maps/google_maps_screen.dart';
 import 'package:najot_talim_nt/screens/maps/update_address_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
-import 'package:najot_talim_nt/utils/images/app_images.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import 'package:najot_talim_nt/view_models/addresses_view_model.dart';
 import 'package:provider/provider.dart';
@@ -52,9 +51,6 @@ class _AddressesScreenState extends State<AddressesScreen> {
                           viewModel.myAddresses.length,
                           (index) {
                             var myAddress = viewModel.myAddresses[index];
-                            String imageUrl = myAddress.placeCategory == 'Home'
-                                ? AppImages.home
-                                : AppImages.work;
                             return GestureDetector(
                               onTap: () {
                                 Navigator.push(
@@ -97,9 +93,10 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Image.asset(
-                                      imageUrl,
+                                      myAddress.image,
                                       height: 30.h,
                                       width: 40.w,
+                                      fit: BoxFit.cover,
                                     ),
                                     SizedBox(
                                       width: 15.w,
@@ -140,7 +137,10 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                       children: [
                                         ZoomTapAnimation(
                                           onTap: () {
-                                            context.read<AddressesViewModel>().deleteCategory(myAddress.docId);
+                                            context
+                                                .read<AddressesViewModel>()
+                                                .deleteCategory(
+                                                    myAddress.docId);
                                           },
                                           child: Icon(
                                             Icons.cancel_outlined,

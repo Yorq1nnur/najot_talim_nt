@@ -9,12 +9,14 @@ class PlaceModel {
     required this.orientAddress,
     required this.stage,
     required this.id,
+    required this.image,
     required this.docId,
   });
 
   final String id;
   String docId;
   String lat;
+  String image;
   String long;
   String placeName;
   String placeCategory;
@@ -35,12 +37,14 @@ class PlaceModel {
       long: json['long'] as String? ?? "",
       id: json['id'] as String? ?? '',
       docId: json['doc_id'] as String? ?? '',
+      image: json['image'] as String? ?? '',
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'place_name': placeName,
+      'image': image,
       'entrance': entrance,
       'stage': stage,
       'flat_number': flatNumber,
@@ -49,6 +53,7 @@ class PlaceModel {
       'lat': lat,
       'long': long,
       'id': id,
+      'doc_id': docId,
     };
   }
 
@@ -58,6 +63,7 @@ class PlaceModel {
       'entrance': entrance,
       'stage': stage,
       'flat_number': flatNumber,
+      'image': image,
       'orient_address': orientAddress,
       'place_category': placeCategory,
       'lat': lat,
@@ -77,6 +83,7 @@ class PlaceModel {
     String? long,
     String? id,
     String? docId,
+    String? image,
   }) {
     return PlaceModel(
       placeName: placeName ?? this.placeName,
@@ -89,6 +96,7 @@ class PlaceModel {
       long: long ?? this.long,
       id: id ?? this.id,
       docId: docId ?? this.docId,
+      image: image ?? this.image,
     );
   }
 }

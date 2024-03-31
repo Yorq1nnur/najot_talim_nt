@@ -100,6 +100,7 @@ addressDetailDialog({
                       stage: "",
                       id: '',
                       docId: '',
+                      image: 'assets/images/$category.png',
                     ),
                   );
                   Navigator.pop(context);
@@ -115,8 +116,8 @@ addressDetailDialog({
 }
 
 List<String> categories = [
-  "Home",
-  "Work",
-  "Study",
-  "Other",
+  "home",
+  "work",
+  "study",
+  "other",
 ];

@@ -3,6 +3,7 @@ class AppImages {
   static const String boy = "assets/images/boy.png";
   static const String lottie = "assets/lottie/lottie.json";
   static const String location = "assets/images/location.png";
+  static const String study = "assets/images/study.png";
   static const String courier = "assets/images/courier_1.png";
   static const String home = "assets/images/home.png";
   static const String work = "assets/images/work.png";
