@@ -52,6 +52,9 @@ class _AddressesScreenState extends State<AddressesScreen> {
                           viewModel.myAddresses.length,
                           (index) {
                             var myAddress = viewModel.myAddresses[index];
+                            String imageUrl = myAddress.placeCategory == 'Home'
+                                ? AppImages.home
+                                : AppImages.work;
                             return GestureDetector(
                               onTap: () {
                                 Navigator.push(
@@ -60,6 +63,9 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                     builder: (context) {
                                       return UpdateAddressScreen(
                                         placeModel: myAddress,
+                                        onTap: () {
+                                          setState(() {});
+                                        },
                                       );
                                     },
                                   ),
@@ -91,7 +97,7 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Image.asset(
-                                      AppImages.home,
+                                      imageUrl,
                                       height: 30.h,
                                       width: 40.w,
                                     ),
@@ -103,21 +109,26 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "Home",
+                                          myAddress.placeCategory,
                                           style:
                                               AppTextStyle.interBold.copyWith(
                                             color: Colors.black,
                                             fontSize: 20.sp,
                                           ),
                                         ),
-                                        Text(
-                                          "Mirtemir ko'chasi, 29",
-                                          style:
-                                              AppTextStyle.interBold.copyWith(
-                                            color: Colors.black.withOpacity(
-                                              0.5,
+                                        SizedBox(
+                                          width: 180.w,
+                                          child: Text(
+                                            myAddress.placeName,
+                                            style:
+                                                AppTextStyle.interBold.copyWith(
+                                              color: Colors.black.withOpacity(
+                                                0.5,
+                                              ),
+                                              fontSize: 16.sp,
                                             ),
-                                            fontSize: 16.sp,
+                                            maxLines: 3,
+                                            overflow: TextOverflow.ellipsis,
                                           ),
                                         ),
                                       ],
@@ -128,7 +139,9 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         ZoomTapAnimation(
-                                          onTap: () {},
+                                          onTap: () {
+                                            context.read<AddressesViewModel>().deleteCategory(myAddress.docId);
+                                          },
                                           child: Icon(
                                             Icons.cancel_outlined,
                                             color: Colors.black,

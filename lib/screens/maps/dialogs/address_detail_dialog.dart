@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/data/models/place_model.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
+
+int activeIndex = -1;
+String category = '';
 
 addressDetailDialog({
   required BuildContext context,
@@ -17,30 +22,101 @@ addressDetailDialog({
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              TextField(
-                controller: controller,
+              SizedBox(
+                height: 20.h,
               ),
-              const SizedBox(height: 24),
-              TextButton(
-                  onPressed: () {
-                    placeModel.call(
-                      PlaceModel(
-                        entrance: "",
-                        flatNumber: "",
-                        orientAddress: "",
-                        placeCategory: "home",
-                        lat: "0",
-                        long: "0",
-                        placeName: "Chilonzor",
-                        stage: "",
-                        id: '',
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 10.w,
+                ),
+                child: TextField(
+                  controller: controller,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            16.r,
+                          ),
+                          borderSide: BorderSide(
+                            color: Colors.black,
+                            width: 2.w,
+                          ))),
+                ),
+              ),
+              SizedBox(
+                height: 24.h,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 20.w,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ...List.generate(
+                      categories.length,
+                      (index) => ZoomTapAnimation(
+                        onTap: () {
+                          activeIndex = index;
+                          category = categories[index];
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10.w,
+                            vertical: 10.h,
+                          ),
+                          decoration: BoxDecoration(
+                            color: activeIndex == index
+                                ? Colors.blueGrey
+                                : Colors.yellowAccent,
+                            borderRadius: BorderRadius.circular(
+                              16.r,
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              categories[index],
+                            ),
+                          ),
+                        ),
                       ),
-                    );
-                    Navigator.pop(context);
-                  },
-                  child: const Text("SAVE PLACE"))
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 24.h,
+              ),
+              TextButton(
+                onPressed: () {
+                  placeModel.call(
+                    PlaceModel(
+                      entrance: "",
+                      flatNumber: "",
+                      orientAddress: "",
+                      placeCategory: category,
+                      long: '',
+                      lat: '',
+                      placeName: '',
+                      stage: "",
+                      id: '',
+                      docId: '',
+                    ),
+                  );
+                  Navigator.pop(context);
+                },
+                child: const Text(
+                  "SAVE PLACE",
+                ),
+              ),
             ],
           ),
         );
       });
 }
+
+List<String> categories = [
+  "Home",
+  "Work",
+  "Study",
+  "Other",
+];

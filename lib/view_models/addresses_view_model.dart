@@ -31,7 +31,7 @@ class AddressesViewModel extends ChangeNotifier {
     _notify(false);
   }
 
-  Stream<List<PlaceModel>> listenCategories() {
+  Stream<List<PlaceModel>> listenPlaces() {
     return FirebaseFirestore.instance
         .collection(
           AppConstants.places,

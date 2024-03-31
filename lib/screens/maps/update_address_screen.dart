@@ -12,8 +12,10 @@ import 'package:provider/provider.dart';
 class UpdateAddressScreen extends StatefulWidget {
   const UpdateAddressScreen({
     super.key,
-    required this.placeModel,
+    required this.placeModel, required this.onTap,
   });
+
+  final VoidCallback onTap;
 
   final PlaceModel placeModel;
 
@@ -111,6 +113,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
                         placeModel: place!,
                       );
                   Navigator.pop(context);
+                  widget.onTap.call();
                 },
               );
             },

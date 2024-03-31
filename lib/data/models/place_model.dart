@@ -9,9 +9,11 @@ class PlaceModel {
     required this.orientAddress,
     required this.stage,
     required this.id,
+    required this.docId,
   });
 
   final String id;
+  String docId;
   String lat;
   String long;
   String placeName;
@@ -32,6 +34,7 @@ class PlaceModel {
       lat: json['lat'] as String? ?? "",
       long: json['long'] as String? ?? "",
       id: json['id'] as String? ?? '',
+      docId: json['doc_id'] as String? ?? '',
     );
   }
 
@@ -73,6 +76,7 @@ class PlaceModel {
     String? lat,
     String? long,
     String? id,
+    String? docId,
   }) {
     return PlaceModel(
       placeName: placeName ?? this.placeName,
@@ -84,6 +88,7 @@ class PlaceModel {
       lat: lat ?? this.lat,
       long: long ?? this.long,
       id: id ?? this.id,
+      docId: docId ?? this.docId,
     );
   }
 }
