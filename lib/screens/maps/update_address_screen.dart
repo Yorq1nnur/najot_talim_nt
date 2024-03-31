@@ -121,7 +121,9 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
                 child: ZoomTapAnimation(
                   onTap: () async {
                     PlaceModel placeModel = PlaceModel(
-                      placeCategory: category == '' ? widget.placeModel.placeCategory : category,
+                      placeCategory: category == ''
+                          ? widget.placeModel.placeCategory
+                          : category,
                       lat: context
                           .read<MapsViewModel>()
                           .currentCameraPosition
@@ -134,7 +136,9 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
                           .target
                           .longitude
                           .toString(),
-                      image: 'assets/images/$category.png',
+                      image: category == ''
+                          ? widget.placeModel.image
+                          : 'assets/images/$category.png',
                       docId: widget.placeModel.docId,
                       placeName: context.read<MapsViewModel>().currentPlaceName,
                     );
