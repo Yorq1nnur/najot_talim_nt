@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/data/storage_repository/storage_repository.dart';
 import 'package:najot_talim_nt/screens/global_screen/global_screen.dart';
-import 'package:najot_talim_nt/screens/login_screen/login_screen.dart';
 import 'package:najot_talim_nt/utils/constants/app_constants.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
