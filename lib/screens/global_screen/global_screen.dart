@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:najot_talim_nt/data/models/country_model/country_model.dart';
-
-import '../../cubits/currency/currency_cubit.dart';
-import '../../cubits/currency/currency_state.dart';
+import '../../cubits/currency/countries_cubit.dart';
+import '../../cubits/currency/countries_state.dart';
 import '../../data/models/forms_status.dart';
 
 class GlobalScreen extends StatelessWidget {
@@ -15,7 +14,7 @@ class GlobalScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Currencies"),
       ),
-      body: BlocBuilder<CurrenciesCubit, CurrencyState>(
+      body: BlocBuilder<CountriesCubit, CountriesState>(
         builder: (context, state) {
           if (state.formsStatus == FormsStatus.loading) {
             return const Center(child: CircularProgressIndicator());
@@ -29,11 +28,11 @@ class GlobalScreen extends StatelessWidget {
             );
           }
           return ListView(
-            children: List.generate(state.currencies.length, (index) {
-              Country currencyModel = state.currencies[index];
+            children: List.generate(state.country.length, (index) {
+              CountryModel countryModel = state.country[index];
               return ListTile(
-                title: Text(currencyModel.name),
-                subtitle: Text(currencyModel.capital),
+                title: Text(countryModel.name),
+                subtitle: Text(countryModel.capital),
               );
             }),
           );

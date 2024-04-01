@@ -1,25 +1,25 @@
 import 'package:najot_talim_nt/data/models/country_model/country_model.dart';
 import '../../data/models/forms_status.dart';
 
-class CurrencyState {
+class CountriesState {
   final FormsStatus formsStatus;
-  final List<Country> currencies;
+  final List<CountryModel> country;
   final String statusText;
 
-  CurrencyState({
+  CountriesState({
     required this.formsStatus,
     required this.statusText,
-    required this.currencies,
+    required this.country,
   });
 
-  CurrencyState copyWith({
+  CountriesState copyWith({
     FormsStatus? formsStatus,
-    List<Country>? currencies,
+    List<CountryModel>? country,
     String? statusText,
   }) =>
-      CurrencyState(
+      CountriesState(
         formsStatus: formsStatus ?? this.formsStatus,
-        currencies: currencies ?? this.currencies,
+        country: country ?? this.country,
         statusText: statusText ?? this.statusText,
       );
 }

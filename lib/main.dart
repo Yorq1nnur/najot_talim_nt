@@ -4,15 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/screens/global_screen/global_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 
-import 'cubits/currency/currency_cubit.dart';
+import 'cubits/currency/countries_cubit.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
-
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => CurrenciesCubit()..fetchCurrencies()),
+        BlocProvider(create: (_) => CountriesCubit()..fetchCountries()),
       ],
       child: const MyApp(),
     ),

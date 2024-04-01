@@ -7,12 +7,13 @@ import 'package:najot_talim_nt/data/models/country_model/country_model.dart';
 import '../../utils/constants/app_constants.dart';
 
 class ApiProviderr {
-  static Future<List<Country>> getCountries() async {
+  static Future<List<CountryModel>> getCountries() async {
     final response = await http.get(Uri.parse(AppConstants.baseUrl));
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);
       List<dynamic> countriesJson = jsonData['data']['countries'];
-      List<Country> countries = countriesJson.map((json) => Country.fromJson(json)).toList();
+      List<CountryModel> countries =
+          countriesJson.map((json) => CountryModel.fromJson(json)).toList();
       return countries;
     } else {
       throw Exception('Failed to load countries');
@@ -20,18 +21,16 @@ class ApiProviderr {
   }
 }
 
-
-
 class ApiProvider {
   static Future<NetworkResponse> getCountries() async {
     try {
-      http.Response response = await http
-          .get(Uri.parse(AppConstants.baseUrl));
+      http.Response response = await http.get(Uri.parse(AppConstants.baseUrl));
 
       if (response.statusCode == HttpStatus.ok) {
         final jsonData = json.decode(response.body);
         List<dynamic> countriesJson = jsonData['data']['countries'];
-        List<Country> countries = countriesJson.map((json) => Country.fromJson(json)).toList();
+        List<CountryModel> countries =
+            countriesJson.map((json) => CountryModel.fromJson(json)).toList();
         return NetworkResponse(
           data: countries,
         );

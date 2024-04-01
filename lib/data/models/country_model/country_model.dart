@@ -1,4 +1,3 @@
-
 class Continent {
   String code;
   String name;
@@ -10,13 +9,13 @@ class Continent {
 
   factory Continent.fromJson(Map<String, dynamic> json) {
     return Continent(
-      code: json['code']as String? ?? '',
-      name: json['name']as String? ?? '',
+      code: json['code'] as String? ?? '',
+      name: json['name'] as String? ?? '',
     );
   }
 }
 
-class Country {
+class CountryModel {
   String code;
   String name;
   String phone;
@@ -25,7 +24,7 @@ class Country {
   String currency;
   String emoji;
 
-  Country({
+  CountryModel({
     required this.code,
     required this.name,
     required this.phone,
@@ -35,16 +34,15 @@ class Country {
     required this.emoji,
   });
 
-  factory Country.fromJson(Map<String, dynamic> json) {
-    return Country(
+  factory CountryModel.fromJson(Map<String, dynamic> json) {
+    return CountryModel(
       code: json['code'] as String? ?? '',
-      name: json['name']as String? ?? '',
-      phone: json['phone']as String? ?? '',
+      name: json['name'] as String? ?? '',
+      phone: json['phone'] as String? ?? '',
       continent: Continent.fromJson(json['continent']),
-      capital: json['capital']as String? ?? '',
-      currency: json['currency']as String? ?? '',
-      emoji: json['emoji']as String? ?? '',
+      capital: json['capital'] as String? ?? '',
+      currency: json['currency'] as String? ?? '',
+      emoji: json['emoji'] as String? ?? '',
     );
   }
 }
-

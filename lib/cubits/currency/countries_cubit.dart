@@ -1,29 +1,29 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:najot_talim_nt/cubits/currency/currency_state.dart';
+import 'package:najot_talim_nt/cubits/currency/countries_state.dart';
 import 'package:najot_talim_nt/data/models/country_model/country_model.dart';
 import '../../data/models/forms_status.dart';
 import '../../data/network/api_provider.dart';
 import '../../data/network_response/network_response.dart';
 
-class CurrenciesCubit extends Cubit<CurrencyState> {
-  CurrenciesCubit()
+class CountriesCubit extends Cubit<CountriesState> {
+  CountriesCubit()
       : super(
-          CurrencyState(
+          CountriesState(
             formsStatus: FormsStatus.pure,
             statusText: "",
-            currencies: [],
+            country: [],
           ),
         ) {
     //fetchCurrencies();
   }
 
-  fetchCurrencies() async {
+  fetchCountries() async {
     emit(state.copyWith(formsStatus: FormsStatus.loading));
     NetworkResponse response = await ApiProvider.getCountries();
     if (response.errorText.isEmpty) {
       emit(
         state.copyWith(
-          currencies: response.data as List<Country>,
+          country: response.data as List<CountryModel>,
           formsStatus: FormsStatus.success,
         ),
       );
