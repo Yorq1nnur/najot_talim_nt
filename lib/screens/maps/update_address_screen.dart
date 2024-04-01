@@ -268,7 +268,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
   }
 }
 
-List<String> categories = [
+final List<String> categories = [
   "home",
   "work",
   "study",
