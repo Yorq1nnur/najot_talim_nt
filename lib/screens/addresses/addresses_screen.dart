@@ -99,9 +99,8 @@ class _AddressesScreenState extends State<AddressesScreen> {
                                       children: [
                                         Image.asset(
                                           myAddress.image,
-                                          height: 30.h,
+                                          height: 40.h,
                                           width: 40.w,
-                                          fit: BoxFit.cover,
                                         ),
                                         SizedBox(
                                           width: 15.w,

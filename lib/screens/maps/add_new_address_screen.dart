@@ -80,8 +80,8 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
               Align(
                 child: Image.asset(
                   AppImages.location,
-                  width: 50,
-                  height: 50,
+                  width: 50.w,
+                  height: 50.h,
                 ),
               ),
               Positioned(
@@ -135,9 +135,7 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                           );
 
                       if (!context.mounted) return;
-
                       widget.onTap.call();
-
                       Navigator.pop(context);
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
