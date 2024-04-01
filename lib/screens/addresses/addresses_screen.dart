@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 import 'package:najot_talim_nt/screens/maps/add_new_address_screen.dart';
 import 'package:najot_talim_nt/screens/maps/update_address_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
+import 'package:najot_talim_nt/utils/images/app_images.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import 'package:najot_talim_nt/view_models/addresses_view_model.dart';
 import 'package:provider/provider.dart';
@@ -341,18 +343,8 @@ class _AddressesScreenState extends State<AddressesScreen> {
                     ),
                   )
                 : Center(
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        top: MediaQuery.sizeOf(context).height / 2.5,
-                      ),
-                      child: Text(
-                        "ADDRESSES IS EMPTY!!!",
-                        style: AppTextStyle.interBold.copyWith(
-                          color: Colors.black,
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
+                    child: Lottie.asset(
+                      AppImages.empty,
                     ),
                   ),
             const Spacer(),
@@ -372,7 +364,9 @@ class _AddressesScreenState extends State<AddressesScreen> {
                 );
               },
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 30.w),
+                margin: EdgeInsets.symmetric(
+                  horizontal: 30.w,
+                ),
                 padding: EdgeInsets.symmetric(
                   horizontal: 50.w,
                   vertical: 10.h,
