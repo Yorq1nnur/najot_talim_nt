@@ -1,13 +1,33 @@
-class CountryModel {
-  final String code;
-  final String name;
-  final String phone;
-  final Map<String, String> continent;
-  final String capital;
-  final String currency;
-  final String emoji;
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
-  CountryModel({
+class Continent {
+  String code;
+  String name;
+
+  Continent({
+    required this.code,
+    required this.name,
+  });
+
+  factory Continent.fromJson(Map<String, dynamic> json) {
+    return Continent(
+      code: json['code']as String? ?? '',
+      name: json['name']as String? ?? '',
+    );
+  }
+}
+
+class Country {
+  String code;
+  String name;
+  String phone;
+  Continent continent;
+  String capital;
+  String currency;
+  String emoji;
+
+  Country({
     required this.code,
     required this.name,
     required this.phone,
@@ -17,15 +37,16 @@ class CountryModel {
     required this.emoji,
   });
 
-  factory CountryModel.fromJson(Map<String, dynamic> json) {
-    return CountryModel(
-      code: json['code'],
-      name: json['name'],
-      phone: json['phone'],
-      continent: Map<String, String>.from(json['continent']),
-      capital: json['capital'],
-      currency: json['currency'],
-      emoji: json['emoji'],
+  factory Country.fromJson(Map<String, dynamic> json) {
+    return Country(
+      code: json['code'] as String? ?? '',
+      name: json['name']as String? ?? '',
+      phone: json['phone']as String? ?? '',
+      continent: Continent.fromJson(json['continent']),
+      capital: json['capital']as String? ?? '',
+      currency: json['currency']as String? ?? '',
+      emoji: json['emoji']as String? ?? '',
     );
   }
 }
+
