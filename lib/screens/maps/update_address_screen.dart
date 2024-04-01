@@ -27,7 +27,6 @@ class UpdateAddressScreen extends StatefulWidget {
 class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
   int activeIndex = -1;
   String category = '';
-
   @override
   Widget build(BuildContext context) {
     CameraPosition? cameraPosition;
