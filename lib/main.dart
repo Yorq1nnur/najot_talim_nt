@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot_talim_nt/screens/global_screen/global_screen.dart';
+import 'package:najot_talim_nt/data/storage_repository/storage_repository.dart';
+import 'package:najot_talim_nt/screens/login_screen/login_screen.dart';
+import 'package:najot_talim_nt/screens/registration_screen/registration_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
+import 'package:najot_talim_nt/utils/constants/app_constants.dart';
 
 import 'cubits/currency/countries_cubit.dart';
 
@@ -45,6 +48,8 @@ class MyApp extends StatelessWidget {
             home: child,
           );
         },
-        child: const GlobalScreen(),
+        child: StorageRepository.getBool(key: AppConstants.isRegistered)
+            ? const LoginScreen()
+            : const RegistrationScreen(),
       );
 }
