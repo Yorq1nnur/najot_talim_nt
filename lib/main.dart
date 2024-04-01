@@ -6,11 +6,11 @@ import 'package:najot_talim_nt/screens/login_screen/login_screen.dart';
 import 'package:najot_talim_nt/screens/registration_screen/registration_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/constants/app_constants.dart';
-
 import 'cubits/currency/countries_cubit.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  StorageRepository.instance;
   runApp(
     MultiBlocProvider(
       providers: [
@@ -31,22 +31,25 @@ class MyApp extends StatelessWidget {
     BuildContext context,
   ) =>
       ScreenUtilInit(
-          designSize: const Size(
-            375,
-            812,
-          ),
-          builder: (context, child) {
-            ScreenUtil.init(
-              context,
-            );
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              theme: ThemeData(
-                useMaterial3: true,
-                scaffoldBackgroundColor: AppColors.white,
-              ),
-              home: child,
-            );
-          },
-          child: const RegistrationScreen());
+        designSize: const Size(
+          375,
+          812,
+        ),
+        builder: (context, child) {
+          ScreenUtil.init(
+            context,
+          );
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              useMaterial3: true,
+              scaffoldBackgroundColor: AppColors.white,
+            ),
+            home: child,
+          );
+        },
+        child: StorageRepository.getBool(key: AppConstants.isRegistered)
+            ? const LoginScreen()
+            : const RegistrationScreen(),
+      );
 }

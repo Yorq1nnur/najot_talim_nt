@@ -22,18 +22,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final TextEditingController secondTextEditingController =
       TextEditingController();
 
-  @override
-  void initState() {
-    if (StorageRepository.getBool(key: AppConstants.isRegistered)) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const LoginScreen(),
-        ),
-      );
-    }
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   if (StorageRepository.getBool(key: AppConstants.isRegistered)) {
+  //     Navigator.pushReplacement(
+  //       context,
+  //       MaterialPageRoute(
+  //         builder: (context) => const LoginScreen(),
+  //       ),
+  //     );
+  //   }
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
