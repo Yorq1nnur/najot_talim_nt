@@ -27,6 +27,8 @@ class UpdateAddressScreen extends StatefulWidget {
 class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
   int activeIndex = -1;
   String category = '';
+  bool isActive = true;
+
   @override
   Widget build(BuildContext context) {
     CameraPosition? cameraPosition;
@@ -89,8 +91,9 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
               Align(
                 child: Image.asset(
                   AppImages.location,
-                  width: 50,
-                  height: 50,
+                  width: 100.w,
+                  height: 100.h,
+                  fit: BoxFit.cover,
                 ),
               ),
               Positioned(
@@ -202,6 +205,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
                         onTap: () {
                           setState(() {
                             activeIndex = index;
+                            isActive = false;
                           });
                           category = categories[index];
                         },
@@ -214,7 +218,10 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
                             vertical: 10.h,
                           ),
                           decoration: BoxDecoration(
-                            color: activeIndex == index
+                            color: activeIndex == index ||
+                                    isActive &&
+                                        categories[index] ==
+                                            widget.placeModel.placeCategory
                                 ? Colors.blueGrey
                                 : Colors.yellowAccent,
                             borderRadius: BorderRadius.circular(
