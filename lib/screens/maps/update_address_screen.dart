@@ -91,9 +91,8 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
               Align(
                 child: Image.asset(
                   AppImages.location,
-                  width: 100.w,
-                  height: 100.h,
-                  fit: BoxFit.cover,
+                  width: 50.w,
+                  height: 50.h,
                 ),
               ),
               Positioned(
