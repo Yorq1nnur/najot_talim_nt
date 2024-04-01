@@ -110,38 +110,55 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                 bottom: MediaQuery.sizeOf(context).height / 50,
                 child: ZoomTapAnimation(
                   onTap: () async {
-                    if(category != ''){
+                    if (category != '') {
                       PlaceModel placeModel = PlaceModel(
                         placeCategory: category,
-                        lat: context.read<MapsViewModel>().currentCameraPosition.target.latitude.toString(),
-                        long: context.read<MapsViewModel>().currentCameraPosition.target.longitude.toString(),
+                        lat: context
+                            .read<MapsViewModel>()
+                            .currentCameraPosition
+                            .target
+                            .latitude
+                            .toString(),
+                        long: context
+                            .read<MapsViewModel>()
+                            .currentCameraPosition
+                            .target
+                            .longitude
+                            .toString(),
                         image: 'assets/images/$category.png',
                         docId: '',
-                        placeName: context.read<MapsViewModel>().currentPlaceName,
+                        placeName:
+                            context.read<MapsViewModel>().currentPlaceName,
                       );
                       await context.read<AddressesViewModel>().addNewAddress(
-                        placeModel: placeModel,
-                      );
+                            placeModel: placeModel,
+                          );
+
                       if (!context.mounted) return;
+
                       widget.onTap.call();
+
                       Navigator.pop(context);
-                    }else{
-                      ScaffoldMessenger.of(
-                          context)
-                          .showSnackBar(
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            "DATA ADDED SUCCESSFULLY!!!",
+                            style: AppTextStyle.interBold.copyWith(
+                              color: Colors.white,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
                             "PLEASE ALL VALUE COMPLETING!!!",
-                            style:
-                            AppTextStyle
-                                .interBold
-                                .copyWith(
-                              color: Colors
-                                  .white,
+                            style: AppTextStyle.interBold.copyWith(
+                              color: Colors.white,
                             ),
-                            textAlign:
-                            TextAlign
-                                .center,
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       );

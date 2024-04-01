@@ -146,6 +146,17 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
                           placeModel: placeModel,
                         );
                     if (!context.mounted) return;
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          "DATA UPDATED SUCCESSFULLY!!!",
+                          style: AppTextStyle.interBold.copyWith(
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    );
                     widget.onTap.call();
                     Navigator.pop(context);
                   },
