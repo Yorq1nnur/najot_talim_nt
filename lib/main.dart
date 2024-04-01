@@ -31,25 +31,22 @@ class MyApp extends StatelessWidget {
     BuildContext context,
   ) =>
       ScreenUtilInit(
-        designSize: const Size(
-          375,
-          812,
-        ),
-        builder: (context, child) {
-          ScreenUtil.init(
-            context,
-          );
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              useMaterial3: true,
-              scaffoldBackgroundColor: AppColors.white,
-            ),
-            home: child,
-          );
-        },
-        child: StorageRepository.getBool(key: AppConstants.isRegistered)
-            ? const LoginScreen()
-            : const RegistrationScreen(),
-      );
+          designSize: const Size(
+            375,
+            812,
+          ),
+          builder: (context, child) {
+            ScreenUtil.init(
+              context,
+            );
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: ThemeData(
+                useMaterial3: true,
+                scaffoldBackgroundColor: AppColors.white,
+              ),
+              home: child,
+            );
+          },
+          child: const RegistrationScreen());
 }

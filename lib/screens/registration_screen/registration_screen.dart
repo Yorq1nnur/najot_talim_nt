@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/data/storage_repository/storage_repository.dart';
 import 'package:najot_talim_nt/screens/global_screen/global_screen.dart';
+import 'package:najot_talim_nt/screens/login_screen/login_screen.dart';
 import 'package:najot_talim_nt/utils/constants/app_constants.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -17,10 +18,22 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   String pinCode = '';
   String secondPinCode = '';
-  bool isRegistered = false;
   final TextEditingController textEditingController = TextEditingController();
   final TextEditingController secondTextEditingController =
       TextEditingController();
+
+  @override
+  void initState() {
+    if (StorageRepository.getBool(key: AppConstants.isRegistered)) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const LoginScreen(),
+        ),
+      );
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -119,9 +132,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   if (pinCode != '' &&
                       pinCode.length == 6 &&
                       pinCode == secondPinCode) {
-                    isRegistered = true;
                     StorageRepository.setBool(
-                        key: AppConstants.isRegistered, value: isRegistered);
+                      key: AppConstants.isRegistered,
+                      value: true,
+                    );
                     StorageRepository.setString(
                         key: AppConstants.pinCode, value: pinCode);
                     ScaffoldMessenger.of(context).showSnackBar(
