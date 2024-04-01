@@ -1,67 +1,43 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:najot_talim_nt/data/models/country_model/country_model.dart';
-import 'package:najot_talim_nt/data/network/api_provider.dart';
-import 'package:najot_talim_nt/utils/colors/app_colors.dart';
-import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
-class GlobalScreen extends StatefulWidget {
+import '../../cubits/currency/currency_cubit.dart';
+import '../../cubits/currency/currency_state.dart';
+import '../../data/models/forms_status.dart';
+
+class GlobalScreen extends StatelessWidget {
   const GlobalScreen({super.key});
 
   @override
-  State<GlobalScreen> createState() => _GlobalScreenState();
-}
-
-class _GlobalScreenState extends State<GlobalScreen> {
-  @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion(
-      value: SystemUiOverlayStyle(statusBarColor: AppColors.transparent),
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            'COUNTRY SCREEN',
-            style: AppTextStyle.interBold.copyWith(
-              color: Colors.black,
-              fontSize: 20.sp,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-        ),
-        body: FutureBuilder<List<Country>?>(
-          future: ApiProvider.getCountries(),
-          builder: (
-            BuildContext context,
-            AsyncSnapshot<List<Country>?> snapshot,
-          ) {
-            if (snapshot.data != null) {
-              List<Country> users = snapshot.data as List<Country>;
-              return ListView(
-                children: List.generate(users.length, (index) {
-                  Country userModel = users[index];
-                  return ListTile(
-                    onTap: () {},
-                    title: Text(userModel.capital),
-                    subtitle: Text(userModel.name),
-                    trailing: Text(userModel.phone),
-                  );
-                }),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Currencies"),
+      ),
+      body: BlocBuilder<CurrenciesCubit, CurrencyState>(
+        builder: (context, state) {
+          if (state.formsStatus == FormsStatus.loading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (state.formsStatus == FormsStatus.error) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(state.statusText),
+              ],
+            );
+          }
+          return ListView(
+            children: List.generate(state.currencies.length, (index) {
+              Country currencyModel = state.currencies[index];
+              return ListTile(
+                title: Text(currencyModel.name),
+                subtitle: Text(currencyModel.capital),
               );
-            } else if (snapshot.hasError) {
-              return Center(
-                child: Text(
-                  snapshot.error.toString(),
-                ),
-              );
-            } else {
-              return const Center(child: CircularProgressIndicator());
-            }
-          },
-        ),
+            }),
+          );
+        },
       ),
     );
   }
