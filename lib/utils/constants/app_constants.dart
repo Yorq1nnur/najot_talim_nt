@@ -1,3 +1,3 @@
 class AppConstants {
-  static String baseUrl = "https://restcountries.com/v3.1/all";
+  static String baseUrl = "https://all-countries.free.mockoapp.net/countries";
 }
