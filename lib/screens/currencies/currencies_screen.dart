@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../cubits/currency/currency_cubit.dart';
 import '../../cubits/currency/currency_state.dart';
-import '../../data/models/currency_model.dart';
+import '../../data/models/trans_actions_model.dart';
 
 class CurrenciesScreen extends StatelessWidget {
   const CurrenciesScreen({super.key});
@@ -30,11 +30,11 @@ class CurrenciesScreen extends StatelessWidget {
           } else if (state is CurrencySuccessState) {
             return ListView(
               children: List.generate(state.currencies.length, (index) {
-                CurrencyModel currencyModel = state.currencies[index];
+                TransactionsModel currencyModel = state.currencies[index];
                 return ListTile(
                   title:
-                      Text("${currencyModel.nominal} ${currencyModel.cyNmUZ}"),
-                  subtitle: Text("Qiymati: ${currencyModel.rate}"),
+                  Text("${currencyModel.data[0]} ${currencyModel.data[1]}"),
+                  subtitle: Text("Qiymati: ${currencyModel.transferDate}"),
                 );
               }),
             );

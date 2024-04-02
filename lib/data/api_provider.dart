@@ -1,27 +1,46 @@
-import 'dart:convert';
-import 'dart:io';
-import 'package:http/http.dart' as http;
+// import 'dart:convert';
+// import 'models/network_response.dart';
+// import 'package:http/http.dart' as http;
+// import 'models/trans_actions_model.dart';
+//
+// class ApiProvider {
+//   static Future<NetworkResponse> fetchTransactions() async {
+//     try {
+//       final response = await http.get(Uri.parse("https://banking-api.free.mockoapp.net/transactions-incomes"));
+//       if (response.statusCode == 200) {
+//         final List<dynamic> jsonResponse = json.decode(response.body);
+//         final List<TransactionsModel> transactions = jsonResponse.map((data) => TransactionsModel.fromJson(data)).toList();
+//         return NetworkResponse(data: transactions);
+//       } else {
+//         return NetworkResponse(errorText: 'Failed to load transactions');
+//       }
+//     } catch (e) {
+//       return NetworkResponse(errorText: 'Error: $e');
+//     }
+//   }
+// }
 
-import 'models/currency_model.dart';
-import 'models/network_response.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:najot_talim_nt/data/models/trans_actions_model.dart';
+
+import '../../data/models/network_response.dart';
 
 class ApiProvider {
-  static Future<NetworkResponse> getCurrencies() async {
+  static Future<NetworkResponse> fetchTransactions() async {
+    const apiUrl = "https://banking-api.free.mockoapp.net/transactions-incomes";
     try {
-      http.Response response = await http
-          .get(Uri.parse("https://cbu.uz/uz/arkhiv-kursov-valyut/json/"));
-
-      if (response.statusCode == HttpStatus.ok) {
-        return NetworkResponse(
-          data: (jsonDecode(response.body) as List?)
-                  ?.map((e) => CurrencyModel.fromJson(e))
-                  .toList() ??
-              [],
-        );
+      final response = await http.get(Uri.parse(apiUrl));
+      if (response.statusCode == 200) {
+        List<dynamic> jsonResponse = json.decode(response.body);
+        List<TransactionsModel> transactions =
+        jsonResponse.map((data) => TransactionsModel.fromJson(data)).toList();
+        return NetworkResponse(data:transactions );
+      } else {
+        return NetworkResponse(errorText: "NO'MALUM XATOLIK");
       }
-      return NetworkResponse(errorText: "Noma'lum xatolik");
-    } catch (error) {
-      return NetworkResponse(errorText: error.toString());
+    } catch (e) {
+      return NetworkResponse(errorText: 'Error: $e');
     }
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../data/models/currency_model.dart';
+import 'package:najot_talim_nt/data/models/trans_actions_model.dart';
 import '../../data/models/network_response.dart';
 import '../../data/repositories/currency_repository.dart';
 import 'currency_state.dart';
@@ -16,7 +15,7 @@ class CurrencyCubit extends Cubit<CurrencyState> {
     NetworkResponse response = await currencyRepository.getCurrencies();
     if (response.errorText.isEmpty) {
       emit(CurrencySuccessState(
-          currencies: response.data as List<CurrencyModel>));
+          currencies: response.data as List<TransactionsModel>));
     } else {
       emit(CurrencyErrorState(errorText: response.errorText));
     }
