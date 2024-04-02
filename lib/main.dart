@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot_talim_nt/cubits/login/register_cubit.dart';
 import 'package:najot_talim_nt/data/storage_repository/storage_repository.dart';
 import 'package:najot_talim_nt/screens/login_screen/login_screen.dart';
 import 'package:najot_talim_nt/screens/registration_screen/registration_screen.dart';
@@ -14,7 +15,12 @@ Future<void> main() async {
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => CountriesCubit()..fetchCountries()),
+        BlocProvider(
+          create: (_) => CountriesCubit()..fetchCountries(),
+        ),
+        BlocProvider(
+          create: (_) => RegisterCubit(),
+        ),
       ],
       child: const MyApp(),
     ),
