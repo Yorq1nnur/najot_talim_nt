@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
             home: child,
           );
         },
-        child: StorageRepository.getBool(key: AppConstants.isRegistered)
+        child: StorageRepository.getString(key: AppConstants.pinCode).isNotEmpty
             ? const LoginScreen()
             : const RegistrationScreen(),
       );
