@@ -17,6 +17,16 @@ class PaymentsScreen extends StatelessWidget {
         child: Scaffold(
           backgroundColor: const Color(0xFF000000),
           appBar: AppBar(
+            leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+                size: 20,
+              ),
+            ),
             backgroundColor: const Color(0xFF000000),
             centerTitle: true,
             elevation: 0,
