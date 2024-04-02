@@ -72,6 +72,17 @@ class GlobalScreen extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
+                    leading: Text(
+                      countryModel.code,
+                      style: AppTextStyle.interBold,
+                    ),
+                    trailing: Text(
+                      countryModel.emoji,
+                      style: AppTextStyle.interBold.copyWith(
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
                   );
                 },
               ),

@@ -48,6 +48,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 .sizeOf(context)
                                 .height / 3.2,
                           ),
+                          Center(
+                            child: Text(
+                              textAlign: TextAlign.center,
+                              'CREATE PIN CODE:',
+                              style: AppTextStyle.interBold.copyWith(
+                                  color: Colors.black,
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w900),
+                            ),
+                          ),
+                          SizedBox(height: 20.h,),
                           PinCodeTextField(
                             keyboardType: TextInputType.number,
                             length: 6,
