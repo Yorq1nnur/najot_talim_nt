@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:najot_talim_nt/screens/currencies/payments_screen.dart';
+import 'package:najot_talim_nt/screens/timer/timer_screen.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
 class HelperScreen extends StatelessWidget {
@@ -24,7 +25,14 @@ class HelperScreen extends StatelessWidget {
       ),
       ButtonModel(
         color: Colors.indigoAccent,
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const TimerScreen(),
+            ),
+          );
+        },
         title: "SECOND SCREEN",
         textColor: Colors.tealAccent,
       ),

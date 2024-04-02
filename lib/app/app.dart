@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:najot_talim_nt/screens/helper_screen/helper_screen.dart';
 import '../cubits/currency/currency_cubit.dart';
 import '../data/repositories/currency_repository.dart';
+import '../screens/helper/helper_screen.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
