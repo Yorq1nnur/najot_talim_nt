@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubits/currency/currency_cubit.dart';
 import '../data/repositories/currency_repository.dart';
-import '../screens/currencies/currencies_screen.dart';
+import '../screens/currencies/payments_screen.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      home: const PaymentScreen(),
+      home: const PaymentsScreen(),
     );
   }
 }
