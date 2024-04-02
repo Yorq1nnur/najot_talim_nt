@@ -53,35 +53,210 @@ class GlobalScreen extends StatelessWidget {
                 state.country.length,
                 (index) {
                   CountryModel countryModel = state.country[index];
-                  return ListTile(
-                    title: Text(
-                      countryModel.name,
-                      style: AppTextStyle.interBold.copyWith(
+                  return Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(
+                      vertical: 10.h,
+                      horizontal: 10.w,
+                    ),
+                    margin: EdgeInsets.symmetric(
+                      vertical: 5.h,
+                      horizontal: 10.w,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.amberAccent,
+                      borderRadius: BorderRadius.circular(
+                        16.r,
+                      ),
+                      border: Border.all(
                         color: Colors.black,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w900,
+                        width: 2.w,
                       ),
-                    ),
-                    subtitle: Text(
-                      countryModel.capital,
-                      style: AppTextStyle.interBold.copyWith(
-                        color: Colors.black.withOpacity(
-                          0.5,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.yellow.withOpacity(
+                            0.5,
+                          ),
+                          spreadRadius: 5.r,
                         ),
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      ],
                     ),
-                    leading: Text(
-                      countryModel.code,
-                      style: AppTextStyle.interBold,
-                    ),
-                    trailing: Text(
-                      countryModel.emoji,
-                      style: AppTextStyle.interBold.copyWith(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w900,
-                      ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 166.h,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 2.w,
+                            vertical: 2.h,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              16.r,
+                            ),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2.w,
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'NAME:',
+                                style: AppTextStyle.interBold.copyWith(
+                                  color: Colors.black54,
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                              Text(
+                                'CAPITAL:',
+                                style: AppTextStyle.interBold.copyWith(
+                                  color: Colors.black54,
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                              Text(
+                                'COUNTRY CODE:',
+                                style: AppTextStyle.interBold.copyWith(
+                                  color: Colors.black54,
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                              Text(
+                                'PHONE CODE:',
+                                style: AppTextStyle.interBold.copyWith(
+                                  color: Colors.black54,
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                              Text(
+                                'FLAG:',
+                                style: AppTextStyle.interBold.copyWith(
+                                  color: Colors.black54,
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                              Text(
+                                'CURRENCY:',
+                                style: AppTextStyle.interBold.copyWith(
+                                  color: Colors.black54,
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                              Text(
+                                'CONTINENT:',
+                                style: AppTextStyle.interBold.copyWith(
+                                  color: Colors.black54,
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: 20.w,
+                        ),
+                        SizedBox(
+                          width: 140.w,
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 2.w,
+                              vertical: 2.h,
+                            ),
+                            height: 166.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                16.r,
+                              ),
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 2.w,
+                              ),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  countryModel.name,
+                                  style: AppTextStyle.interBold.copyWith(
+                                    color: Colors.black54,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                Text(
+                                  countryModel.capital,
+                                  style: AppTextStyle.interBold.copyWith(
+                                    color: Colors.black54,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                Text(
+                                  countryModel.code,
+                                  style: AppTextStyle.interBold.copyWith(
+                                    color: Colors.black54,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                Text(
+                                  countryModel.phone,
+                                  style: AppTextStyle.interBold.copyWith(
+                                    color: Colors.black54,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                Text(
+                                  countryModel.emoji,
+                                  style: AppTextStyle.interBold.copyWith(
+                                    color: Colors.black54,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                ),
+                                Text(
+                                  countryModel.currency,
+                                  style: AppTextStyle.interBold.copyWith(
+                                    color: Colors.black54,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                ),
+                                Text(
+                                  '${countryModel.continent.code} ${countryModel.continent.name}',
+                                  style: AppTextStyle.interBold.copyWith(
+                                    color: Colors.black54,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   );
                 },
