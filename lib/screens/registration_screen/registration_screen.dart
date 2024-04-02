@@ -16,12 +16,17 @@ class RegistrationScreen extends StatefulWidget {
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
   String pinCode = '';
-  int activeIndex = 0;
   String secondPinCode = '';
   final TextEditingController textEditingController = TextEditingController();
   final TextEditingController secondTextEditingController =
       TextEditingController();
-  final PageController pageController = PageController();
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    secondTextEditingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,96 +41,119 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 vertical: 20.h,
               ),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(
-                    height: MediaQuery.sizeOf(context).height / 3.2,
-                  ),
-                  Center(
-                    child: Text(
-                      textAlign: TextAlign.center,
-                      'CREATE PIN CODE:',
-                      style: AppTextStyle.interBold.copyWith(
-                          color: Colors.black,
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.w900),
+                  Expanded(
+                    flex: 10,
+                    child: SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: MediaQuery.sizeOf(context).height / 4,
+                          ),
+                          Center(
+                            child: Text(
+                              textAlign: TextAlign.center,
+                              'CREATE PIN CODE:',
+                              style: AppTextStyle.interBold.copyWith(
+                                  color: Colors.black,
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w900),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          PinCodeTextField(
+                            keyboardType: TextInputType.number,
+                            length: 6,
+                            obscureText: false,
+                            animationType: AnimationType.fade,
+                            pinTheme: PinTheme(
+                              shape: PinCodeFieldShape.box,
+                              borderRadius: BorderRadius.circular(
+                                5.r,
+                              ),
+                              fieldHeight: 50,
+                              fieldWidth: 40,
+                              activeFillColor: Colors.white,
+                            ),
+                            animationDuration:
+                                const Duration(milliseconds: 300),
+                            backgroundColor: Colors.transparent,
+                            enableActiveFill: true,
+                            controller: textEditingController,
+                            onCompleted: (v) {
+                              pinCode = v;
+                              debugPrint(
+                                  "===============================Completed: $pinCode==================================");
+                            },
+                            beforeTextPaste: (text) {
+                              debugPrint("Allowing to paste $text");
+                              //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
+                              //but you can show anything you want here, like your pop up saying wrong paste format or etc
+                              return true;
+                            },
+                            appContext: context,
+                          ),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          Center(
+                            child: Text(
+                              textAlign: TextAlign.center,
+                              'CONFIRM PIN CODE:',
+                              style: AppTextStyle.interBold.copyWith(
+                                  color: Colors.black,
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w900),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          PinCodeTextField(
+                            keyboardType: TextInputType.number,
+                            length: 6,
+                            obscureText: false,
+                            animationType: AnimationType.fade,
+                            pinTheme: PinTheme(
+                              shape: PinCodeFieldShape.box,
+                              borderRadius: BorderRadius.circular(
+                                5.r,
+                              ),
+                              fieldHeight: 50,
+                              fieldWidth: 40,
+                              activeFillColor: Colors.white,
+                            ),
+                            animationDuration:
+                                const Duration(milliseconds: 300),
+                            backgroundColor: Colors.transparent,
+                            enableActiveFill: true,
+                            controller: secondTextEditingController,
+                            onCompleted: (v) {
+                              secondPinCode = v;
+                              debugPrint(
+                                  "===============================Completed: $pinCode==================================");
+                            },
+                            beforeTextPaste: (text) {
+                              debugPrint("Allowing to paste $text");
+                              //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
+                              //but you can show anything you want here, like your pop up saying wrong paste format or etc
+                              return true;
+                            },
+                            appContext: context,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  activeIndex == 0
-                      ? PinCodeTextField(
-                          keyboardType: TextInputType.number,
-                          length: 6,
-                          obscureText: false,
-                          animationType: AnimationType.fade,
-                          pinTheme: PinTheme(
-                            shape: PinCodeFieldShape.box,
-                            borderRadius: BorderRadius.circular(
-                              5.r,
-                            ),
-                            fieldHeight: 50,
-                            fieldWidth: 40,
-                            activeFillColor: Colors.white,
-                          ),
-                          animationDuration: const Duration(milliseconds: 300),
-                          backgroundColor: Colors.transparent,
-                          enableActiveFill: true,
-                          controller: textEditingController,
-                          onCompleted: (v) {
-                            pinCode = v;
-                            debugPrint(
-                                "===============================Completed: $pinCode==================================");
-                          },
-                          beforeTextPaste: (text) {
-                            debugPrint("Allowing to paste $text");
-                            //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
-                            //but you can show anything you want here, like your pop up saying wrong paste format or etc
-                            return true;
-                          },
-                          appContext: context,
-                        )
-                      : PinCodeTextField(
-                          keyboardType: TextInputType.number,
-                          length: 6,
-                          obscureText: false,
-                          animationType: AnimationType.fade,
-                          pinTheme: PinTheme(
-                            shape: PinCodeFieldShape.box,
-                            borderRadius: BorderRadius.circular(
-                              5.r,
-                            ),
-                            fieldHeight: 50,
-                            fieldWidth: 40,
-                            activeFillColor: Colors.white,
-                          ),
-                          animationDuration: const Duration(milliseconds: 300),
-                          backgroundColor: Colors.transparent,
-                          enableActiveFill: true,
-                          controller: secondTextEditingController,
-                          onCompleted: (v) {
-                            secondPinCode = v;
-                            debugPrint(
-                                "===============================Completed: $pinCode==================================");
-                          },
-                          beforeTextPaste: (text) {
-                            debugPrint("Allowing to paste $text");
-                            //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
-                            //but you can show anything you want here, like your pop up saying wrong paste format or etc
-                            return true;
-                          },
-                          appContext: context,
-                        ),
                   const Spacer(),
                   Center(
                     child: ZoomTapAnimation(
                       onTap: () {
-                        setState(() {
-                          activeIndex++;
-                        });
-                        pageController.jumpToPage(activeIndex);
                         if (pinCode != '' &&
-                            activeIndex == 2 &&
                             pinCode.length == 6 &&
                             pinCode == secondPinCode) {
                           context.read<RegisterCubit>().register(
@@ -187,7 +215,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         ),
                         child: Center(
                           child: Text(
-                            activeIndex == 1 ? 'SAVE PIN CODE' : 'NEXT',
+                            'SAVE PIN CODE',
                             style: AppTextStyle.interBold.copyWith(
                               color: Colors.yellowAccent,
                               fontSize: 20.sp,
