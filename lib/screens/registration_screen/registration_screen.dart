@@ -71,7 +71,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             obscureText: false,
                             animationType: AnimationType.fade,
                             pinTheme: PinTheme(
-                              shape: PinCodeFieldShape.box,
+                              shape: PinCodeFieldShape.circle,
                               borderRadius: BorderRadius.circular(
                                 5.r,
                               ),
@@ -119,7 +119,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             obscureText: false,
                             animationType: AnimationType.fade,
                             pinTheme: PinTheme(
-                              shape: PinCodeFieldShape.box,
+                              shape: PinCodeFieldShape.circle,
                               borderRadius: BorderRadius.circular(
                                 5.r,
                               ),

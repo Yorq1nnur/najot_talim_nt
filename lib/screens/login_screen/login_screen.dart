@@ -20,6 +20,12 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController textEditingController = TextEditingController();
 
   @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
@@ -59,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       obscureText: false,
                       animationType: AnimationType.fade,
                       pinTheme: PinTheme(
-                        shape: PinCodeFieldShape.box,
+                        shape: PinCodeFieldShape.circle,
                         borderRadius: BorderRadius.circular(
                           5.r,
                         ),
