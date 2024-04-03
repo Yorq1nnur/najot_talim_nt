@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../cubits/currency/currency_cubit.dart';
+import 'package:najot_talim_nt/screens/timer/cubit/time_task_cubit.dart';
+import '../cubits/currency/trans_actions_cubit.dart';
 import '../data/repositories/currency_repository.dart';
 import '../screens/helper/helper_screen.dart';
 
@@ -11,14 +12,17 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
-        RepositoryProvider(create: (_) => CurrencyRepository()),
+        RepositoryProvider(create: (_) => TimerModel()),
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (_) => CurrencyCubit(
-              currencyRepository: CurrencyRepository(),
+            create: (_) => TransActionsCubit(
+              currencyRepository: TimerModel(),
             )..fetchCurrencies(),
+          ),
+          BlocProvider(
+            create: (_) => TimeTaskCubit(),
           ),
         ],
         child: const MyApp(),

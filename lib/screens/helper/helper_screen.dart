@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:najot_talim_nt/screens/currencies/payments_screen.dart';
-import 'package:najot_talim_nt/screens/timer/timer_screen.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
+
+import '../timer/time_task_screen.dart';
 
 class HelperScreen extends StatelessWidget {
   const HelperScreen({super.key});
@@ -20,7 +21,7 @@ class HelperScreen extends StatelessWidget {
             ),
           );
         },
-        title: "FIRST SCREEN",
+        title: "FETCH DATA FROM NETWORK",
         textColor: Colors.indigoAccent,
       ),
       ButtonModel(
@@ -29,11 +30,11 @@ class HelperScreen extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const TimerScreen(),
+              builder: (context) => const TimeTaskScreen(),
             ),
           );
         },
-        title: "SECOND SCREEN",
+        title: "TIMER SCREEN",
         textColor: Colors.tealAccent,
       ),
     ];

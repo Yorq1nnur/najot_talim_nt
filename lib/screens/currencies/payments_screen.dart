@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
-import '../../cubits/currency/currency_cubit.dart';
-import '../../cubits/currency/currency_state.dart';
+import '../../cubits/currency/trans_actions_cubit.dart';
+import '../../cubits/currency/trans_actions_state.dart';
 import '../../data/models/trans_actions_model.dart';
 
 class PaymentsScreen extends StatelessWidget {
@@ -39,23 +39,23 @@ class PaymentsScreen extends StatelessWidget {
               ),
             ),
           ),
-          body: BlocBuilder<CurrencyCubit, CurrencyState>(
+          body: BlocBuilder<TransActionsCubit, TransActionsState>(
             builder: (context, state) {
-              if (state is CurrencyLoadingState) {
+              if (state is TransActionsLoadingState) {
                 return const Center(child: CircularProgressIndicator());
               }
-              if (state is CurrencyErrorState) {
+              if (state is TransActionsErrorState) {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(state.errorText),
                   ],
                 );
-              } else if (state is CurrencySuccessState) {
+              } else if (state is TransActionsSuccessState) {
                 return ListView(
                   physics: const BouncingScrollPhysics(),
-                  children: List.generate(state.currencies.length, (index) {
-                    TransactionsModel currencyModel = state.currencies[index];
+                  children: List.generate(state.transActions.length, (index) {
+                    TransactionsModel transactionsModel = state.transActions[index];
                     return Column(
                       children: [
                         Padding(
@@ -64,7 +64,7 @@ class PaymentsScreen extends StatelessWidget {
                           ),
                           child: ListTile(
                             title: Text(
-                              currencyModel.data[0].sender.name,
+                              transactionsModel.data[0].sender.name,
                               style: AppTextStyle.interBold.copyWith(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -72,7 +72,7 @@ class PaymentsScreen extends StatelessWidget {
                               ),
                             ),
                             subtitle: Text(
-                              currencyModel.data[0].sender.location,
+                              transactionsModel.data[0].sender.location,
                               style: AppTextStyle.interBold.copyWith(
                                 color: Colors.white.withOpacity(0.5),
                                 fontSize: 20,
@@ -83,7 +83,7 @@ class PaymentsScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(50),
                               child: CachedNetworkImage(
                                 imageUrl:
-                                    currencyModel.data[0].sender.brandImage,
+                                    transactionsModel.data[0].sender.brandImage,
                                 errorWidget: (context, url, error) =>
                                     CachedNetworkImage(
                                   imageUrl:
@@ -103,12 +103,12 @@ class PaymentsScreen extends StatelessWidget {
                                 children: <TextSpan>[
                                   TextSpan(
                                     text:
-                                        "-${currencyModel.data[0].amount} UZS\n",
+                                        "-${transactionsModel.data[0].amount} UZS\n",
                                     style: AppTextStyle.interBold
                                         .copyWith(color: Colors.white),
                                   ),
                                   TextSpan(
-                                    text: currencyModel.transferDate,
+                                    text: transactionsModel.transferDate,
                                     style: AppTextStyle.interBold.copyWith(
                                       color: Colors.white.withOpacity(
                                         0.5,
@@ -126,7 +126,7 @@ class PaymentsScreen extends StatelessWidget {
                           ),
                           child: ListTile(
                             title: Text(
-                              currencyModel.data[1].sender.name,
+                              transactionsModel.data[1].sender.name,
                               style: AppTextStyle.interBold.copyWith(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -134,7 +134,7 @@ class PaymentsScreen extends StatelessWidget {
                               ),
                             ),
                             subtitle: Text(
-                              currencyModel.data[0].sender.location,
+                              transactionsModel.data[0].sender.location,
                               style: AppTextStyle.interBold.copyWith(
                                 color: Colors.white.withOpacity(0.5),
                                 fontSize: 20,
@@ -145,7 +145,7 @@ class PaymentsScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(50),
                               child: CachedNetworkImage(
                                 imageUrl:
-                                    currencyModel.data[1].sender.brandImage,
+                                    transactionsModel.data[1].sender.brandImage,
                                 errorWidget: (context, url, error) =>
                                     CachedNetworkImage(
                                   imageUrl:
@@ -165,12 +165,12 @@ class PaymentsScreen extends StatelessWidget {
                                 children: <TextSpan>[
                                   TextSpan(
                                     text:
-                                        "-${currencyModel.data[1].amount} UZS\n",
+                                        "-${transactionsModel.data[1].amount} UZS\n",
                                     style: AppTextStyle.interBold
                                         .copyWith(color: Colors.white),
                                   ),
                                   TextSpan(
-                                    text: currencyModel.transferDate,
+                                    text: transactionsModel.transferDate,
                                     style: AppTextStyle.interBold.copyWith(
                                       color: Colors.white.withOpacity(
                                         0.5,
