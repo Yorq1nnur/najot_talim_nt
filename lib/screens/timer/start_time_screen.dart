@@ -39,14 +39,14 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async{
+      onWillPop: () async {
         var value = await showDialog<bool>(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text("Vazifa vaqti tugamangan"),
+            title: const Text("The task time is not over!!!"),
             actions: [
               TextButton(
-                onPressed: (){
+                onPressed: () {
                   Navigator.of(context).pop(false);
                 },
                 child: const Text("Ok"),
@@ -54,9 +54,9 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
             ],
           ),
         );
-        if(value !=null){
+        if (value != null) {
           return Future.value(value);
-        }else{
+        } else {
           return Future.value(false);
         }
       },
@@ -64,47 +64,6 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
         builder: (BuildContext context, TimeTaskState state) {
           return Scaffold(
               backgroundColor: Colors.black,
-              appBar: AppBar(
-                backgroundColor: Colors.black,
-                leading: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 20,
-                  ),
-                  child: IconButton(
-                    onPressed: () {
-                      if (state.finishTime) {
-                        context.read<TimeTaskCubit>().finishTaskTime();
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const TimeTaskScreen(),
-                          ),
-                        );
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            backgroundColor: Colors.red,
-                            content: Text(
-                              'YOU CANNOT CLOSE THE SCREEN UNTIL THE TASK TIMES OUT!!!',
-                              style: AppTextStyle.interBold.copyWith(
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w900,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        );
-                      }
-                    },
-                    icon: const Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.white,
-                      size: 20,
-                    ),
-                  ),
-                ),
-              ),
               body: SizedBox(
                 width: double.infinity,
                 child: Column(
@@ -197,7 +156,8 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const TimeTaskScreen(),
+                                    builder: (context) =>
+                                        const TimeTaskScreen(),
                                   ),
                                 );
                               },
