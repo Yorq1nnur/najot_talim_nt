@@ -38,26 +38,33 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
+    return PopScope(
+      canPop: false,
+      onPopInvoked : (didPop) async {
         var value = await showDialog<bool>(
           context: context,
           builder: (context) => AlertDialog(
+            backgroundColor: Colors.grey,
             title: const Text("The task time is not over!!!"),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop(false);
                 },
-                child: const Text("Ok"),
+                child: Text(
+                  "Ok",
+                  style: AppTextStyle.interBold.copyWith(
+                    color: Colors.lightBlue,
+                  ),
+                ),
               )
             ],
           ),
         );
         if (value != null) {
-          return Future.value(value);
+          return Future.value();
         } else {
-          return Future.value(false);
+          return Future.value();
         }
       },
       child: BlocBuilder<TimeTaskCubit, TimeTaskState>(
