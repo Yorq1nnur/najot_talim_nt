@@ -161,10 +161,12 @@ class _TimeTaskScreenState extends State<TimeTaskScreen> {
                             minute: timeOfDay!.minute,
                             taskName: _taskController.text);
                         debugPrint(
-                            "---------------------------hour: ${context.read<TimeTaskCubit>().state.hour}");
+                          "\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\nhour: ${context.read<TimeTaskCubit>().state.hour}\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$",
+                        );
                         debugPrint(
-                            "---------------------------minute: ${context.read<TimeTaskCubit>().state.minute}");
-                        Navigator.push(
+                          "\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\nminute: ${context.read<TimeTaskCubit>().state.minute}\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$",
+                        );
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const StartTaskScreen(),

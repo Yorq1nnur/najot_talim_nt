@@ -83,6 +83,7 @@ class PaymentsScreen extends StatelessWidget {
                             leading: ClipRRect(
                               borderRadius: BorderRadius.circular(50),
                               child: CachedNetworkImage(
+                                placeholder: (context, url) => const CircularProgressIndicator(),
                                 imageUrl:
                                     transactionsModel.data[0].sender.brandImage,
                                 errorWidget: (context, url, error) =>

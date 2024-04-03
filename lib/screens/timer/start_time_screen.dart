@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:najot_talim_nt/screens/timer/time_task_screen.dart';
+import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import '../../cubits/timer/time_state_cubit.dart';
 import '../../cubits/timer/time_task_cubit.dart';
 
@@ -20,10 +21,40 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
     super.initState();
   }
 
+  bool isCancel = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        leading: IconButton(
+          onPressed: () {
+            isCancel
+                ? Navigator.pop(context)
+                : ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: Colors.red,
+                      content: Text(
+                        'YOU CANNOT CLOSE THE SCREEN UNTIL THE TASK TIMES OUT!!!',
+                        style: AppTextStyle.interBold.copyWith(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  );
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+            size: 20,
+          ),
+        ),
+      ),
       body: BlocBuilder<TimeTaskCubit, TimeTaskState>(
         builder: (BuildContext context, TimeTaskState state) {
           return SizedBox(
@@ -101,6 +132,9 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
                       actions: [
                         TextButton(
                           onPressed: () {
+                            setState(() {
+                              isCancel = true;
+                            });
                             context.read<TimeTaskCubit>().finishTaskTime();
                             Navigator.pushReplacement(
                               context,

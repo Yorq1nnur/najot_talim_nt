@@ -24,11 +24,11 @@ class TimeTaskCubit extends Cubit<TimeTaskState> {
       progressValueChanged();
       await Future.delayed(const Duration(seconds: 1), () {
         debugPrint(
-            "---------------------------------------hour: ${state.hour}");
+            "\$\$\$\$\$\$\$\$\$\$\nhour: ${state.hour}\n\$\$\$\$\$\$\$\$\$\$");
         debugPrint(
-            "---------------------------------------minute: ${state.minute}");
+            "\$\$\$\$\$\$\$\$\$\$\nminute: ${state.minute}\n\$\$\$\$\$\$\$\$\$\$");
         debugPrint(
-            "---------------------------------------seconde: ${state.second}");
+            "\$\$\$\$\$\$\$\$\$\$\nseconds: ${state.second}\n\$\$\$\$\$\$\$\$\$\$");
         if (state.hour == 0 && state.minute == 0 && state.second == 0) {
           emit(state.copyWith(finishTime: true));
           isFinished = false;
