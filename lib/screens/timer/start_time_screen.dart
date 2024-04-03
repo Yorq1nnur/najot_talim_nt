@@ -21,7 +21,6 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TimeTaskCubit, TimeTaskState>(
@@ -33,7 +32,15 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
               leading: IconButton(
                 onPressed: () {
                   state.finishTime
-                      ? Navigator.pop(context)
+                      ? () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const TimeTaskScreen(),
+                            ),
+                          );
+                          context.read<TimeTaskCubit>().finishTaskTime();
+                        }
                       : ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             backgroundColor: Colors.red,
@@ -63,13 +70,14 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    state.taskName,
+                    'TASK NAME:\n${state.taskName}',
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 5,
                     ),
+                    textAlign: TextAlign.center,
                   ),
                   const SizedBox(
                     height: 30,
