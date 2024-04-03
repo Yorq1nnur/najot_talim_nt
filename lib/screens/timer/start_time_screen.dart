@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'cubit/time_state_cubit.dart';
-import 'cubit/time_task_cubit.dart';
+import '../../cubits/timer/time_state_cubit.dart';
+import '../../cubits/timer/time_task_cubit.dart';
 
 class StartTaskScreen extends StatefulWidget {
   const StartTaskScreen({super.key});

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:najot_talim_nt/screens/timer/start_time_screen.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
-import 'cubit/time_task_cubit.dart';
+import '../../cubits/timer/time_task_cubit.dart';
 
 class TimeTaskScreen extends StatefulWidget {
   const TimeTaskScreen({super.key});

@@ -5,14 +5,14 @@ import '../../data/repositories/currency_repository.dart';
 import 'trans_actions_state.dart';
 
 class TransActionsCubit extends Cubit<TransActionsState> {
-  TransActionsCubit({required this.currencyRepository})
+  TransActionsCubit({required this.timerRepository})
       : super(TransActionsInitialState());
 
-  final TimerModel currencyRepository;
+  final TimerModel timerRepository;
 
   Future<void> fetchCurrencies() async {
     emit(TransActionsLoadingState());
-    NetworkResponse response = await currencyRepository.getTransActions();
+    NetworkResponse response = await timerRepository.getTransActions();
     if (response.errorText.isEmpty) {
       emit(TransActionsSuccessState(
           transActions: response.data as List<TransactionsModel>));
