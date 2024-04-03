@@ -31,30 +31,30 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
               backgroundColor: Colors.black,
               leading: IconButton(
                 onPressed: () {
-                  state.finishTime
-                      ? () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const TimeTaskScreen(),
-                            ),
-                          );
-                          context.read<TimeTaskCubit>().finishTaskTime();
-                        }
-                      : ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            backgroundColor: Colors.red,
-                            content: Text(
-                              'YOU CANNOT CLOSE THE SCREEN UNTIL THE TASK TIMES OUT!!!',
-                              style: AppTextStyle.interBold.copyWith(
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w900,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
+                  if (state.finishTime) {
+                    context.read<TimeTaskCubit>().finishTaskTime();
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const TimeTaskScreen(),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: Colors.red,
+                        content: Text(
+                          'YOU CANNOT CLOSE THE SCREEN UNTIL THE TASK TIMES OUT!!!',
+                          style: AppTextStyle.interBold.copyWith(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w900,
                           ),
-                        );
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    );
+                  }
                 },
                 icon: const Icon(
                   Icons.arrow_back_ios,
