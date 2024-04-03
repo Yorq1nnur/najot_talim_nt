@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:najot_talim_nt/screens/timer/start_time_screen.dart';
+import 'package:najot_talim_nt/utils/images/app_images.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import 'cubit/time_task_cubit.dart';
 
@@ -29,16 +30,34 @@ class _TimeTaskScreenState extends State<TimeTaskScreen> {
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.black,
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              color: Colors.white,
-              size: 20,
+          leading: Padding(
+            padding: const EdgeInsets.only(
+              left: 15,
+            ),
+            child: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+                size: 40,
+              ),
             ),
           ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset(
+                AppImages.profile,
+                height: 40,
+                width: 40,
+              ),
+            ),
+            const SizedBox(
+              width: 12,
+            ),
+          ],
         ),
         body: Form(
           key: _formKey,
