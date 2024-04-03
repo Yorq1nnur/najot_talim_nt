@@ -29,37 +29,42 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
             backgroundColor: Colors.black,
             appBar: AppBar(
               backgroundColor: Colors.black,
-              leading: IconButton(
-                onPressed: () {
-                  if (state.finishTime) {
-                    context.read<TimeTaskCubit>().finishTaskTime();
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const TimeTaskScreen(),
-                      ),
-                    );
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        backgroundColor: Colors.red,
-                        content: Text(
-                          'YOU CANNOT CLOSE THE SCREEN UNTIL THE TASK TIMES OUT!!!',
-                          style: AppTextStyle.interBold.copyWith(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w900,
-                          ),
-                          textAlign: TextAlign.center,
+              leading: Padding(
+                padding: const EdgeInsets.only(
+                  left: 20,
+                ),
+                child: IconButton(
+                  onPressed: () {
+                    if (state.finishTime) {
+                      context.read<TimeTaskCubit>().finishTaskTime();
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const TimeTaskScreen(),
                         ),
-                      ),
-                    );
-                  }
-                },
-                icon: const Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.white,
-                  size: 20,
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Colors.red,
+                          content: Text(
+                            'YOU CANNOT CLOSE THE SCREEN UNTIL THE TASK TIMES OUT!!!',
+                            style: AppTextStyle.interBold.copyWith(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back_ios,
+                    color: Colors.white,
+                    size: 20,
+                  ),
                 ),
               ),
             ),
@@ -70,12 +75,22 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'TASK NAME:\n${state.taskName}',
-                    style: const TextStyle(
+                    'TASK NAME:',
+                    style: AppTextStyle.interBold.copyWith(
                       color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 5,
+                      fontSize: 40,
+                      fontWeight: FontWeight.w900,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    state.taskName,
+                    style: AppTextStyle.interBold.copyWith(
+                      color: Colors.white.withOpacity(
+                        0.5,
+                      ),
+                      fontSize: 40,
+                      fontWeight: FontWeight.w900,
                     ),
                     textAlign: TextAlign.center,
                   ),
