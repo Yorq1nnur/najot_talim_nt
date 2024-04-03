@@ -38,38 +38,44 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
-      onPopInvoked : (didPop) async {
-        var value = await showDialog<bool>(
-          context: context,
-          builder: (context) => AlertDialog(
-            backgroundColor: Colors.grey,
-            title: const Text("The task time is not over!!!"),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop(false);
-                },
-                child: Text(
-                  "Ok",
+    return BlocBuilder<TimeTaskCubit, TimeTaskState>(
+      builder: (BuildContext context, TimeTaskState state) {
+        return PopScope(
+          canPop: state.finishTime ? true : false,
+          onPopInvoked: (didPop) async {
+            var value = await showDialog<bool>(
+              context: context,
+              builder: (context) => AlertDialog(
+                backgroundColor: Colors.blueGrey,
+                title: Text(
+                  "The task time is not over!!!",
                   style: AppTextStyle.interBold.copyWith(
-                    color: Colors.lightBlue,
+                    color: Colors.red,
+                    fontWeight: FontWeight.w900,
                   ),
                 ),
-              )
-            ],
-          ),
-        );
-        if (value != null) {
-          return Future.value();
-        } else {
-          return Future.value();
-        }
-      },
-      child: BlocBuilder<TimeTaskCubit, TimeTaskState>(
-        builder: (BuildContext context, TimeTaskState state) {
-          return Scaffold(
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop(false);
+                    },
+                    child: Text(
+                      "Ok",
+                      style: AppTextStyle.interBold.copyWith(
+                        color: Colors.amber,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            );
+            if (value != null) {
+              return Future.value(value);
+            } else {
+              return Future.value(false);
+            }
+          },
+          child: Scaffold(
               backgroundColor: Colors.black,
               body: SizedBox(
                 width: double.infinity,
@@ -175,9 +181,9 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
                       )
                   ],
                 ),
-              ));
-        },
-      ),
+              )),
+        );
+      },
     );
   }
 }
