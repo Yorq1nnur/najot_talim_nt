@@ -102,13 +102,15 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
                           ),
                           children: [
                             TextSpan(
-                                text: state.minute.toString().length == 1
-                                    ? " : 0${state.minute.toString()} : "
-                                    : " : ${state.minute.toString()} : ",
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 40)),
+                              text: state.minute.toString().length == 1
+                                  ? " : 0${state.minute.toString()} : "
+                                  : " : ${state.minute.toString()} : ",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 40,
+                              ),
+                            ),
                             TextSpan(
                               text: state.second.toString().length == 1
                                   ? "0${state.second.toString()}"
