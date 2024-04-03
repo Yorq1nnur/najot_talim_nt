@@ -55,7 +55,8 @@ class PaymentsScreen extends StatelessWidget {
                 return ListView(
                   physics: const BouncingScrollPhysics(),
                   children: List.generate(state.transActions.length, (index) {
-                    TransactionsModel transactionsModel = state.transActions[index];
+                    TransactionsModel transactionsModel =
+                        state.transActions[index];
                     return Column(
                       children: [
                         Padding(

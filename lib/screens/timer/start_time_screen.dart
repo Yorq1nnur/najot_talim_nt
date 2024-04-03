@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:najot_talim_nt/screens/timer/time_task_screen.dart';
 import '../../cubits/timer/time_state_cubit.dart';
 import '../../cubits/timer/time_task_cubit.dart';
 
@@ -22,22 +23,23 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
-        body: BlocBuilder<TimeTaskCubit, TimeTaskState>(
-      builder: (BuildContext context, TimeTaskState state) {
-        return SizedBox(
-          width: double.infinity,
-          child: Column(
+      backgroundColor: Colors.black,
+      body: BlocBuilder<TimeTaskCubit, TimeTaskState>(
+        builder: (BuildContext context, TimeTaskState state) {
+          return SizedBox(
+            width: double.infinity,
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   state.taskName,
                   style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 5),
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 5,
+                  ),
                 ),
                 const SizedBox(
                   height: 30,
@@ -63,9 +65,10 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
                               ? "0${state.hour.toString()}"
                               : state.hour.toString(),
                           style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40),
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 40,
+                          ),
                           children: [
                             TextSpan(
                                 text: state.minute.toString().length == 1
@@ -99,16 +102,23 @@ class _StartTaskScreenState extends State<StartTaskScreen> {
                         TextButton(
                           onPressed: () {
                             context.read<TimeTaskCubit>().finishTaskTime();
-                            Navigator.pop(context);
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const TimeTaskScreen(),
+                              ),
+                            );
                           },
                           child: const Text('OK'),
                         ),
                       ],
                     ),
                   )
-              ]),
-        );
-      },
-    ));
+              ],
+            ),
+          );
+        },
+      ),
+    );
   }
 }

@@ -20,25 +20,33 @@ class TimeTaskState {
   });
 
   TimeTaskState copyWith({
-     String? taskName,
-     int? hour,
-     int? minute,
-     int? second,
-     int? targetHour,
-     double? progressValue,
-     int? targetMinute,
-     bool? finishTime,
+    String? taskName,
+    int? hour,
+    int? minute,
+    int? second,
+    int? targetHour,
+    double? progressValue,
+    int? targetMinute,
+    bool? finishTime,
   }) =>
       TimeTaskState(
         taskName: taskName ?? this.taskName,
         hour: hour ?? this.hour,
         minute: minute ?? this.minute,
         second: second ?? this.second,
-        targetHour: targetHour?? this.targetHour,
-        targetMinute: targetMinute?? this.targetMinute,
-        finishTime: finishTime?? this.finishTime,
+        targetHour: targetHour ?? this.targetHour,
+        targetMinute: targetMinute ?? this.targetMinute,
+        finishTime: finishTime ?? this.finishTime,
         progressValue: progressValue ?? this.progressValue,
       );
 
-  static TimeTaskState initialValue() => TimeTaskState(progressValue: 0.0,taskName: '',hour: 0, minute: 0, second: 59,targetHour: 0,targetMinute: 0, finishTime: false);
+  static TimeTaskState initialValue() => TimeTaskState(
+      progressValue: 0.0,
+      taskName: '',
+      hour: 0,
+      minute: 0,
+      second: 59,
+      targetHour: 0,
+      targetMinute: 0,
+      finishTime: false);
 }
