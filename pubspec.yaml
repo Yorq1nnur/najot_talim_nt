@@ -22,6 +22,7 @@ dependencies:
   carousel_slider: ^4.2.1
   lottie: ^3.1.0
   flutter_bloc: ^8.1.5
+  wakelock: ^0.6.2
 
 dev_dependencies:
   flutter_test:
