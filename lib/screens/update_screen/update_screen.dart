@@ -170,7 +170,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                                 ? widget.bookModel.price
                                 : changeData[5],
                             rate: changeData[6] == ''
-                                ? widget.bookModel.price
+                                ? widget.bookModel.rate
                                 : changeData[6],
                             uuid: widget.bookModel.uuid,
                           );
