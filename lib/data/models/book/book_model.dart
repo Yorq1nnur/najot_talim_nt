@@ -2,7 +2,6 @@ class BookModel {
   final String? uuid;
   final String bookName;
   final String author;
-  final String? categoryId;
   final String categoryName;
   final String description;
   final String imageUrl;
@@ -13,7 +12,6 @@ class BookModel {
     this.uuid,
     required this.bookName,
     required this.author,
-    this.categoryId,
     required this.categoryName,
     required this.description,
     required this.imageUrl,
@@ -26,7 +24,6 @@ class BookModel {
       uuid: json['_uuid'] as String? ?? "",
       bookName: json['name'] as String? ?? "",
       author: json['author'] as String? ?? "",
-      categoryId: json['category_id'] as String? ?? "",
       categoryName: json['category_name'] as String? ?? "",
       description: json['description'] as String? ?? "",
       imageUrl: json['image_url'] as String? ?? "",
@@ -40,7 +37,6 @@ class BookModel {
       '_uuid': uuid,
       'name': bookName,
       'author': author,
-      'category_id': categoryId,
       'category_name': categoryName,
       'description': description,
       'image_url': imageUrl,
@@ -53,7 +49,6 @@ class BookModel {
     String? uuid,
     String? name,
     String? author,
-    String? categoryId,
     String? categoryName,
     String? description,
     String? imageUrl,
@@ -64,7 +59,6 @@ class BookModel {
       uuid: uuid ?? this.uuid,
       bookName: name ?? bookName,
       author: author ?? this.author,
-      categoryId: categoryId ?? this.categoryId,
       categoryName: categoryName ?? this.categoryName,
       description: description ?? this.description,
       imageUrl: imageUrl ?? this.imageUrl,
@@ -78,7 +72,6 @@ class BookModel {
       "_uuid": uuid ?? uuid,
       "name": bookName,
       "author": author,
-      "category_id": categoryId ?? categoryId,
       "category_name": categoryName,
       "description": description,
       "image_url": imageUrl,
