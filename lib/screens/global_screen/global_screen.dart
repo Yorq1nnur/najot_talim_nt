@@ -6,6 +6,7 @@ import 'package:najot_talim_nt/blocs/books_bloc.dart';
 import 'package:najot_talim_nt/blocs/books_event.dart';
 import 'package:najot_talim_nt/blocs/books_state.dart';
 import 'package:najot_talim_nt/data/models/book/book_model.dart';
+import 'package:najot_talim_nt/screens/add_book/add_book_screen.dart';
 import 'package:najot_talim_nt/screens/detail/detail_screen.dart';
 import 'package:najot_talim_nt/screens/global_screen/widgets/book_item.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
@@ -34,25 +35,13 @@ class _GlobalScreenState extends State<GlobalScreen> {
             ),
             actions: [
               IconButton(
-                onPressed: () async {
-                  BookModel bookModel = BookModel(
-                    bookName: 'OQSHOM ERTAKLARI',
-                    author: 'YUSUF BOBO',
-                    categoryName: 'ERTAKLAR',
-                    description: 'BU AJOYIB ERTAK',
-                    imageUrl:
-                        'https://kitoblardunyosi.uz/image/cache/catalog/001-Kitoblar/003_boshqalar/003_bolalar/2023/oqshom-ertaklari5-web-550x550h.jpg',
-                    price: '25000',
-                    rate: '4.5',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AddBookScreen(),
+                    ),
                   );
-                  context.read<BooksBloc>().add(
-                        AddBookEvent(
-                          bookModel: bookModel,
-                        ),
-                      );
-                  context.read<BooksBloc>().add(
-                        GetBooksEvent(),
-                      );
                 },
                 icon: Icon(
                   Icons.add,
