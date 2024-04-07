@@ -12,6 +12,17 @@ class BooksInitialState extends BooksState {}
 
 class BooksLoadingState extends BooksState {}
 
+class AddBookState extends BooksState {
+  final BookModel bookModel;
+
+  AddBookState(this.bookModel);
+}
+class UpdateBookState extends BooksState {
+  final BookModel bookModel;
+
+  UpdateBookState(this.bookModel);
+}
+
 class BooksErrorState extends BooksState {
   final String errorText;
 

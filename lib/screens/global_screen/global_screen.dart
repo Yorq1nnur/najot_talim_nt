@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/blocs/books_bloc.dart';
 import 'package:najot_talim_nt/blocs/books_event.dart';
 import 'package:najot_talim_nt/blocs/books_state.dart';
-import 'package:najot_talim_nt/data/api_provider/api_provider.dart';
 import 'package:najot_talim_nt/data/models/book/book_model.dart';
 import 'package:najot_talim_nt/screens/detail/detail_screen.dart';
 import 'package:najot_talim_nt/screens/global_screen/widgets/book_item.dart';
@@ -46,12 +45,14 @@ class _GlobalScreenState extends State<GlobalScreen> {
                     price: '25000',
                     rate: '4.5',
                   );
-                  await ApiProvider.addStaticBook(bookModel);
-                  if (context.mounted) {
-                    context.read<BooksBloc>().add(
-                          GetBooksEvent(),
-                        );
-                  }
+                  context.read<BooksBloc>().add(
+                        AddBookEvent(
+                          bookModel: bookModel,
+                        ),
+                      );
+                  context.read<BooksBloc>().add(
+                        GetBooksEvent(),
+                      );
                 },
                 icon: Icon(
                   Icons.add,
@@ -106,14 +107,68 @@ class _GlobalScreenState extends State<GlobalScreen> {
                         BookModel book = state.books[index];
                         return BookItem(
                           onLongTap: () async {
-                            await ApiProvider.deleteStaticBook(
-                              book.uuid!,
+                            await showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  backgroundColor: AppColors.white,
+                                  title: const Text("Ishonchingiz komilmi?"),
+                                  titleTextStyle:
+                                      AppTextStyle.interBold.copyWith(
+                                    color: AppColors.black,
+                                    fontSize: 20.sp,
+                                  ),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        context.read<BooksBloc>().add(
+                                              DeleteBookEvent(
+                                                uuid: book.uuid!,
+                                              ),
+                                            );
+                                        Navigator.pop(context);
+                                        context.read<BooksBloc>().add(
+                                              GetBooksEvent(),
+                                            );
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            backgroundColor:
+                                                Colors.lightBlueAccent,
+                                            content: Text(
+                                              textAlign: TextAlign.center,
+                                              'BOOK DELETED SUCCESSFULLY!!!',
+                                              style: AppTextStyle.interBold
+                                                  .copyWith(
+                                                color: Colors.black,
+                                                fontSize: 20.sp,
+                                                fontWeight: FontWeight.w900,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      child: Text(
+                                        'Yes',
+                                        style: AppTextStyle.interBold.copyWith(
+                                          color: AppColors.black,
+                                        ),
+                                      ),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text(
+                                        'No',
+                                        style: AppTextStyle.interBold
+                                            .copyWith(color: AppColors.black),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
                             );
-                            if (context.mounted) {
-                              context.read<BooksBloc>().add(
-                                    GetBooksEvent(),
-                                  );
-                            }
                           },
                           linkPicture: book.imageUrl,
                           bookName: book.bookName,

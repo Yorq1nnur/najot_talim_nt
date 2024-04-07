@@ -1,12 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:najot_talim_nt/blocs/books_bloc.dart';
+import 'package:najot_talim_nt/blocs/books_event.dart';
 import '../../data/models/book/book_model.dart';
 import '../../utils/colors/app_colors.dart';
 import '../../utils/images/app_images.dart';
 import '../../utils/styles/app_text_style.dart';
+import '../update_screen/update_screen.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({
@@ -64,14 +68,15 @@ class DetailScreen extends StatelessWidget {
                         children: [
                           IconButton(
                             onPressed: () {
-                              // Navigator.pushReplacement(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => UpdateScreen(
-                              //       bookModel: bookModel,
-                              //     ),
-                              //   ),
-                              // );
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      UpdateScreen(
+                                        bookModel: bookModel,
+                                      ),
+                                ),
+                              );
                             },
                             icon: Icon(
                               Icons.edit,
@@ -88,17 +93,45 @@ class DetailScreen extends StatelessWidget {
                                     backgroundColor: AppColors.white,
                                     title: const Text("Ishonchingiz komilmi?"),
                                     titleTextStyle:
-                                        AppTextStyle.interBold.copyWith(
+                                    AppTextStyle.interBold.copyWith(
                                       color: AppColors.black,
                                       fontSize: 20.sp,
                                     ),
                                     actions: <Widget>[
                                       TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          context.read<BooksBloc>().add(
+                                            DeleteBookEvent(
+                                              uuid: bookModel.uuid!,
+                                            ),
+                                          );
+                                          Navigator.pop(context);
+                                          Navigator.pop(context);
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              backgroundColor:
+                                              Colors.lightBlueAccent,
+                                              content: Text(
+                                                textAlign: TextAlign.center,
+                                                'BOOK DELETED SUCCESSFULLY!!!',
+                                                style: AppTextStyle.interBold
+                                                    .copyWith(
+                                                  color: Colors.black,
+                                                  fontSize: 20.sp,
+                                                  fontWeight: FontWeight.w900,
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                          context.read<BooksBloc>().add(
+                                            GetBooksEvent(),
+                                          );
+                                        },
                                         child: Text(
                                           'Yes',
                                           style:
-                                              AppTextStyle.interBold.copyWith(
+                                          AppTextStyle.interBold.copyWith(
                                             color: AppColors.black,
                                           ),
                                         ),

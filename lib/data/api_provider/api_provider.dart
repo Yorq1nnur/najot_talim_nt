@@ -36,55 +36,10 @@ class ApiProvider extends ApiClient {
     );
   }
 
-  static Future<MyResponse> addStaticBook(BookModel bookModel) async {
-    Dio dio = Dio();
-    Options options = Options(
-      sendTimeout: const Duration(seconds: 15),
-      receiveTimeout: const Duration(seconds: 30),
-      responseType: ResponseType.json,
-      headers: {
-        "Authorization": "Bearer ${AppConstants.apiKey}",
-        "Content-Type": "application/json",
-      },
-    );
-    try {
-      Response response = await dio.post(
-        AppConstants.base,
-        options: options,
-        onReceiveProgress: (current, total) {},
-        queryParameters: {},
-        data: [
-          bookModel.toJson(),
-        ],
-      );
-      debugPrint('ADDED SUCCESSFULLY');
-      return MyResponse(
-        data: response.statusCode.toString(),
-      );
-    } catch (error) {
-      debugPrint(error.toString());
-      debugPrint("ERROR:$error");
-      return MyResponse(
-        errorText: error.toString(),
-      );
-    }
-  }
-
-  static Future<MyResponse> deleteStaticBook(String uuid) async {
-    Dio dio = Dio();
-    Options options = Options(
-      sendTimeout: const Duration(seconds: 15),
-      receiveTimeout: const Duration(seconds: 30),
-      responseType: ResponseType.json,
-      headers: {
-        "Authorization": "Bearer ${AppConstants.apiKey}",
-        "Content-Type": "application/json",
-      },
-    );
+  Future<MyResponse> deleteBook(String uuid) async {
     try {
       Response response = await dio.delete(
         AppConstants.base,
-        options: options,
         queryParameters: {},
         data: [
           {"_uuid": uuid}
@@ -107,6 +62,25 @@ class ApiProvider extends ApiClient {
         AppConstants.base,
         data: [
           bookModel.toJson(),
+        ],
+      );
+      return MyResponse(
+        data: response.statusCode.toString(),
+      );
+    } catch (error) {
+      debugPrint("ERROR:$error");
+      return MyResponse(
+        errorText: error.toString(),
+      );
+    }
+  }
+
+  Future<MyResponse> updateBook(BookModel bookModel) async {
+    try {
+      Response response = await dio.put(
+        AppConstants.base,
+        data: [
+          bookModel.toJsonForUpdate(),
         ],
       );
       return MyResponse(
