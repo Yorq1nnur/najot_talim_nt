@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
   ) =>
       ScreenUtilInit(
         designSize: const Size(
-          428,
-          926,
+          375,
+          812,
         ),
         builder: (context, child) {
           ScreenUtil.init(
