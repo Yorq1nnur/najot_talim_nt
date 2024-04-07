@@ -3,9 +3,9 @@ import 'package:najot_talim_nt/data/models/book/book_model.dart';
 abstract class BooksState {}
 
 class BooksSuccessState extends BooksState {
-  final List<BookModel> myResponse;
+  final List<BookModel> books;
 
-  BooksSuccessState({required this.myResponse});
+  BooksSuccessState({required this.books});
 }
 
 class BooksInitialState extends BooksState {}

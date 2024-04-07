@@ -1,5 +1,7 @@
-class AppConstants{
-  static const String apiKey = "TBmhXHOqNQ6CVArK6Hh3xtivv-ao_tTs5yaQIzh0ctk7xCgoNg";
-  static const String baseUrl = "crudapi.co.uk";
+class AppConstants {
+  static const String apiKey =
+      "TBmhXHOqNQ6CVArK6Hh3xtivv-ao_tTs5yaQIzh0ctk7xCgoNg";
+  static const String baseUrl = "https://crudapi.co.uk";
   static const String endPoint = "/api/v1/library";
+  static const String base = "https://crudapi.co.uk/api/v1/library";
 }

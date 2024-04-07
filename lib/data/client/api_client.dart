@@ -34,9 +34,9 @@ class ApiClient {
           return handler.next(response);
         },
         onError: (
-            DioException error,
-            ErrorInterceptorHandler handler,
-            ) {
+          DioException error,
+          ErrorInterceptorHandler handler,
+        ) {
           debugPrint("ENTER ON ERROR:${error.message}");
           return handler.next(error);
         },
