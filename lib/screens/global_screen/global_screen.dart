@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
+import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 
 class GlobalScreen extends StatefulWidget {
   const GlobalScreen({super.key});
@@ -16,7 +17,17 @@ class _GlobalScreenState extends State<GlobalScreen> {
   Widget build(BuildContext context) {
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(statusBarColor: AppColors.transparent),
-      child: Scaffold(),
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          elevation: 0,
+          title: Text(
+            'DEFAULT PROJECT',
+            style: AppTextStyle.interBold,
+          ),
+        ),
+      ),
     );
   }
 }
