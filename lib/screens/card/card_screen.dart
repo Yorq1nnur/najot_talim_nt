@@ -22,137 +22,149 @@ class _CardScreenState extends State<CardScreen> {
       ),
       child: Scaffold(
         backgroundColor: AppColors.c2A3256,
-        body: Column(
-          children: [
-            SizedBox(
-              height: 20.h,
+        appBar: AppBar(
+          backgroundColor: AppColors.c2A3256,
+          elevation: 0,
+          title: Text(
+            'CARDS',
+            style: AppTextStyle.interBold,
+          ),
+          centerTitle: true,
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.add,
+                size: 20.w,
+                color: Colors.black,
+              ),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  ...List.generate(
-                    10,
-                    (index) => Container(
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 10.w,
-                        vertical: 10.h,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16.r),
-                        gradient: const LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Color(0xFF1C1678),
-                            Color(0xFF50727B),
-                          ],
-                        ),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 15.w,
-                          vertical: 15.h,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+            SizedBox(
+              width: 20.w,
+            ),
+          ],
+        ),
+        body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              ...List.generate(
+                10,
+                (index) => Container(
+                  width: double.infinity,
+                  margin: EdgeInsets.symmetric(
+                    horizontal: 10.w,
+                    vertical: 10.h,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16.r),
+                    gradient: const LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0xFF1C1678),
+                        Color(0xFF50727B),
+                      ],
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15.w,
+                      vertical: 15.h,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.start,
-                              children: [
-                                Image.asset(
-                                  AppImages.cipPng,
-                                  width: 40.w,
-                                  height: 30.h,
-                                  fit: BoxFit.fill,
-                                ),
-                                SizedBox(width: 20.w,),
-                                Text(
-                                  "Visa",
-                                  style: AppTextStyle.interBold.copyWith(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 23.sp),
-                                )
-                              ],
+                            Image.asset(
+                              AppImages.cipPng,
+                              width: 40.w,
+                              height: 30.h,
+                              fit: BoxFit.fill,
                             ),
                             SizedBox(
-                              height: 10.h,
+                              width: 20.w,
                             ),
                             Text(
-                              "8600 0604 1235 4589",
+                              "Visa",
                               style: AppTextStyle.interBold.copyWith(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w800,
-                                  fontSize: 20.sp),
-                            ),
-                            SizedBox(
-                              height: 25.h,
-                            ),
-                            Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Card Holder Name",
-                                      style: AppTextStyle.interBold.copyWith(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 14.sp),
-                                    ),
-                                    SizedBox(
-                                      height: 10.h,
-                                    ),
-                                    Text(
-                                      "SharifBoy Muminov",
-                                      style: AppTextStyle.interBold.copyWith(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w800,
-                                          fontSize: 14.sp),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Expired Data",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 14.sp,
-                                          fontWeight: FontWeight.w300),
-                                    ),
-                                    SizedBox(
-                                      height: 10.h,
-                                    ),
-                                    Text(
-                                      "02/27",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 14.sp,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                  fontSize: 23.sp),
                             )
                           ],
                         ),
-                      ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
+                          "8600 0604 1235 4589",
+                          style: AppTextStyle.interBold.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w800,
+                              fontSize: 20.sp),
+                        ),
+                        SizedBox(
+                          height: 25.h,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Card Holder Name",
+                                  style: AppTextStyle.interBold.copyWith(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 14.sp),
+                                ),
+                                SizedBox(
+                                  height: 10.h,
+                                ),
+                                Text(
+                                  "SharifBoy Muminov",
+                                  style: AppTextStyle.interBold.copyWith(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 14.sp),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Expired Data",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w300),
+                                ),
+                                SizedBox(
+                                  height: 10.h,
+                                ),
+                                Text(
+                                  "02/27",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            ),
+                          ],
+                        )
+                      ],
                     ),
                   ),
-                ],
-              ),
-            )
-          ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

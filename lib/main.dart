@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot_talim_nt/blocs/books_bloc.dart';
-import 'package:najot_talim_nt/blocs/books_event.dart';
+import 'package:najot_talim_nt/blocs/books/books_bloc.dart';
 import 'package:najot_talim_nt/data/repositories/books_repository.dart';
 import 'package:najot_talim_nt/screens/card/card_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
+import 'blocs/books/books_event.dart';
 import 'data/api_provider/api_provider.dart';
 
 void main() {

@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:najot_talim_nt/blocs/books_event.dart';
-import 'package:najot_talim_nt/blocs/books_state.dart';
+import 'package:najot_talim_nt/blocs/books/books_state.dart';
 import 'package:najot_talim_nt/data/models/book/book_model.dart';
 import 'package:najot_talim_nt/data/repositories/books_repository.dart';
-import '../data/api_provider/api_provider.dart';
+import '../../data/api_provider/api_provider.dart';
+import 'books_event.dart';
 
 class BooksBloc extends Bloc<BooksEvent, BooksState> {
   BooksBloc({required this.booksRepository, this.bookModel})
