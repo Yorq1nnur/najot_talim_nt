@@ -1,12 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot_talim_nt/blocs/books_bloc.dart';
+import 'package:najot_talim_nt/blocs/books_event.dart';
+import 'package:najot_talim_nt/data/repositories/books_repository.dart';
 import 'package:najot_talim_nt/screens/global_screen/global_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
+import 'data/api_provider/api_provider.dart';
 
 void main() {
   runApp(
-    const MyApp(),
+    const App(),
   );
+}
+
+class App extends StatelessWidget {
+  const App({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    ApiProvider apiProvider = ApiProvider();
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider(
+          create: (_) => BooksRepository(
+            apiProvider: apiProvider,
+          ),
+        ),
+      ],
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => BooksBloc(
+              booksRepository: context.read<BooksRepository>(),
+            )..add(
+                GetBooksEvent(),
+              ),
+          )
+        ],
+        child: const MyApp(),
+      ),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -20,8 +55,8 @@ class MyApp extends StatelessWidget {
   ) =>
       ScreenUtilInit(
         designSize: const Size(
-          428,
-          926,
+          375,
+          812,
         ),
         builder: (context, child) {
           ScreenUtil.init(
