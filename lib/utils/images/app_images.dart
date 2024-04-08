@@ -5,6 +5,7 @@ class AppImages {
 
   //.svg
   static const String back = "assets/images/back.png";
+  static const String cipPng = "assets/images/cip.png";
   static const String book = "assets/images/book.jpg";
 
   //.jpg

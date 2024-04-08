@@ -4,6 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:najot_talim_nt/data/client/api_client.dart';
 import 'package:najot_talim_nt/data/models/book/book_model.dart';
 import '../../utils/app_constants/app_constants.dart';
+import '../models/card/card_model.dart';
+import '../models/card/network_response.dart';
 import '../response/my_response.dart';
 
 class ApiProvider extends ApiClient {
@@ -92,5 +94,22 @@ class ApiProvider extends ApiClient {
         errorText: error.toString(),
       );
     }
+  }
+
+  Future<NetworkResponse> getCards() async {
+    try {
+      Response response = await dio.get("/api/v1/cards");
+      if (response.statusCode == 200) {
+        List<CardModel> cards = (response.data as List?)
+            ?.map((e) => CardModel.fromJson(e))
+            .toList() ??
+            [];
+        return NetworkResponse(data: cards);
+      }
+    } catch (error) {
+      debugPrint("ERROR:$error");
+      return NetworkResponse(errorText: error.toString());
+    }
+    return NetworkResponse(errorText: "OTHER ERROR");
   }
 }

@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/blocs/books_bloc.dart';
 import 'package:najot_talim_nt/blocs/books_event.dart';
 import 'package:najot_talim_nt/data/repositories/books_repository.dart';
-import 'package:najot_talim_nt/screens/global_screen/global_screen.dart';
+import 'package:najot_talim_nt/screens/card/card_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'data/api_provider/api_provider.dart';
 
@@ -71,6 +71,6 @@ class MyApp extends StatelessWidget {
             home: child,
           );
         },
-        child: const GlobalScreen(),
+        child: const CardScreen(),
       );
 }
