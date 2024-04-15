@@ -227,7 +227,7 @@ class _CountriesScreenState extends State<CountriesScreen> {
                                       ),
                                     ),
                                     Text(
-                                      country.name,
+                                      country.continent,
                                       style: AppTextStyle.interBold.copyWith(
                                         color: AppColors.black.withOpacity(
                                           0.6,
