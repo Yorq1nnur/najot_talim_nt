@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot_talim_nt/blocs/books_bloc.dart';
-import 'package:najot_talim_nt/blocs/books_event.dart';
-import 'package:najot_talim_nt/data/repositories/books_repository.dart';
-import 'package:najot_talim_nt/permissions/app_permissions.dart';
-import 'package:najot_talim_nt/screens/global_screen/global_screen.dart';
-import 'package:najot_talim_nt/utils/colors/app_colors.dart';
-import 'data/api_provider/api_provider.dart';
+import 'package:najot_talim_nt/screens/global_screen/countries_screen.dart';
+import 'blocs/countries_bloc.dart';
+import 'data/api/api_client.dart';
 
-void main() async {
-
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await AppPermissions.getNotificationsPermission();
-  runApp(
-    const App(),
-  );
+  final ApiClient apiClient =
+      ApiClient(graphQLClient: ApiClient.create().graphQLClient);
+
+  runApp(MultiBlocProvider(providers: [
+    BlocProvider(
+      create: (_) =>
+          CountriesBloc(apiClient: apiClient)..add(FetchCountries('EU')),
+    )
+  ], child: const App()));
 }
 
 class App extends StatelessWidget {
@@ -24,58 +24,20 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ApiProvider apiProvider = ApiProvider();
-    return MultiRepositoryProvider(
-      providers: [
-        RepositoryProvider(
-          create: (_) => BooksRepository(
-            apiProvider: apiProvider,
-          ),
-        ),
-      ],
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => BooksBloc(
-              booksRepository: context.read<BooksRepository>(),
-            )..add(
-                GetBooksEvent(),
-              ),
-          )
-        ],
-        child: const MyApp(),
+    return ScreenUtilInit(
+      designSize: const Size(
+        375,
+        812,
       ),
+      builder: (context, child) {
+        ScreenUtil.init(context);
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(useMaterial3: false),
+          home: child,
+        );
+      },
+      child: const CountriesScreen(),
     );
   }
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({
-    super.key,
-  });
-
-  @override
-  Widget build(
-    BuildContext context,
-  ) =>
-      ScreenUtilInit(
-        designSize: const Size(
-          375,
-          812,
-        ),
-        builder: (context, child) {
-          ScreenUtil.init(
-            context,
-          );
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              useMaterial3: false,
-              scaffoldBackgroundColor: AppColors.white,
-            ),
-            home: child,
-          );
-        },
-        child: const GlobalScreen(),
-      );
 }
