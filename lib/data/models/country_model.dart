@@ -4,8 +4,9 @@ class CountryModel {
   final String emoji;
   final String capital;
   final String phone;
-  final List<String> languages;
+  final List<dynamic> languages;
   final String continent;
+  final String currency;
 
   CountryModel({
     required this.code,
@@ -15,20 +16,18 @@ class CountryModel {
     required this.phone,
     required this.languages,
     required this.continent,
+    required this.currency,
   });
 
   factory CountryModel.fromJson(Map<String, dynamic> json) {
-    List<dynamic> languagesList = json['languages'] ?? [];
-    List<String> languages =
-    languagesList.map((lang) => lang['name'] as String).toList();
-
     return CountryModel(
       code: json['code'] ?? '',
+      currency: json['currency'] ?? '',
       name: json['name'] ?? '',
       emoji: json['emoji'] ?? '',
       capital: json['capital'] ?? '',
       phone: json['phone'] ?? '',
-      languages: languages,
+      languages: json['languages'] as List<Map<String, String>>? ?? [],
       continent: json['continent']['name'] ?? '',
     );
   }

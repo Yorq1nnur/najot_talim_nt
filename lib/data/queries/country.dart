@@ -5,6 +5,7 @@ const String countriesQuery = '''query {
     emoji
     capital
     phone
+    currency
     continent{
       name
     }
@@ -18,6 +19,7 @@ String getCountryQueryByContinent(String query) {
     name
     capital
     emoji
+    currency
     phone
     continent{
       name
@@ -33,6 +35,7 @@ String getCountryByName(String countryName) {
     name
     capital
     emoji
+    currency
     phone
     continent{
       name

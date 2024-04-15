@@ -20,9 +20,12 @@ class _CountriesScreenState extends State<CountriesScreen> {
   int activeIndex = 0;
   String searchText = '';
 
+  final FocusNode focusNode = FocusNode();
+
   @override
   void dispose() {
     textEditingController.dispose();
+    focusNode.dispose();
     super.dispose();
   }
 
@@ -47,6 +50,7 @@ class _CountriesScreenState extends State<CountriesScreen> {
               horizontal: 20.w,
             ),
             child: TextField(
+              focusNode: focusNode,
               controller: textEditingController,
               onChanged: (v) {
                 searchText = v;
@@ -174,6 +178,8 @@ class _CountriesScreenState extends State<CountriesScreen> {
                               padding: EdgeInsets.symmetric(vertical: 5.h),
                               child: ListTile(
                                 onTap: () {
+                                  debugPrint(
+                                      "COUNTRY IS LANGUAGES LENGTH: ${country.languages.length}");
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -186,7 +192,7 @@ class _CountriesScreenState extends State<CountriesScreen> {
                                 leading: Column(
                                   children: [
                                     Text(
-                                      country.code,
+                                      "${index+1}) ${country.code}",
                                       style: AppTextStyle.interBold,
                                     ),
                                     Text(
@@ -206,7 +212,9 @@ class _CountriesScreenState extends State<CountriesScreen> {
                                   country.name,
                                   style: AppTextStyle.interBold,
                                 ),
-                                trailing: Text(country.emoji),
+                                trailing: Text(country.emoji, style: AppTextStyle.interBold.copyWith(
+                                  fontSize: 30.w
+                                ),),
                                 subtitle: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
