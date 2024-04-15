@@ -25,9 +25,9 @@ String getCountryQueryByContinent(String query) {
 }''';
 }
 
-String getCountryByName(String query) {
-  return '''query CountriesByContinent {
-  countries(filter: { name: { in: ["$query"] } }) {
+String getCountryByName(String countryName) {
+  return '''query CountriesByCountryName {
+  countries(filter: { name: { in: ["$countryName"] } }) {
     code
     name
     capital

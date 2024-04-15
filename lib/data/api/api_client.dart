@@ -49,7 +49,6 @@ class ApiClient {
   Future<NetworkResponse> getCountriesByContinents(String continentCode) async {
     try {
       var result = await graphQLClient.query(
-        //MutationOptions(document: gql(""))
         QueryOptions(document: gql(getCountryQueryByContinent(continentCode))),
       );
 
@@ -74,7 +73,6 @@ class ApiClient {
   Future<NetworkResponse> getCountriesByName(String countryName) async {
     try {
       var result = await graphQLClient.query(
-        //MutationOptions(document: gql(""))
         QueryOptions(document: gql(getCountryByName(countryName))),
       );
 

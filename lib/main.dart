@@ -13,8 +13,12 @@ Future<void> main() async {
 
   runApp(MultiBlocProvider(providers: [
     BlocProvider(
-      create: (_) =>
-          CountriesBloc(apiClient: apiClient)..add(FetchCountries('EU')),
+      create: (_) => CountriesBloc(apiClient: apiClient)
+        ..add(
+          FetchCountries(
+            'ALL',
+          ),
+        ),
     )
   ], child: const App()));
 }

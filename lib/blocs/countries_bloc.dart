@@ -19,7 +19,7 @@ class CountriesBloc extends Bloc<CountriesEvent, CountriesState> {
   _fetchCountries(FetchCountries event, emit) async {
     emit(CountriesLoading());
 
-    NetworkResponse networkResponse = event.continentName == ''
+    NetworkResponse networkResponse = event.continentName == 'ALL'
         ? await apiClient.getCountries()
         : await apiClient.getCountriesByContinents(
             event.continentName,
