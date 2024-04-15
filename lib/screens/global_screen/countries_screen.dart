@@ -180,7 +180,10 @@ class _CountriesScreenState extends State<CountriesScreen> {
                                       style: AppTextStyle.interBold,
                                     ),
                                     Text(
-                                      country.phone,
+                                      country.phone.length > 3
+                                          ? country.phone.substring(
+                                              country.phone.length - 3)
+                                          : country.phone,
                                       style: AppTextStyle.interBold.copyWith(
                                         color: AppColors.black.withOpacity(
                                           0.6,
@@ -206,7 +209,7 @@ class _CountriesScreenState extends State<CountriesScreen> {
                                       ),
                                     ),
                                     Text(
-                                      country.continentName,
+                                      country.name,
                                       style: AppTextStyle.interBold.copyWith(
                                         color: AppColors.black.withOpacity(
                                           0.6,
