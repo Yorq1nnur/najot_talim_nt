@@ -70,6 +70,7 @@ class ApiClient {
 
     return NetworkResponse();
   }
+
   Future<NetworkResponse> getCountriesByName(String countryName) async {
     try {
       var result = await graphQLClient.query(

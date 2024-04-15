@@ -85,7 +85,9 @@ class DetailScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 20.w,),
+            SizedBox(
+              width: 20.w,
+            ),
           ],
           title: Text(
             "${countryModel.name.toUpperCase()} DETAILS",

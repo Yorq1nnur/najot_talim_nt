@@ -192,7 +192,7 @@ class _CountriesScreenState extends State<CountriesScreen> {
                                 leading: Column(
                                   children: [
                                     Text(
-                                      "${index+1}) ${country.code}",
+                                      "${index + 1}) ${country.code}",
                                       style: AppTextStyle.interBold,
                                     ),
                                     Text(
@@ -212,9 +212,11 @@ class _CountriesScreenState extends State<CountriesScreen> {
                                   country.name,
                                   style: AppTextStyle.interBold,
                                 ),
-                                trailing: Text(country.emoji, style: AppTextStyle.interBold.copyWith(
-                                  fontSize: 30.w
-                                ),),
+                                trailing: Text(
+                                  country.emoji,
+                                  style: AppTextStyle.interBold
+                                      .copyWith(fontSize: 30.w),
+                                ),
                                 subtitle: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [

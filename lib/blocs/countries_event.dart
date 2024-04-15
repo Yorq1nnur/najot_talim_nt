@@ -6,5 +6,4 @@ class FetchCountries extends CountriesEvent {
   String continentName;
 
   FetchCountries(this.continentName);
-
 }
