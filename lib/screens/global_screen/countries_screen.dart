@@ -104,7 +104,6 @@ class _CountriesScreenState extends State<CountriesScreen> {
                     ),
                     child: Ink(
                       height: 30.h,
-                      width: 140.w,
                       decoration: BoxDecoration(
                         color: activeIndex == index
                             ? Colors.indigoAccent
@@ -129,8 +128,14 @@ class _CountriesScreenState extends State<CountriesScreen> {
                           16.r,
                         ),
                         child: Center(
-                          child: Text(
-                            continents[index],
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 10.w,
+                            ),
+                            child: Text(
+                              continents[index],
+                              style: AppTextStyle.interBold,
+                            ),
                           ),
                         ),
                       ),
@@ -167,10 +172,49 @@ class _CountriesScreenState extends State<CountriesScreen> {
                             return Padding(
                               padding: EdgeInsets.symmetric(vertical: 5.h),
                               child: ListTile(
-                                title: Text(country.name),
+                                onTap: () {},
+                                leading: Column(
+                                  children: [
+                                    Text(
+                                      country.code,
+                                      style: AppTextStyle.interBold,
+                                    ),
+                                    Text(
+                                      country.phone,
+                                      style: AppTextStyle.interBold.copyWith(
+                                        color: AppColors.black.withOpacity(
+                                          0.6,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                title: Text(
+                                  country.name,
+                                  style: AppTextStyle.interBold,
+                                ),
                                 trailing: Text(country.emoji),
-                                subtitle: Text(
-                                    "${country.capital}\n${country.continentName}"),
+                                subtitle: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      country.capital,
+                                      style: AppTextStyle.interBold.copyWith(
+                                        color: AppColors.black.withOpacity(
+                                          0.8,
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      country.continentName,
+                                      style: AppTextStyle.interBold.copyWith(
+                                        color: AppColors.black.withOpacity(
+                                          0.6,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           } else {
@@ -181,7 +225,6 @@ class _CountriesScreenState extends State<CountriesScreen> {
                     ],
                   );
                 }
-
                 return const SizedBox();
               },
             ),

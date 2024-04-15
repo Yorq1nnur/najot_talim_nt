@@ -4,6 +4,7 @@ const String countriesQuery = '''query {
     name
     emoji
     capital
+    phone
     continent{
       name
     }
