@@ -8,9 +8,3 @@ class FetchCountries extends CountriesEvent {
   FetchCountries(this.continentName);
 
 }
-
-class FetchCountriesByName extends CountriesEvent {
-  final String countryName;
-
-  FetchCountriesByName(this.countryName);
-}
