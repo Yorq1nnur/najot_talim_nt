@@ -10,6 +10,9 @@ import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'data/api_provider/api_provider.dart';
 
 void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+
   await AppPermissions.getNotificationsPermission();
   runApp(
     const App(),
