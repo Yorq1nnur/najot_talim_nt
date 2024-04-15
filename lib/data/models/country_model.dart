@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class CountryModel {
   final String code;
   final String name;

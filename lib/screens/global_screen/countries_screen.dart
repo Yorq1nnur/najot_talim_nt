@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/data/queries/country.dart';
+import 'package:najot_talim_nt/screens/detail/detail_screen.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import '../../blocs/countries_bloc.dart';
 import '../../utils/colors/app_colors.dart';
@@ -172,7 +173,16 @@ class _CountriesScreenState extends State<CountriesScreen> {
                             return Padding(
                               padding: EdgeInsets.symmetric(vertical: 5.h),
                               child: ListTile(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (country) => DetailScreen(
+                                        countryModel: state.countries[index],
+                                      ),
+                                    ),
+                                  );
+                                },
                                 leading: Column(
                                   children: [
                                     Text(
