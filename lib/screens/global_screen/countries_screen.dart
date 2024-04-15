@@ -132,15 +132,24 @@ class _CountriesScreenState extends State<CountriesScreen> {
                     children: [
                       ...List.generate(
                         state.countries.length,
-                        (index) => Padding(
-                          padding: EdgeInsets.symmetric(vertical: 5.h),
-                          child: ListTile(
-                            title: Text(state.countries[index].name),
-                            trailing: Text(state.countries[index].emoji),
-                            subtitle: Text(
-                                "${state.countries[index].capital}\n${state.countries[index].continentName}"),
-                          ),
-                        ),
+                        (index) {
+                          final country = state.countries[index];
+                          if (country.name
+                              .toLowerCase()
+                              .contains(searchText.toLowerCase())) {
+                            return Padding(
+                              padding: EdgeInsets.symmetric(vertical: 5.h),
+                              child: ListTile(
+                                title: Text(country.name),
+                                trailing: Text(country.emoji),
+                                subtitle: Text(
+                                    "${country.capital}\n${country.continentName}"),
+                              ),
+                            );
+                          } else {
+                            return const SizedBox.shrink();
+                          }
+                        },
                       ),
                     ],
                   );
