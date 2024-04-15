@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,9 +15,16 @@ class CountriesScreen extends StatefulWidget {
 }
 
 class _CountriesScreenState extends State<CountriesScreen> {
+  TextEditingController textEditingController = TextEditingController();
   String title = 'ALL';
   int activeIndex = 0;
   String searchText = '';
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +47,33 @@ class _CountriesScreenState extends State<CountriesScreen> {
               horizontal: 20.w,
             ),
             child: TextField(
+              controller: textEditingController,
               onChanged: (v) {
                 searchText = v;
+                textEditingController.text = v;
                 setState(() {});
               },
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.search,
               decoration: InputDecoration(
+                prefixIcon: Icon(
+                  Icons.search,
+                  size: 30.w,
+                  color: AppColors.black,
+                ),
+                hintText: "Search...",
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    searchText = '';
+                    textEditingController.clear();
+                    setState(() {});
+                  },
+                  icon: Icon(
+                    Icons.cancel_outlined,
+                    size: 30.w,
+                    color: AppColors.black,
+                  ),
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(
                     16.r,
