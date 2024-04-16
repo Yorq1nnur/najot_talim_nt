@@ -1,19 +1,92 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:najot_talim_nt/screens/global_screen/widgets/action_item.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
+import 'package:pinput/pinput.dart';
 
-class GlobalScreen extends StatelessWidget {
+class GlobalScreen extends StatefulWidget {
   const GlobalScreen({super.key});
 
   @override
+  State<GlobalScreen> createState() => _GlobalScreenState();
+}
+
+class _GlobalScreenState extends State<GlobalScreen> {
+  final TextEditingController textEditingController = TextEditingController();
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
+
+  final List<String> _images = [
+    AppImages.lamp,
+    AppImages.silver,
+  ];
+  List<String> giveAnswer = [];
+  final String _trueAnswer = "TASHKENT";
+  final List<String> _answers = [
+    "T",
+    "O",
+    "A",
+    "U",
+    "S",
+    "H",
+    "I",
+    "K",
+    "E",
+    "P",
+    "N",
+    "T"
+  ];
+
+  @override
   Widget build(BuildContext context) {
+    final defaultPinTheme = PinTheme(
+      width: 50.w,
+      height: 50.w,
+      textStyle: TextStyle(
+        fontSize: 20.sp,
+        color: AppColors.white,
+        fontWeight: FontWeight.w600,
+      ),
+      decoration: BoxDecoration(
+        color: AppColors.transparent,
+        border: Border.all(
+          color: AppColors.c3E87FF,
+          width: 3.w,
+        ),
+        borderRadius: BorderRadius.circular(
+          10.r,
+        ),
+      ),
+    );
+
+    final focusedPinTheme = defaultPinTheme.copyDecorationWith(
+      border: Border.all(color: AppColors.c3E87FF),
+      borderRadius: BorderRadius.circular(
+        10.r,
+      ),
+    );
+
+    final submittedPinTheme = defaultPinTheme.copyWith(
+      decoration: defaultPinTheme.decoration?.copyWith(
+        color: AppColors.c3E87FF,
+        borderRadius: BorderRadius.circular(
+          10.r,
+        ),
+      ),
+    );
     return AnnotatedRegion(
       value: const SystemUiOverlayStyle(statusBarColor: AppColors.transparent),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Stack(
           children: [
             Image.asset(
@@ -138,54 +211,93 @@ class GlobalScreen extends StatelessWidget {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          height: 45.h,
-                          width: 50.w,
-                          child: Stack(
-                            children: [
-                              Container(
-                                height: 50.h,
-                                width: 50.h,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: AppColors.c3E87FF,
-                                  border: Border.all(
-                                    color: AppColors.c3E87FF,
-                                    width: 2.w,
-                                  ),
-                                ),
-                                child: Center(
-                                  child: SvgPicture.asset(AppImages.lamp, width: 16.w, height: 27.w,),
-                                ),
-                              ),
-                              Align(
-                                alignment: Alignment.topRight,
-                                child: Padding(
-                                  padding: EdgeInsets.only(left: 10.w),
-                                  child: Container(
-                                    height: 20.h,
-                                    width: 20.h,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: AppColors.c0045B5,
-                                    ),
-                                    child: Center(
-                                      child: Icon(
-                                        Icons.add,
-                                        color: AppColors.white,
-                                        size: 15.w,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
+                      children: List.generate(
+                        _images.length,
+                        (index) => ActionItems(
+                          imagePath: _images[index],
+                        ),
+                      ),
                     ),
-                  )
+                  ),
+                  SizedBox(
+                    height: 190.h,
+                  ),
+                  Center(
+                    child: Text(
+                      "O'ZBEKISTONNING POYTAXTI QAYER?",
+                      style: AppTextStyle.interBold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 136.h,
+                  ),
+                  Center(
+                    child: Pinput(
+                      controller: textEditingController,
+                      enabled: false,
+                      length: _trueAnswer.length,
+                      defaultPinTheme: defaultPinTheme,
+                      focusedPinTheme: focusedPinTheme,
+                      submittedPinTheme: submittedPinTheme,
+                      validator: (s) {
+                        return s == _trueAnswer ? null : 'Pin is incorrect';
+                      },
+                      pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
+                      showCursor: true,
+                      // onSubmitted: (pin) {
+                      //   if (pin != _trueAnswer) {
+                      //     textEditingController.text = '';
+                      //     setState(() {});
+                      //   }
+                      // },
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30.h,
+                  ),
+                  Expanded(
+                      child: GridView.count(
+                    mainAxisSpacing: 5.w,
+                    crossAxisSpacing: 5.h,
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.9,
+                    scrollDirection: Axis.horizontal,
+                    children: List.generate(
+                      _answers.length,
+                      (index) => InkWell(
+                        borderRadius: BorderRadius.circular(
+                          16.r,
+                        ),
+                        onTap: () {
+                          textEditingController.text += giveAnswer[index];
+                          setState(() {});
+                        },
+                        child: Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 10.w,
+                              vertical: 10.h,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppColors.c3E87FF,
+                              borderRadius: BorderRadius.circular(
+                                10.r,
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                _answers[index],
+                                style: AppTextStyle.interBold.copyWith(
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            )),
+                      ),
+                    ),
+                  )),
+                  SizedBox(
+                    height: 30.h,
+                  ),
                 ],
               ),
             )
