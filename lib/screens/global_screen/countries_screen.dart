@@ -53,9 +53,14 @@ class _CountriesScreenState extends State<CountriesScreen> {
               focusNode: focusNode,
               controller: textEditingController,
               onChanged: (v) {
-                searchText = v;
-                textEditingController.text = v;
-                setState(() {});
+                if (v.isNotEmpty) {
+                  searchText = v;
+                  textEditingController.text = v;
+                  setState(() {});
+                } else {
+                  searchText = '';
+                  setState(() {});
+                }
               },
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.search,
