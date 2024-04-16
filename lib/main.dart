@@ -1,19 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot_talim_nt/blocs/books_bloc.dart';
-import 'package:najot_talim_nt/blocs/books_event.dart';
-import 'package:najot_talim_nt/data/repositories/books_repository.dart';
-import 'package:najot_talim_nt/permissions/app_permissions.dart';
-import 'package:najot_talim_nt/screens/global_screen/global_screen.dart';
+import 'package:najot_talim_nt/screens/splash/splash_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
-import 'data/api_provider/api_provider.dart';
 
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
 
-  await AppPermissions.getNotificationsPermission();
   runApp(
     const App(),
   );
@@ -24,27 +17,9 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ApiProvider apiProvider = ApiProvider();
-    return MultiRepositoryProvider(
-      providers: [
-        RepositoryProvider(
-          create: (_) => BooksRepository(
-            apiProvider: apiProvider,
-          ),
-        ),
-      ],
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => BooksBloc(
-              booksRepository: context.read<BooksRepository>(),
-            )..add(
-                GetBooksEvent(),
-              ),
-          )
-        ],
-        child: const MyApp(),
-      ),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MyApp(),
     );
   }
 }
@@ -76,6 +51,6 @@ class MyApp extends StatelessWidget {
             home: child,
           );
         },
-        child: const GlobalScreen(),
+        child: const SplashScreen(),
       );
 }
