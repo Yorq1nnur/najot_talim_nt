@@ -15,8 +15,8 @@ class GlobalScreen extends StatelessWidget {
           centerTitle: true,
           elevation: 0,
           title: Text(
-            "GLOBAL TEXT",
-            style: AppTextStyle.interBold,
+            "GLOBAL SCREEN",
+            style: AppTextStyle.interBold.copyWith(color: AppColors.white),
           ),
         ),
       ),

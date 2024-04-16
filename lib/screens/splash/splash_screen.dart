@@ -15,11 +15,6 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    _init();
-    super.initState();
-  }
-
-  void _init() {
     Future.delayed(
       const Duration(
         seconds: 3,
@@ -35,6 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
         );
       },
     );
+    super.initState();
   }
 
   @override
@@ -42,6 +38,8 @@ class _SplashScreenState extends State<SplashScreen> {
     return AnnotatedRegion(
       value: const SystemUiOverlayStyle(
         statusBarColor: AppColors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
       ),
       child: Scaffold(
         body: Center(
