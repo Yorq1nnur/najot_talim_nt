@@ -4,9 +4,7 @@ import 'package:najot_talim_nt/screens/splash/splash_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
-
   runApp(
     const App(),
   );
