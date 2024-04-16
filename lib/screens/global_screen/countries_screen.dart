@@ -190,6 +190,7 @@ class _CountriesScreenState extends State<CountriesScreen> {
                                   );
                                 },
                                 leading: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
                                       "${index + 1}) ${country.code}",
