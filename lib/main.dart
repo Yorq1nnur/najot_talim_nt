@@ -33,8 +33,8 @@ class MyApp extends StatelessWidget {
   ) =>
       ScreenUtilInit(
         designSize: const Size(
-          375,
-          812,
+          411,
+          823,
         ),
         builder: (context, child) {
           ScreenUtil.init(
@@ -43,9 +43,11 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              appBarTheme: const AppBarTheme(backgroundColor: AppColors.black),
+              appBarTheme: const AppBarTheme(
+                backgroundColor: AppColors.white,
+              ),
               useMaterial3: false,
-              scaffoldBackgroundColor: AppColors.black,
+              scaffoldBackgroundColor: AppColors.white,
             ),
             home: child,
           );
