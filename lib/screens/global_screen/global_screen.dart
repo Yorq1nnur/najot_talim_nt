@@ -244,12 +244,9 @@ class _GlobalScreenState extends State<GlobalScreen> {
                       },
                       pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
                       showCursor: true,
-                      // onSubmitted: (pin) {
-                      //   if (pin != _trueAnswer) {
-                      //     textEditingController.text = '';
-                      //     setState(() {});
-                      //   }
-                      // },
+                      onCompleted: (pin) {
+                        debugPrint(pin);
+                      },
                     ),
                   ),
                   SizedBox(
