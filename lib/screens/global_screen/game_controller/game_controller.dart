@@ -58,47 +58,49 @@ class GameController extends GetxController {
       forUiErrorMessage.value = "";
     }
   }
+
+  final questionsList = <QuestionModel>[
+    QuestionModel(
+      question: "WHAT PROGRAMMING LANGUAGE DOES FLUTTER USE?",
+      answer: "DART",
+    ),
+    QuestionModel(
+      question: "WHEN WAS FLUTTER CREATED?",
+      answer: "2017",
+    ),
+    QuestionModel(
+      question: "FLUTTER WAS CREATED BY WHOM?",
+      answer: "GOOGLE",
+    ),
+    QuestionModel(
+      question: "WHERE IS THE CAPITAL OF UZBEKISTAN?",
+      answer: "TASHKENT",
+    ),
+    QuestionModel(
+      question: "WHEN DID UZBEKISTAN GAIN INDEPENDENCE?",
+      answer: "1991",
+    ),
+    QuestionModel(
+      question: "WHEN WAS GOOGLE CREATED?",
+      answer: "1998",
+    ),
+    QuestionModel(
+      question: "WHERE IS THE CAPITAL OF RUSSIA?",
+      answer: "MOSCOW",
+    ),
+    QuestionModel(
+      question: "TYPE OF STATE MANAGEMENT IN FLUTTER?",
+      answer: "PROVIDER",
+    ),
+    QuestionModel(
+      question: "WHAT COUNTRY IS UZBEKISTAN?",
+      answer: "DEMOCRATIC",
+    ),
+    QuestionModel(
+      question: "WHERE IS THE CAPITAL OF KAZAKHSTAN?",
+      answer: "ASTANA",
+    ),
+  ].obs;
 }
 
-final questionsList = <QuestionModel>[
-  QuestionModel(
-    question: "WHAT PROGRAMMING LANGUAGE DOES FLUTTER USE?",
-    answer: "DART",
-  ),
-  QuestionModel(
-    question: "WHEN WAS FLUTTER CREATED?",
-    answer: "2017",
-  ),
-  QuestionModel(
-    question: "FLUTTER WAS CREATED BY WHOM?",
-    answer: "GOOGLE",
-  ),
-  QuestionModel(
-    question: "WHERE IS THE CAPITAL OF UZBEKISTAN?",
-    answer: "TASHKENT",
-  ),
-  QuestionModel(
-    question: "WHEN DID UZBEKISTAN GAIN INDEPENDENCE?",
-    answer: "1991",
-  ),
-  QuestionModel(
-    question: "WHEN WAS GOOGLE CREATED?",
-    answer: "1998",
-  ),
-  QuestionModel(
-    question: "WHERE IS THE CAPITAL OF RUSSIA?",
-    answer: "MOSCOW",
-  ),
-  QuestionModel(
-    question: "TYPE OF STATE MANAGEMENT IN FLUTTER?",
-    answer: "PROVIDER",
-  ),
-  QuestionModel(
-    question: "WHAT COUNTRY IS UZBEKISTAN?",
-    answer: "DEMOCRATIC",
-  ),
-  QuestionModel(
-    question: "WHERE IS THE CAPITAL OF KAZAKHSTAN?",
-    answer: "ASTANA",
-  ),
-].obs;
+
