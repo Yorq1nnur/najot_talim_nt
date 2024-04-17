@@ -1,17 +1,17 @@
 class AppImages {
   //.png
-  static const String background = "assets/images/background.png";
-  static const String cub = "assets/images/cub.png";
+  static const String pc = "assets/images/pc.png";
+  static const String back = "assets/images/back.png";
+  static const String quiz = "assets/images/quiz.png";
 
   //.svg
-  static const String star = "assets/icons/star.svg";
-  static const String silver = "assets/icons/silver.svg";
-  static const String lamp = "assets/icons/lamp.svg";
+  static const String arrowBack = "assets/icons/arrow_back.svg";
 
   //.jpg
 
   //.gif
 
-  //lottie
-  static const String lottie = "assets/lottie/lottie.json";
+//json
+  static const String data = 'assets/data/test_data.json';
+  static const String lottie = 'assets/lottie/lottie.json';
 }
