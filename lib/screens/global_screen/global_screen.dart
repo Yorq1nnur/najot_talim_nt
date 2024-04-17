@@ -111,9 +111,9 @@ class GlobalScreen extends StatelessWidget {
                                     onPressed: () => controller.addQuiz(letter),
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.blue,
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 12,
-                                        vertical: 8,
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 12.w,
+                                        vertical: 8.h,
                                       ),
                                     ),
                                     child: Text(
@@ -132,26 +132,29 @@ class GlobalScreen extends StatelessWidget {
                           Visibility(
                             visible: controller.errorMessage.value != '',
                             child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 5,
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 10.w,
+                                vertical: 5.h,
                               ),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(
-                                  20,
+                                  20.r,
                                 ),
                               ),
                               child: Text(
                                 controller.errorMessage.value,
-                                style: const TextStyle(
+                                style: AppTextStyle.interBlack.copyWith(
                                   color: Colors.red,
-                                  fontSize: 18,
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w900,
                                 ),
                               ),
                             ),
                           ),
-                          SizedBox(height: 20.h,),
+                          SizedBox(
+                            height: 20.h,
+                          ),
                           ElevatedButton(
                             onPressed: () => controller.removeLastQuiz(),
                             style: ElevatedButton.styleFrom(

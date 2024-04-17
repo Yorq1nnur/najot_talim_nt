@@ -1,4 +1,3 @@
-
 import 'package:najot_talim_nt/models/quiz_model.dart';
 
 class SubjectModel {
@@ -11,8 +10,8 @@ class SubjectModel {
   factory SubjectModel.fromJson(Map<String, dynamic> json) {
     return SubjectModel(
       questions: (json['questions'] as List?)
-          ?.map((e) => QuizModel.fromJson(e))
-          .toList() ??
+              ?.map((e) => QuizModel.fromJson(e))
+              .toList() ??
           [],
     );
   }

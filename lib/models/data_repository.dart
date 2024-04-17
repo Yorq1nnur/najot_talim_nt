@@ -4,7 +4,6 @@ import 'package:najot_talim_nt/models/subject_model.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
 
 class DataRepository {
-
   DataRepository._();
 
   static final DataRepository instance = DataRepository._();
@@ -17,8 +16,8 @@ class DataRepository {
     var data = await rootBundle.loadString(AppImages.data);
     var decodeData = jsonDecode(data);
     allSubject = (decodeData["data"] as List?)
-        ?.map((e) => SubjectModel.fromJson(e))
-        .toList() ??
+            ?.map((e) => SubjectModel.fromJson(e))
+            .toList() ??
         [];
   }
 }
