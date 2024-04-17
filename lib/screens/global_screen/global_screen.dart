@@ -110,7 +110,7 @@ class GlobalScreen extends StatelessWidget {
                               ),
                             ),
                             child: const Text(
-                              "Назад",
+                              "DELETE",
                               style: TextStyle(
                                 fontSize: 18,
                               ),
