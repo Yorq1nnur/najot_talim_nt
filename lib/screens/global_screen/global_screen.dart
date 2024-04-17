@@ -130,7 +130,7 @@ class GlobalScreen extends StatelessWidget {
                             height: 20.h,
                           ),
                           Visibility(
-                            visible: controller.errorMessage.value != '',
+                            visible: controller.forUiErrorMessage.value != '',
                             child: Container(
                               padding: EdgeInsets.symmetric(
                                 horizontal: 10.w,
@@ -143,7 +143,7 @@ class GlobalScreen extends StatelessWidget {
                                 ),
                               ),
                               child: Text(
-                                controller.errorMessage.value,
+                                controller.forUiErrorMessage.value,
                                 style: AppTextStyle.interBlack.copyWith(
                                   color: Colors.red,
                                   fontSize: 20.sp,
@@ -156,7 +156,7 @@ class GlobalScreen extends StatelessWidget {
                             height: 20.h,
                           ),
                           ElevatedButton(
-                            onPressed: () => controller.removeLastQuiz(),
+                            onPressed: () => controller.removeLastQuestion(),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.redAccent,
                               padding: EdgeInsets.symmetric(

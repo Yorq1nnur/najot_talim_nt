@@ -4,58 +4,58 @@ import 'package:najot_talim_nt/models/question_model.dart';
 class GameController extends GetxController {
   final index = 0.obs;
   final currentInputAnswer = "".obs;
-  final errorMessage = "".obs;
+  final forUiErrorMessage = "".obs;
   late List<String> shuffledLetters;
 
   @override
   void onInit() {
     super.onInit();
-    randomQuiz();
+    randomAnswers();
   }
 
-  void randomQuiz() {
+  void randomAnswers() {
     shuffledLetters = currentAnswer.split('')..shuffle();
     currentInputAnswer.value = "";
-    errorMessage.value = "";
+    forUiErrorMessage.value = "";
   }
 
   String get currentQuestion => questionsList[index.value].question;
 
   String get currentAnswer => questionsList[index.value].answer;
 
-  void checkAnswer() {
+  void checkGiveAnswer() {
     if (currentInputAnswer.value == currentAnswer) {
-      errorMessage.value = "TRUE ANSWER!";
-      nextQuiz();
+      forUiErrorMessage.value = "TRUE ANSWER!";
+      nextQuestion();
     } else if (currentInputAnswer.value.length == currentAnswer.length) {
-      errorMessage.value = "FALSE ANSWER!";
+      forUiErrorMessage.value = "FALSE ANSWER!";
     }
   }
 
   void addQuiz(String letter) {
     if (currentInputAnswer.value.length < currentAnswer.length) {
       currentInputAnswer.value += letter;
-      checkAnswer();
+      checkGiveAnswer();
     }
   }
 
-  void nextQuiz() {
+  void nextQuestion() {
     if (index.value < questionsList.length - 1) {
       index.value++;
-      randomQuiz();
+      randomAnswers();
     } else {
       index.value = 0;
-      randomQuiz();
+      randomAnswers();
     }
   }
 
-  void removeLastQuiz() {
+  void removeLastQuestion() {
     if (currentInputAnswer.value.isNotEmpty) {
       currentInputAnswer.value = currentInputAnswer.value.substring(
         0,
         currentInputAnswer.value.length - 1,
       );
-      errorMessage.value = "";
+      forUiErrorMessage.value = "";
     }
   }
 }
