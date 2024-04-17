@@ -105,7 +105,7 @@ class GlobalScreen extends StatelessWidget {
                           ),
                           Wrap(
                             spacing: 8,
-                            children: controller.shuffledLetters
+                            children: controller.currentShuffledLetters
                                 .map(
                                   (letter) => ElevatedButton(
                                     onPressed: () => controller.addQuiz(letter),

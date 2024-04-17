@@ -5,7 +5,7 @@ class GameController extends GetxController {
   final index = 0.obs;
   final currentInputAnswer = "".obs;
   final forUiErrorMessage = "".obs;
-  late List<String> shuffledLetters;
+  late List<String> currentShuffledLetters;
 
   @override
   void onInit() {
@@ -14,7 +14,7 @@ class GameController extends GetxController {
   }
 
   void randomAnswers() {
-    shuffledLetters = currentAnswer.split('')..shuffle();
+    currentShuffledLetters = currentAnswer.split('')..shuffle();
     currentInputAnswer.value = "";
     forUiErrorMessage.value = "";
   }
