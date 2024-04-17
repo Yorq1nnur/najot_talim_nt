@@ -7,8 +7,8 @@ import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/utils/styles/app_text_style.dart';
 import '../../utils/images/app_images.dart';
 
-class GlobalScreen extends StatelessWidget {
-  const GlobalScreen({super.key});
+class MyGameScreen extends StatelessWidget {
+  const MyGameScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

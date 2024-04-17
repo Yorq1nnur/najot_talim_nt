@@ -4,14 +4,14 @@ import 'package:lottie/lottie.dart';
 import 'package:najot_talim_nt/screens/global_screen/global_screen.dart';
 import 'package:najot_talim_nt/utils/images/app_images.dart';
 
-class MyGameScreen extends StatefulWidget {
-  const MyGameScreen({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<MyGameScreen> createState() => _MyGameScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _MyGameScreenState extends State<MyGameScreen> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     _init();
@@ -23,7 +23,7 @@ class _MyGameScreenState extends State<MyGameScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const GlobalScreen(),
+          builder: (context) => const MyGameScreen(),
         ),
       );
     });
