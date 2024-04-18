@@ -27,3 +27,6 @@ plugins {
 }
 
 include ":app"
+include 'hello-a'
+include 'hello-b'
+include 'goodbye-c'

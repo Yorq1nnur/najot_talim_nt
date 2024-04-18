@@ -10,16 +10,33 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.6
-  flutter_svg: ^2.0.10+1
-  flutter_screenutil: ^5.9.0
-  zoom_tap_animation: ^1.1.0
-  lottie: ^3.1.0
+  cupertino_icons: ^1.0.8
+  share_plus: ^8.0.3
+  store_redirect: ^2.0.2
+  shared_preferences: ^2.2.3
+  audioplayers: ^6.0.0
+  fluttertoast: ^8.2.5
+  flutter_launcher_icons: ^0.13.1
+  url_launcher: ^6.2.6
+  color: ^3.0.0
+  encrypt: ^5.0.3
+  package_info_plus: ^7.0.0
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.1
+  flutter_native_splash: ^2.4.0
+
+flutter_native_splash:
+  android: true
+  color: "#BB77ED"
+  image: "assets/logo.jpg"
+
+flutter_icons:
+  image_path: "assets/logo.png"
+  android: true
 
 flutter:
 
@@ -28,9 +45,8 @@ flutter:
   assets:
     - assets/fonts/bodoni/
     - assets/fonts/inter/
-    - assets/images/
-    - assets/icons/
     - assets/lottie/
+    - assets/
 
   fonts:
     - family: Bodoni
