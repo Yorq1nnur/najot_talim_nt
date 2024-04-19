@@ -12,38 +12,56 @@ class LoadWordQuestionsEvent extends WordGameEvent {
 }
 
 class StartWordGameAnimationEvent extends WordGameEvent {
-  const StartWordGameAnimationEvent(this.isStartAnimation,);
+  const StartWordGameAnimationEvent(
+    this.isStartAnimation,
+  );
 
   final bool isStartAnimation;
 
   @override
-  List<Object?> get props => [isStartAnimation,];
+  List<Object?> get props => [
+        isStartAnimation,
+      ];
 }
 
 class NextQuestionEvent extends WordGameEvent {
-  NextQuestionEvent(this.context,);
+  NextQuestionEvent(
+    this.context,
+  );
 
   BuildContext context;
 
   @override
-  List<Object?> get props => [context,];
+  List<Object?> get props => [
+        context,
+      ];
 }
 
 class CollectedEnteredLetterEvent extends WordGameEvent {
-  CollectedEnteredLetterEvent(this.enteredLetter, this.context,);
+  CollectedEnteredLetterEvent(
+    this.enteredLetter,
+    this.context,
+  );
 
   final String enteredLetter;
   BuildContext context;
 
   @override
-  List<Object?> get props => [enteredLetter, context,];
+  List<Object?> get props => [
+        enteredLetter,
+        context,
+      ];
 }
 
 class RemoveWordEvent extends WordGameEvent {
-  const RemoveWordEvent(this.alphabet,);
+  const RemoveWordEvent(
+    this.alphabet,
+  );
 
   final String alphabet;
 
   @override
-  List<Object?> get props => [alphabet,];
+  List<Object?> get props => [
+        alphabet,
+      ];
 }
