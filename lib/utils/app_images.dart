@@ -1,4 +1,4 @@
-class AppImages{
+class AppImages {
   ///.png
   static const String nature = "assets/images/nature.png";
 

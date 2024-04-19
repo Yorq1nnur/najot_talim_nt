@@ -1,7 +1,5 @@
 class GameModels {
-  GameModels(
-      {required this.trueAnswer,
-      required this.images});
+  GameModels({required this.trueAnswer, required this.images});
 
   final String trueAnswer;
   final List<String> images;

@@ -32,9 +32,9 @@ class _MyAppState extends State<MyApp> {
         return MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (_) => GameBloc()
+              create: (_) => WordGameBloc()
                 ..add(
-                  LoadQuestionsEvent(),
+                  LoadWordQuestionsEvent(),
                 ),
             ),
           ],
@@ -42,9 +42,7 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               scaffoldBackgroundColor: AppColors.black,
-              appBarTheme: const AppBarTheme(
-                backgroundColor: AppColors.black
-              ),
+              appBarTheme: const AppBarTheme(backgroundColor: AppColors.black),
               useMaterial3: false,
             ),
             home: child,

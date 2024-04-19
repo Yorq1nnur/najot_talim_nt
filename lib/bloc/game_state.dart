@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:najot_talim_nt/data/models/game_models.dart';
 
-class GameState extends Equatable {
-  const GameState({
+class WordGameState extends Equatable {
+  const WordGameState({
     required this.currentQuestionIndex,
     required this.allQuestions,
     required this.trueCount,
@@ -18,7 +18,7 @@ class GameState extends Equatable {
   final String enteredAnswer;
   final bool isStartAnimation;
 
-  GameState copyWith({
+  WordGameState copyWith({
     int? currentQuestionIndex,
     List<GameModels>? allQuestions,
     int? trueCount,
@@ -26,7 +26,7 @@ class GameState extends Equatable {
     String? enteredAnswer,
     bool? isStartAnimation,
   }) {
-    return GameState(
+    return WordGameState(
       currentQuestionIndex: currentQuestionIndex ?? this.currentQuestionIndex,
       allQuestions: allQuestions ?? this.allQuestions,
       trueCount: trueCount ?? this.trueCount,

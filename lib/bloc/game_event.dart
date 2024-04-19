@@ -2,48 +2,48 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
-abstract class GameEvent extends Equatable {
-  const GameEvent();
+abstract class WordGameEvent extends Equatable {
+  const WordGameEvent();
 }
 
-class LoadQuestionsEvent extends GameEvent {
+class LoadWordQuestionsEvent extends WordGameEvent {
   @override
   List<Object?> get props => [];
 }
 
-class StartAnimationEvent extends GameEvent {
-  const StartAnimationEvent(this.isStartAnimation);
+class StartWordGameAnimationEvent extends WordGameEvent {
+  const StartWordGameAnimationEvent(this.isStartAnimation,);
 
   final bool isStartAnimation;
 
   @override
-  List<Object?> get props => [isStartAnimation];
+  List<Object?> get props => [isStartAnimation,];
 }
 
-class NextQuestionsEvent extends GameEvent {
-  NextQuestionsEvent(this.context);
+class NextQuestionEvent extends WordGameEvent {
+  NextQuestionEvent(this.context,);
 
   BuildContext context;
 
   @override
-  List<Object?> get props => [context];
+  List<Object?> get props => [context,];
 }
 
-class CollectEnteredLetterEvent extends GameEvent {
-  CollectEnteredLetterEvent(this.letter, this.context);
+class CollectedEnteredLetterEvent extends WordGameEvent {
+  CollectedEnteredLetterEvent(this.enteredLetter, this.context,);
 
-  final String letter;
+  final String enteredLetter;
   BuildContext context;
 
   @override
-  List<Object?> get props => [letter, context];
+  List<Object?> get props => [enteredLetter, context,];
 }
 
-class RemoveEvent extends GameEvent {
-  const RemoveEvent(this.alphabet);
+class RemoveWordEvent extends WordGameEvent {
+  const RemoveWordEvent(this.alphabet,);
 
   final String alphabet;
 
   @override
-  List<Object?> get props => [alphabet];
+  List<Object?> get props => [alphabet,];
 }

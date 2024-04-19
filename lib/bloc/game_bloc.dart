@@ -7,10 +7,10 @@ import 'package:najot_talim_nt/data/models/game_models.dart';
 import 'package:najot_talim_nt/screens/game/game_screen.dart';
 import 'package:najot_talim_nt/screens/lottie/lottie_screen.dart';
 
-class GameBloc extends Bloc<GameEvent, GameState> {
-  GameBloc()
+class WordGameBloc extends Bloc<WordGameEvent, WordGameState> {
+  WordGameBloc()
       : super(
-          GameState(
+          WordGameState(
             currentQuestionIndex: 0,
             allQuestions: questions,
             trueCount: 0,
@@ -19,13 +19,13 @@ class GameBloc extends Bloc<GameEvent, GameState> {
             isStartAnimation: false,
           ),
         ) {
-    on<LoadQuestionsEvent>(onInit);
-    on<NextQuestionsEvent>(onNext);
-    on<CollectEnteredLetterEvent>(onCollect);
-    on<RemoveEvent>(onRemove);
+    on<LoadWordQuestionsEvent>(onInit);
+    on<NextQuestionEvent>(onNext);
+    on<CollectedEnteredLetterEvent>(onCollect);
+    on<RemoveWordEvent>(onRemove);
   }
 
-  onInit(LoadQuestionsEvent event, emit) {
+  onInit(LoadWordQuestionsEvent event, emit) {
     String answerText = questions[state.currentQuestionIndex].trueAnswer;
 
     emit(
@@ -36,7 +36,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     );
   }
 
-  onRemove(RemoveEvent event, emit) {
+  onRemove(RemoveWordEvent event, emit) {
     emit(
       state.copyWith(
         enteredAnswer: state.enteredAnswer.replaceAll(event.alphabet, ""),
@@ -44,7 +44,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     );
   }
 
-  onNext(NextQuestionsEvent event, emit) {
+  onNext(NextQuestionEvent event, emit) {
     if (state.currentQuestionIndex < questions.length - 1) {
       int newQuestionIndex = state.currentQuestionIndex + 1;
       getOptionLetters(
@@ -67,13 +67,13 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     }
   }
 
-  onCollect(CollectEnteredLetterEvent event, emit) async {
+  onCollect(CollectedEnteredLetterEvent event, emit) async {
     String text = state.enteredAnswer;
-    text += event.letter;
+    text += event.enteredLetter;
     emit(state.copyWith(enteredAnswer: text));
     if (state.enteredAnswer ==
         state.allQuestions[state.currentQuestionIndex].trueAnswer) {
-      add(NextQuestionsEvent(event.context));
+      add(NextQuestionEvent(event.context));
     } else if (state.enteredAnswer.length ==
         state.allQuestions[state.currentQuestionIndex].trueAnswer.length) {
       if (isStartAnimation) {
