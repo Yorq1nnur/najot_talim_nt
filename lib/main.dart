@@ -1,55 +1,57 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:najot_talim_nt/bloc/game_bloc.dart';
+import 'package:najot_talim_nt/bloc/game_event.dart';
 import 'package:najot_talim_nt/screens/splash/splash_screen.dart';
-import 'package:najot_talim_nt/utils/colors/app_colors.dart';
+import 'package:najot_talim_nt/utils/app_colors.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(
-    const App(),
-  );
+  runApp(const MyApp());
 }
 
-class App extends StatelessWidget {
-  const App({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyApp(),
-    );
-  }
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({
-    super.key,
-  });
-
-  @override
-  Widget build(
-    BuildContext context,
-  ) =>
-      ScreenUtilInit(
-        designSize: const Size(
-          375,
-          812,
-        ),
-        builder: (context, child) {
-          ScreenUtil.init(
-            context,
-          );
-          return MaterialApp(
+    return ScreenUtilInit(
+      designSize: const Size(
+        375,
+        812,
+      ),
+      builder: (context, child) {
+        ScreenUtil.init(context);
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (_) => GameBloc()
+                ..add(
+                  LoadQuestionsEvent(),
+                ),
+            ),
+          ],
+          child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              appBarTheme: const AppBarTheme(backgroundColor: AppColors.black),
-              useMaterial3: false,
               scaffoldBackgroundColor: AppColors.black,
+              appBarTheme: const AppBarTheme(
+                backgroundColor: AppColors.black
+              ),
+              useMaterial3: false,
             ),
             home: child,
-          );
-        },
-        child: const SplashScreen(),
-      );
+          ),
+        );
+      },
+      child: const SplashScreen(),
+    );
+  }
 }

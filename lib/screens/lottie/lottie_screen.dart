@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 import 'package:najot_talim_nt/screens/play/play_screen.dart';
 import 'package:najot_talim_nt/screens/widgets/background_contaioner.dart';
 import 'package:najot_talim_nt/screens/widgets/status_bar.dart';
-import 'package:najot_talim_nt/utils/app_colors.dart';
 import 'package:najot_talim_nt/utils/app_images.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class LottieScreen extends StatefulWidget {
+  const LottieScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<LottieScreen> createState() => _LottieScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _LottieScreenState extends State<LottieScreen> {
   @override
   void initState() {
-    Future.delayed(
-        const Duration(
-          seconds: 3,
-        ), () {
+    Future.delayed(const Duration(seconds: 4), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -37,8 +32,8 @@ class _SplashScreenState extends State<SplashScreen> {
       value: StatusBarItems.systemUiOverlayStyle(),
       child: Scaffold(
         body: BackGroundContainer(
-          widget: Lottie.asset(
-            AppImages.lottie,
+          widget: Center(
+            child: Lottie.asset(AppImages.animationLottie),
           ),
         ),
       ),
