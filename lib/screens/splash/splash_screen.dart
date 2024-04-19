@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 import 'package:najot_talim_nt/screens/play/play_screen.dart';
 import 'package:najot_talim_nt/screens/widgets/background_contaioner.dart';
 import 'package:najot_talim_nt/screens/widgets/status_bar.dart';
-import 'package:najot_talim_nt/utils/app_colors.dart';
 import 'package:najot_talim_nt/utils/app_images.dart';
 
 class SplashScreen extends StatefulWidget {
