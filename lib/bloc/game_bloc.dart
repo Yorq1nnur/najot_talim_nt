@@ -115,19 +115,37 @@ List<GameModels> questions = [
   GameModels(
     trueAnswer: "book",
     images: [
-      "https://s0.rbk.ru/v6_top_pics/media/img/0/78/756801770042780.webp",
-      "https://c.files.bbci.co.uk/517E/production/_109926802_milkcow.jpg",
-      "https://thumbs.dreamstime.com/b/goat-11661115.jpg",
-      "https://cdn.cdnparenting.com/articles/2018/01/158543912-H-1024x700.webp",
+      "https://readabilityformulas.com/wp-content/uploads/img-fry-sight-words01.png",
+      "https://www.pngitem.com/pimgs/m/31-313555_research-paper-hd-png-download.png",
+      "https://epica.com/cdn/shop/articles/Handwriting.png",
+      "https://cdn2.psychologytoday.com/assets/styles/manual_crop_1_1_1200x1200/public/field_blog_entry_teaser_image/2021-07/handwriting_literacy_learning.png.jpg",
     ],
   ),
   GameModels(
-    trueAnswer: "avtomobil",
+    trueAnswer: "laptop",
     images: [
-      "https://img.freepik.com/free-photo/sports-car-driving-asphalt-road-night-generative-ai_188544-8052.jpg",
-      "https://media.architecturaldigest.com/photos/63079fc7b4858efb76814bd2/16:9/w_4000,h_2250,c_limit/9.%20DeLorean-Alpha-5%20%5BDeLorean%5D.jpg",
-      "https://www.rbc.ua/static/img/t/u/tusimple_autonomous_truck_1200x675.jpg",
-      "https://s0.rbk.ru/v6_top_pics/media/img/7/70/755254270044707.jpg",
+      "https://png.pngtree.com/png-vector/20190328/ourmid/pngtree-programmers-code-the-website-from-the-command-line-flat-vector-illustration-png-image_878368.jpg",
+      "https://www.aalto.fi/sites/g/files/flghsv161/files/styles/1_6_567w_354h_n/public/2023-05/Microsoft365.png",
+      "https://img.freepik.com/free-vector/console-gamepad-hitech-technology-live-gaming-service-video-gaming-controller-joystick-with-buttons-joypad-gamers-peripheral-input-device-vector-isolated-concept-metaphor-illustration_335657-4310.jpg",
+      "https://png.pngtree.com/png-vector/20190803/ourmid/pngtree-calculator-calculation-math-progress-graph-flat-color-icon-v-png-image_1648951.jpg",
+    ],
+  ),
+  GameModels(
+    trueAnswer: "country",
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Flag_of_Uzbekistan.png/1200px-Flag_of_Uzbekistan.png",
+      "https://upload.wikimedia.org/wikipedia/commons/a/ad/Russia-flag.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Flag_of_the_United_States.png/800px-Flag_of_the_United_States.png",
+      "https://upload.wikimedia.org/wikipedia/commons/6/62/Flag_of_France.png",
+    ],
+  ),
+  GameModels(
+    trueAnswer: "physics",
+    images: [
+      "https://cdn1.byjus.com/wp-content/uploads/2019/07/Rutherford.jpg",
+      "https://ichef.bbci.co.uk/images/ic/480x270/p0bypq4v.png",
+      "https://hips.hearstapps.com/hmg-prod/images/professor-stephen-hawking-british-theoretical-physicist-news-photo-1695324822.jpg",
+      "https://cdn1.byjus.com/wp-content/uploads/2019/08/Moment-of-Inertia-Shapes-and-Formula.png",
     ],
   ),
 ];
