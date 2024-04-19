@@ -33,7 +33,7 @@ class _LottieScreenState extends State<LottieScreen> {
       child: Scaffold(
         body: BackGroundContainer(
           widget: Center(
-            child: Lottie.asset(AppImages.animationLottie),
+            child: Lottie.asset(AppImages.victory),
           ),
         ),
       ),

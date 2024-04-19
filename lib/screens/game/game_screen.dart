@@ -8,6 +8,7 @@ import 'package:najot_talim_nt/screens/game/widgets/letter_items.dart';
 import 'package:najot_talim_nt/screens/widgets/background_contaioner.dart';
 import 'package:najot_talim_nt/screens/widgets/image_items.dart';
 import 'package:najot_talim_nt/screens/widgets/status_bar.dart';
+import 'package:najot_talim_nt/utils/app_images.dart';
 import 'package:najot_talim_nt/utils/size_utils.dart';
 
 class GameScreen extends StatefulWidget {
@@ -73,8 +74,8 @@ class _GameScreenState extends State<GameScreen>
             return BackGroundContainer(
               widget: Stack(
                 children: [
-                  Image.network(
-                    "https://w0.peakpx.com/wallpaper/728/790/HD-wallpaper-nature-animation-amoled-anime-landscape-thumbnail.jpg",
+                  Image.asset(
+                    AppImages.nature,
                     height: double.infinity,
                     width: double.infinity,
                     fit: BoxFit.cover,
