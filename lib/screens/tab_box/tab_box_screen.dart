@@ -48,7 +48,9 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
           unselectedItemColor: AppColors.cD9D9D9,
           onTap: (newActiveIndex) {
             _activeIndex = newActiveIndex;
-            setState(() {});
+            setState(
+              () {},
+            );
           },
           currentIndex: _activeIndex,
           type: BottomNavigationBarType.fixed,
@@ -100,11 +102,11 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
       floatingActionButton: Container(
         width: 70.w,
         height: 70.h,
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           boxShadow: [
             BoxShadow(
               color: AppColors.cFDB623,
-              blurRadius: 25,
+              blurRadius: 30.r,
               spreadRadius: 0,
             ),
           ],
