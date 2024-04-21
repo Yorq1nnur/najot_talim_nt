@@ -8,7 +8,9 @@ import 'bloc/scanner_event.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -26,12 +28,18 @@ class _MyAppState extends State<MyApp> {
         428,
         926,
       ),
-      builder: (context, child) {
+      builder: (
+        context,
+        child,
+      ) {
         ScreenUtil.init(context);
         return MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (_) => ScannerBloc()..add(LoadScannerEvent()),
+              create: (_) => ScannerBloc()
+                ..add(
+                  LoadScannerEvent(),
+                ),
             ),
           ],
           child: MaterialApp(
