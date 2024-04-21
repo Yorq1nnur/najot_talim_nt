@@ -67,17 +67,17 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
             fontWeight: FontWeight.w400,
             color: AppColors.cD9D9D9,
           ),
-          items: const [
+          items: [
             BottomNavigationBarItem(
               activeIcon: Icon(
                 Icons.qr_code_scanner,
                 color: AppColors.cFDB623,
-                size: 40,
+                size: 40.w,
               ),
               icon: Icon(
                 Icons.qr_code_scanner,
                 color: AppColors.cD9D9D9,
-                size: 40,
+                size: 40.w,
               ),
               label: "Generate",
             ),
@@ -85,12 +85,12 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
               activeIcon: Icon(
                 Icons.history,
                 color: AppColors.cFDB623,
-                size: 40,
+                size: 40.w,
               ),
               icon: Icon(
                 Icons.history,
                 color: AppColors.cD9D9D9,
-                size: 40,
+                size: 40.w,
               ),
               label: "History",
             ),
@@ -100,9 +100,9 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButton: Container(
-        width: 70.w,
+        width: 70.h,
         height: 70.h,
-        decoration:  BoxDecoration(
+        decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
               color: AppColors.cFDB623,
@@ -122,7 +122,9 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
                     barcode: (barcode) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text(barcode.code.toString()),
+                          content: Text(
+                            barcode.code.toString(),
+                          ),
                         ),
                       );
                       context.read<ScannerBloc>().add(
