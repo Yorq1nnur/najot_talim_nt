@@ -6,9 +6,7 @@ import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
-
 import 'package:permission_handler/permission_handler.dart';
-
 import '../utils/ui_utils.dart';
 
 class WidgetSaverService {
@@ -27,15 +25,15 @@ class WidgetSaverService {
     }
 
     String dir = (Platform.isAndroid
-            ? await getExternalStorageDirectory()
-            : await getApplicationSupportDirectory())!
+        ? await getExternalStorageDirectory()
+        : await getApplicationSupportDirectory())!
         .path;
     if (!context.mounted) return;
     RenderRepaintBoundary boundary =
-        widgetKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
+    widgetKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
     ui.Image image = await boundary.toImage();
     ByteData byteData =
-        (await image.toByteData(format: ui.ImageByteFormat.png)) as ByteData;
+    (await image.toByteData(format: ui.ImageByteFormat.png)) as ByteData;
     Uint8List pngBytes = byteData.buffer.asUint8List();
     File file = File('$dir/cheque-$fileId.png');
     debugPrint('$dir/cheque-$fileId.png');
@@ -46,7 +44,7 @@ class WidgetSaverService {
     hideLoading(context: context);
     if (filePath.isNotEmpty) {
       //Open File
-      // OpenFilex.open(filePath);
+      OpenFilex.open(filePath);
       //Save image to Gallery
       GallerySaver.saveImage(filePath).then((value) {
         showSuccessMessage(message: "Image Saved", context: context);
@@ -74,15 +72,15 @@ class WidgetSaverService {
     }
 
     String dir = (Platform.isAndroid
-            ? await getExternalStorageDirectory()
-            : await getApplicationSupportDirectory())!
+        ? await getExternalStorageDirectory()
+        : await getApplicationSupportDirectory())!
         .path;
     if (!context.mounted) return;
     RenderRepaintBoundary boundary =
-        widgetKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
+    widgetKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
     ui.Image image = await boundary.toImage();
     ByteData byteData =
-        (await image.toByteData(format: ui.ImageByteFormat.png)) as ByteData;
+    (await image.toByteData(format: ui.ImageByteFormat.png)) as ByteData;
     Uint8List pngBytes = byteData.buffer.asUint8List();
     File file = File('$dir/cheque-$fileId.png');
     debugPrint('$dir/cheque-$fileId.png');
