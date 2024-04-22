@@ -23,8 +23,7 @@ class ScannerBloc extends Bloc<ScannerEvent, ScannerState> {
     emit(state.copyWith(status: FormStatus.loading));
     emit(
       state.copyWith(
-          status: FormStatus.success,
-          products: await LocalDB.getAllScanners()),
+          status: FormStatus.success, products: await LocalDB.getAllScanners()),
     );
   }
 

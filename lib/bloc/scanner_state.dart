@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-
 import '../data/models/form_status.dart';
 import '../data/models/scaner_model.dart';
 

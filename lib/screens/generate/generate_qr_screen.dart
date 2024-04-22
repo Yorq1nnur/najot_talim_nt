@@ -168,7 +168,8 @@ class _GenerateQrScreenState extends State<GenerateQrScreen> {
                                       ),
                                     ),
                                   );
-                              Navigator.push(context, MaterialPageRoute(builder: (context){
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
                                 return const HistoryScreen();
                               }));
                             },
