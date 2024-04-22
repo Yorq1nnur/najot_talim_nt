@@ -5,15 +5,18 @@ import 'package:najot_talim_nt/screens/splash/splash_screen.dart';
 import 'package:najot_talim_nt/utils/colors/app_colors.dart';
 import 'package:najot_talim_nt/view_models/book_view_model.dart';
 import 'package:provider/provider.dart';
-
 import 'data/repositories/book_repo.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
+      ..badCertificateCallback = (
+        X509Certificate cert,
+        String host,
+        int port,
+      ) =>
+          true;
   }
 }
 

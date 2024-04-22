@@ -36,6 +36,8 @@ flutter:
     - assets/fonts/bodoni/
     - assets/fonts/inter/
     - assets/lottie/
+    - assets/images/
+    - assets/icons/
 
   fonts:
     - family: Bodoni
