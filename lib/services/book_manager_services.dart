@@ -3,8 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import '../data/models/file_data_model.dart';
-import '../data/models/file_status_model.dart';
+import '../data/model/book_model.dart';
+import '../data/model/book_status_model.dart';
 
 class FileManagerService {
   static final FileManagerService instance = FileManagerService._();
@@ -45,22 +45,21 @@ class FileManagerService {
     return directory;
   }
 
-  Future<FileStatusModel> checkFile(FileDataModel fileDataModel) async {
+  Future<BookStatusModel> checkFile(BookModel bookModel) async {
     await _init();
-    FileStatusModel fileStatusModel = FileStatusModel(
+    BookStatusModel bookStatusModel = BookStatusModel(
       isExist: false,
-      newFileLocation: "",
+      fileLocation: "",
     );
-    //Check for url validation
 
     String savedLocation = '';
 
-    List<String> pattern = fileDataModel.fileUrl.split(".");
+    List<String> pattern = bookModel.bookUrl.split(".");
     if (pattern.length > 1) {
       savedLocation =
-          "${directory?.path}/${fileDataModel.fileName}.${pattern.last}";
+          "${directory?.path}/${bookModel.bookName}.${pattern.last}";
     }
-    fileStatusModel = fileStatusModel.copyWith(newFileLocation: savedLocation);
+    bookStatusModel = bookStatusModel.copyWith(newFileLocation: savedLocation);
 
     var allFiles = directory?.list();
 
@@ -72,12 +71,12 @@ class FileManagerService {
     });
 
     if (filePaths.contains(savedLocation)) {
-      fileStatusModel = fileStatusModel.copyWith(isExist: true);
+      bookStatusModel = bookStatusModel.copyWith(isExist: true);
     }
 
     debugPrint(
-        "FINAL FILE STATE:${fileStatusModel.newFileLocation} AND STAT:${fileStatusModel.isExist}");
+        "FINAL FILE STATE:${bookStatusModel.fileLocation} AND STAT:${bookStatusModel.isExist}");
 
-    return fileStatusModel;
+    return bookStatusModel;
   }
 }
