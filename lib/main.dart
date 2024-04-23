@@ -28,12 +28,18 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(create: (_) => BookBloc()),
       ],
       child: ScreenUtilInit(
-        designSize: const Size(376, 815),
+        designSize: const Size(
+          376,
+          815,
+        ),
         builder: (context, child) {
           ScreenUtil.init(context);
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            theme: ThemeData(useMaterial3: false),
+            theme: ThemeData(
+              scaffoldBackgroundColor: Colors.black,
+              useMaterial3: false,
+            ),
             home: child,
           );
         },

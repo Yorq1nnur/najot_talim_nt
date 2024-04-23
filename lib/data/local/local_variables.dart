@@ -26,7 +26,7 @@ List<BookModel> books = [
   BookModel(
     imagePath:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png",
-    bookName: "PythonBooks",
+    bookName: "Flutter",
     bookUrl: "https://bilimlar.uz/wp-content/uploads/2021/02/k100001.pdf",
     categoryModel: CategoryModel.lesson,
   ),

@@ -19,7 +19,6 @@ class _SplashScreenState extends State<SplashScreen> {
     height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: AppColors.cF9F9F9,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: Column(
@@ -31,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
               child: Text(
                 "Perpustakaan Digital",
                 style: TextStyle(
-                  color: AppColors.black,
+                  color: AppColors.white,
                   fontSize: 27.sp,
                   fontWeight: FontWeight.w700,
                 ),
@@ -42,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 textAlign: TextAlign.center,
                 "E-Perpus adalah aplikasi perpustakaan digital yang menyewakan buku berbasis mobile.",
                 style: TextStyle(
-                  color: AppColors.black,
+                  color: AppColors.white,
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w400,
                 ),
