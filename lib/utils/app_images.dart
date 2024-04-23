@@ -1,3 +1,3 @@
 class AppImages{
-  static const String splashImage = "assets/images/splash_image.png";
+  static const String lottie = "assets/lottie/lottie.json";
 }
