@@ -1,7 +1,7 @@
 import '../model/book_model.dart';
 import '../model/category_model.dart';
 
-List<BookModel> books = [
+final List<BookModel> books = [
   BookModel(
     imagePath:
         "https://rekhta.pc.cdn.bitgravity.com/Images/EBooks/small_tauzeehat-asbab-e-sitta-zaruriya-abu-waris-jameel-ebooks.jpg",
