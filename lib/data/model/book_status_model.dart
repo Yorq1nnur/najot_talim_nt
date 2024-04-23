@@ -9,7 +9,7 @@ class BookStatusModel {
 
   BookStatusModel copyWith({bool? isExist, String? newFileLocation}) =>
       BookStatusModel(
-        fileLocation: newFileLocation ?? this.fileLocation,
+        fileLocation: newFileLocation ?? fileLocation,
         isExist: isExist ?? this.isExist,
       );
 }

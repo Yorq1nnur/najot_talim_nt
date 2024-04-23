@@ -25,7 +25,7 @@ class _BookScreenState extends State<BookScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.c_F9F9F9,
+      backgroundColor: AppColors.cF9F9F9,
       body: SingleChildScrollView(
         child: BlocBuilder<BookBloc, BookState>(
           builder: (context, state) {

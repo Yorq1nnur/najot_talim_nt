@@ -9,7 +9,7 @@ import 'package:najot_talim_nt/data/model/category_model.dart';
 import 'package:najot_talim_nt/services/book_manager_services.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
+// import 'package:permission_handler/permission_handler.dart';
 
 import '../data/local/local_variables.dart';
 import 'book_event.dart';
@@ -101,10 +101,10 @@ class BookBloc extends Bloc<BookEvent, BookState> {
     }
   }
 
-  Future<bool> _requestWritePermission() async {
-    await Permission.storage.request();
-    return await Permission.storage.request().isGranted;
-  }
+  // Future<bool> _requestWritePermission() async {
+  //   await Permission.storage.request();
+  //   return await Permission.storage.request().isGranted;
+  // }
 
   Future<Directory?> getDownloadPath() async {
     Directory? directory;

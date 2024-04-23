@@ -20,7 +20,7 @@ class WrapItem extends StatelessWidget {
               horizontal: 9.w,
               vertical: 12.h,
             ),
-            backgroundColor: AppColors.c_F1F1F1,
+            backgroundColor: AppColors.cF1F1F1,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18.r),
             ),
