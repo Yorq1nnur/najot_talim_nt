@@ -10,7 +10,9 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   FileManagerService();
 
-  runApp(const MyApp());
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -22,18 +24,27 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => BookBloc()),
+        BlocProvider(
+          create: (_) => BookBloc(),
+        ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(
           376,
           815,
         ),
-        builder: (context, child) {
-          ScreenUtil.init(context);
+        builder: (
+          context,
+          child,
+        ) {
+          ScreenUtil.init(
+            context,
+          );
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
