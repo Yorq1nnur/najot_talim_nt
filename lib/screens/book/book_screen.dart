@@ -9,8 +9,8 @@ import 'package:najot_talim_nt/data/local/local_variables.dart';
 import 'package:najot_talim_nt/data/model/category_model.dart';
 import 'package:najot_talim_nt/screens/book/widgets/book_item.dart';
 import 'package:najot_talim_nt/screens/book/widgets/wrap_item.dart';
-import 'package:najot_talim_nt/utils/app_colors.dart';
-import 'package:najot_talim_nt/utils/size_utils.dart';
+import 'package:najot_talim_nt/utils/colors/app_colors.dart';
+import 'package:najot_talim_nt/utils/size/size_utils.dart';
 import 'package:open_filex/open_filex.dart';
 
 class BookScreen extends StatefulWidget {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:najot_talim_nt/screens/book/book_screen.dart';
-import 'package:najot_talim_nt/utils/app_images.dart';
-import '../../utils/size_utils.dart';
+import 'package:najot_talim_nt/utils/images/app_images.dart';
+import '../../utils/size/size_utils.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

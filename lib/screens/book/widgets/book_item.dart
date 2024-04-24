@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot_talim_nt/utils/size_utils.dart';
+import 'package:najot_talim_nt/utils/size/size_utils.dart';
 
-import '../../../utils/app_colors.dart';
+import '../../../utils/colors/app_colors.dart';
 
 class BookItem extends StatelessWidget {
   const BookItem({
@@ -89,7 +89,7 @@ class BookItem extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  color: AppColors.c_263238,
+                  color: AppColors.white,
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w400,
                 ),
