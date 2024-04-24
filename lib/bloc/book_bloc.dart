@@ -28,6 +28,8 @@ class BookBloc extends Bloc<BookEvent, BookState> {
   }
 
   Future<void> downloadFile(DownLoad event, emit) async {
+
+    double value = 0.0;
     Dio dio = Dio();
     BookStatusModel fileStatusModel =
     await FileManagerService().checkFile(event.bookModel);
@@ -38,12 +40,13 @@ class BookBloc extends Bloc<BookEvent, BookState> {
         event.bookModel.bookUrl,
         fileStatusModel.fileLocation,
         onReceiveProgress: (count, total) async {
-          emit(state.copyWith(progress: count / total));
+          value = count/total;
+          emit(state.copyWith(progress: value));
         },
       );
       emit(
         state.copyWith(
-          progress: 1,
+          progress: value,
           newFileLocation: fileStatusModel.fileLocation,
         ),
       );

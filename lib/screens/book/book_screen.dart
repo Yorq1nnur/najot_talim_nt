@@ -183,32 +183,42 @@ class _BookScreenState extends State<BookScreen> {
                         context.read<BookBloc>().state.books.length,
                         (index) {
                           BookBloc fileManagerBloc = BookBloc();
-                          return BookItem(
-                            image: context
-                                .read<BookBloc>()
-                                .state
-                                .books[index]
-                                .imagePath,
-                            bookName: context
-                                .read<BookBloc>()
-                                .state
-                                .books[index]
-                                .bookName,
-                            newFileLocation: state.newFileLocation,
-                            onTap: () async {
-                              if (state.newFileLocation.isEmpty) {
-                                fileManagerBloc.add(
-                                  DownLoad(
-                                    bookModel: context
-                                        .read<BookBloc>()
-                                        .state
-                                        .books[index],
-                                  ),
-                                );
-                              } else {
-                                await OpenFilex.open(state.newFileLocation);
-                              }
-                            },
+                          return Column(
+                            children: [
+                              BookItem(
+                                image: context
+                                    .read<BookBloc>()
+                                    .state
+                                    .books[index]
+                                    .imagePath,
+                                bookName: context
+                                    .read<BookBloc>()
+                                    .state
+                                    .books[index]
+                                    .bookName,
+                                newFileLocation: state.newFileLocation,
+                                onTap: () async {
+                                  if (state.newFileLocation.isEmpty) {
+                                    fileManagerBloc.add(
+                                      DownLoad(
+                                        bookModel: context
+                                            .read<BookBloc>()
+                                            .state
+                                            .books[index],
+                                      ),
+                                    );
+                                  } else {
+                                    await OpenFilex.open(state.newFileLocation);
+                                  }
+                                },
+                              ),
+                              10.getH(),
+                              LinearProgressIndicator(
+                                value: state.progress,
+                                backgroundColor: Colors.white,
+                                color: Colors.blue,
+                              )
+                            ],
                           );
                         },
                       ),

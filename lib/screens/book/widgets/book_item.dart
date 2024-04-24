@@ -59,24 +59,24 @@ class BookItem extends StatelessWidget {
                         ),
                       )
                     : Positioned(
-                  top: 70.h,
-                  left: 45.w,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 10.w,
-                      vertical: 10.h,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100.r),
-                      color: Colors.grey.withOpacity(.4),
-                    ),
-                    child: Icon(
-                      Icons.done,
-                      color: Colors.grey,
-                      size: 50.sp,
-                    ),
-                  ),
-                ),
+                        top: 70.h,
+                        left: 45.w,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10.w,
+                            vertical: 10.h,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100.r),
+                            color: Colors.grey.withOpacity(.4),
+                          ),
+                          child: Icon(
+                            Icons.done,
+                            color: Colors.grey,
+                            size: 50.sp,
+                          ),
+                        ),
+                      ),
               ],
             ),
           ),

@@ -4,10 +4,10 @@ import '../model/category_model.dart';
 final List<BookModel> books = [
   BookModel(
     imagePath:
-        "https://rekhta.pc.cdn.bitgravity.com/Images/EBooks/small_tauzeehat-asbab-e-sitta-zaruriya-abu-waris-jameel-ebooks.jpg",
-    bookName: "Sittaizaruriya",
+        "https://cdn3d.iconscout.com/3d/free/preview/free-flutter-9294855-7577998.png",
+    bookName: "Flutter",
     bookUrl:
-        "https://n.ziyouz.com/books/alisher_navoiy_asarlari/Alisher%20Navoiy%20(Foniy).%20Sittai%20zaruriya.pdf",
+        "https://digilib.stekom.ac.id/assets/dokumen/ebook/feb_3872ce7467cbdc7beedfcdc12b2b607b0ba36429_1649057575.pdf",
     categoryModel: CategoryModel.comedy,
   ),
   BookModel(
