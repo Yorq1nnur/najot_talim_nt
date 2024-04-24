@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najot_talim_nt/screens/splash/splash_screen.dart';
 import 'package:najot_talim_nt/services/book_manager_services.dart';
-
 import 'bloc/book_bloc.dart';
 
 void main() {
