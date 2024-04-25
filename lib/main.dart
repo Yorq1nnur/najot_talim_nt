@@ -1,57 +1,59 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:najot_talim_nt/screens/splash/splash_screen.dart';
-import 'package:najot_talim_nt/utils/colors/app_colors.dart';
+import 'package:najot_talim_nt/bloc/book_bloc.dart';
+import 'package:najot_talim_nt/screens/tab_box.dart';
+import 'package:najot_talim_nt/services/book_manager_services.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  FileManagerService();
+
   runApp(
-    const App(),
+    const MyApp(),
   );
 }
 
-class App extends StatelessWidget {
-  const App({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyApp(),
-    );
-  }
+  State<MyApp> createState() => _MyAppState();
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({
-    super.key,
-  });
-
+class _MyAppState extends State<MyApp> {
   @override
-  Widget build(
-    BuildContext context,
-  ) =>
-      ScreenUtilInit(
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => BookBloc(),
+        ),
+      ],
+      child: ScreenUtilInit(
         designSize: const Size(
-          375,
-          812,
+          360,
+          800,
         ),
         builder: (context, child) {
-          ScreenUtil.init(
-            context,
-          );
+          ScreenUtil.init(context);
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               appBarTheme: const AppBarTheme(
-                backgroundColor: AppColors.black,
+                backgroundColor: Colors.black,
               ),
               useMaterial3: false,
-              scaffoldBackgroundColor: AppColors.black,
+              canvasColor: Colors.black,
+              bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+                backgroundColor: Colors.black,
+              ),
             ),
             home: child,
           );
         },
-        child: const SplashScreen(),
-      );
+        child: const TabBox(),
+      ),
+    );
+  }
 }
