@@ -37,29 +37,35 @@ class _GlobalScreenState extends State<GlobalScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Platform Specific"),
-      ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                _batteryLevel,
-                style: AppTextStyle.interBlack.copyWith(
-                  color: AppColors.white,
-                ),
-              ),
-              Text(
-                deviceInfo,
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  color: AppColors.white,
-                ),
-              )
-            ],
+        centerTitle: true,
+        elevation: 0,
+        title: Text(
+          "Platform Specific",
+          style: AppTextStyle.interBlack.copyWith(
+            color: AppColors.white,
           ),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              _batteryLevel,
+              style: AppTextStyle.interBlack.copyWith(
+                color: AppColors.white,
+              ),
+            ),
+            Text(
+              deviceInfo,
+              style: TextStyle(
+                fontSize: 18.sp,
+                color: AppColors.white,
+              ),
+            )
+          ],
         ),
       ),
       floatingActionButton: SizedBox(
