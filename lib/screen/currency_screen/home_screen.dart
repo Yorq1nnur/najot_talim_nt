@@ -19,34 +19,107 @@ class CurrencyScreen extends StatelessWidget {
             );
           }
           if (state is CurrencySuccessState) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: ListView.builder(
-                itemCount: state.data.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(
-                      state.data[index].title,
-                      style: const TextStyle(color: Colors.black),
-                    ),
-                    subtitle: Row(
-                      children: [
-                        Text(
-                          state.data[index].code,
-                          style: const TextStyle(color: Colors.black),
-                        ),
-                        const SizedBox(
-                          width: 100,
-                        ),
-                        Text(
-                          state.data[index].cbPrice,
-                          style: const TextStyle(color: Colors.black),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+            return ListView.builder(
+              itemCount: state.data.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: const EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 10,
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 20,
+                  ),
+                  decoration: BoxDecoration(
+                      color: Colors.indigoAccent,
+                      borderRadius: BorderRadius.circular(
+                        20,
+                      ),
+                      border: Border.all(
+                        color: Colors.yellow,
+                        width: 5,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.indigo.withOpacity(
+                              0.7,
+                            ),
+                            blurRadius: 5)
+                      ]),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            state.data[index].title,
+                            style: const TextStyle(
+                              color: Colors.red,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                          Text(
+                            state.data[index].date,
+                            style: TextStyle(
+                              color: Colors.red.withOpacity(
+                                0.7,
+                              ),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                          Text(
+                            state.data[index].code,
+                            style: TextStyle(
+                              color: Colors.red.withOpacity(
+                                0.5,
+                              ),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            state.data[index].cbPrice,
+                            style: const TextStyle(
+                              color: Colors.red,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                          Text(
+                            state.data[index].nbuBuyPrice,
+                            style: TextStyle(
+                              color: Colors.red.withOpacity(
+                                0.7,
+                              ),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                          Text(
+                            state.data[index].nbuCellPrice,
+                            style: TextStyle(
+                              color: Colors.red.withOpacity(
+                                0.5,
+                              ),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              },
             );
           }
           if (state is CurrencyNetworkState) {
@@ -60,7 +133,7 @@ class CurrencyScreen extends StatelessWidget {
             );
           }
           return Center(
-            child: Lottie.asset('assets/lottie/loading.json'),
+            child: Lottie.asset('assets/lottie/lottie.json'),
           );
         },
         listener: (BuildContext context, CurrencyState state) {
