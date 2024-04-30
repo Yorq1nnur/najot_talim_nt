@@ -6,10 +6,14 @@ import 'package:najot_talim_nt/screen/bloc/currency_event.dart';
 import 'package:najot_talim_nt/screen/bloc/currency_state.dart';
 
 class CurrencyScreen extends StatelessWidget {
-  const CurrencyScreen({super.key});
+  const CurrencyScreen({
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -23,7 +27,10 @@ class CurrencyScreen extends StatelessWidget {
         ),
       ),
       body: BlocConsumer<CurrencyBloc, CurrencyState>(
-        builder: (BuildContext context, CurrencyState state) {
+        builder: (
+          BuildContext context,
+          CurrencyState state,
+        ) {
           if (state is CurrencyInitialState) {
             return const Center(
               child: SizedBox(),
@@ -36,7 +43,10 @@ class CurrencyScreen extends StatelessWidget {
                 vertical: 10,
               ),
               itemCount: state.data.length,
-              itemBuilder: (context, index) {
+              itemBuilder: (
+                context,
+                index,
+              ) {
                 return Container(
                   margin: const EdgeInsets.symmetric(
                     vertical: 10,
@@ -46,21 +56,23 @@ class CurrencyScreen extends StatelessWidget {
                     vertical: 20,
                   ),
                   decoration: BoxDecoration(
-                      color: Colors.indigoAccent,
-                      borderRadius: BorderRadius.circular(
-                        20,
-                      ),
-                      border: Border.all(
-                        color: Colors.yellow,
-                        width: 5,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.indigo.withOpacity(
-                              0.7,
-                            ),
-                            blurRadius: 5)
-                      ]),
+                    color: Colors.indigoAccent,
+                    borderRadius: BorderRadius.circular(
+                      20,
+                    ),
+                    border: Border.all(
+                      color: Colors.yellow,
+                      width: 5,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.indigo.withOpacity(
+                          0.7,
+                        ),
+                        blurRadius: 5,
+                      )
+                    ],
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -150,34 +162,53 @@ class CurrencyScreen extends StatelessWidget {
                         GetNetworkCurrencyEvent(),
                       );
                 },
-                child: const Text('Refresh'),
+                child: const Text(
+                  'Refresh',
+                ),
               ),
             );
           }
           return Center(
-            child: Lottie.asset('assets/lottie/lottie.json'),
+            child: Lottie.asset(
+              'assets/lottie/lottie.json',
+            ),
           );
         },
-        listener: (BuildContext context, CurrencyState state) {
-          debugPrint("___________________________state $state");
+        listener: (
+          BuildContext context,
+          CurrencyState state,
+        ) {
+          debugPrint(
+            "___________________________state $state",
+          );
           if (state is CurrencyNetworkState) {
             if (state.isLocal) {
               showDialog(
                   context: context,
-                  builder: (context) {
+                  builder: (
+                    context,
+                  ) {
                     return AlertDialog(
-                      title: const Text('Error'),
-                      content: const Text('No internet connection'),
+                      title: const Text(
+                        'Error',
+                      ),
+                      content: const Text(
+                        'No internet connection',
+                      ),
                       actions: <Widget>[
                         TextButton(
                           onPressed: () => Navigator.of(context).pop(),
-                          child: const Text('Ok'),
+                          child: const Text(
+                            'Ok',
+                          ),
                         ),
                       ],
                     );
                   });
             } else {
-              context.read<CurrencyBloc>().add(GetLocalCurrencyEvent());
+              context.read<CurrencyBloc>().add(
+                    GetLocalCurrencyEvent(),
+                  );
             }
           }
         },
