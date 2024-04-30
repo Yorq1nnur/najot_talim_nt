@@ -11,16 +11,15 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.6
-  flutter_svg: ^2.0.10+1
-  flutter_screenutil: ^5.9.0
-  zoom_tap_animation: ^1.1.0
+  dio: ^5.4.3+1
+  flutter_bloc: ^8.1.5
+  equatable: ^2.0.5
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  get_it: ^7.7.0
+  data_equal:
+    path: packages/data_equal
   lottie: ^3.1.0
-  cloud_firestore: ^4.4.3
-  firebase_auth: ^4.2.9
-  firebase_core: ^2.7.0
-  firebase_storage: ^11.0.14
-  google_sign_in: ^6.0.1
-  image_picker: ^0.8.6+3
 
 dev_dependencies:
   flutter_test:
