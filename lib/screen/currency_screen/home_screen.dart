@@ -31,7 +31,10 @@ class CurrencyScreen extends StatelessWidget {
           }
           if (state is CurrencySuccessState) {
             return ListView.builder(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10,
+                vertical: 10,
+              ),
               itemCount: state.data.length,
               itemBuilder: (context, index) {
                 return Container(
