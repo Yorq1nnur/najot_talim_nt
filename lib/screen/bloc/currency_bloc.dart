@@ -68,7 +68,7 @@ class CurrencyBloc extends Bloc<CurrencyEvent, CurrencyState> {
       );
     } else if (response.statusCode == 404) {
       debugPrint(
-        '___________________________network',
+        '___________________________network state',
       );
       List<CurrencyModel> localData = await currencyController.getAllCurrency();
       if (localData.isEmpty) {
