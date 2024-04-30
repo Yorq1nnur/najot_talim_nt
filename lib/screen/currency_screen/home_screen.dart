@@ -11,6 +11,17 @@ class CurrencyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          "CURRENCIES",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+      ),
       body: BlocConsumer<CurrencyBloc, CurrencyState>(
         builder: (BuildContext context, CurrencyState state) {
           if (state is CurrencyInitialState) {
@@ -20,6 +31,7 @@ class CurrencyScreen extends StatelessWidget {
           }
           if (state is CurrencySuccessState) {
             return ListView.builder(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               itemCount: state.data.length,
               itemBuilder: (context, index) {
                 return Container(
@@ -132,7 +144,9 @@ class CurrencyScreen extends StatelessWidget {
             return Center(
               child: ElevatedButton(
                 onPressed: () {
-                  context.read<CurrencyBloc>().add(GetNetworkCurrencyEvent());
+                  context.read<CurrencyBloc>().add(
+                        GetNetworkCurrencyEvent(),
+                      );
                 },
                 child: const Text('Refresh'),
               ),
