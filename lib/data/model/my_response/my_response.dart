@@ -1,9 +1,9 @@
-class NetworkResponse {
+class MyResponse {
   dynamic data;
   String errorText;
   int statusCode;
 
-  NetworkResponse({
+  MyResponse({
     this.data,
     this.errorText = '',
     this.statusCode = 0,

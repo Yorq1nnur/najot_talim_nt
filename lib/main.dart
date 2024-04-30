@@ -11,16 +11,22 @@ import 'package:najot_talim_nt/services/services_locator.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  Hive.registerAdapter(CurrencyModelAdapter(),);
+  Hive.registerAdapter(
+    CurrencyModelAdapter(),
+  );
   setUpDI();
   runApp(
     MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_,) => CurrencyBloc(getIt<CurrencyController>(),)
-            ..add(
-              GetNetworkCurrencyEvent(),
-            ),
+          create: (
+            _,
+          ) =>
+              CurrencyBloc(
+            getIt<CurrencyController>(),
+          )..add(
+                  GetNetworkCurrencyEvent(),
+                ),
         ),
       ],
       child: const MyApp(),
@@ -29,10 +35,14 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key,});
+  const MyApp({
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: CurrencyScreen(),

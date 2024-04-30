@@ -1,4 +1,6 @@
-bool dataEqual({required Map<String, dynamic> dataOne, required Map<String, dynamic> dataTwo}) {
+bool dataEqual(
+    {required Map<String, dynamic> dataOne,
+    required Map<String, dynamic> dataTwo}) {
   if (dataOne['code'] != dataTwo['code']) {
     return true;
   }

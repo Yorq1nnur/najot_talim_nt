@@ -5,7 +5,11 @@ import '../../../data/local/local_storage.dart';
 
 final GetIt getIt = GetIt.instance;
 
-void setUpDI(){
-  getIt.registerSingleton<CurrencyController>(CurrencyController());
-  getIt.registerSingleton<ApiProvider>(ApiProvider());
+void setUpDI() {
+  getIt.registerSingleton<CurrencyController>(
+    CurrencyController(),
+  );
+  getIt.registerSingleton<ApiProvider>(
+    ApiProvider(),
+  );
 }

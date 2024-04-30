@@ -1,6 +1,5 @@
 import 'package:hive/hive.dart';
 import 'dart:async';
-
 import 'package:najot_talim_nt/data/model/currency_model/currency_model.dart';
 
 class CurrencyController {
@@ -11,19 +10,32 @@ class CurrencyController {
   }
 
   Future<void> _init() async {
-    _currencyData = await Hive.openBox<CurrencyModel>('currency');
+    _currencyData = await Hive.openBox<CurrencyModel>(
+      'currency',
+    );
   }
 
   Future<List<CurrencyModel>> getAllCurrency() async {
-    _currencyData =  await Hive.openBox<CurrencyModel>('currency');
+    _currencyData = await Hive.openBox<CurrencyModel>(
+      'currency',
+    );
     return _currencyData.values.toList();
   }
 
-  Future<void> insertCurrency(CurrencyModel currencyModel) async {
-    await _currencyData.put(currencyModel.code, currencyModel);
+  Future<void> insertCurrency(
+    CurrencyModel currencyModel,
+  ) async {
+    await _currencyData.put(
+      currencyModel.code,
+      currencyModel,
+    );
   }
 
-  void deleteCurrency(int id)async {
-    _currencyData.delete(id);
+  void deleteCurrency(
+    int id,
+  ) async {
+    _currencyData.delete(
+      id,
+    );
   }
 }

@@ -11,7 +11,9 @@ class CurrencyLoadingState extends CurrencyState {}
 class CurrencySuccessState extends CurrencyState with EquatableMixin {
   final List<CurrencyModel> data;
 
-  CurrencySuccessState({required this.data});
+  CurrencySuccessState({
+    required this.data,
+  });
 
   @override
   List<Object?> get props => [
@@ -22,7 +24,9 @@ class CurrencySuccessState extends CurrencyState with EquatableMixin {
 class CurrencyErrorState extends CurrencyState with EquatableMixin {
   final String errorMessage;
 
-  CurrencyErrorState({required this.errorMessage});
+  CurrencyErrorState({
+    required this.errorMessage,
+  });
 
   @override
   List<Object?> get props => [
@@ -30,9 +34,11 @@ class CurrencyErrorState extends CurrencyState with EquatableMixin {
       ];
 }
 
-class CurrencyNetworkState extends CurrencyState with EquatableMixin{
+class CurrencyNetworkState extends CurrencyState with EquatableMixin {
   final bool isLocal;
-  CurrencyNetworkState({this.isLocal = false});
+  CurrencyNetworkState({
+    this.isLocal = false,
+  });
 
   @override
   List<Object?> get props => [
