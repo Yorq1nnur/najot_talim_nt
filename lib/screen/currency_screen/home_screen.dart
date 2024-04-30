@@ -87,7 +87,9 @@ class CurrencyScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            state.data[index].cbPrice,
+                            state.data[index].cbPrice.isNotEmpty
+                                ? state.data[index].cbPrice
+                                : "NO DATA",
                             style: const TextStyle(
                               color: Colors.red,
                               fontSize: 20,
@@ -95,7 +97,9 @@ class CurrencyScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            state.data[index].nbuBuyPrice,
+                            state.data[index].nbuBuyPrice.isNotEmpty
+                                ? state.data[index].nbuBuyPrice
+                                : "NO DATA",
                             style: TextStyle(
                               color: Colors.red.withOpacity(
                                 0.7,
@@ -105,7 +109,9 @@ class CurrencyScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            state.data[index].nbuCellPrice,
+                            state.data[index].nbuCellPrice.isNotEmpty
+                                ? state.data[index].nbuCellPrice
+                                : "NO DATA",
                             style: TextStyle(
                               color: Colors.red.withOpacity(
                                 0.5,
