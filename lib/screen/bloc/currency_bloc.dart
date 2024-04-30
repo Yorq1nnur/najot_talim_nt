@@ -64,7 +64,9 @@ class CurrencyBloc extends Bloc<CurrencyEvent, CurrencyState> {
         }
       }
       emit(
-        CurrencySuccessState(data: response.data),
+        CurrencySuccessState(
+          data: response.data,
+        ),
       );
     } else if (response.statusCode == 404) {
       debugPrint(
@@ -85,7 +87,9 @@ class CurrencyBloc extends Bloc<CurrencyEvent, CurrencyState> {
         );
       }
     } else {
-      throw Exception(response.errorText);
+      throw Exception(
+        response.errorText,
+      );
     }
   }
 
@@ -93,8 +97,10 @@ class CurrencyBloc extends Bloc<CurrencyEvent, CurrencyState> {
     GetLocalCurrencyEvent event,
     Emitter<CurrencyState> emit,
   ) async {
-    emit(CurrencySuccessState(
-      data: await getIt.get<CurrencyController>().getAllCurrency(),
-    ));
+    emit(
+      CurrencySuccessState(
+        data: await getIt.get<CurrencyController>().getAllCurrency(),
+      ),
+    );
   }
 }
